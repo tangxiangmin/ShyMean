@@ -29,7 +29,7 @@ $wordPos:left center right ;
 $size:xs sm md lg;
 @each $s in $size {
 	.text-#{$s} {
-		font-size: index($size,$s)*0.6rem;
+		font-size: index($size,$s)*0.6*16px;
 	}
 }
 // 文本溢出
@@ -41,11 +41,12 @@ $size:xs sm md lg;
 }
 
  // 多行
-%text-overflow-line {
+@mixin text-overflow-line($i:2) {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
+	-webkit-line-clamp:$i;
 }
 //
 //@for $i from 2 through 5 {

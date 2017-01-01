@@ -1,0 +1,84 @@
+@charset "utf-8";
+/**
+ * ---layout---
+ */
+
+// 浮动 
+
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+// 清浮动
+.clearfix {
+	display: block;
+	zoom: 1;
+	clear: both;
+}
+
+.oh {
+	overflow: hidden;
+}
+// 盒子模型
+.ib {
+    display: inline-block ;
+}
+.block {
+	display: block;
+	height: 100%;
+}
+.i {
+	display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+// 定位
+
+
+// 外边距
+// 为了处理页面统一的边距，定义了$basemargin变量，而未使用对应的混合器
+$basemargin: 20px !default;
+$basepadding: 20px !default;
+$baseborder: 1px solid #d6d6d6 !default;
+
+// 边框
+@mixin border($b: $baseborder) {
+	border: $b;
+}
+@mixin border-b($b:$baseborder) {
+	border-bottom: $b;
+}
+@mixin border-r($b:$baseborder) {
+	border-right: $b;
+}
+@mixin border-l($b:$baseborder) {
+	border-left: $b;
+}
+@mixin border-t($b:$baseborder) {
+	border-top: $b;
+}
+// 定义上下对称边框
+@mixin border-tb($b: $baseborder) {
+	border-top: $b;
+	border-bottom: $b;
+}
+@mixin border-lr($b: $baseborder) {
+	border-left: $b;
+	border-right: $b;
+}
+
+//图片
+.img-responsive {
+    display: block;
+	margin: 0 auto;
+    max-width: 100%;
+}
+.img-circle {
+	@include border-radius(50%);
+}
+
+

@@ -7,7 +7,7 @@
 body {
 	background: #fff;
 }
-$res: #FF3300;
+$red: #FF3300;
 $oragne: #CC6600;
 $yellow: #FF9900;
 $green: #33CC66;
@@ -22,7 +22,7 @@ $text-gray: #999;
 $basecolor: $green;
 
 // 安全色
-$colorArr:(red $res #fff)(oragne $oragne #fff)(yellow $yellow #fff)(green $green #fff)(cyan $cyan #fff)(blue $blue #fff)(purple $purple #fff)(dark $dark #fff)(white $white #000)(gray $gray #000)(base $basecolor #fff);
+$colorArr:(red $red #fff)(oragne $oragne #fff)(yellow $yellow #fff)(green $green #fff)(cyan $cyan #fff)(blue $blue #fff)(purple $purple #fff)(dark $dark #fff)(white $white #000)(gray $gray #000)(base $basecolor #fff);
 
 // 基础色
 // 根据需要在页面中慎重使用通用的颗粒类，防止未来的局部改动
@@ -42,6 +42,7 @@ $colorArr:(red $res #fff)(oragne $oragne #fff)(yellow $yellow #fff)(green $green
 ::selection {
 	@extend .bg-dark
 }
+
 
 /**
  * ---end color---

@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+@mixin list-unstyle {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.list {
+	list-style: none;
+
+}
+.list-unstyle {
+	@include list-unstyle;
+}
+.list,.list-unstyle {
+	.list-icon {
+		float: right;
+		margin-left: 20px;
+		font-size: 0.8em;
+		color: $text-gray;
+	}
+}
+.list-border {
+	.list-item {
+		position: relative;
+		line-height: 40px;
+		@include border-tb;
+		@include transition;
+		background: #fff;
+
+		&:not(:first-child) {
+			margin-top: -1px;
+		}
+		&:hover {
+			border-color: $green;
+			z-index: 999;
+			//@include transform(scale(1,1.1));
+		}
+	}
+
+}

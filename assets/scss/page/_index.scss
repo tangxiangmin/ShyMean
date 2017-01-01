@@ -1,2 +1,41 @@
 @charset "utf-8";
 
+
+.index-wrap {
+	@extend %page;
+	margin-top: 0.5rem;
+	text-align: center;
+	.page-hd {
+		margin-bottom: 0.5rem;
+	}
+
+	.nav-item {
+		height: 1.5rem;
+		padding: 0.1rem;
+		&:hover {
+			&:nth-of-type(1) {
+				color: $purple;
+			}
+			&:nth-of-type(2) {
+				color: $yellow;
+			}
+			&:nth-of-type(3) {
+				color: $green;
+			}
+			&:nth-of-type(4) {
+				color: $blue;
+			}
+		}
+	}
+	.item-inner {
+		display: block;
+		height: 100%;
+		@extend %hover-scale;
+		@extend %hover-underline;
+		.iconfont {
+			display: block;
+			margin: 0 auto;
+			font-size: 0.6rem;
+		}
+	}
+}

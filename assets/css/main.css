@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * 基础设置
+ * 基础文件
  */
 /**
  * ---reset---
@@ -156,21 +156,59 @@ body {
   text-indent: 2em; }
 
 .text-xs {
-  font-size: 0.6rem; }
+  font-size: 9.6px; }
 
 .text-sm {
-  font-size: 1.2rem; }
+  font-size: 19.2px; }
 
 .text-md {
-  font-size: 1.8rem; }
+  font-size: 28.8px; }
 
 .text-lg {
-  font-size: 2.4rem; }
+  font-size: 38.4px; }
 
 .text-overflow-1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+/**
+ * ---layout---
+ */
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.clearfix {
+  display: block;
+  zoom: 1;
+  clear: both; }
+
+.oh {
+  overflow: hidden; }
+
+.ib {
+  display: inline-block; }
+
+.block {
+  display: block;
+  height: 100%; }
+
+.i {
+  display: inline-block; }
+
+.hide {
+  display: none; }
+
+.img-responsive {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; }
+
+.img-circle {
+  border-radius: 50%; }
 
 /**
 	flex布局
@@ -451,8 +489,134 @@ body {
 
   [item~='lg:12'] {
     flex-basis: 100%; } }
+.list {
+  list-style: none; }
+
+.list-unstyle {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.list .list-icon, .list-unstyle .list-icon {
+  float: right;
+  margin-left: 20px;
+  font-size: 0.8em;
+  color: #999; }
+
+.list-border .list-item {
+  position: relative;
+  line-height: 40px;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  background: #fff; }
+  .list-border .list-item:not(:first-child) {
+    margin-top: -1px; }
+  .list-border .list-item:hover {
+    border-color: #33CC66;
+    z-index: 999; }
+
+/**
+	相关动画
+ */
+.index-wrap .item-inner, .lab-item .item-inner {
+  -ms-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  .index-wrap .item-inner:hover, .lab-item .item-inner:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -ms-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1); }
+
+.index-wrap .item-inner {
+  position: relative; }
+  .index-wrap .item-inner:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    background: currentcolor;
+    transform: scaleX(0);
+    -webkit-transition: all ease 0.2s;
+    transition: all ease 0.2s; }
+  .index-wrap .item-inner:hover:after {
+    transform: scaleX(1); }
+
+/**
+	相关组件样式
+ */
 /**
 	页面样式
  */
+.index-wrap, .lab-wrap {
+  width: 6rem;
+  margin: 0 auto; }
+
+.index-wrap {
+  margin-top: 0.5rem;
+  text-align: center; }
+  .index-wrap .page-hd {
+    margin-bottom: 0.5rem; }
+  .index-wrap .nav-item {
+    height: 1.5rem;
+    padding: 0.1rem; }
+    .index-wrap .nav-item:hover:nth-of-type(1) {
+      color: #9900FF; }
+    .index-wrap .nav-item:hover:nth-of-type(2) {
+      color: #FF9900; }
+    .index-wrap .nav-item:hover:nth-of-type(3) {
+      color: #33CC66; }
+    .index-wrap .nav-item:hover:nth-of-type(4) {
+      color: #3366FF; }
+  .index-wrap .item-inner {
+    display: block;
+    height: 100%; }
+    .index-wrap .item-inner .iconfont {
+      display: block;
+      margin: 0 auto;
+      font-size: 0.6rem; }
+
+.lab-wrap {
+  margin-top: 0.5rem; }
+  .lab-wrap .page-title {
+    text-align: center; }
+  .lab-wrap .lab-hd {
+    text-align: center; }
+
+.lab-item {
+  margin-bottom: 20px;
+  padding: 10px; }
+  .lab-item .item-inner {
+    display: block; }
+  .lab-item .item-bd {
+    padding: 0 10px 10px; }
+  .lab-item .item-icon {
+    font-size: 12px; }
+  .lab-item .item-title {
+    margin-top: 10px;
+    line-height: 1em; }
+    .lab-item .item-title .sub-title {
+      float: right;
+      font-weight: normal;
+      height: 100%;
+      font-size: 12px; }
+  .lab-item .item-content {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; }
+  .lab-item .item-ft {
+    padding: 0 10px 10px;
+    line-height: 1em;
+    color: #999; }
 
 /*# sourceMappingURL=main.css.map */

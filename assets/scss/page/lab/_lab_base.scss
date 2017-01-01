@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+.lab-wrap {
+	@extend %page;
+	margin-top: 0.5rem;
+	.page-title {
+		text-align: center;
+	}
+	.lab-hd {
+		text-align: center;
+	}
+}
+.lab-item {
+	margin-bottom: 20px;
+	padding: 10px;
+	.item-inner {
+		display: block;
+		@extend %hover-scale;
+	}
+
+	.item-bd {
+		padding:0 10px 10px;
+	}
+
+	.item-icon {
+		font-size: 12px;
+	}
+
+	.item-title {
+		margin-top: 10px;
+		line-height: 1em;
+		.sub-title {
+			float: right;
+			font-weight: normal;
+			height: 100%;
+			font-size: 12px;
+		}
+	}
+
+	.item-content {
+		font-size: 14px;
+		@include text-overflow-line;
+	}
+
+	.item-ft {
+		padding:0 10px 10px;
+		line-height: 1em;
+
+		color: $text-gray;
+	}
+
+}
