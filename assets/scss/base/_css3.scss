@@ -1,0 +1,32 @@
+@mixin border-radius($r:4px) {
+    border-radius: $r;
+}
+
+@mixin transition($s:all ease .5s) {
+    -webkit-transition: $s;
+    transition: $s ;
+}
+@mixin transform($s){
+    -webkit-transform: $s;
+    transform: $s;
+}
+@mixin box-shadow($c:2px 2px 2px #f5f5f5){
+    -ms-box-shadow: $c;
+    -o-box-shadow: $c;
+    box-shadow: $c;
+}
+
+@mixin box-sizing($s: border-box) {
+    -ms-box-sizing: $s;
+    -o-box-sizing: $s;
+    box-sizing: $s;
+}
+
+@mixin transform-origin($p){
+    -webkit-transform-origin: $p;
+    transform-origin: $p;
+}
+@mixin animation($s) {
+    -webkit-animation: $s;
+    animation: $s;
+}

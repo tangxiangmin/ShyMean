@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+ /**
+  * ---font---
+  */
+  
+
+//  字体
+$basefont:16px/1.5 "Microsoft Yahei",Arial;
+// 默认页面字体
+body {
+	font: $basefont;
+	color: #000;
+}
+
+// 文本对齐
+$wordPos:left center right ;
+@each $pos in $wordPos {
+	.text-#{$pos} {
+		text-align: $pos;
+	}
+}
+
+// 文本缩进
+.text-indent {
+	text-indent: 2em;
+}
+// 字体大小
+$size:xs sm md lg;
+@each $s in $size {
+	.text-#{$s} {
+		font-size: index($size,$s)*0.6rem;
+	}
+}
+// 文本溢出
+// 单行
+.text-overflow-1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ // 多行
+%text-overflow-line {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+//
+//@for $i from 2 through 5 {
+//	.text-overflow-#{$i} {
+//		@extend %text-overflow-line;
+//		-webkit-line-clamp:$i;
+//	}
+//}
+
+ 
+

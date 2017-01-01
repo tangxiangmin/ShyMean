@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/**
+ * ---color---
+ */
+
+body {
+	background: #fff;
+}
+$res: #FF3300;
+$oragne: #CC6600;
+$yellow: #FF9900;
+$green: #33CC66;
+$cyan: #6699FF;
+$blue: #3366FF;
+$purple: #9900FF;
+$dark: #333;
+$white: #fff;
+$gray: #f5f5f5;
+$text-gray: #999;
+
+$basecolor: $green;
+
+// 安全色
+$colorArr:(red $res #fff)(oragne $oragne #fff)(yellow $yellow #fff)(green $green #fff)(cyan $cyan #fff)(blue $blue #fff)(purple $purple #fff)(dark $dark #fff)(white $white #000)(gray $gray #000)(base $basecolor #fff);
+
+// 基础色
+// 根据需要在页面中慎重使用通用的颗粒类，防止未来的局部改动
+@each $color in $colorArr{
+	.bg-#{nth($color,1)}{
+		background-color: nth($color,2);
+		color: nth($color,3);
+	}
+	.text-#{nth($color,1)} {
+		color: nth($color,2);
+	}
+}
+.text-gray {
+	color: #999;
+}
+// 文字选中状态
+::selection {
+	@extend .bg-dark
+}
+
+/**
+ * ---end color---
+ */
