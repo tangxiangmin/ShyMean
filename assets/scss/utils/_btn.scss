@@ -1,0 +1,53 @@
+@charset "utf-8";
+/**
+    btn
+ */
+$btnHeight: 36px !default;
+$btnFont: 16px !default;
+
+.btn {
+    display: inline-block;
+	vertical-align: middle;
+	padding-top: 0;
+	padding-bottom: 0;
+	border: none ;
+
+	-webkit-text-size-adjust:none;
+}
+// 外形
+$btnShape: (rect 0)(round .3em)(circle 50%);
+@each $shape in $btnShape {
+	.btn-#{nth($shape,1)} {
+		@include border-radius(nth($shape,2));
+	}
+}
+
+// 尺寸
+// 默认(btn 1)
+@mixin btnSize($fontSize,$height,$lineHeight,$padding) {
+	font-size:$fontSize ;
+	height: $height;
+	line-height: $lineHeight;
+	padding: 0  $padding * 0.4;
+}
+.btn {
+	@include btnSize($btnFont,$btnHeight,$btnHeight,$btnHeight);
+	cursor: pointer;
+}
+$btnSize:(xs 0.5)(sm 0.75)(md 1)(lg 1.5);
+
+@each $size in $btnSize {
+	$sizeNum: nth($size,2);
+	.btn-#{nth($size,1)} {
+		@include btnSize($btnFont*$sizeNum,$btnHeight*$sizeNum,$btnHeight*$sizeNum,$btnHeight*$sizeNum);
+	}
+}
+// 边框
+.btn-border {
+   	background: transparent;
+	border-style: solid;
+	border-width: 1px;
+}
+
+
+

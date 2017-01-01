@@ -4,13 +4,12 @@
  */
 
 %page {
-	width: 6rem;
 	margin: 0 auto;
+	@extend %container;
 }
 
 
 
-
-
+@import 'page/_public';
 @import 'page/_index';
 @import 'page/_lab';

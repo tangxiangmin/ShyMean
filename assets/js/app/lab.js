@@ -13,4 +13,5 @@ require(['base'],function () {
     var base = require('base');
 
     base.changeRem();
+    base.tab(".tab");
 });

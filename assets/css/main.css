@@ -124,11 +124,11 @@ body {
   color: #f5f5f5; }
 
 .bg-base {
-  background-color: #33CC66;
+  background-color: #6699FF;
   color: #fff; }
 
 .text-base {
-  color: #33CC66; }
+  color: #6699FF; }
 
 .text-gray {
   color: #999; }
@@ -261,19 +261,19 @@ body {
 [flex~='main:around'] {
   justify-content: space-around; }
 
-[flex~='main:start'] {
+[flex~='cross:start'] {
   align-items: flex-start; }
 
-[flex~='main:center'] {
+[flex~='cross:center'] {
   align-items: center; }
 
-[flex~='main:end'] {
+[flex~='cross:end'] {
   align-items: flex-end; }
 
-[flex~='main:baseline'] {
+[flex~='cross:baseline'] {
   align-items: baseline; }
 
-[flex~='main:stretch'] {
+[flex~='cross:stretch'] {
   align-items: stretch; }
 
 /**
@@ -348,38 +348,74 @@ body {
 [item~='xs:1'] {
   flex-basis: 8.33333%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:2'] {
   flex-basis: 16.66667%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 [item~='xs:3'] {
   flex-basis: 25%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:4'] {
   flex-basis: 33.33333%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 [item~='xs:5'] {
   flex-basis: 41.66667%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:6'] {
   flex-basis: 50%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 [item~='xs:7'] {
   flex-basis: 58.33333%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:8'] {
   flex-basis: 66.66667%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 [item~='xs:9'] {
   flex-basis: 75%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:10'] {
   flex-basis: 83.33333%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 [item~='xs:11'] {
   flex-basis: 91.66667%; }
 
+.index-wrap, .lab-wrap {
+  width: 100%; }
+
 [item~='xs:12'] {
   flex-basis: 100%; }
+
+.index-wrap, .lab-wrap {
+  width: 100%; }
 
 @media screen and (min-width: 768px) {
   [item~='sm:1'] {
@@ -416,8 +452,11 @@ body {
     flex-basis: 91.66667%; }
 
   [item~='sm:12'] {
-    flex-basis: 100%; } }
-@media screen and (min-width: 768px) {
+    flex-basis: 100%; }
+
+  .index-wrap, .lab-wrap {
+    width: 750px; } }
+@media screen and (min-width: 992px) {
   [item~='md:1'] {
     flex-basis: 8.33333%; }
 
@@ -452,8 +491,11 @@ body {
     flex-basis: 91.66667%; }
 
   [item~='md:12'] {
-    flex-basis: 100%; } }
-@media screen and (min-width: 768px) {
+    flex-basis: 100%; }
+
+  .index-wrap, .lab-wrap {
+    width: 970px; } }
+@media screen and (min-width: 1200px) {
   [item~='lg:1'] {
     flex-basis: 8.33333%; }
 
@@ -488,7 +530,10 @@ body {
     flex-basis: 91.66667%; }
 
   [item~='lg:12'] {
-    flex-basis: 100%; } }
+    flex-basis: 100%; }
+
+  .index-wrap, .lab-wrap {
+    width: 1170px; } }
 .list {
   list-style: none; }
 
@@ -552,12 +597,132 @@ body {
 /**
 	相关组件样式
  */
+.tab .tab-nav {
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid #d6d6d6; }
+.tab .tab-wrap {
+  margin-top: 20px; }
+.tab .tab-item {
+  float: left;
+  width: 120px;
+  line-height: 40px;
+  height: 40px;
+  margin-left: 20px;
+  margin-bottom: -1px;
+  color: #999;
+  text-align: center;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px 5px 0 0;
+  border-bottom: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: #fff;
+  background: -moz-linear-gradient(top, #eee, #fff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+  cursor: pointer; }
+  .tab .tab-item .iconfont {
+    font-size: 0; }
+  .tab .tab-item.active {
+    color: #6699FF;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#fff));
+    background: -moz-linear-gradient(top, #e1e1e1, #fff); }
+    .tab .tab-item.active .iconfont {
+      font-size: 1em; }
+.tab .tab-sec {
+  display: none;
+  width: 100%; }
+  .tab .tab-sec.active[flex] {
+    display: flex; }
+  .tab .tab-sec.active {
+    display: block; }
+
+.form input {
+  padding: 0 10px;
+  line-height: 30px;
+  border: 1px solid #d6d6d6;
+  -webkit-transition: border-color 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out; }
+  .form input:focus {
+    border-color: #6699FF;
+    -ms-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); }
+.form .search {
+  background: url("/assets/img/search.png") no-repeat right;
+  padding-right: 30px; }
+
+/**
+    btn
+ */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  -webkit-text-size-adjust: none; }
+
+.btn-rect {
+  border-radius: 0; }
+
+.btn-round {
+  border-radius: 0.3em; }
+
+.btn-circle {
+  border-radius: 50%; }
+
+.btn {
+  font-size: 16px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 14.4px;
+  cursor: pointer; }
+
+.btn-xs {
+  font-size: 8px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 7.2px; }
+
+.btn-sm {
+  font-size: 12px;
+  height: 27px;
+  line-height: 27px;
+  padding: 0 10.8px; }
+
+.btn-md {
+  font-size: 16px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 14.4px; }
+
+.btn-lg {
+  font-size: 24px;
+  height: 54px;
+  line-height: 54px;
+  padding: 0 21.6px; }
+
+.btn-border {
+  background: transparent;
+  border-style: solid;
+  border-width: 1px; }
+
 /**
 	页面样式
  */
 .index-wrap, .lab-wrap {
-  width: 6rem;
   margin: 0 auto; }
+
+.back {
+  padding-left: 25px;
+  background: url("/assets/img/arrow_left.png") no-repeat left 5px center;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s; }
+  .back:hover {
+    background-position: left 0; }
 
 .index-wrap {
   margin-top: 0.5rem;
@@ -584,11 +749,13 @@ body {
       font-size: 0.6rem; }
 
 .lab-wrap {
-  margin-top: 0.5rem; }
+  margin-top: 0; }
   .lab-wrap .page-title {
     text-align: center; }
-  .lab-wrap .lab-hd {
-    text-align: center; }
+  .lab-wrap .page-hd {
+    margin-bottom: 20px; }
+  .lab-wrap .tab-item.active {
+    color: #9900FF; }
 
 .lab-item {
   margin-bottom: 20px;
@@ -618,5 +785,9 @@ body {
     padding: 0 10px 10px;
     line-height: 1em;
     color: #999; }
+
+.lab-box {
+  border: 1px solid #d6d6d6;
+  min-height: 5rem; }
 
 /*# sourceMappingURL=main.css.map */

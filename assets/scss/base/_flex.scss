@@ -45,7 +45,7 @@ $mainArr:(start flex-start) (center center) (end flex-end) (between space-betwee
 // 侧轴对齐
 $crossArr:(start flex-start) (center center) (end flex-end) (baseline baseline) (stretch stretch);
 @each $cross in $crossArr {
-	[flex~='main:#{nth($cross,1)}'] {
+	[flex~='cross:#{nth($cross,1)}'] {
 		align-items: nth($cross,2);
 	}
 }
@@ -84,7 +84,7 @@ $crossArr:(start flex-start) (center center) (end flex-end) (baseline baseline) 
 }
 
 // 响应式网格
-$flexBreakPoint: (768px) (992px) (1200px);
+$flexBreakPoint: (768px 750px) (992px 970px) (1200px 1170px);
 $flexColNum: 12;
 $flexSize:xs sm md lg;
 
@@ -92,15 +92,21 @@ $flexSize:xs sm md lg;
 	[item~='xs:#{$i}']{
 		flex-basis: percentage($i/12);
 	}
+	%container {
+		width: 100%;
+	}
 }
 
 @for $i from 1 through length($flexBreakPoint) {
-	@media screen and (min-width: nth($flexBreakPoint,1)) {
+	@media screen and (min-width: nth(nth($flexBreakPoint,$i),1)) {
 
 		@for $j from 1 through $flexColNum {
 			[item~='#{nth($flexSize,$i+1)}:#{$j}']{
 				flex-basis: percentage($j/12);
 			}
+		}
+		%container {
+			width: nth(nth($flexBreakPoint,$i),2) ;
 		}
 	}
 }

@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.form {
+	input {
+		padding: 0 10px;
+		line-height: 30px;
+
+		@include border;
+		@include transition(border-color .15s ease-in-out);
+		&:focus {
+			border-color: $basecolor;
+			@include box-shadow(0 0 2px 2px rgba(0,0,0,0.1))
+		}
+	}
+
+	.search {
+		background: url("/assets/img/search.png") no-repeat right;
+		padding-right: 30px;
+	}
+}

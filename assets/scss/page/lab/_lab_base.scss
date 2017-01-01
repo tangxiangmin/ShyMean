@@ -1,15 +1,19 @@
 @charset "utf-8";
-
 .lab-wrap {
 	@extend %page;
-	margin-top: 0.5rem;
+	margin-top: 0;
 	.page-title {
 		text-align: center;
 	}
-	.lab-hd {
-		text-align: center;
+	.page-hd {
+		margin-bottom: $basemargin;
 	}
+	.tab-item.active {
+		color: $labcolor;
+	}
+
 }
+// 列表
 .lab-item {
 	margin-bottom: 20px;
 	padding: 10px;
@@ -48,5 +52,9 @@
 
 		color: $text-gray;
 	}
-
+}
+// 详情
+.lab-box {
+	@include border;
+	min-height: 5rem;
 }
