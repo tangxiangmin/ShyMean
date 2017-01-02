@@ -1,3 +1,69 @@
 @charset "utf-8";
 
-@import "lab/_lab_base";
+.page-wrap {
+	@extend %page;
+	margin-top: 0;
+	.page-title {
+		text-align: center;
+	}
+	.page-hd {
+		margin-bottom: $basemargin;
+		.like {
+			@include transition;
+			&:hover {
+				@extend .bg-red;
+				border-radius: 5px;
+			}
+		}
+	}
+	.tab-item.active {
+		color: $labcolor;
+	}
+
+}
+// 列表
+.lab-item {
+	margin-bottom: 20px;
+	padding: 10px;
+	.item-inner {
+		display: block;
+		@extend %hover-scale;
+	}
+
+	.item-bd {
+		padding:0 10px 10px;
+	}
+
+	.item-icon {
+		font-size: 12px;
+	}
+
+	.item-title {
+		margin-top: 10px;
+		line-height: 1em;
+		.sub-title {
+			float: right;
+			font-weight: normal;
+			height: 100%;
+			font-size: 12px;
+		}
+	}
+
+	.item-content {
+		font-size: 14px;
+		@include text-overflow-line;
+	}
+
+	.item-ft {
+		padding:0 10px 10px;
+		line-height: 1em;
+
+		color: $text-gray;
+	}
+}
+// 详情
+.lab-box {
+	@include border;
+	min-height: 5rem;
+
+}
