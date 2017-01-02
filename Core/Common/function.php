@@ -3,7 +3,7 @@
 /**
  * @param $var 需要打印的变量
  */
-function p($var) {
+function dd($var) {
 
     if (is_bool($var)){
         // 避免将布尔值输出为1
@@ -14,4 +14,5 @@ function p($var) {
     }else {
         echo "<pre style='background:#f8f8f8;border-radius:5px; line-height: 20px;border:1px solid #dedede;padding:10px 20px;font-size:20px;'>".print_r($var,true)."</pre>";
     }
+    die;
 }

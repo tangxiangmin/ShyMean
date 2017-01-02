@@ -1,7 +1,7 @@
 <?php
 
 namespace Core\Lib;
-class route {
+class Route {
     public $ctrl = 'Index';
     public $action = 'index';
     public function __construct(){

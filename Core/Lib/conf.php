@@ -3,7 +3,7 @@
  * 配置类，根据参数加载不同配置文件的相关参数;
  */
 namespace Core\Lib;
-class conf {
+class Conf {
     static public $conf = array();
 
     static public function get($file,$name=null){
@@ -15,6 +15,7 @@ class conf {
             }
             return self::$conf[$file][$name];
         }
+
         // 加载配置文件
         $path = ROOT.'/Core/Config/'.$file.'.php';
         if (is_file($path)){

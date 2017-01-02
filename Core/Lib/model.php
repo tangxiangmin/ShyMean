@@ -3,50 +3,50 @@
  * 模型类
  */
 namespace Core\Lib;
-class model {
-    private $tablename=""; //表名
-    private $fieldname="*"; //字段名
-    private $conn; //pdo对象
-    private $where; //筛选条件
-    private $sql; //sql语句
+class Model {
+    public $tablename="";
+    public $fieldname="*";
+    public $conn;
+    public $where;
+    public $sql;
 
     public function __construct($tablename){
-        $dsn = conf::get('db','DSN');
-        $username = conf::get('db','USERNAME');
-        $passwd = conf::get('db','PASSWD');
+        $dsn = Conf::get('db','DSN');
+        $username = Conf::get('db','USERNAME');
+        $passwd = Conf::get('db','PASSWD');
+
         // 连接数据库
         try{
             $this->conn = new \PDO($dsn,$username,$passwd,array(\PDO::ATTR_PERSISTENT => true));
             $this->conn->exec("SET NAMES 'utf8';"); //设置数据库字符编码
             $this->tablename = $tablename;
         }catch (\PDOException $e){
-            p($e->getMessage());
+            dd($e->getMessage());
         }
-    }
-    private function setsql($sql){
-        $this->sql = $sql;
     }
 
     // 设置条件查询
     public function where($where){
         $this->where = " WHERE ".$where;
-        return $this; //链式操作，下同
+        return $this;
     }
+
     // 设置字段
     public function field($field){
         $this->fieldname = $field;
-        return this;
+        return $this;
     }
     // 设置表名
     public  function settable($tablename){
         $this->tablename = $tablename;
-        return this;
+        return $this;
     }
     // 执行sql语句
     public function query($sql){
         $res = $this->conn->query($sql);
         return $res->fetchAll();
     }
+
     // CURD
     // 查询
     public function select(){
@@ -77,6 +77,10 @@ class model {
     // 删除一条数据
     // 必须显示设定where才能进行删除操作，否则操作无效
     public  function delete(){
+        if (empty($this->where)) {
+            dd('没有设置where啊~~~找死啊~~~');
+        }
+
         $nums = $this->conn->exec(" DELETE FROM ".$this->tablename.$this->where);
         return $nums;
     }
@@ -95,5 +99,10 @@ class model {
         $nums = $this->conn->exec(" UPDATE ".$this->tablename." SET ".$keysql.$this->where);
 
         return $nums;
+    }
+
+    // 常用方法
+    public function getAll(){
+        return $this->select();
     }
 }

@@ -18,9 +18,9 @@ if (DEBUG){
 // 加载函数库
 include CORE.'/Common/function.php';
 // 加载核心文件
-include CORE.'/core.php';
+include CORE . '/Core.php';
 // 自动加载类
 spl_autoload_register('Core\core::load');
 
 // 启动程序
-\core\core::run();
+\Core\Core::run();

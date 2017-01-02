@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Model;
-class IndexModel extends \Core\Lib\model {
-    public function __construct($tablename)
-    {
-        parent::__construct($tablename);
+use Core\Lib\Model;
+
+class IndexModel extends Model {
+    public $tablename = 'shymean_admin';
+    public function __construct(){
+        parent::__construct($this->tablename);
     }
 
     public function getAll(){
-        $sql = 'SELECT * FROM shop_admin';
-        $res = $this->query($sql);
-        p($res);
+        $rows = parent::getAll();
+        dd($rows);
     }
 }
