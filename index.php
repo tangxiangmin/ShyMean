@@ -7,20 +7,15 @@ define('APP',ROOT.'/App');
 define('MOUDLE','App');
 
 // 调试模式
-define('DEBUG',true);
-
-if (DEBUG){
-    ini_set('display_errors','1');
-}else {
-    ini_set('display_errors','0');
-}
+ini_set('display_errors','1');
 
 // 加载函数库
 include CORE.'/Common/function.php';
 // 加载核心文件
-include CORE . '/Core.php';
+include CORE.'/Core.php';
+
 // 自动加载类
-spl_autoload_register('Core\core::load');
+spl_autoload_register('Core\Core::load');
 
 // 启动程序
 \Core\Core::run();

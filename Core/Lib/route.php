@@ -3,10 +3,10 @@
 namespace Core\Lib;
 class Route {
     public $ctrl = 'Index';
-    public $action = 'index';
+    public $action = 'test';
+
     public function __construct(){
-        $url = $_SERVER;
-        $urlArr = explode('/',trim($url['REQUEST_URI'],'/'));
+        $urlArr = explode('/',trim($_SERVER['REQUEST_URI'],'/'));
         if (isset($urlArr[0]) && $urlArr[0] != ''){
             $this->ctrl = $urlArr[0];
         }

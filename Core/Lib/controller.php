@@ -1,6 +1,5 @@
 <?php
 namespace Core\Lib;
-
 class Controller {
     public $assignArr = [];
 
@@ -8,10 +7,20 @@ class Controller {
         $this->assignArr[$key] = $val;
     }
 
-    public function show($file){
-        if(is_file($file)) {
+    public function view($file){
+        try{
             extract($this->assignArr);
-            include($file);
+
+            $pathArr = explode('\\',get_class($this));
+            $pathArr[count($pathArr) - 2] ='View';
+            $ctrName = $pathArr[count($pathArr) - 1];
+            $pathArr[count($pathArr) - 1] = str_replace('Controller','',$ctrName);
+
+            $path = ROOT.'/'.implode($pathArr,'/').'/'.$file.'.html';
+
+            include_once $path;
+        }catch(\Exception $e) {
+            echo $e->getMessage();
         }
     }
 }
