@@ -14,11 +14,11 @@ require(['jquery','vue'], function () {
     var Vue = require('vue');
 
 
-    var vm = new Vue({
-        el:"#app",
-        data:{
-            'hello':'Hello World',
-            'items':['apple','banana','pear']
-        },
-    })
+    //var vm = new Vue({
+    //    el:"#app",
+    //    data:{
+    //        'hello':'Hello World',
+    //        'items':['apple','banana','pear']
+    //    },
+    //})
 });

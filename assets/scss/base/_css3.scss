@@ -1,3 +1,8 @@
+@charset "utf-8";
+
+// 主要定义了需要使用前缀的CSS3属性混合器
+
+
 @mixin border-radius($r:4px) {
     border-radius: $r;
 }

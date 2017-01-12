@@ -9,8 +9,15 @@
 }
 
 
+@import 'page/public/_mixin';
+@import 'page/public/_extend';
+@import 'page/public/_single';
+@import 'page/public/_common';
 
-@import 'page/_public';
-@import 'page/_index';
-@import 'page/_lab';
-@import 'page/_book';
+@import 'page/index/_index';
+
+
+@import 'page/lab/_lab';
+
+
+@import 'page/book/_book';

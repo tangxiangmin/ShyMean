@@ -48,13 +48,7 @@ $size:xs sm md lg;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp:$i;
 }
-//
-//@for $i from 2 through 5 {
-//	.text-overflow-#{$i} {
-//		@extend %text-overflow-line;
-//		-webkit-line-clamp:$i;
-//	}
-//}
+
 
  
 

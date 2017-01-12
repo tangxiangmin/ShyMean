@@ -4,9 +4,9 @@
  */
 namespace Core\Lib;
 class Model {
-    private $tablename="";
-    private $fieldname="*";
-    private $pdo;
+    private $table="";
+    private $field="*";
+    private $conn;
     private $where;
     private $sql;
 
@@ -17,18 +17,15 @@ class Model {
 
         // 连接数据库
         try{
-            $this->pdo = new \PDO($dsn,$username,$passwd,array(\PDO::ATTR_PERSISTENT => true));
-//            $this->conn->exec("SET NAMES 'utf8';"); //设置数据库字符编码
+            $this->conn = new \PDO($dsn,$username,$passwd,array(\PDO::ATTR_PERSISTENT => true));
+            $this->conn->exec("SET NAMES 'utf8';"); //设置数据库字符编码
+            $this->table = $tablename;
 
-            $this->setTableName($tablename);
         }catch (\PDOException $e){
            die($e);
         }
     }
 
-    public function setTableName($tablename){
-        $this->tablename = $tablename;
-    }
 
     // 设置条件查询
     public function where($where){
@@ -38,14 +35,10 @@ class Model {
 
     // 设置字段
     public function field($field){
-        $this->fieldname = $field;
+        $this->$field = $field;
         return $this;
     }
-    // 设置表名
-    public  function settable($tablename){
-        $this->tablename = $tablename;
-        return $this;
-    }
+
     // 执行sql语句
     public function query($sql){
         $res = $this->conn->query($sql);
@@ -53,5 +46,10 @@ class Model {
     }
 
     // CURD
+
+    public function select(){
+        $res = $this->conn->query('SELECT '.$this->field.' FROM '.$this->table);
+        return $res->fetchAll();
+    }
 
 }

@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/*
+  配置文件
+*/
+/*
+  基础样式
+*/
 /**
  * 基础文件
  */
@@ -210,6 +216,47 @@ body {
 .img-circle {
   border-radius: 50%; }
 
+/*
+  动画样式
+*/
+/**
+	相关动画
+ */
+.index-wrap .item-inner, .lab-item .item-inner {
+  -ms-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  .index-wrap .item-inner:hover, .lab-item .item-inner:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -ms-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1); }
+
+.index-wrap .item-inner {
+  position: relative; }
+  .index-wrap .item-inner:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    background: currentcolor;
+    transform: scaleX(0);
+    -webkit-transition: all ease 0.2s;
+    transition: all ease 0.2s; }
+  .index-wrap .item-inner:hover:after {
+    transform: scaleX(1); }
+
+/*
+  组件样式
+*/
+/**
+	相关组件样式
+ */
 /**
 	flex布局
 	参考https://github.com/lzxb/flex.css.git声明式布局语法
@@ -562,41 +609,6 @@ body {
     border-color: #33CC66;
     z-index: 999; }
 
-/**
-	相关动画
- */
-.index-wrap .item-inner, .lab-item .item-inner {
-  -ms-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease; }
-  .index-wrap .item-inner:hover, .lab-item .item-inner:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-    -ms-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
-    -o-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1); }
-
-.index-wrap .item-inner {
-  position: relative; }
-  .index-wrap .item-inner:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    height: 2px;
-    width: 100%;
-    background: currentcolor;
-    transform: scaleX(0);
-    -webkit-transition: all ease 0.2s;
-    transition: all ease 0.2s; }
-  .index-wrap .item-inner:hover:after {
-    transform: scaleX(1); }
-
-/**
-	相关组件样式
- */
 .tab .tab-nav {
   height: 40px;
   margin: 0;
@@ -651,7 +663,7 @@ body {
     -o-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); }
 .form .search {
-  background: url("/assets/img/search.png") no-repeat right;
+  background: url("/assets/img/tmp/search.png") no-repeat right;
   padding-right: 30px; }
 
 /**
@@ -710,6 +722,9 @@ body {
   border-style: solid;
   border-width: 1px; }
 
+/*
+  页面样式
+*/
 /**
 	页面样式
  */
@@ -718,7 +733,7 @@ body {
 
 .back {
   padding-left: 25px;
-  background: url("/assets/img/arrow_left.png") no-repeat left 5px center;
+  background: url("/assets/img/icon/arrow_left.png") no-repeat left 5px center;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s; }
   .back:hover {
