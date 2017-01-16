@@ -8,9 +8,18 @@
 //  字体
 $basefont:16px/1.5 "Microsoft Yahei",Arial;
 // 默认页面字体
+
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
 body {
 	font: $basefont;
 	color: #000;
+}
+.iconfont {
+	font-size: inherit;
 }
 
 // 文本对齐
@@ -34,7 +43,7 @@ $size:xs sm md lg;
 }
 // 文本溢出
 // 单行
-.text-overflow-1 {
+@mixin text-overflow{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

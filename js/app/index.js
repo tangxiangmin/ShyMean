@@ -3,9 +3,9 @@
  */
 
 require.config({
-    baseUrl:'../',
+    baseUrl:'/js/',
     paths:{
-        'base':'base/base.js'
+        'base':'base/base'
     }
 });
 

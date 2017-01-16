@@ -3,7 +3,7 @@
 namespace Core\Lib;
 class Route {
     public $ctrl = 'Index';
-    public $action = 'test';
+    public $action = 'index';
 
     public function __construct(){
         $urlArr = explode('/',trim($_SERVER['REQUEST_URI'],'/'));

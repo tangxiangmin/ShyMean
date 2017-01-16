@@ -17,7 +17,6 @@ nav,
 section,
 main {
   	display: block;
-	@include box-sizing;
 }
 
 
@@ -47,6 +46,7 @@ textarea,select,input,button {
     -webkit-appearance: none;
 	-moz-appearance: none;
 }
+
 textarea {
     resize: none;
 }
@@ -58,9 +58,10 @@ textarea {
 
 
 // 选择盒子模型，好想使用"*"统配选择符
-//* {
-//    @include box-sizing;
-//}
+* {
+    @include box-sizing;
+}
+
 /**
  * ---end reset---
  */

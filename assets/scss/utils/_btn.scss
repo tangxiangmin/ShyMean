@@ -11,8 +11,8 @@ $btnFont: 16px !default;
 	padding-top: 0;
 	padding-bottom: 0;
 	border: none ;
-
 	-webkit-text-size-adjust:none;
+
 }
 // 外形
 $btnShape: (rect 0)(round .3em)(circle 50%);
@@ -47,6 +47,7 @@ $btnSize:(xs 0.5)(sm 0.75)(md 1)(lg 1.5);
    	background: transparent;
 	border-style: solid;
 	border-width: 1px;
+	line-height: calc(100% - 2);
 }
 
 

@@ -3,21 +3,16 @@
 	页面样式
  */
 
-%page {
-	margin: 0 auto;
-	@extend %container;
-}
-
 
 @import 'page/public/_mixin';
 @import 'page/public/_extend';
 @import 'page/public/_single';
 @import 'page/public/_common';
 
-@import 'page/index/_index';
 
+@import 'page/index/_index';
 
 @import 'page/lab/_lab';
 
 
-@import 'page/book/_book';
+//@import 'page/book/_book';

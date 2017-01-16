@@ -11,7 +11,6 @@ class Core {
 
         // 控制器完全限定名称
         $ctrlName = '\\'.MOUDLE.'\Controller\\'.$ctrl.'Controller';
-
         // 加载控制器文件
         try{
             $ctrl = new $ctrlName();

@@ -14,7 +14,5 @@ class TestController extends Controller{
 //        $this->view('index');
 
     }
-    public function test(){
-        dd('test');
-    }
+
 }

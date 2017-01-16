@@ -4,10 +4,16 @@
 // 这类样式应当非常独立，不依赖于任何其他组件
 
 .back {
-	padding-left: 25px;
-	background: url("/assets/img/icon/arrow_left.png") no-repeat left 5px center;
-	@include transition;
+	display: block;
+	padding-left: 5px;
+
+	.iconfont {
+		float: left;
+		@include transition;
+	}
 	&:hover {
-		background-position: left 0;
+		.iconfont {
+			@include transform(translateX(-5px));
+		}
 	}
 }

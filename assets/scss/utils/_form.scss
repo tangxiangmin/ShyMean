@@ -1,21 +1,36 @@
 @charset "utf-8";
 
 .form {
-	input {
+
+}
+
+.input-group {
+	@include fx;
+	@include fx-cross(stretch);
+
+	& > :first-child {
+		border-radius: 4px 0 0 4px;
+	}
+	& > :last-child{
+		border-radius: 0 4px 4px 0;
+	}
+	.input {
 		padding: 0 10px;
-		line-height: 30px;
+		margin: 0 -1px;
+		position: relative;
+		z-index: 1;
 
 		@include border;
-		@include transition(border-color .15s ease-in-out);
+		@include fx-grow(1);
+
 		&:focus {
 			border-color: $basecolor;
-			@include box-shadow(0 0 2px 2px rgba(0,0,0,0.1))
+			$box-shadow:inset 0 1px 1px rgba(#fff,.075), 0 0 8px rgba($basecolor, .6);
+			@include box-shadow($box-shadow);
 		}
 	}
-
-	.search {
-		background: url("/assets/img/tmp/search.png") no-repeat right;
-		padding-right: 30px;
+	.input-icon {
+		@include border;
 	}
 }
 

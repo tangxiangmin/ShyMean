@@ -2,47 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>橙红年代</title>
-    <link rel="stylesheet" href="/assets/fonts/iconfont.css">
-    <link rel="stylesheet" href="/assets/css/main.css">
-
-    <script data-main="/assets/js/app/index" src="/assets/js/require.js"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/fonts/iconfont.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <script data-main="../js/app/index" src="../js/require.js"></script>
 </head>
 <body>
-    <div class="index-wrap">
+    <div class="container index">
         <header class="page-hd">
-            <img src="/assets/img/tmp/head.jpg" class="img-responsive" alt="">
+            <h1>
+                <img src="../assets/img/tmp/head.jpg" alt="">
+            </h1>
             <h2>橙红年代</h2>
-            <p>
-                一个不学无术且无趣的人。
-            </p>
+            <p>却道天凉好个秋。</p>
         </header>
-        <nav flex="main:between" class="page-bd">
-            <div item="xs:6 sm:3" class="nav-item">
-                <a href="lab/list.html" class="item-inner">
-                    <i class="iconfont icon-shiyan"></i>
-                    实验室
-                </a>
+        <nav class="page-nav row">
+            <div class="col-xs-6 col-sm-3 nav-item ">
+                <div class="square ">
+                    <a href="#" class="square-inner nav-link">
+                        <i class="iconfont icon-lab"></i>
+                        <span>实验室</span>
+                    </a>
+                </div>
             </div>
-            <div item="xs:6 sm:3"  class="nav-item">
-                <a href="https://tangxiangmin.github.io/" class="item-inner">
-                    <i class="iconfont icon-rss"></i>
-                    博客
-                </a>
+    
+            <div class="col-xs-6 col-sm-3 nav-item">
+                <div class="square ">
+                    <a href="#" class="square-inner nav-link">
+                        <i class="iconfont icon-blog"></i>
+                        <span>博客</span>
+                    </a>
+                </div>
             </div>
-            <div item="xs:6 sm:3" class="nav-item">
-                <a href="book/list.html" class="item-inner">
-                    <i class="icon-bookshelf iconfont"></i>
-                    
-                    书架
-                </a>
+            <div class="col-xs-6 col-sm-3 nav-item ">
+                <div class="square ">
+                    <a href="#" class="square-inner nav-link">
+                        <i class="iconfont icon-bookshelf"></i>
+                        <span>书架</span>
+                    </a>
+                </div>
             </div>
-            <div item="xs:6 sm:3" class="nav-item">
-                <a href="#" class="item-inner">
-                    <i class="iconfont icon-jianjie"></i>
-                    关于我
-                </a>
+            <div class="col-xs-6 col-sm-3 nav-item">
+                <div class="square ">
+                    <a href="#" class="square-inner nav-link">
+                        <i class="iconfont icon-info"></i>
+                        <span>关于</span>
+                    </a>
+                </div>
             </div>
+
         </nav>
     </div>
 </body>

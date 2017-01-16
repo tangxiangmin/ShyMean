@@ -1,69 +1,62 @@
 @charset "utf-8";
 
-.page-wrap {
-	@extend %page;
-	margin-top: 0;
+.lab {
+	.page-top {
+		overflow: hidden;
+		margin: rem($basemargin) 0;
+		@include fx;
+		@include fx-main(space-between);
+		@include fx-cross(center);
+	}
+
 	.page-title {
+		margin: 0;
 		text-align: center;
-	}
-	.page-hd {
-		margin-bottom: $basemargin;
-		.like {
-			@include transition;
-			&:hover {
-				@extend .bg-red;
-				border-radius: 5px;
-			}
-		}
-	}
-	.tab-item.active {
 		color: $labcolor;
 	}
-
 }
-// 列表
+.lab-list {
+	padding: 0 rem(100);
+}
 .lab-item {
-	margin-bottom: 20px;
-	padding: 10px;
-	.item-inner {
-		display: block;
-		@extend %hover-scale;
+	position: relative;
+	padding-left: 30px;
+	margin-bottom: -1px;
+
+	line-height: 40px;
+
+
+	@include border(1px solid transparent);
+	@include text-overflow;
+	@include transition;
+
+	&:before {
+		$r: 8px;
+		content: '';
+		position: absolute;
+		left: $r;
+		top: 50%;
+		width: $r;
+		height: $r;
+		margin-top: -$r/2;
+		margin-left: -$r/2;
+		background-color: $gray;
+
+		@include transition;
+		@include border-radius;
 	}
 
-	.item-bd {
-		padding:0 10px 10px;
-	}
-
-	.item-icon {
-		font-size: 12px;
-	}
-
-	.item-title {
-		margin-top: 10px;
-		line-height: 1em;
-		.sub-title {
-			float: right;
-			font-weight: normal;
-			height: 100%;
-			font-size: 12px;
+	&:hover {
+		z-index: 1;
+		padding-left: 70px;
+		background-color: $gray;
+		border-color: darken($gray,10%);
+		&:before {
+			background-color: $dark;
 		}
 	}
 
-	.item-content {
-		font-size: 14px;
-		@include text-overflow-line;
+	a {
+		@include block;
 	}
-
-	.item-ft {
-		padding:0 10px 10px;
-		line-height: 1em;
-
-		color: $text-gray;
-	}
-}
-// 详情
-.lab-box {
-	@include border;
-	min-height: 5rem;
-
 }

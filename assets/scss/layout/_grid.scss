@@ -5,19 +5,21 @@
 // 参考bootstrap的网格系统
 // 移除了pull和offset类
 // 移除了槽宽
+
 $size:xs sm md lg;
-//$size: sm md lg;
-//$breakPoint: (768px 750px) (992px 900px) (1200px 900px);
+$break-point: (768px 750px) (992px 900px) (1200px 1170px) !default;
 
-$breakPoint:(600px 600px)(920px 600px)(1220px 900px);
-$colNum: 12;
+//$break-point:(600px 600px)(920px 600px)(1220px 900px) !default;
+$col-num: 12 !default;
+$gutter: 15px !default;
 
-.#{$prefix}-container-fluid {
+
+.container-fluid {
 	width: 100%;
 }
 
 .row {
-	overflow: hidden;
+	@include clearfix;
 }
 // 媒体查询
 
@@ -25,47 +27,48 @@ $colNum: 12;
 	position: relative;
 	min-height: 1px;
 }
-@for $i from 1 through $colNum {
+@for $i from 1 through $col-num {
 	@for $j from 1 through length($size) {
 		.col-#{nth($size,$j)}-#{$i}{
 			@extend %col;
+			padding: $gutter;
 		}
 	}
 }
 
 // xs
-@for $i from 1 through $colNum {
+@for $i from 1 through $col-num {
 	.col-#{nth($size,1)}-#{$i}{
-		width: percentage($i/$colNum);
+		width: percentage($i/$col-num);
 		float: left;
 	}
 }
-.#{$prefix}-container {
+.container {
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding:0 $basepadding*2;
+	padding:0 $gutter*2;
 }
 .hide-xs {
 	display: none;
 }
 
 // sm md lg
-@for $i from 1 to length($breakPoint)+1 {
-	@media screen and (min-width: nth(nth($breakPoint,$i),1)) {
-		.#{$prefix}-container {
-			width: nth(nth($breakPoint,$i),2);
+@for $i from 1 through length($break-point) {
+	@media screen and (min-width: nth(nth($break-point,$i),1)) {
+		.container {
+			width: nth(nth($break-point,$i),2);
 			margin-left: auto;
 			margin-right: auto;
 		}
-		@for $j from 1 through $colNum {
+		@for $j from 1 through $col-num {
 			.col-#{nth($size,$i+1)}-#{$j}{
-				width: percentage($j/$colNum);
+				width: percentage($j/$col-num);
 				float: left;
 			}
 		}
 	}
-	@media screen and (max-width: nth(nth($breakPoint,$i),1)){
+	@media screen and (max-width: nth(nth($break-point,$i),1)){
 		.hide-#{nth($size,$i+1)} {
 			display: none !important;
 		}
@@ -74,16 +77,3 @@ $colNum: 12;
 /**
  * ---end grid---
  */
-
-
-
-
-
-
-
-
-
-
-
-
-

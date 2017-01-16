@@ -1,45 +1,49 @@
 @charset "utf-8";
 
-$labcolor: $purple;
-$blogcolor: $yellow;
-$bookcolor: $green;
-$aboutcolor: $blue;
 
-.index-wrap {
-	@extend %page;
-	margin-top: 0.5rem;
-	text-align: center;
+/**
+	首页导航
+ */
+
+
+
+$indexcolor: ($labcolor $blogcolor $bookcolor $infocolor);
+
+.index {
 	.page-hd {
-		margin-bottom: 0.5rem;
+		margin-top: rem(40);
+		margin-bottom: rem(40);
+		text-align: center;
 	}
+	.page-nav {
 
-	.nav-item {
-		height: 1.5rem;
-		padding: 0.1rem;
-		&:hover {
-			&:nth-of-type(1) {
-				color: $labcolor;
-			}
-			&:nth-of-type(2) {
-				color: $blogcolor;
-			}
-			&:nth-of-type(3) {
-				color: $bookcolor;
-			}
-			&:nth-of-type(4) {
-				color: $aboutcolor;
+	}
+}
+
+
+
+.nav-item {
+	padding: rem(10);
+	&:hover {
+		@each $color in $indexcolor{
+			&:nth-of-type(#{index($indexcolor,$color)}){
+				color: $color;
 			}
 		}
 	}
-	.item-inner {
-		display: block;
-		height: 100%;
+
+	.nav-link {
+		padding: 20px;
+
 		@extend %hover-scale;
 		@extend %hover-underline;
+
+		@include fx-jusify-v;
+
 		.iconfont {
-			display: block;
-			margin: 0 auto;
-			font-size: 0.6rem;
+			line-height: 1.2em;
+			font-size: 60px;
 		}
 	}
 }
+

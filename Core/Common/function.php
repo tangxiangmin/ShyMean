@@ -16,3 +16,8 @@ function dd($var) {
     }
     die;
 }
+
+function load($path){
+    dd($path);
+    include $path;
+}

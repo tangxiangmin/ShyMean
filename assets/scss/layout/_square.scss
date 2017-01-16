@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+// 《css权威指南》指出，元素的margin-top和margin-bottom，其值如果是百分数，也是根据父元素的宽度进行计算的（防止浏览器的死循环）
+// 因此可以利用这点，加上绝对定位的过分受限，实现一个响应式的正方形
+// 正方形对于我这个强迫症来讲，真的十分有用！
+
+
+// 父元素已声明宽度，则直接依赖父元素并使用padding-top实现
+@mixin square{
+	display: block;
+	position:relative;
+	width: 100%;
+	padding-top: 100%;
+
+}
+
+// 单独构建一个正方形容器，使用伪类的margin-top或者padding-top实现
+@mixin square-box($w:100%){
+	display: block;
+	position:relative;
+	width: $w;
+
+	&:after {
+		content:'';
+		display: block;
+		padding-top: 100%;
+		//margin-top: 100%;//需要注意外边距重叠
+
+	}
+}
+
+// 正方形内部容器
+@mixin square-inner {
+	position:absolute !important;
+	left: 0;
+	//right: 0;
+	top: 0;
+	//bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+// 颗粒类
+.square{
+	@include square;
+}
+.square-box {
+	@include square-box;
+}
+.square-inner {
+	@include square-inner;
+}

@@ -2,7 +2,6 @@
  * Created by admin on 2017/1/12.
  */
 define(function () {
-
     !(function () {
         var newRem = function() {
             var html = document.documentElement;
