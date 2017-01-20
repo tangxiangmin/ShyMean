@@ -3,7 +3,7 @@
 .lab {
 	.page-top {
 		overflow: hidden;
-		margin: rem($basemargin) 0;
+		margin: rem(20) 0;
 		@include fx;
 		@include fx-main(space-between);
 		@include fx-cross(center);

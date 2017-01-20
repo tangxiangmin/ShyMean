@@ -5,7 +5,7 @@ var livereload = require('gulp-livereload');
 
 gulp.task('watch',function () {
    livereload.listen();
-   gulp.watch(['assets/**/**'],function (file) {
+   gulp.watch(['**/**'],function (file) {
        livereload.changed(file.path);
    })
 });

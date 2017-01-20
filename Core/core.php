@@ -6,11 +6,12 @@ class Core {
     static public function run(){
 
         $route = new Lib\Route();
+        $group = $route->group;
         $ctrl = $route->ctrl;
         $action = $route->action;
 
         // 控制器完全限定名称
-        $ctrlName = '\\'.MOUDLE.'\Controller\\'.$ctrl.'Controller';
+        $ctrlName = '\\'.MOUDLE.'\\'.$group.'\Controller\\'.$ctrl.'Controller';
         // 加载控制器文件
         try{
             $ctrl = new $ctrlName();

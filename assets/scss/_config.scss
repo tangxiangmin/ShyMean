@@ -2,13 +2,13 @@
 
 // 主要用于配置相关的基础变量和参数，如网格断点等
 
-$basemargin: 20;
-$basepadding: 20;
+$basemargin: 20px;
+$basepadding: 20px;
 $baseborder: 1px solid #d6d6d6;
 
 
 // 网格系统
-$gutter: 0;
+$gutter: 10px;
 $col-num: 12;
 //$break-point:(600px 600px)(920px 600px)(1220px 900px);
 $break-point: (768px 750px) (992px 900px) (1200px 1170px) ;
@@ -27,4 +27,9 @@ $labcolor: $purple;
 $blogcolor: $yellow;
 $bookcolor: $green;
 $infocolor: $blue;
+
+// vue
+[v-cloak] {
+	display: none;
+}
 

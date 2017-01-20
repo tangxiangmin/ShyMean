@@ -47,7 +47,7 @@ $gutter: 15px !default;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding:0 $gutter*2;
+	padding:$gutter $gutter*2;
 }
 .hide-xs {
 	display: none;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Home\Model;
 use Core\Lib\Model;
 
 class IndexModel extends Model {
