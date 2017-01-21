@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+// 博客主界面
+
+.page-mn {
+	@include transition;
+	position: relative;
+	min-height: 100vh;
+	&.active {
+		@include transform(translateX(-130px));
+	}
+}

@@ -6,33 +6,62 @@ require.config({
     baseUrl:'/js',
     paths:{
         'base':'base/base',
-        'header':'component/blog-header'
+        'layout':'blog/layout',
+        'pagination':'component/pagination'
     }
 });
 
-require(['base','header'], function () {
-    require('base');
+require(['base','layout','pagination'], function () {
 
     var Vue = require('vue');
-    require('header');
 
+    // 首页文章列表
+    Vue.component('article-item',{
+        props:['article'],
+        template:`<article class="article-item">
+				<div class="item-hd">
+					<h2 class="item-title"><a href="#">{{article.title}}</a></h2>
+					<div class="item-info">
+						发表于{{article.time}} |
+						分类于 <a href="#">{{article.category}}</a> |
+						<a href="#">{{article.commentNum}}</a>
+					</div>
+				</div>
+				<div class="item-bd">
+					{{article.content}}
+				</div>
+				<div class="item-ft">
+					<a href="#">阅读全文</a>
+				</div>
+			</article>`,
+    });
+
+    // 请求信息
+    Vue.http.post('/Home/Blog/ajaxIndex').then(function (res) {
+        console.log(res.body);
+    });
+
+    // 注册
     var blogIndex = new Vue({
-        el:"#blogIndex",
-        component:['blog-header'],
+        el:"#blog-index",
+        component:['pagination','article-item'],
         data:{
-            title:'橙红年代',
-            navItem:[
+            page:{
+                total:10,
+                active:2
+            },
+            articles:[
                 {
-                    name:'首页',
-                    icon:'icon-home'
+                    title:'测试',
+                    time:'2017-11-22',
+                    category:'JS',
+                    commentNum:0,
+                    content:0
                 },
-                {
-                    name:'书签',
-                    icon:'icon-tag'
-                }
+            ],
 
-            ]
-        }
+        },
+
 
     });
 
