@@ -8,14 +8,14 @@
 require.config({
     baseUrl:'/js',
     paths:{
-
         'header':'component/blog-hd',
         'footer':'component/blog-ft',
         'aside':'component/blog-sd',
+        'idx':'component/blog-index',
     }
 });
 
-require(['base','header','footer','aside'], function () {
+require(['base','header','idx','footer','aside'], function () {
 
     // rem布局
     !(function () {
@@ -30,10 +30,10 @@ require(['base','header','footer','aside'], function () {
     // 搭建Vue
 
     var Vue = require('vue');
+    console.log(1);
 
     var blog = new Vue({
         el:"#blog",
-        component:['blog-header','blog-footer','aside'],
         data:{
             blogHeader:{
                 title:'橙红年代',
@@ -49,6 +49,11 @@ require(['base','header','footer','aside'], function () {
 
                 ],
             },
+            page:{
+                total:10,
+                active:2
+            },
+            articles:[1,2,3],
             blogFooter:{
                 sign:'世人的悲欢并不相通，我只是觉得他们吵闹。'
             },
@@ -56,10 +61,9 @@ require(['base','header','footer','aside'], function () {
         },
         methods:{
             toggleAside:function () {
-                console.log('mss');
                 this.showAside = !this.showAside;
-            }
+            },
         }
     });
-
+    console.log(2);
 });

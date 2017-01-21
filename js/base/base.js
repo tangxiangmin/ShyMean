@@ -11,11 +11,13 @@ require.config({
 });
 
 define(['vue','vue-resource'],function () {
+
     var Vue = require('vue');
     var VueResource  = require('vue-resource');
 
     Vue.use(VueResource);
+    Vue.http.options.emulateJSON = true;
+    Vue.http.options.emulateHTTP = true;
 
     return Vue;
-
 });

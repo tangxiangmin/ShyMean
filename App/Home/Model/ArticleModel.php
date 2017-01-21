@@ -11,7 +11,6 @@ class ArticleModel extends Model {
     }
 
     public function getAll(){
-        $rows = parent::getAll();
-        dd($rows);
+        return parent::select();
     }
 }

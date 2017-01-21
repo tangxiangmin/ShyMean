@@ -9,9 +9,8 @@ class BlogController extends Controller{
         $this->view('index');
     }
     public function ajaxIndex(){
-
         $article = new ArticleModel();
         $res = $article->getAll();
-        var_dump($res);
+        exit(json_encode($res));
     }
 }

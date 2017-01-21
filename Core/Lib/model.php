@@ -42,14 +42,14 @@ class Model {
     // 执行sql语句
     public function query($sql){
         $res = $this->conn->query($sql);
-        return $res->fetchAll();
+        return $res->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     // CURD
 
     public function select(){
         $res = $this->conn->query('SELECT '.$this->field.' FROM '.$this->table);
-        return $res->fetchAll();
+        return $res->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 }

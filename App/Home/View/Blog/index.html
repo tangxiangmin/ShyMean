@@ -12,16 +12,13 @@
 </head>
 <body >
 	<div id="blog" v-cloak >
+
 		<main :class="['page-mn',{'active':showAside}]">
 			<blog-hd v-bind:msg="blogHeader"></blog-hd>
-			
-			<div class="container" id="blog-index">
-				<article-item v-for="article in articles" v-bind:article="article"></article-item>
-				<pagination v-bind:page="page"></pagination>
-			</div>
-			
+			<blog-index :articles="articles" :page="page"></blog-index>
 			<blog-ft v-bind:msg="blogFooter"></blog-ft>
 		</main>
+
 		<blog-sd @aside="toggleAside"></blog-sd>
 	</div>
 </body>

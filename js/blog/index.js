@@ -2,67 +2,77 @@
  * Created by admin on 2017/1/12.
  */
 
+/**
+ * Created by admin on 2017/1/21.
+ */
+/**
+ * 引入界面的布局组件，包括基本的头部，底部，侧边栏和工具按钮组
+ */
+
 require.config({
     baseUrl:'/js',
     paths:{
         'base':'base/base',
-        'layout':'blog/layout',
-        'pagination':'component/pagination'
+        'header':'component/blog-hd',
+        'footer':'component/blog-ft',
+        'aside':'component/blog-sd',
+        'idx':'component/blog-index',
     }
 });
 
-require(['base','layout','pagination'], function () {
+require(['base','header','idx','footer','aside'], function () {
+
+    // rem布局
+    !(function () {
+        let newRem = function() {
+            let html = document.documentElement;
+            html.style.fontSize = html.getBoundingClientRect().width / 10 + 'px';
+        };
+        window.addEventListener('resize', newRem, false);
+        newRem();
+    })();
+
+    // 搭建Vue
 
     var Vue = require('vue');
 
-    // 首页文章列表
-    Vue.component('article-item',{
-        props:['article'],
-        template:`<article class="article-item">
-				<div class="item-hd">
-					<h2 class="item-title"><a href="#">{{article.title}}</a></h2>
-					<div class="item-info">
-						发表于{{article.time}} |
-						分类于 <a href="#">{{article.category}}</a> |
-						<a href="#">{{article.commentNum}}</a>
-					</div>
-				</div>
-				<div class="item-bd">
-					{{article.content}}
-				</div>
-				<div class="item-ft">
-					<a href="#">阅读全文</a>
-				</div>
-			</article>`,
-    });
-
-    // 请求信息
-    Vue.http.post('/Home/Blog/ajaxIndex').then(function (res) {
-        console.log(res.body);
-    });
-
-    // 注册
-    var blogIndex = new Vue({
-        el:"#blog-index",
-        component:['pagination','article-item'],
+    var blog = new Vue({
+        el:"#blog",
         data:{
+            blogHeader:{
+                title:'橙红年代',
+                navItem:[
+                    {
+                        name:'首页',
+                        icon:'icon-home'
+                    },
+                    {
+                        name:'书签',
+                        icon:'icon-tag'
+                    }
+
+                ],
+            },
             page:{
                 total:10,
                 active:2
             },
-            articles:[
-                {
-                    title:'测试',
-                    time:'2017-11-22',
-                    category:'JS',
-                    commentNum:0,
-                    content:0
-                },
-            ],
-
+            articles:[1,2,3],
+            blogFooter:{
+                sign:'世人的悲欢并不相通，我只是觉得他们吵闹。'
+            },
+            showAside:false,
         },
-
-
+        methods:{
+            toggleAside:function () {
+                this.showAside = !this.showAside;
+            },
+        },
+        mounted: function () {
+            console.log(1);
+            this.$http.get('Home/Blog/ajaxIndex').then((res)=>{
+                this.articles.push(123);
+            })
+        }
     });
-
 });
