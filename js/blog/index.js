@@ -12,56 +12,59 @@
 require.config({
     baseUrl:'/js',
     paths:{
-        'base':'base/base',
-        'header':'component/blog-hd',
-        'footer':'component/blog-ft',
-        'aside':'component/blog-sd',
-        'idx':'component/blog-index',
+        'layout':'blog/layout',
+        'pagination':'component/pagination',
+        'marked':'lib/marked',
     }
 });
 
-require(['base','header','idx','footer','aside'], function () {
+require(['layout','pagination','marked'], function () {
 
-    // rem布局
-    !(function () {
-        let newRem = function() {
-            let html = document.documentElement;
-            html.style.fontSize = html.getBoundingClientRect().width / 10 + 'px';
-        };
-        window.addEventListener('resize', newRem, false);
-        newRem();
-    })();
-
+    var layout = require('layout');
+    var marked = require('marked');
+    
     // 搭建Vue
-
     var Vue = require('vue');
+
+    // 首页文章列表
+    Vue.component('article-item',{
+        props:['article'],
+        template:`<article class="article-item">
+				<div class="item-hd">
+					<h2 class="item-title"><a href="#">{{article.title}}</a></h2>
+					<div class="item-info">
+						发表于{{article.created_at}} |
+						分类于 <a href="#">{{article.category}}</a> |
+						<a href="#">{{article.comment_id}}</a>
+					</div>
+				</div>
+				<div class="item-bd" v-html="article.content"></div>
+				<div class="item-ft">
+					<a href="#">阅读全文</a>
+				</div>
+			</article>`,
+    });
+    // 首页主内容
+    Vue.component('blog-index',{
+        props:['articles','page'],
+        template:`<div class="container">
+				<article-item v-for="article in articles" :article="article"></article-item>
+				<pagination :page="page"></pagination>
+			</div>
+			`
+    });
 
     var blog = new Vue({
         el:"#blog",
         data:{
-            blogHeader:{
-                title:'橙红年代',
-                navItem:[
-                    {
-                        name:'首页',
-                        icon:'icon-home'
-                    },
-                    {
-                        name:'书签',
-                        icon:'icon-tag'
-                    }
-
-                ],
-            },
+            blogHeader:layout.blogHeader,
+            blogFooter:layout.blogFooter,
+            showAside:layout.showAside,
             page:{
                 total:10,
                 active:2
             },
-            articles:[1,2,3],
-            blogFooter:{
-                sign:'世人的悲欢并不相通，我只是觉得他们吵闹。'
-            },
-            showAside:false,
+            articles:[],
         },
         methods:{
             toggleAside:function () {
@@ -69,10 +72,15 @@ require(['base','header','idx','footer','aside'], function () {
             },
         },
         mounted: function () {
-            console.log(1);
-            this.$http.get('Home/Blog/ajaxIndex').then((res)=>{
-                this.articles.push(123);
-            })
+            this.$http.get('/Home/Blog/ajaxIndex').then((res)=>{
+                return res.json();
+            }).then((articles)=>{
+                articles = articles.map((val)=>{
+                    val['content'] = marked(val['content']);
+                    return val;
+                 });
+                this.$set(this,'articles',articles);
+            });
         }
     });
 });

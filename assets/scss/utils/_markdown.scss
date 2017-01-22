@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+code {
+	padding: 2px 4px;
+
+	font-size: 90%;
+	font-family: inherit;
+	color: #c7254e;
+	background-color: #f9f2f4;
+	border-radius: 4px;
+	letter-spacing: 1px;
+}
+pre {
+	overflow: auto;
+	margin: 20px 0;
+	padding: 15px;
+
+	@include border;
+	@include border-radius;
+	background: $gray;
+
+	line-height: 1.8;
+	font-family: inherit;
+	color: #4d4d4c;
+	code {
+		padding: 0;
+		color: inherit;
+		background: transparent;
+		letter-spacing: 0;
+
+	}
+}
+
+blockquote {
+	border: 1px solid #ccc;
+	border-left-width: 6px;
+	@include border-radius(0 4px 4px 0);
+	margin-left: 0;
+	margin-right: 0;
+	padding: 10px 10px 10px 20px;
+
+	overflow: auto;
+	background: $gray;
+	color: $text-gray;
+}

@@ -8,14 +8,14 @@
 require.config({
     baseUrl:'/js',
     paths:{
+        'base':'base/base',
         'header':'component/blog-hd',
         'footer':'component/blog-ft',
         'aside':'component/blog-sd',
-        'idx':'component/blog-index',
     }
 });
 
-require(['base','header','idx','footer','aside'], function () {
+define(['base','header','footer','aside'], function () {
 
     // rem布局
     !(function () {
@@ -27,43 +27,26 @@ require(['base','header','idx','footer','aside'], function () {
         newRem();
     })();
 
-    // 搭建Vue
+    var layout = {
+        blogHeader: {
+            title:'橙红年代',
+            navItem:[
+                {
+                    name:'首页',
+                    icon:'icon-home'
+                },
+                {
+                    name:'书签',
+                    icon:'icon-tag'
+                }
 
-    var Vue = require('vue');
-    console.log(1);
-
-    var blog = new Vue({
-        el:"#blog",
-        data:{
-            blogHeader:{
-                title:'橙红年代',
-                navItem:[
-                    {
-                        name:'首页',
-                        icon:'icon-home'
-                    },
-                    {
-                        name:'书签',
-                        icon:'icon-tag'
-                    }
-
-                ],
-            },
-            page:{
-                total:10,
-                active:2
-            },
-            articles:[1,2,3],
-            blogFooter:{
-                sign:'世人的悲欢并不相通，我只是觉得他们吵闹。'
-            },
-            showAside:false,
+            ]
         },
-        methods:{
-            toggleAside:function () {
-                this.showAside = !this.showAside;
-            },
-        }
-    });
-    console.log(2);
+        blogFooter:{
+            sign:'世人的悲欢并不相通，我只是觉得他们吵闹。'
+        },
+        showAside:false
+    };
+
+    return layout;
 });

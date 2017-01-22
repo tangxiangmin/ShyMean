@@ -38,3 +38,37 @@ __技术框架__
 * 后端使用原生PHP搭建的简单框架，转发路由及提供数据接口；
 * 前端使用`Vue`框架，通过`Vue-resource`请求数据，然后再渲染页面
 
+### 2017-1-22
+
+#### 模块化的思考
+被一个问题坑了很久：一个Vue实例的DOM结构中再实例一个Vue对象，控制台不会报错，但是数据和事件就“混乱了”，导致使用`vue-resource`回调函数中无法改变响应式数据。
+正确的做法应该是，一个Vue实例中引入其他Vue实例，应当使用组件的形式。而之前为了方便布局，采用的结构是
+```
+<div id="blog" v-cloak >
+    <main :class="['page-mn',{'active':showAside}]">
+        <blog-hd v-bind:msg="blogHeader"></blog-hd>
+        <div class="container" id="blog-index">
+            <article-item v-for="article in articles" :article="article"></article-item>
+            <pagination :page="page"></pagination>
+        </div>
+        <blog-ft v-bind:msg="blogFooter"></blog-ft>
+    </main>
+    <blog-sd @aside="toggleAside"></blog-sd>
+</div>
+```
+这样相当于外面有一个`#blog`实例，内部还有一个`#blog-index`实例，导致回调函数中改变数据状态无效（具体的原因还没有找到）。现在改变了之前`requirejs`的调用方式，每个页面只保留一个`#app`的实例，然后内部模块拼接。
+```
+<div id="blog" v-cloak >
+    <main :class="['page-mn',{'active':showAside}]">
+        <blog-hd v-bind:msg="blogHeader"></blog-hd>
+        <blog-index :articles="articles" :page="page"></blog-index>
+        <blog-ft v-bind:msg="blogFooter"></blog-ft>
+    </main>
+    <blog-sd @aside="toggleAside"></blog-sd>
+</div>
+```
+由于`blog-hd`,`blog-ft`,`blog-sd`,这几个组件是所有页面公有的，因此新建了一个`layout.js`的文件，加载这几个模块，并请求对应的数据，最后在页面文件中引入公共的`layout`文件，然后处理单独的逻辑即可，比如分页，选项卡等颗粒化的模块也可以单独提取出来。
+不知道我这种处理模块化开发的思路是不是正确的（只针对于JS，而CSS我还是习惯使用scss`@import`的方式来管理），这一路踩过的坑，想想都觉得刺激啊。
+
+#### 数据库
+本来之前想先封装好一个数据库类，然后再直接使用模型获取数据；现在突然感觉有一些本末倒置了，现在是出于学习的目的，应当先从SQL语句写起，而不是一步登天，因此决定先将数据库类放一放，直接使用最原始的PDO来实现数据库的操作，反正最主要的逻辑操作都放在前端处理的。

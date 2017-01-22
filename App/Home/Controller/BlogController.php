@@ -9,8 +9,16 @@ class BlogController extends Controller{
         $this->view('index');
     }
     public function ajaxIndex(){
-        $article = new ArticleModel();
-        $res = $article->getAll();
-        exit(json_encode($res));
+
+        $model = new ArticleModel();
+        $articles = $model->getAll();
+
+        foreach($articles as &$article){
+            $pos = strpos($article['content'],'<!--more-->');
+            $abs = substr($article['content'],0,$pos);
+            $article['content'] = $abs;
+        }
+
+        exit(json_encode($articles));
     }
 }

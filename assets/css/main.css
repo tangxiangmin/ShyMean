@@ -847,6 +847,42 @@ body {
   .pagination .pagination-current {
     background: #f5f5f5; }
 
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  font-family: inherit;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+  letter-spacing: 1px; }
+
+pre {
+  overflow: auto;
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  background: #f5f5f5;
+  line-height: 1.8;
+  font-family: inherit;
+  color: #4d4d4c; }
+  pre code {
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    letter-spacing: 0; }
+
+blockquote {
+  border: 1px solid #ccc;
+  border-left-width: 6px;
+  border-radius: 0 4px 4px 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 10px 10px 10px 20px;
+  overflow: auto;
+  background: #f5f5f5;
+  color: #999; }
+
 /*
   页面样式
 */
