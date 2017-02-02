@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1484967786721'); /* IE9*/
-  src: url('iconfont.eot?t=1484967786721#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1484967786721') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1484967786721') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1484967786721#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1486010489281'); /* IE9*/
+  src: url('iconfont.eot?t=1486010489281#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1486010489281') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1486010489281') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1486010489281#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -17,7 +17,11 @@
 
 .icon-home:before { content: "\e600"; }
 
+.icon-qq:before { content: "\e648"; }
+
 .icon-search:before { content: "\e618"; }
+
+.icon-github:before { content: "\e69f"; }
 
 .icon-back:before { content: "\e697"; }
 

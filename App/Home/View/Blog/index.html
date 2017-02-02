@@ -15,7 +15,7 @@
 
 		<main :class="['page-mn',{'active':showAside}]">
 			<blog-hd v-bind:msg="blogHeader"></blog-hd>
-			<blog-index :articles="articles" :page="page"></blog-index>
+			<router-view></router-view>
 			<blog-ft v-bind:msg="blogFooter"></blog-ft>
 		</main>
 

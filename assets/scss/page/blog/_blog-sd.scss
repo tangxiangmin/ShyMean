@@ -67,6 +67,25 @@
 		}
 	}
 }
+
+// 功能按钮
+%page-btn {
+	position: fixed;
+	z-index: 9999;
+	right: 50px;
+	width: 30px;
+	height:30px;
+
+	background: $dark;
+	cursor: pointer;
+
+	@include fx;
+	@include fx-main(center);
+	@include fx-cross(center);
+
+
+}
+
 .btn-list {
 	bottom: 65px;
 	@extend %page-btn;
@@ -119,15 +138,14 @@
 
 	@extend %page-btn;
 	@include transition;
-	//@include transform(translateY(80px));
-	//i {
-	//	font-size: 30px;
-	//	margin-top: -4px;
-	//	@include transition;
-	//}
+	@include transform(translateY(80px));
+	i {
+		font-size: 20px;
+		@include transition(all .2s ease);
+	}
 	&:hover {
 		i {
-			@include transform(translateY(-5px));
+			@include transform(translateY(-2px));
 		}
 	}
 	&.active {

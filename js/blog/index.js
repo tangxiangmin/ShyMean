@@ -15,16 +15,21 @@ require.config({
         'layout':'blog/layout',
         'pagination':'component/pagination',
         'marked':'lib/marked',
+        'vue':'lib/vue',
+        'vue-router':'lib/vue-router',
     }
 });
 
-require(['layout','pagination','marked'], function () {
+require(['vue','vue-router','layout','pagination','marked'], function () {
 
     var layout = require('layout');
     var marked = require('marked');
-    
+
     // 搭建Vue
     var Vue = require('vue');
+
+    var VueRouter = require('vue-router');
+
 
     // 首页文章列表
     Vue.component('article-item',{
@@ -35,41 +40,41 @@ require(['layout','pagination','marked'], function () {
 					<div class="item-info">
 						发表于{{article.created_at}} |
 						分类于 <a href="#">{{article.category}}</a> |
-						<a href="#">{{article.comment_id}}</a>
+						评论 {{article.comment_id}}
 					</div>
 				</div>
 				<div class="item-bd" v-html="article.content"></div>
 				<div class="item-ft">
-					<a href="#">阅读全文</a>
+                    <router-link to="/foo">阅读全文</router-link>
 				</div>
 			</article>`,
     });
+
     // 首页主内容
-    Vue.component('blog-index',{
-        props:['articles','page'],
+
+    var foo = {
+        template:`<div>foo</div>
+			`,
+        mounted:function(){
+            console.log(1);
+        },
+    };
+
+    var blogIndex = {
+        props:[],
         template:`<div class="container">
 				<article-item v-for="article in articles" :article="article"></article-item>
 				<pagination :page="page"></pagination>
 			</div>
-			`
-    });
-
-    var blog = new Vue({
-        el:"#blog",
-        data:{
-            blogHeader:layout.blogHeader,
-            blogFooter:layout.blogFooter,
-            showAside:layout.showAside,
-            page:{
-                total:10,
-                active:2
-            },
-            articles:[],
-        },
-        methods:{
-            toggleAside:function () {
-                this.showAside = !this.showAside;
-            },
+			`,
+        data:function(){
+            return {
+                page:{
+                    total:5,
+                    active:2
+                },
+                articles:[],
+            }
         },
         mounted: function () {
             this.$http.get('/Home/Blog/ajaxIndex').then((res)=>{
@@ -78,9 +83,43 @@ require(['layout','pagination','marked'], function () {
                 articles = articles.map((val)=>{
                     val['content'] = marked(val['content']);
                     return val;
-                 });
+                });
                 this.$set(this,'articles',articles);
             });
         }
+    };
+
+    Vue.use(VueRouter);
+
+    const routes = [{
+        path: '/foo',
+        component: foo
+    },{
+        path: '/',
+        component: blogIndex
+    }];
+
+    const router = new VueRouter({
+        routes:routes
     });
+
+    var blog = new Vue({
+        el:"#blog",
+        data:{
+            blogHeader:layout.blogHeader,
+            blogFooter:layout.blogFooter,
+            showAside:layout.showAside,
+
+        },
+        router:router,
+        methods:{
+            toggleAside:function () {
+                this.showAside = !this.showAside;
+            },
+        },
+
+    });
+
+
+
 });

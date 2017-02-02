@@ -57,16 +57,3 @@
 		transform:rotate(4deg);
 	}
 }
-// 功能按钮
-%page-btn {
-	position: fixed;
-	z-index: 9999;
-	right: 50px;
-	padding:3px 5px;
-	width: 30px;
-	height:30px;
-
-	background: $dark;
-	text-align: center;
-	cursor: pointer;
-}
