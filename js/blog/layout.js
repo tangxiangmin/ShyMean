@@ -8,15 +8,13 @@
 require.config({
     baseUrl:'/js',
     paths:{
-        'base':'base/base',
         'header':'component/blog-hd',
         'footer':'component/blog-ft',
         'aside':'component/blog-sd',
     }
 });
 
-define(['base','header','footer','aside'], function () {
-
+define(['header','footer','aside'], function () {
     // rem布局
     !(function () {
         let newRem = function() {
@@ -39,7 +37,6 @@ define(['base','header','footer','aside'], function () {
                     name:'书签',
                     icon:'icon-tag'
                 }
-
             ]
         },
         blogFooter:{
