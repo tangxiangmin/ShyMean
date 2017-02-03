@@ -15,10 +15,10 @@ define(['vue'],function () {
         props: ['msg'],
         template:`<header class="bg-gray">
                     <div class="container page-hd">
-                        <h1 class="page-title">{{msg.title}}</h1>
+                        <h1 class="page-title"><router-link to="/">{{msg.title}}</router-link></h1>
                         <nav class="page-nav">
-                            <a class="nav-item" v-for="item in msg.navItem" href=""><i v-bind:class="['iconfont',item.icon]"></i> {{item.name}}</a>
-                           
+                            <router-link to="/" :class="['nav-item']"><i v-bind:class="['iconfont','icon-home']"></i> 首页</router-link>
+                            <router-link to="/tags" :class="['nav-item']"><i v-bind:class="['iconfont','icon-tag']"></i> 标签</router-link>
                         </nav>
                     </div>
                 </header>`,

@@ -17,7 +17,7 @@ define(['pagination','marked'], function () {
     // 首页文章列表
     return {
         props:[],
-        template:`<div class="container">
+        template:`<div :class="['page-bd','container']">
                 <article class="article-item" v-for="article in articles">
                     <div class="item-hd">
                         <h2 class="item-title"><a href="#">{{article.title}}</a></h2>
@@ -29,7 +29,7 @@ define(['pagination','marked'], function () {
                     </div>
                     <div class="item-bd" v-html="article.content"></div>
                     <div class="item-ft">
-                        <router-link to="articleDetail" >阅读全文</router-link>
+                        <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
                     </div>
                 </article>
 				<pagination :page="page"></pagination>
@@ -39,13 +39,13 @@ define(['pagination','marked'], function () {
             return {
                 page:{
                     total:5,
-                    active:2
+                    active:1
                 },
                 articles:[],
             }
         },
         mounted: function () {
-            this.$http.get('/Home/Blog/ajaxIndex').then((res)=>{
+            this.$http.get('/Home/Blog/index').then((res)=>{
                 return res.json();
             }).then((articles)=>{
                 articles = articles.map((val)=>{

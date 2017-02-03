@@ -5,9 +5,12 @@
 .page-mn {
 	@include transition;
 	position: relative;
-	min-height: 100vh;
+
 	&.active {
 		//@include transform(translateX(-130px));
 		padding-right: 300px;
 	}
+}
+.page-bd {
+	min-height: calc(100vh - 108px - 118px);
 }

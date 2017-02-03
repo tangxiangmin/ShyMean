@@ -15,7 +15,9 @@
 
 		<main :class="['page-mn',{'active':showAside}]">
 			<blog-hd v-bind:msg="blogHeader"></blog-hd>
-			<router-view></router-view>
+			<transition name="fade">
+				<router-view ></router-view>
+			</transition>
 			<blog-ft v-bind:msg="blogFooter"></blog-ft>
 		</main>
 

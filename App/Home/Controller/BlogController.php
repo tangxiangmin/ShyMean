@@ -5,13 +5,19 @@ use App\Home\Model\ArticleModel;
 use Core\Lib\Controller;
 
 class BlogController extends Controller{
-    public function index(){
-        $this->view('index');
+    private $model = null;
+    public function __construct(){
+        $this->model = new ArticleModel();
+        parent::__construct();
     }
-    public function ajaxIndex(){
 
-        $model = new ArticleModel();
-        $articles = $model->query('SELECT * FROM shymean_article ORDER BY created_at DESC');
+    public function blog(){
+        $this->view('blog');
+    }
+
+    public function index(){
+
+        $articles = $this->model->orderBy('created_at')->select();
 
         foreach($articles as &$article){
             $pos = strpos($article['content'],'<!--more-->');
@@ -21,5 +27,21 @@ class BlogController extends Controller{
         }
 
         exit(json_encode($articles));
+    }
+
+    public function article(){
+        $id = $_REQUEST['id'];
+        $article = $this->model->where('id = '.$id)->selectOne();
+
+        $article['created_at'] = date('Y-m-d',$article['created_at']);
+        exit(json_encode($article));
+    }
+
+    public function tags(){
+        $res = $this->model->distinct()->field('category')->select();
+        exit(json_encode($res));
+    }
+    public function test(){
+        var_dump($this->model->orderBy('id')->select());
     }
 }

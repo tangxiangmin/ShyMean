@@ -2,11 +2,21 @@
 /**
  * 文章详情页面
  */
+require.config({
+    baseUrl:'/js',
+    paths:{
+        'marked':'lib/marked',
+    }
+});
+define(['marked'], function () {
 
-define([], function () {
+    var marked = require('marked');
+
     return {
-        template:`<article class="article-item">
-				<div class="item-hd">
+        template:`<div :class="['page-bd','container']">
+
+            <article class="article-item">
+				<div class="item-hd text-center">
 					<h2 class="item-title"><a href="#">{{article.title}}</a></h2>
 					<div class="item-info">
 						发表于{{article.created_at}} |
@@ -14,15 +24,21 @@ define([], function () {
 						评论 {{article.comment_id}}
 					</div>
 				</div>
-				<div class="item-bd" v-html="article.content">{{$route.params.id}}</div>
+				<div class="item-bd" v-html="article.content"></div>
 			</article>
+			</div>
 			`,
         mounted:function(){
-            console.log(1);
+            this.$http.post('/Home/Blog/article',{id: this.$route.params.id}).then((res)=>{
+                return res.json();
+            }).then((article)=>{
+                article['content'] = marked(article['content']);
+                this.$set(this,'article',article);
+            });
         },
         data:function(){
             return {
-                article:{title:'xxx'}
+                article:{},
             }
         },
     };

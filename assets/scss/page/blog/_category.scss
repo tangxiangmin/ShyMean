@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.category-sec {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $basemargin*5;
+    text-align: center;
+    .sec-hd {
+        margin-bottom: $basemargin;
+    }
+}
+.category-type {
+    font-size: 0;
+    a {
+        @extend %hover-dark;
+        margin: 5px;
+    }
+}
+.category-label {
+    a {
+        margin:0 5px;
+        @extend %hover-highlight;
+    }
+}

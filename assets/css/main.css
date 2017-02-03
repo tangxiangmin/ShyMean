@@ -110,7 +110,7 @@ textarea {
 .text-purple {
   color: #9900FF; }
 
-.bg-dark, ::selection {
+.bg-dark, ::selection, .category-type a:hover {
   background-color: #333;
   color: #fff; }
 
@@ -674,6 +674,12 @@ body {
   .index .nav-item .nav-link:hover:after, .article-item .item-title a:hover:after {
     transform: scaleX(1); }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s; }
+
+.fade-enter, .fade-leave-active {
+  opacity: 0; }
+
 /*
   组件样式
 */
@@ -903,14 +909,20 @@ blockquote {
   .index .nav-item .nav-link:hover:after, .article-item .item-title a:hover:after {
     transform: scaleX(1); }
 
-.article-item .item-info a, .article-item .item-ft a {
+.article-item .item-info a, .article-item .item-ft a, .category-label a {
   color: #666;
   border-bottom: 1px solid #d6d6d6;
   -webkit-transition: border-color ease 0.3s;
   transition: border-color ease 0.3s; }
-  .article-item .item-info a:hover, .article-item .item-ft a:hover {
+  .article-item .item-info a:hover, .article-item .item-ft a:hover, .category-label a:hover {
     color: #000;
     border-color: #000; }
+
+.category-type a {
+  -webkit-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s; }
+  .category-type a:hover {
+    border: 1px solid #333; }
 
 .back {
   display: block;
@@ -1177,10 +1189,12 @@ blockquote {
 .page-mn {
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
-  position: relative;
-  min-height: 100vh; }
+  position: relative; }
   .page-mn.active {
     padding-right: 300px; }
+
+.page-bd {
+  min-height: calc(100vh - 108px - 118px); }
 
 .article-item {
   margin-bottom: 0.66667rem; }
@@ -1192,11 +1206,27 @@ blockquote {
     color: #999; }
   .article-item .item-bd {
     margin: 10px 0;
-    font-size: 14px;
     line-height: 2em; }
   .article-item .item-ft a {
     display: inline-block;
     padding: 5px 0;
     border-bottom: 2px solid #dedede; }
+
+.category-sec {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  text-align: center; }
+  .category-sec .sec-hd {
+    margin-bottom: 20px; }
+
+.category-type {
+  font-size: 0; }
+  .category-type a {
+    margin: 5px; }
+
+.category-label a {
+  margin: 0 5px; }
 
 /*# sourceMappingURL=main.css.map */
