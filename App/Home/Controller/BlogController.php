@@ -20,10 +20,10 @@ class BlogController extends Controller{
 
         $num = 2;
         $total = intval($this->model->count());
-        $page = $_REQUEST['active'] || 0;
+        $active = $_REQUEST['active'] - 1;
 
 
-        $articles = $this->model->orderBy('created_at')->limit($num,$page*$num)->select();
+        $articles = $this->model->orderBy('created_at')->limit($num,$active*$num)->select();
         foreach($articles as &$article){
             $pos = strpos($article['content'],'<!--more-->');
             $abs = substr($article['content'],0,$pos);

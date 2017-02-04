@@ -39,6 +39,7 @@ define(['pagination','marked'], function () {
             return {
                 page:{},
                 articles:[],
+                active: this.$route.params.active || 1
             }
         },
         mounted: function () {
@@ -46,9 +47,7 @@ define(['pagination','marked'], function () {
         },
         methods:{
             getData: function () {
-                let active = this.$route.params.active;
-                console.log(active);
-                this.$http.post('/Home/Blog/index',{active:active || 1}).then((res)=>{
+                this.$http.post('/Home/Blog/index',{active: this.active}).then((res)=>{
                     return res.json();
                 }).then((res)=>{
                     let articles = res['articles'], page=res['page'];
@@ -58,9 +57,17 @@ define(['pagination','marked'], function () {
                     });
 
                     this.$set(this,'articles',articles);
-                    page.active = active;
+
+                    page.active = this.active;
                     this.$set(this,'page',page);
                 });
+            },
+        },
+        watch: {
+            $route:function (to, from) {
+
+                this.active = to.params.active;
+                this.getData();
             }
         }
     };

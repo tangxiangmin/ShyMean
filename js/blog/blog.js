@@ -17,27 +17,39 @@ require.config({
         'vue-resource':'lib/vue-resource.min',
         'router-config':'blog/route',
         'layout':'blog/layout',
+        'pagination':'component/pagination'
     }
 });
 
-require(['vue','vue-router','vue-resource','router-config','layout'], function () {
+require(['vue','vue-router','vue-resource','router-config','layout','pagination'], function () {
 
-    const Vue = require('vue');
+    let Vue = require('vue');
 
-    const VueRouter = require('vue-router');
+    // vue-routes
+    let VueRouter = require('vue-router');
     Vue.use(VueRouter);
-
-    const routes = require('router-config');
-    const router = new VueRouter({
+    let routes = require('router-config');
+    let router = new VueRouter({
         routes:routes,
     });
 
-    const VueResource  = require('vue-resource');
+    // vue-resource
+    let VueResource  = require('vue-resource');
     Vue.use(VueResource);
     Vue.http.options.emulateJSON = true;
     Vue.http.options.emulateHTTP = true;
 
-    const layout = require('layout');
+    // layout
+    let layout = require('layout');
+    Vue.component('blog-hd',layout.hd);
+    Vue.component('blog-ft',layout.ft);
+    Vue.component('blog-sd',layout.sd);
+
+    // 组件
+    let pagination = require('pagination');
+
+    Vue.component('pagination',pagination);
+
 
     // 容器实例
     var blog = new Vue({

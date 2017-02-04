@@ -26,6 +26,10 @@ define(['index','article','tags','archives'], function () {
         path: '/',
         component: blogIndex
     },{
+        path: '/index/:active',
+        name: 'index',
+        component: blogIndex
+    },{
         path: '/articleDetail/:id',
         name: 'articleDetail',
         component: article
