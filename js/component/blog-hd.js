@@ -19,6 +19,7 @@ define(['vue'],function () {
                         <nav class="page-nav">
                             <router-link to="/" :class="['nav-item']"><i v-bind:class="['iconfont','icon-home']"></i> 首页</router-link>
                             <router-link to="/tags" :class="['nav-item']"><i v-bind:class="['iconfont','icon-tag']"></i> 标签</router-link>
+                            <router-link to="/archives/''" :class="['nav-item']"><i v-bind:class="['iconfont','icon-tag']"></i>归档</router-link>
                         </nav>
                     </div>
                 </header>`,

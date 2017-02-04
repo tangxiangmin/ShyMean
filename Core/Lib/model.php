@@ -11,6 +11,7 @@ class Model {
     private $order = '';
     private $distinct = '';
     private $group = '';
+    private $limit = '';
 
     public function __construct($tablename){
         $dsn = Conf::get('db','DSN');
@@ -32,7 +33,7 @@ class Model {
 
     // 拼接sql语句
     private function setSql(){
-        $sql = 'SELECT '.$this->distinct.$this->field.' FROM '.$this->table.$this->group.$this->order;
+        $sql = 'SELECT '.$this->distinct.$this->field.' FROM '.$this->table.$this->group.$this->order.$this->limit;
         return $sql;
     }
 
@@ -43,6 +44,8 @@ class Model {
         $this->order = '';
         $this->distinct = '';
         $this->group = '';
+        $this->limit = '';
+
         return $this;
     }
 
@@ -95,5 +98,18 @@ class Model {
     public function groupBy($field){
         $this->group = ' GROUP BY '.$field;
         return $this;
+    }
+
+    // 限制数量
+    public function limit($num,$offset){
+        $this->limit = ' LIMIT '.$num.' OFFSET '.$offset;
+        return $this;
+    }
+
+    // ------------聚合函数------------ //
+    public function count(){
+        $res = $this->field('COUNT(*) AS total')->selectOne();
+        $this->reset();
+        return $res['total'];
     }
 }

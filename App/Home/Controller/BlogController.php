@@ -3,6 +3,7 @@
 namespace App\Home\Controller;
 use App\Home\Model\ArticleModel;
 use Core\Lib\Controller;
+use Core\Utils\Page;
 
 class BlogController extends Controller{
     private $model = null;
@@ -17,8 +18,12 @@ class BlogController extends Controller{
 
     public function index(){
 
-        $articles = $this->model->orderBy('created_at')->select();
+        $num = 2;
+        $total = intval($this->model->count());
+        $page = $_REQUEST['active'] || 0;
 
+
+        $articles = $this->model->orderBy('created_at')->limit($num,$page*$num)->select();
         foreach($articles as &$article){
             $pos = strpos($article['content'],'<!--more-->');
             $abs = substr($article['content'],0,$pos);
@@ -26,7 +31,14 @@ class BlogController extends Controller{
             $article['created_at'] = date('Y-m-d',$article['created_at']);
         }
 
-        exit(json_encode($articles));
+        $res['articles'] = $articles;
+        $res['page'] = [
+            'name'=>'index',
+            'num'=>$num,
+            'total'=>$total,
+        ];
+
+        exit(json_encode($res));
     }
 
     public function article(){

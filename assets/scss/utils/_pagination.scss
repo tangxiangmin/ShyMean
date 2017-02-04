@@ -1,6 +1,7 @@
 @charset "utf-8";
 .pagination {
 	$size: 30px;
+	margin: $basepadding*2 0;
 	%base {
 		display: inline-block;
 		min-width: $size;

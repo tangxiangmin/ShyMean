@@ -32,28 +32,36 @@ define(['pagination','marked'], function () {
                         <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
                     </div>
                 </article>
-				<pagination :page="page"></pagination>
+				<pagination :page="page" ></pagination>
 			</div>
 			`,
         data:function(){
             return {
-                page:{
-                    total:5,
-                    active:1
-                },
+                page:{},
                 articles:[],
             }
         },
         mounted: function () {
-            this.$http.get('/Home/Blog/index').then((res)=>{
-                return res.json();
-            }).then((articles)=>{
-                articles = articles.map((val)=>{
-                    val['content'] = marked(val['content']);
-                    return val;
+            this.getData();
+        },
+        methods:{
+            getData: function () {
+                let active = this.$route.params.active;
+                console.log(active);
+                this.$http.post('/Home/Blog/index',{active:active || 1}).then((res)=>{
+                    return res.json();
+                }).then((res)=>{
+                    let articles = res['articles'], page=res['page'];
+                    articles = articles.map((val)=>{
+                        val['content'] = marked(val['content']);
+                        return val;
+                    });
+
+                    this.$set(this,'articles',articles);
+                    page.active = active;
+                    this.$set(this,'page',page);
                 });
-                this.$set(this,'articles',articles);
-            });
+            }
         }
     };
 
