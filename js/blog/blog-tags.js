@@ -8,28 +8,24 @@ define([], function () {
         template:`<div :class="['page-bd','container']">
 				<div class="category-sec">
 					<div class="sec-hd">
-						当前共 7 个分类
+						当前共 {{categories.length}} 个分类
 					</div>
 					<div class="sec-bd category-type">
-					    <router-link to="/" :class="['btn','btn-border']" v-for="category in categories">{{category}}</router-link >
+					    <router-link :to="{name: 'archives', params: { type: category.category}}" :class="['btn','btn-border']" v-for="category in categories">{{category.category}} ({{category.category_num}})</router-link >
 
 					</div>
 				</div>
 				<div class="category-sec">
 					<div class="sec-hd">
-						当前共 20 个标签
+						当前共 {{tagsNum}} 个标签
 					</div>
 					<div class="sec-bd category-label">
-					    <router-link to="/" :class="['hover-hight','text-xs']" v-for="tag in tags">{{tag}}</router-link >
-						<a href="#" class="hover-hight text-xs">Vue</a>
-						<a href="#" class="hover-hight">Scss</a>
-						<a href="#" class="hover-hight text-sm">box-shadow</a>
-						<a href="#" class="hover-hight">Vue</a>
-						<a href="#" class="hover-hight text-md">Scss</a>
-						<a href="#" class="hover-hight">box-shadow</a>
-						<a href="#" class="hover-hight">Vue</a>
-						<a href="#" class="hover-hight text-lg">Scss</a>
-						<a href="#" class="hover-hight">box-shadow</a>
+					    <router-link
+					        :to="{name: 'archives', params: { type: tag}}"
+					        :class="['hover-hight',{'text-xs':tag_num<=2},{'text-sm':tag_num>2 && tag_num <=5},{'text-md':tag_num>5 && tag_num<=10},{'text-lg':tag_num>10}]"
+					        v-for="(tag_num,tag) in tags"
+					    >{{tag}}</router-link >
+
 					</div>
 				</div>
 			</div>
@@ -38,17 +34,31 @@ define([], function () {
             this.$http.get('/Home/Blog/tags').then((res)=>{
                 return res.json();
             }).then((res)=>{
-                let categories = [], tags = [];
-                console.log(res);
-                res.forEach((val)=>{
-                    console.log(val);
+                this.$set(this,'categories',res.categories);
+                // 暂时没有想到如何在数据库处理标签数据，因此目前只能采取这种折中的办法
+                let tags = {};
+                let tagsNum = 0;
+                res.tags.forEach((val)=>{
+                    let sigleTag = val['tags'].split(',');
+                    sigleTag.forEach((val)=>{
+                        val = val.trim();
+                        if (val in tags) {
+                            tags[val]++;
+                        }else {
+                            tags[val] = 1;
+                            tagsNum++;
+                        }
+                    });
                 });
+                this.$set(this,'tags',tags);
+                this.$set(this,'tagsNum',tagsNum);
             });
         },
         data:function(){
             return {
-                categories:['Javascript','Html'],
-                tags:['SCSS','Code','Rex'],
+                categories:[],
+                tags:{},
+                tagsNum:0
             }
         },
     };

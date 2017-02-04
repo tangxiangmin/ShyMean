@@ -38,9 +38,11 @@ class BlogController extends Controller{
     }
 
     public function tags(){
-        $res = $this->model->distinct()->field('category')->select();
+        $res['categories'] = $this->model->field('category, COUNT(category) AS category_num')->groupBy('category')->select();
+        $res['tags'] = $this->model->reset()->field('tags')->select();
         exit(json_encode($res));
     }
+
     public function test(){
         var_dump($this->model->orderBy('id')->select());
     }

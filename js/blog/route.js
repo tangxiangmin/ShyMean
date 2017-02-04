@@ -9,14 +9,16 @@ require.config({
         'index':'blog/blog-index',
         'article':'blog/blog-article',
         'tags':'blog/blog-tags',
+        'archives':'blog/blog-archives',
     }
 });
 
-define(['index','article','tags'], function () {
+define(['index','article','tags','archives'], function () {
     // 引入组件
     var blogIndex = require('index');
     var article = require('article');
     var tags = require('tags');
+    var archives = require('archives');
 
 
     // 返回路由配置
@@ -30,5 +32,9 @@ define(['index','article','tags'], function () {
     },{
         path: '/tags',
         component: tags
+    },{
+        path: '/archives/:type/',
+        name: 'archives',
+        component: archives
     }];
 });
