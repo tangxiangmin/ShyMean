@@ -4,9 +4,13 @@
  */
 
 // 去除浏览器外边距
+
 body {
     margin: 0;
+
 }
+
+
 
 // HTML新增标签元素在IE9一下正确显示
 article,
@@ -56,6 +60,10 @@ textarea {
     outline: 0;
 }
 
+// 隐藏滚动条宽度，兼容什么的能吃吗？
+::-webkit-scrollbar{
+    width: 0;
+}
 
 // 选择盒子模型，好想使用"*"统配选择符
 * {

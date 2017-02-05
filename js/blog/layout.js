@@ -22,12 +22,24 @@ define([], function () {
     var header = {
         template:`<header class="bg-gray">
                     <div class="container page-hd">
-                        <h1 class="page-title"><router-link to="/">{{msg.title}}</router-link></h1>
-                        <nav class="page-nav">
+                        <h1 class="page-title">
+                            <router-link to="/">{{msg.title}}</router-link>
+                        </h1>
+                        <nav class="page-nav hide-md">
                             <router-link to="/" :class="['nav-item']"><i :class="['iconfont','icon-home']"></i> 首页</router-link>
                             <router-link to="/tags" :class="['nav-item']"><i :class="['iconfont','icon-tag']"></i> 标签</router-link>
-                            <router-link to="/archives/''" :class="['nav-item']"><i :class="['iconfont','icon-tag']"></i>归档</router-link>
+                            <router-link :to="{name:'articleList',params:{type:'archives',name:'archives'}}" :class="['nav-item']"><i :class="['iconfont','icon-tag']"></i>归档</router-link>
                         </nav>
+                        <div class="show-md">
+                            <div class="btn-list ">
+                                <div class="btn-icon">
+                                    <span class="btn-line"></span>
+                                    <span class="btn-line"></span>
+                                    <span class="btn-line"></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </header>`,
         data:function(){
@@ -70,10 +82,9 @@ define([], function () {
 					<p>一个不学无数且无趣的人。</p>
 				</div>
 				<div class="side-nav">
-					<a href="">43<br>归档</a>
-					<a href="">43<br>标签</a>
-					<a href="">43<br>分类</a>
-					<a href="">43<br>书架</a>
+					<a href=""><i class="iconfont icon-blog"></i> <br>博客</a>
+					<a href=""><i class="iconfont icon-lab"></i> <br>实验室</a>
+					<a href=""><i class="iconfont icon-bookshelf"></i> <br>书架</a>
 				</div>
 				<div class="author-contact">
 					<a href="#"><i class="iconfont icon-github"></i> GitHub</a>
@@ -135,9 +146,9 @@ define([], function () {
 
     var layout = {
         showAside:false,
-        hd:header,
-        ft:footer,
-        sd:aside
+        header:header,
+        footer:footer,
+        aside:aside
     };
 
     return layout;

@@ -33,7 +33,6 @@ class BlogController extends Controller{
 
         $res['articles'] = $articles;
         $res['page'] = [
-            'name'=>'index',
             'num'=>$num,
             'total'=>$total,
         ];
@@ -41,7 +40,7 @@ class BlogController extends Controller{
         exit(json_encode($res));
     }
 
-    public function article(){
+    public function articleDetail(){
         $id = $_REQUEST['id'];
         $article = $this->model->where('id = '.$id)->selectOne();
 
@@ -53,6 +52,35 @@ class BlogController extends Controller{
         $res['categories'] = $this->model->field('category, COUNT(category) AS category_num')->groupBy('category')->select();
         $res['tags'] = $this->model->reset()->field('tags')->select();
         exit(json_encode($res));
+    }
+
+    public function articleList(){
+        $type = $_POST['type'];
+        $name = $_POST['name'];
+        $where = '';
+
+        switch ($type){
+            case 'archives':
+                $where = "id > 0";
+                break;
+            case 'category':
+                $where = " category = '$name'";
+                break;
+            case 'tag':
+                $where = " tags LIKE '%$name%'";
+                break;
+            default :
+                break;
+        }
+
+
+        $res = $this->model
+                    ->field('Year(FROM_UNIXTIME(created_at)) AS year, created_at ,title, id')
+                    ->where($where)
+                    ->orderBy('created_at')
+                    ->select();
+        exit(json_encode($res));
+
     }
 
     public function test(){

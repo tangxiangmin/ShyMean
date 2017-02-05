@@ -7,19 +7,19 @@ require.config({
     baseUrl:'/js',
     paths:{
         'index':'blog/blog-index',
-        'article':'blog/blog-article',
+        'articleDetail':'blog/blog-articleDetail',
         'tags':'blog/blog-tags',
-        'archives':'blog/blog-archives',
+        'articleList':'blog/blog-articleList',
     }
 });
 
-define(['index','article','tags','archives'], function () {
+define(['index','articleDetail','tags','articleList'], function () {
+
     // 引入组件
     var blogIndex = require('index');
-    var article = require('article');
+    var articleDetail = require('articleDetail');
     var tags = require('tags');
-    var archives = require('archives');
-
+    var articleList = require('articleList');
 
     // 返回路由配置
     return  [{
@@ -32,13 +32,13 @@ define(['index','article','tags','archives'], function () {
     },{
         path: '/articleDetail/:id',
         name: 'articleDetail',
-        component: article
+        component: articleDetail
     },{
         path: '/tags',
         component: tags
     },{
-        path: '/archives/:type/',
-        name: 'archives',
-        component: archives
+        path: '/articleList/:type/:name',
+        name: 'articleList',
+        component: articleList
     }];
 });

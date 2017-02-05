@@ -70,9 +70,7 @@
 
 // 功能按钮
 %page-btn {
-	position: fixed;
-	z-index: 9999;
-	right: 50px;
+
 	width: 30px;
 	height:30px;
 
@@ -83,11 +81,18 @@
 	@include fx-main(center);
 	@include fx-cross(center);
 
-
 }
-
+.side-tool {
+	%page-btn {
+		position: fixed;
+		z-index: 9999;
+		right: 50px;
+	}
+	.btn-list {
+		bottom: 65px;
+	}
+}
 .btn-list {
-	bottom: 65px;
 	@extend %page-btn;
 	&.hover {
 		.btn-line {

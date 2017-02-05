@@ -29,7 +29,7 @@ define(['marked'], function () {
 			</div>
 			`,
         mounted:function(){
-            this.$http.post('/Home/Blog/article',{id: this.$route.params.id}).then((res)=>{
+            this.$http.post('/Home/Blog/articleDetail',{id: this.$route.params.id}).then((res)=>{
                 return res.json();
             }).then((article)=>{
                 article['content'] = marked(article['content']);

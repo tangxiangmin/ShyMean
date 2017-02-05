@@ -11,7 +11,7 @@ define([], function () {
 						当前共 {{categories.length}} 个分类
 					</div>
 					<div class="sec-bd category-type">
-					    <router-link :to="{name: 'archives', params: { type: category.category}}" :class="['btn','btn-border']" v-for="category in categories">{{category.category}} ({{category.category_num}})</router-link >
+					    <router-link :to="{name:'articleList',params:{type:'category',name:category.category}}" :class="['btn','btn-border']" v-for="category in categories">{{category.category}} ({{category.category_num}})</router-link >
 
 					</div>
 				</div>
@@ -21,7 +21,7 @@ define([], function () {
 					</div>
 					<div class="sec-bd category-label">
 					    <router-link
-					        :to="{name: 'archives', params: { type: tag}}"
+					        :to="{name:'articleList',params:{type:'tag',name:tag}}"
 					        :class="['hover-hight',{'text-xs':tag_num<=2},{'text-sm':tag_num>2 && tag_num <=5},{'text-md':tag_num>5 && tag_num<=10},{'text-lg':tag_num>10}]"
 					        v-for="(tag_num,tag) in tags"
 					    >{{tag}}</router-link >

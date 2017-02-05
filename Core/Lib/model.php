@@ -33,7 +33,7 @@ class Model {
 
     // 拼接sql语句
     private function setSql(){
-        $sql = 'SELECT '.$this->distinct.$this->field.' FROM '.$this->table.$this->group.$this->order.$this->limit;
+        $sql = 'SELECT '.$this->distinct.$this->field.' FROM '.$this->table.$this->where.$this->group.$this->order.$this->limit;
         return $sql;
     }
 
@@ -59,6 +59,7 @@ class Model {
 
     // 查询
     public function select(){
+
         $res = $this->conn->query($this->setSql());
         return $res->fetchAll(\PDO::FETCH_ASSOC);
     }

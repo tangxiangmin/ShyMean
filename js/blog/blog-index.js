@@ -48,7 +48,9 @@ define(['pagination','marked'], function () {
         methods:{
             getData: function () {
                 this.$http.post('/Home/Blog/index',{active: this.active}).then((res)=>{
+
                     return res.json();
+
                 }).then((res)=>{
                     let articles = res['articles'], page=res['page'];
                     articles = articles.map((val)=>{
@@ -59,6 +61,7 @@ define(['pagination','marked'], function () {
                     this.$set(this,'articles',articles);
 
                     page.active = this.active;
+                    page.name = 'index';
                     this.$set(this,'page',page);
                 });
             },
