@@ -17,10 +17,10 @@ define(['marked'], function () {
 
             <article class="article-item">
 				<div class="item-hd text-center">
-					<h2 class="item-title"><a href="#">{{article.title}}</a></h2>
+					<h2 class="item-title">{{article.title}}</h2>
 					<div class="item-info">
 						发表于{{article.created_at}} |
-						分类于 <a href="#">{{article.category}}</a> |
+						分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category}}"  >{{article.category}}</router-link > |
 						评论 {{article.comment_id}}
 					</div>
 				</div>

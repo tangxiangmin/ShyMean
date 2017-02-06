@@ -41,9 +41,9 @@ require(['vue','vue-router','vue-resource','router-config','layout','pagination'
 
     // layout
     let layout = require('layout');
-    Vue.component('blog-hd',layout.header);
-    Vue.component('blog-ft',layout.footer);
-    Vue.component('blog-sd',layout.aside);
+    Vue.component('blog-header',layout.header);
+    Vue.component('blog-footer',layout.footer);
+    Vue.component('blog-aside',layout.aside);
 
     // 组件
     let pagination = require('pagination');

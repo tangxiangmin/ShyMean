@@ -14,14 +14,14 @@
 	<div id="blog" v-cloak >
 
 		<main :class="['page-mn',{'active':showAside}]">
-			<blog-hd ></blog-hd>
+			<blog-header ></blog-header>
 			<!--<transition name="fade">-->
 				<router-view ></router-view>
 			<!--</transition>-->
-			<blog-ft></blog-ft>
+			<blog-footer></blog-footer>
 		</main>
 
-		<blog-sd @aside="toggleAside"></blog-sd>
+		<blog-aside @aside="toggleAside"></blog-aside>
 	</div>
 </body>
 </html>
