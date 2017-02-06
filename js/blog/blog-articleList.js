@@ -84,20 +84,22 @@ define(['help'], function () {
         computed:{
             countWord: function () {
                 let type = this.$route.params.type;
+                let name = this.$route.params.name;
                 let word = '';
                 switch (type){
                     case 'archives':
                         word = 'OK!目前共计 '+this.num+' 篇日志。继续努力。';
                         break;
                     case 'category':
-                        word = type + ' 分类。';
+                        word = name + ' 分类。';
                         break;
                     case 'tag':
-                        word = type + ' 标签';
+                        word = name + ' 标签';
                         break;
                     default :
                         word = '程序又出BUG啦~~~';
                 }
+
                 return word;
 
             }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Home\Model;
+namespace App\Model;
 use Core\Lib\Model;
 
 class ArticleModel extends Model {
@@ -10,6 +10,7 @@ class ArticleModel extends Model {
         parent::__construct($this->tablename);
     }
 
-    // 这个模型现在貌似没有什么用了。
-
+    public function getAll(){
+        return parent::select();
+    }
 }

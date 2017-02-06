@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+// 用于在页面重复出现，但是与其他组件没有通用之处，且不能单独提升为一个组件的的样式
+// 这类样式应当非常独立，不依赖于任何其他组件
+
+.back {
+	display: block;
+	padding-left: 5px;
+
+	.iconfont {
+		float: left;
+		@include transition;
+	}
+	&:hover {
+		.iconfont {
+			@include transform(translateX(-5px));
+		}
+	}
+}
+

@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+// 页面公共样式的父类，这里只书写使用占位符继承的抽象样式父类
+// hover效果
+%hover-underline {
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -3px;
+		height: 2px;
+		width: 100%;
+		background: $dark;
+		transform: scaleX(0);
+		@include transition(all ease .3s);
+	}
+	&:hover:after {
+		transform: scaleX(1);
+	}
+}
+%hover-highlight {
+	color: #666;
+	@include border-b;
+	@include transition(border-color ease .3s);
+	&:hover {
+		color: #000;
+		border-color: #000;
+	}
+}
+
+%hover-dark {
+	@include transition(background-color linear .2s);
+	&:hover {
+		@extend .bg-dark;
+		border: 1px solid $dark;
+	}
+}
+// 阴影
+%shadow {
+	&:before,&:after {
+		content:"";
+		position:absolute;
+		z-index:-1;
+		bottom:20px;
+
+		width:60%;
+		height:20px;
+		box-shadow:0 13px 10px rgba(0, 0, 0, 0.4);
+	}
+	&:before {
+		left:10px;
+		transform:rotate( -4deg);
+	}
+	&:after {
+		right:10px;
+		transform:rotate(4deg);
+	}
+}

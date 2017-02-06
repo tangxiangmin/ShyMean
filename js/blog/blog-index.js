@@ -20,10 +20,11 @@ define(['pagination','marked'], function () {
         template:`<div :class="['page-bd','container']">
                 <article class="article-item" v-for="article in articles">
                     <div class="item-hd">
-                        <h2 class="item-title"><a href="#">{{article.title}}</a></h2>
+                        <h2 class="item-title">
+                            <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
                         <div class="item-info">
                             发表于{{article.created_at}} |
-                            分类于 <a href="#">{{article.category}}</a> |
+                            分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category}}"  >{{article.category}}</router-link > |
                             评论 {{article.comment_id}}
                         </div>
                     </div>
@@ -52,14 +53,13 @@ define(['pagination','marked'], function () {
                     return res.json();
 
                 }).then((res)=>{
-                    let articles = res['articles'], page=res['page'];
+                    let articles = res['articles'], page = res['page'];
                     articles = articles.map((val)=>{
                         val['content'] = marked(val['content']);
                         return val;
                     });
 
                     this.$set(this,'articles',articles);
-
                     page.active = this.active;
                     page.name = 'index';
                     this.$set(this,'page',page);

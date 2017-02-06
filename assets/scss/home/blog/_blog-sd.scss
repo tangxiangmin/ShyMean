@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+// 博客侧边栏
+
+.page-sd {
+
+
+}
+
+.side-container {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	right:0;
+
+	width: 320px;
+	height:100%;
+	padding: 0 $basepadding*2;
+
+	color: $gray;
+	text-align: center;
+	background-color: $dark;
+
+	@include transition;
+	@include transform(translateX(320px));
+	&.active {
+		@include transform(translateX(0px));
+	}
+
+	a {
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.author-info {
+		margin: $basemargin 0;
+	}
+
+	.author-contact {
+		a {
+			margin-right: 10px;
+			padding: 5px 0;
+			@include border-b;
+			&:before {
+				content: '';
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 5px;
+				width: 4px;
+				height: 4px;
+				background: $yellow;
+				border-radius: 2px;
+			}
+		}
+	}
+	.side-nav {
+		font-size: 0;
+		margin: $basemargin 0;
+		a {
+			display: inline-block;
+			width: 60px;
+			font-size: 14px;
+			&:not(:first-of-type){
+				@include border-l;
+			}
+		}
+	}
+}
+
+// 功能按钮
+%page-btn {
+
+	width: 30px;
+	height:30px;
+
+	background: $dark;
+	cursor: pointer;
+
+	@include fx;
+	@include fx-main(center);
+	@include fx-cross(center);
+
+}
+.side-tool {
+	%page-btn {
+		position: fixed;
+		z-index: 9999;
+		right: 50px;
+	}
+	.btn-list {
+		bottom: 65px;
+	}
+}
+.btn-list {
+	@extend %page-btn;
+	&.hover {
+		.btn-line {
+			&:first-child {
+				@include transform(translate(-8px,6px) rotate(-45deg));
+
+			}
+			&:last-child {
+				@include transform(translate(-8px,-6px) rotate(45deg));
+			}
+		}
+	}
+	&.close{
+		.btn-line{
+			transform-origin: center;
+			&:nth-of-type(2){
+				opacity: 0;
+			}
+			&:first-child {
+				@include transform(translateY(8px) rotate(-45deg));
+
+			}
+			&:last-child {
+				@include transform(translateY(-8px) rotate(45deg));
+			}
+		}
+	}
+	.btn-icon {
+		overflow: hidden;
+		width: 20px;
+
+		font-size: 0;
+		line-height: 8px;
+
+		.btn-line {
+			display: inline-block;
+			width: 20px;
+			height: 2px;
+			background: #fff;
+			@include transition;
+		}
+
+	}
+}
+.btn-top {
+	bottom: 20px;
+	color: #fff;
+
+	@extend %page-btn;
+	@include transition;
+	@include transform(translateY(80px));
+	i {
+		font-size: 20px;
+		@include transition(all .2s ease);
+	}
+	&:hover {
+		i {
+			@include transform(translateY(-2px));
+		}
+	}
+	&.active {
+		@include transform(translateY(0px));
+	}
+}
