@@ -126,3 +126,100 @@ __技术框架__
 
 ### 2017-2-6
 整个项目的博客前端部分已经完成，今天开始搭建项目的后台。后台是用样式框架还是自己写呢...好吧，直接用Bootstarp吧，也不用ACE了。
+额，我最后还是打算自己写一个样式库。
+
+### 2017-2-10
+这两天又重新在纠结CSS的文件管理和样式命名，最终下定决定使用`BEM`。然而后台还没有开始写，由于之前的测试数据太少了。趁着今晚的功夫用`Node`写了一个脚本，将之前`hexo`保存在本地的`_posts`目录下的博客文章全部导出到一个`sql`文件中，然后移动到数据库。
+遇见的一个小问题是没有转义内容中的引号和双引号，导致插入数据库出现错误。
+```
+/**
+ * Created by admin on 2017/2/10.
+ */
+
+
+let fs = require('fs');
+
+let floder ='test';
+let files = fs.readdirSync(floder,'utf-8');
+
+// 正则
+
+let reTitle = /title:\s*([^]*?)[\r\n]/;
+let reDate = /date:\s*([^]*?)[\r\n]/;
+
+let reCategory = /categories:\s*-\s*([^]*?)[\r\n]/;
+let reTags = /tags:\s*-\s*([^]*?)[\r\n]/;
+let re = /---([^]*?)---([^]*)/;
+
+
+let count = 0;
+let ouputCount = 0;
+let start = new Date();
+
+// 重置测试文件
+let output = 'output.txt';
+
+if (fs.existsSync(output)){
+    fs.unlink(output);
+}
+
+// 拆分头部信息和主要内容
+let sql = 'INSERT INTO shymean_article(`title`, `content`, `category`, `tags`, `created_at`) VALUES';
+fs.writeFile(output,sql,function (err) {
+    if (err) throw err;
+
+    files.forEach((file)=>{
+        fs.readFile(floder+'/'+file,"utf-8",function (err,data) {
+            let value = '(';
+            if(err) throw err;
+
+            let head = re.exec(data)[1];
+            let content = re.exec(data)[2];
+            content = content.replace(/'/g,"\"");
+            // 拆分头部信息
+            let title = getMsg(head,reTitle);
+            let date = getMsg(head,reDate);
+            let category = getMsg(head,reCategory);
+            let tags = getMsg(head,reTags);
+
+            // 将时间字符串转换成时间戳
+            date = new Date(Date.parse(date.replace(/-/g, "/")));
+            date = date.getTime();
+
+            // console.log(title);
+            // console.log(date);
+            // console.log(category);
+            // console.log(tags);
+
+            value += `'${title}','${content}','${category}','${tags}','${date}'`;
+
+            value += ')';
+
+            count++;
+            if (count != files.length) {
+                value += ',';
+            }
+
+            fs.appendFile(output, value, function(err){
+                if (err) throw err;
+                ouputCount++;
+                // console.log("成功获取 " + file);
+                if (ouputCount == files.length) {
+                    let end = new Date();
+                    console.log("总计："+ (end - start) / 1000 + '秒');
+                }
+            })
+        })
+    });
+});
+
+
+
+function getMsg(str,re) {
+    let res = re.exec(str);
+    return res && res[1] || '';
+}
+
+
+
+```
