@@ -1,66 +1,71 @@
 @charset "utf-8";
 // 归档
 
-.archives-wrap {
+.archives {
     border-left: 4px solid $gray;
-}
-@mixin archives-dot($r) {
-    &:before {
-        width: $r;
-        height: $r;
-        border-radius: $r;
-        left: -($r+4)/2;
-    }
-}
-
-%archives {
-    position: relative;
-
-    padding-left: $basepadding;
-    &:before {
-        content: '';
-        position: absolute;
-        z-index: 1;
-
-        top: 0;
-        bottom: 0;
-        margin: auto 0;
-
-        background: #aaa;
-    }
-}
-
-.archives-count {
-    @extend %archives;
-    @include archives-dot(12px);
-    position: relative;
-    top: -0.5em;
-}
-
-.archives-title {
-    font-size: 20px;
-    font-weight: normal;
-    padding-top: $basepadding*2;
-    padding-bottom: $basepadding*2;
-
-    @include archives-dot(10px);
-    @extend %archives;
-}
-
-.archives-item {
-    line-height: 3em;
-    color: #666;
-    border-bottom: 2px dashed $gray;
-
-    @extend %archives;
-    @include archives-dot(6px);
-    &:hover {
-        color: #000;
+    @mixin archives-dot($r) {
         &:before {
-            background: $dark;
+            width: $r;
+            height: $r;
+            border-radius: $r;
+            left: -($r+4)/2;
         }
     }
-    .post-time {
+
+    %archives {
+        position: relative;
+
+        padding-left: $basepadding;
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+
+            background: #aaa;
+        }
+    }
+
+    .archives_count {
+        @extend %archives;
+        @include archives-dot(12px);
+        position: relative;
+        top: -0.5em;
+    }
+
+    .archives_title {
+        font-size: 20px;
+        font-weight: normal;
+        padding-top: $basepadding*2;
+        padding-bottom: $basepadding*2;
+
+        @include archives-dot(10px);
+        @extend %archives;
+    }
+
+    .archives_item {
+        line-height: 3em;
+        color: #666;
+        border-bottom: 2px dashed $gray;
+
+        @extend %archives;
+        @include archives-dot(6px);
+
+        &:hover {
+            color: #000;
+            &:before {
+                background: $dark;
+            }
+        }
+    }
+    .archives_link {
+        @include block;
+        @include text-overflow;
+    }
+    .archives_date{
         font-size: 12px;
         margin-right: 15px;
     }

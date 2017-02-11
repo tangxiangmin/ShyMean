@@ -28,8 +28,26 @@ define([], function () {
         return year + '-' + month + '-' + day;
     };
 
+    // 深复制，用于分页组件传递参数
+    var extend = function(target, options) {
+
+        for (name in options) {
+            copy = options[name];
+            if (copy instanceof Array) {
+                target[name] = extend([], copy);
+            } else if (copy instanceof Object) {
+                target[name] = extend({}, copy);
+            } else {
+                target[name] = options[name];
+            }
+        }
+
+        return target;
+    }
+
 
     return {
-        dateFormat: dateFormat
+        dateFormat: dateFormat,
+        extend: extend
     }
 });

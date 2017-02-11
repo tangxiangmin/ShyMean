@@ -10,18 +10,19 @@ define(['xm'], function () {
     return {
         template:`<div :class="['page-bd','container']">
 
-				<div class="archives-wrap">
-				    <div class="archives-count">{{countWord}}</div>
+				<div class="archives">
+				    <div class="archives_count">{{countWord}}</div>
 				    <section v-for="group in articleGroup">
-                        <div class="archives-title">
+                        <div class="archives_title">
                             <strong>{{group.year}}</strong>
                         </div>
-                        <div class="archives-item" v-for="article in group.articles">
-                           <router-link :to="{ name: 'articleDetail', params: { id: article.id }}"><span class="post-time">{{article.created_at | dateFormat}}</span> {{article.title}}</router-link>
+                        <div class="archives_item" v-for="article in group.articles">
+                           <router-link class="archives_link" :to="{ name: 'articleDetail', params: { id: article.id }}"><span class="archives_date">{{article.created_at | dateFormat}}</span> {{article.title}}</router-link>
 
                         </div>
 				    </section>
 				</div>
+				<pagination :page="page" :active="active" name="articleList"></pagination>
 			</div>
 			`,
         mounted:function(){
@@ -30,34 +31,40 @@ define(['xm'], function () {
         methods:{
             getData: function () {
                 let postData = this.$route.params;
+
+                if (postData.active == ''){
+                    postData.active = 1;
+                }
+
                 this.$http.post('/Home/Blog/articleList',postData).then((res)=>{
                     return res.json();
                 }).then((res)=>{
+                    var lists = res['lists'];
+                    var page = res['page'];
 
-                    var yearFlag = res && res[0] && res[0].year;
-                    var data = [];
+                    var articleGroup = [];
                     var cursor = 0;
 
-                    data[cursor] = {
-                        year: res && res[0] && res[0].year,
+                    articleGroup[cursor] = {
+                        year: lists && lists[0] && lists[0].year,
                         articles: []
                     };
 
-                    res.forEach((val)=>{
-                        if (val.year !== data[cursor].year){
+                    lists.forEach((val)=>{
+                        if (val.year !== articleGroup[cursor].year){
                             cursor++;
-                            data[cursor] = {
+                            articleGroup[cursor] = {
                                 year: val.year,
                                 articles: [val]
                             };
                         }else {
-                            data[cursor].articles.push(val);
+                            articleGroup[cursor].articles.push(val);
                         }
                     });
 
-
-                    this.num = res.length;
-                    this.$set(this,'articleGroup',data);
+                    this.num = page.total;
+                    this.$set(this,'articleGroup',articleGroup);
+                    this.$set(this,'page',page);
                 })
             }
         },
@@ -70,11 +77,16 @@ define(['xm'], function () {
                     }
                 ],
                 num:0,
+                page:{},
+                active: this.$route.params.active || 1
             }
         },
         watch:{
             $route: function (to, form) {
+                this.active = to.params.active;
+                console.log(this.active);
                 this.getData();
+                console.log(this.articleGroup);
             }
         },
         filters:{

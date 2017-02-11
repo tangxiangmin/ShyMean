@@ -34,7 +34,7 @@ define(['index','articleDetail','tags','articleList'], function () {
         path: '/tags',
         component: tags
     },{
-        path: '/articleList/:type/:name',
+        path: '/articleList/:type/:name/:active',
         name: 'articleList',
         component: articleList
     }];

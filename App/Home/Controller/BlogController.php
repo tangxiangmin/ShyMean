@@ -83,12 +83,22 @@ class BlogController extends Controller{
                 break;
         }
 
-        $res = $this->model
+        $num = 20;
+        $total = intval($this->model->where($where)->count());
+        $active = $_REQUEST['active'] - 1 || 0;
+
+        $res['lists'] = $this->model
                     ->field('Year(FROM_UNIXTIME(created_at)) AS year, created_at ,title, id')
                     ->where($where)
                     ->orderBy('created_at')
+                    ->limit($num,$active*$num)
                     ->select();
 
+        $res['page'] = array(
+            'num'=>$num,
+            'total'=>$total,
+        );
         exit(json_encode($res));
+
     }
 }

@@ -49,6 +49,12 @@ require(['/js/config.js'], function () {
                     this.showAside = !this.showAside;
                 },
             },
+            watch:{
+                $route: function () {
+                    document.body.scrollTop = 0;
+
+                }
+            }
 
         });
 

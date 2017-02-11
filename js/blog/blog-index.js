@@ -24,7 +24,7 @@ define(['pagination','marked'], function () {
                             <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
                         <div class="item-info">
                             发表于{{article.created_at}} |
-                            分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category}}"  >{{article.category}}</router-link > |
+                            分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  >{{article.category}}</router-link > |
                             评论 {{article.comment_id}}
                         </div>
                     </div>
@@ -33,7 +33,7 @@ define(['pagination','marked'], function () {
                         <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
                     </div>
                 </article>
-				<pagination :page="page" ></pagination>
+				<pagination :page="page" :active="active" name="index"></pagination>
 			</div>
 			`,
         data:function(){
@@ -60,8 +60,8 @@ define(['pagination','marked'], function () {
                     });
 
                     this.$set(this,'articles',articles);
-                    page.active = this.active;
-                    page.name = 'index';
+
+                    //page.active = this.active;
                     this.$set(this,'page',page);
                 });
             },

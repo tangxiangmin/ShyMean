@@ -39,7 +39,7 @@ define([], function () {
                         <nav :class="['page-nav',{active:isActive}]">
                             <router-link to="/index/1" :class="['nav-item']"><i :class="['iconfont','icon-home']"></i> 首页</router-link>
                             <router-link to="/tags" :class="['nav-item']"><i :class="['iconfont','icon-tag']"></i> 标签</router-link>
-                            <router-link :to="{name:'articleList',params:{type:'archives',name:'archives'}}" :class="['nav-item']"><i :class="['iconfont','icon-archives']"></i> 归档</router-link>
+                            <router-link :to="{name:'articleList',params:{type:'archives',name:'archives',active:1}}" :class="['nav-item']"><i :class="['iconfont','icon-archives']"></i> 归档</router-link>
                         </nav>
 
 
