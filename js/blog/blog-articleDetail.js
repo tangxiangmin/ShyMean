@@ -29,6 +29,7 @@ define(['marked'], function () {
 			</div>
 			`,
         mounted:function(){
+            document.body.scrollTop = 0;
             this.$http.post('/Home/Blog/articleDetail',{id: this.$route.params.id}).then((res)=>{
                 return res.json();
             }).then((article)=>{

@@ -2,24 +2,21 @@
 /**
  * 文章归档
  */
-require.config({
-    baseUrl:'/js/',
-    paths:{
-        'help':'base/help',
-    }
-})
 
-define(['help'], function () {
+
+define(['xm'], function () {
+    var xm = require('xm');
+
     return {
         template:`<div :class="['page-bd','container']">
 
 				<div class="archives-wrap">
 				    <div class="archives-count">{{countWord}}</div>
-				    <section v-for="d in data">
+				    <section v-for="group in articleGroup">
                         <div class="archives-title">
-                            <strong>{{d.year}}</strong>
+                            <strong>{{group.year}}</strong>
                         </div>
-                        <div class="archives-item" v-for="article in d.articles">
+                        <div class="archives-item" v-for="article in group.articles">
                            <router-link :to="{ name: 'articleDetail', params: { id: article.id }}"><span class="post-time">{{article.created_at | dateFormat}}</span> {{article.title}}</router-link>
 
                         </div>
@@ -37,32 +34,36 @@ define(['help'], function () {
                     return res.json();
                 }).then((res)=>{
 
-                    let data = [];
+                    var yearFlag = res && res[0] && res[0].year;
+                    var data = [];
+                    var cursor = 0;
+
+                    data[cursor] = {
+                        year: res && res[0] && res[0].year,
+                        articles: []
+                    };
 
                     res.forEach((val)=>{
-                        let last = data[this.data.length - 1];
-
-                        let articleGroup = {
-                            year:val.year,
-                            articles:[val]
-                        };
-
-                        if (!last || last.year == ''){
-                            data[0] = articleGroup;
-                        }else if (val.year != last.year ){
-                            data.push(articleGroup);
+                        if (val.year !== data[cursor].year){
+                            cursor++;
+                            data[cursor] = {
+                                year: val.year,
+                                articles: [val]
+                            };
                         }else {
-                            last.articles.push(val);
+                            data[cursor].articles.push(val);
                         }
                     });
+
+
                     this.num = res.length;
-                    this.$set(this,'data',data);
+                    this.$set(this,'articleGroup',data);
                 })
             }
         },
         data:function(){
             return {
-                data:[
+                articleGroup:[
                     {
                         year:'',
                         articles:[],
@@ -78,7 +79,7 @@ define(['help'], function () {
         },
         filters:{
             dateFormat: function (val) {
-                return new Date(val*1000).toLocaleString().split(" ")[0].replace(/\//g,'-');
+                return xm.dateFormat(val);
             }
         },
         computed:{
@@ -106,3 +107,4 @@ define(['help'], function () {
         }
     };
 });
+

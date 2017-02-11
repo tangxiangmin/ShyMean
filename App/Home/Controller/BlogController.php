@@ -22,7 +22,7 @@ class BlogController extends Controller{
 
     // 博客首页文章列表及分页
     public function index(){
-        $num = 2;
+        $num = 10;
         $total = intval($this->model->count());
 
         $active = $_REQUEST['active'] - 1;
@@ -36,10 +36,12 @@ class BlogController extends Controller{
         }
 
         $res['articles'] = $articles;
-        $res['page'] = [
+        // 那台虚拟机不支持[]的格式...
+        $res['page'] = array(
             'num'=>$num,
             'total'=>$total,
-        ];
+        );
+
 
         exit(json_encode($res));
     }
