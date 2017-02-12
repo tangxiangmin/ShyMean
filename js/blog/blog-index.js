@@ -2,15 +2,7 @@
  *  首页文章列表
  */
 
-require.config({
-    baseUrl:'/js',
-    paths:{
-        'pagination':'component/pagination',
-        'marked':'lib/marked',
-    }
-});
-
-define(['pagination','marked'], function () {
+define(['marked'], function () {
 
     var marked = require('marked');
 
@@ -18,19 +10,18 @@ define(['pagination','marked'], function () {
     return {
         props:[],
         template:`<div :class="['page-bd','container']">
-                <article class="article-item" v-for="article in articles">
-                    <div class="item-hd">
-                        <h2 class="item-title">
-                            <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
-                        <div class="item-info">
-                            发表于{{article.created_at}} |
-                            分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  >{{article.category}}</router-link > |
-                            评论 {{article.comment_id}}
-                        </div>
+                <article class="test article" v-for="article in articles">
+                    <h2 class="article_hd">
+                        <router-link class="article_title" :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
+                    </h2>
+                    <div class="article_info">
+                        发表于{{article.created_at}} |
+                        分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}" class="hover-highlight" >{{article.category}}</router-link > |
+                        评论 {{article.comment_id}}
                     </div>
-                    <div class="item-bd" v-html="article.content"></div>
-                    <div class="item-ft">
-                        <router-link :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
+                    <div class="article_content" v-html="article.content"></div>
+                    <div class="article_ft">
+                        <router-link class="hover-highlight" :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
                     </div>
                 </article>
 				<pagination :page="page" :active="active" name="index"></pagination>

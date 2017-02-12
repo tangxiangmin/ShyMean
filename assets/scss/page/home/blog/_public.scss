@@ -1,5 +1,43 @@
 @charset "utf-8";
 
+// hover效果
+.hover-underline {
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 2px;
+        width: 100%;
+        background: $dark;
+        transform: scaleX(0);
+        @include transition(all ease .3s);
+    }
+    &:hover:after {
+        transform: scaleX(1);
+    }
+}
 
+%hover-highlight {
+    color: #666;
+    @include border-b;
+    @include transition(border-color ease .3s);
+    &:hover {
+        color: #000;
+        border-color: #000;
+    }
+}
 
+.hover-highlight {
+    @extend %hover-highlight;
+}
+
+%hover-dark {
+    @include transition(background-color linear .2s);
+    &:hover {
+        @extend .bg-dark;
+        border: 1px solid $dark;
+    }
+}
 

@@ -1,19 +1,14 @@
 @charset "utf-8";
 /**
-	页面样式
+	前端页面样式
  */
 
-
+// 公用
 @import 'page/public/_mixin';
 @import 'page/public/_extend';
 @import 'page/public/_single';
 @import 'page/public/_common';
 
-
-@import 'page/index/_index';
-
-@import 'page/lab/_lab';
-
-@import "page/blog/_blog";
-
+// 博客
+@import "page/home/_blog";
 

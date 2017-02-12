@@ -12,6 +12,8 @@ require.config({
         'vue-resource':'lib/vue-resource.min',
         // 全局路由配置
         'router-config':'blog/route',
+        //插件
+        'marked':'lib/marked',
         // 辅助函数
         'xm':'base/function',
         // 布局
@@ -22,6 +24,8 @@ require.config({
         'layout':'blog/layout',
         // 组件
         'pagination':'component/pagination',
+        'tab':'component/tab',
+        'catalogue':'component/catalogue',
 
     }
 });

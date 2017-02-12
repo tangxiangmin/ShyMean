@@ -6,23 +6,26 @@
 define([], function () {
     return {
         template:`<div :class="['page-bd','container']">
-				<div class="category-sec">
-					<div class="sec-hd">
+				<div class="classify">
+					<div class="classify_hd">
 						当前共 {{categories.length}} 个分类
 					</div>
-					<div class="sec-bd category-type">
-					    <router-link :to="{name:'articleList',params:{type:'category',name:category.category || 'tmp',active:1}}" :class="['btn','btn-border']" v-for="category in categories">{{category.category}} ({{category.category_num}})</router-link >
+					<div class="category">
+					    <router-link
+					    :to="{name:'articleList',params:{type:'category',name:category.category || 'tmp',active:1}}"
+					    class="btn btn-border category_item"
+					    v-for="category in categories">{{category.category}} ({{category.category_num}})</router-link >
 
 					</div>
 				</div>
-				<div class="category-sec">
-					<div class="sec-hd">
+				<div class="classify">
+					<div class="classify_hd">
 						当前共 {{tagsNum}} 个标签
 					</div>
-					<div class="sec-bd category-label">
+					<div class="tag">
 					    <router-link
 					        :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}"
-					        :class="['hover-hight',{'text-xs':tag_num<=2},{'text-sm':tag_num>2 && tag_num <=5},{'text-md':tag_num>5 && tag_num<=10},{'text-lg':tag_num>10}]"
+					        :class="['hover-hight','tag_item',{'text-xs':tag_num<=2},{'text-sm':tag_num>2 && tag_num <=5},{'text-md':tag_num>5 && tag_num<=10},{'text-lg':tag_num>10}]"
 					        v-for="(tag_num,tag) in tags"
 					    >{{tag}}</router-link >
 

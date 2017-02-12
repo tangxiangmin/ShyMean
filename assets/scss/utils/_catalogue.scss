@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.catalogue {
+    text-align: left;
+    .catalogue_group {
+        margin: 0 0 0 20px;
+        padding: 0;
+        list-style: none;
+    }
+    .catalogue_item {
+        line-height: 30px;
+    }
+}

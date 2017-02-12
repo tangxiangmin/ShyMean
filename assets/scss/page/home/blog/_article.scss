@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+.article{
+    margin-bottom:rem(60);
+
+    &_hd {
+        font-weight: normal;
+        margin:0 0 10px 0 ;
+    }
+    &_title {
+        @extend %hover-underline;
+    }
+
+    &_info {
+        font-size: 12px;
+        color: $text-gray;
+        word-spacing: 3px;
+    }
+
+    // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
+    &_content {
+        margin: 10px 0;
+        line-height: 2em;
+        a {
+            color: $cyan;
+            text-decoration: underline;
+            &:hover {
+                color: darken($cyan,20%);
+            }
+        }
+    }
+}

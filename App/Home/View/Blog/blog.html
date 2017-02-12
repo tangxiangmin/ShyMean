@@ -16,12 +16,12 @@
 		<main :class="['page-mn',{'active':showAside}]">
 			<blog-header ></blog-header>
 			<!--<transition name="fade">-->
-				<router-view ></router-view>
+			<router-view @article="article" ></router-view>
 			<!--</transition>-->
 			<blog-footer></blog-footer>
 		</main>
 
-		<blog-aside @aside="toggleAside"></blog-aside>
+		<blog-aside @aside="toggleAside" :catalogue="catalogue"></blog-aside>
 	</div>
 </body>
 </html>

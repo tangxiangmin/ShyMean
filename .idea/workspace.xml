@@ -6,21 +6,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cad69b74-1ae8-4f6a-8f57-66e50b47d014" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/scss/page/home/_blog.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_article.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/scss/utils/_catalogue.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/component/catalogue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/component/tab.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/admin.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/admin.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/admin.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/admin.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/admin.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/home.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/home.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/page/home/_home.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_blog.scss" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/Controller/BlogController.php" afterPath="$PROJECT_DIR$/App/Home/Controller/BlogController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Home/View/Blog/blog.html" afterPath="$PROJECT_DIR$/App/Home/View/Blog/blog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/home.css" afterPath="$PROJECT_DIR$/assets/css/home.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/home.css.map" afterPath="$PROJECT_DIR$/assets/css/home.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_archives.scss" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_archives.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/base/function.js" afterPath="$PROJECT_DIR$/js/base/function.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/_page.scss" afterPath="$PROJECT_DIR$/assets/scss/_page.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/_utils.scss" afterPath="$PROJECT_DIR$/assets/scss/_utils.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/home.scss" afterPath="$PROJECT_DIR$/assets/scss/home.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_blog-mn.scss" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_blog-mn.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_index.scss" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_index.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_public.scss" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_public.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/home/blog/_tags.scss" afterPath="$PROJECT_DIR$/assets/scss/page/home/blog/_tags.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/page/public/_extend.scss" afterPath="$PROJECT_DIR$/assets/scss/page/public/_extend.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scss/utils/_tab.scss" afterPath="$PROJECT_DIR$/assets/scss/utils/_tab.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/blog-articleDetail.js" afterPath="$PROJECT_DIR$/js/blog/blog-articleDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/blog-articleList.js" afterPath="$PROJECT_DIR$/js/blog/blog-articleList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/blog-index.js" afterPath="$PROJECT_DIR$/js/blog/blog-index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/blog-tags.js" afterPath="$PROJECT_DIR$/js/blog/blog-tags.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/blog.js" afterPath="$PROJECT_DIR$/js/blog/blog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/layout.js" afterPath="$PROJECT_DIR$/js/blog/layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/blog/route.js" afterPath="$PROJECT_DIR$/js/blog/route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/component/pagination.js" afterPath="$PROJECT_DIR$/js/component/pagination.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.js" afterPath="$PROJECT_DIR$/js/config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,39 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BlogController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Home/Controller/BlogController.php">
+      <file leaf-file-name="blog.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Home/View/Blog/blog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4761906">
-              <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
-              <folding>
-                <element signature="e#1172#1416#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blog-articleList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/blog/blog-articleList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="60" />
-              <folding>
-                <marker date="1486826631445" expanded="true" signature="145:882" placeholder="..." />
-                <marker date="1486826631445" expanded="true" signature="173:793" placeholder="..." />
-                <marker date="1486826631445" expanded="true" signature="277:782" placeholder="..." />
-                <marker date="1486826631445" expanded="true" signature="330:421" placeholder="..." />
-                <marker date="1486826631445" expanded="true" signature="507:763" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_archives.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_archives.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.357142">
-              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+            <state vertical-scroll-proportion="-15.261905">
+              <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -85,62 +78,99 @@
         <entry file="file://$PROJECT_DIR$/js/blog/blog-articleDetail.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="120" selection-start-line="22" selection-start-column="120" selection-end-line="22" selection-end-column="120" />
+              <caret line="64" column="53" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
               <folding>
-                <marker date="1486824612172" expanded="true" signature="247:734" placeholder="..." />
-                <marker date="1486824612172" expanded="true" signature="291:724" placeholder="..." />
-                <marker date="1486824612172" expanded="true" signature="329:653" placeholder="..." />
-                <marker date="1486824612172" expanded="true" signature="409:642" placeholder="..." />
+                <marker date="1486903831304" expanded="true" signature="265:773" placeholder="..." />
+                <marker date="1486903831304" expanded="true" signature="304:763" placeholder="..." />
+                <marker date="1486903831304" expanded="true" signature="334:684" placeholder="..." />
+                <marker date="1486903831304" expanded="true" signature="417:673" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pagination.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/component/pagination.js">
+      <file leaf-file-name="route.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/blog/route.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="88" selection-start-line="7" selection-start-column="3" selection-end-line="9" selection-end-column="88" />
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/blog/layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <marker date="1486824391295" expanded="true" signature="551:1105" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="478:1984" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="530:1958" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="578:860" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="906:1357" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="996:1326" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="1051:1291" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="1427:1929" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="2505:2668" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="2533:2655" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="2542:2603" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="2939:5200" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="2995:4734" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="3023:4030" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="3127:4016" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="3168:3408" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="3455:3746" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="3799:3998" placeholder="..." />
+                <marker date="1486904731864" expanded="false" signature="4762:5189" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="4909:5071" placeholder="..." />
+                <marker date="1486904731864" expanded="true" signature="4937:5060" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/blog/blog-index.js">
+      <file leaf-file-name="tab.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/component/tab.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
-                <marker date="1486824661197" expanded="true" signature="339:1396" placeholder="..." />
-                <marker date="1486824661197" expanded="true" signature="414:1313" placeholder="..." />
-                <marker date="1486824661197" expanded="true" signature="456:1029" placeholder="..." />
-                <marker date="1486824661197" expanded="true" signature="504:1023" placeholder="..." />
-                <marker date="1486824661197" expanded="true" signature="684:1002" placeholder="..." />
-                <marker date="1486824661197" expanded="true" signature="1144:1286" placeholder="..." />
+                <element signature="e#0#41#0" expanded="false" />
+                <marker date="1486904953266" expanded="true" signature="141:743" placeholder="..." />
+                <marker date="1486904953266" expanded="true" signature="182:461" placeholder="..." />
+                <marker date="1486904953266" expanded="true" signature="211:435" placeholder="..." />
+                <marker date="1486904953266" expanded="true" signature="488:719" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-tags.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/blog/blog-tags.js">
+      <file leaf-file-name="catalogue.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/component/catalogue.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+              <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
               <folding>
-                <marker date="1486824684381" expanded="true" signature="113:1036" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="144:523" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="170:218" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="258:512" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="554:1026" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="580:618" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="659:1015" placeholder="..." />
-                <marker date="1486824684381" expanded="true" signature="682:1002" placeholder="..." />
+                <element signature="e#0#41#0" expanded="false" />
+                <marker date="1486903988089" expanded="true" signature="145:668" placeholder="..." />
+                <marker date="1486903988089" expanded="true" signature="205:662" placeholder="..." />
+                <marker date="1486903988089" expanded="true" signature="245:647" placeholder="..." />
+                <marker date="1486903988089" expanded="true" signature="352:629" placeholder="..." />
+                <marker date="1486903988089" expanded="true" signature="401:607" placeholder="..." />
+                <marker date="1486903988089" expanded="true" signature="463:581" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_catalogue.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/scss/utils/_catalogue.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.857143">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -149,11 +179,33 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor vertical-scroll-proportion="0.92517006">
-                <caret line="148" column="96" selection-start-line="148" selection-start-column="96" selection-end-line="148" selection-end-column="96" />
+              <first_editor vertical-scroll-proportion="0.81292516">
+                <caret line="158" column="19" selection-start-line="158" selection-start-column="19" selection-end-line="158" selection-end-column="19" />
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_utils.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/scss/_utils.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.642858">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,8 +216,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -180,24 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/scss/page/blog/_index.scss" />
-        <option value="$PROJECT_DIR$/assets/scss/_page.scss" />
-        <option value="$PROJECT_DIR$/assets/scss/page/blog/_category.scss" />
-        <option value="$PROJECT_DIR$/assets/scss/_animate.scss" />
-        <option value="$PROJECT_DIR$/App/Home/View/Blog/index.html" />
-        <option value="$PROJECT_DIR$/assets/scss/animate/_vue.scss" />
-        <option value="$PROJECT_DIR$/Core/Lib/Controller.php" />
-        <option value="$PROJECT_DIR$/assets/scss/page/blog/_blog.scss" />
-        <option value="$PROJECT_DIR$/js/blog/blog-article.js" />
-        <option value="$PROJECT_DIR$/assets/scss/utils/_pagination.scss" />
-        <option value="$PROJECT_DIR$/assets/scss/page/blog/_blog-mn.scss" />
-        <option value="$PROJECT_DIR$/assets/scss/page/blog/_archives.scss" />
-        <option value="$PROJECT_DIR$/Core/Utils/Page.php" />
-        <option value="$PROJECT_DIR$/js/component/blog-hd.js" />
-        <option value="$PROJECT_DIR$/assets/scss/base/_reset.scss" />
-        <option value="$PROJECT_DIR$/js/component/archivesList.js" />
-        <option value="$PROJECT_DIR$/js/blog/component.js" />
-        <option value="$PROJECT_DIR$/js/blog/blog-archives.js" />
         <option value="$PROJECT_DIR$/js/blog/blog-list.js" />
         <option value="$PROJECT_DIR$/js/base/help.js" />
         <option value="$PROJECT_DIR$/Core/Lib/Model.php" />
@@ -210,7 +244,6 @@
         <option value="$PROJECT_DIR$/assets/scss/_layout.scss" />
         <option value="$PROJECT_DIR$/assets/scss/admin.scss" />
         <option value="$PROJECT_DIR$/assets/scss/page/home/_home.scss" />
-        <option value="$PROJECT_DIR$/App/Home/View/Blog/blog.html" />
         <option value="$PROJECT_DIR$/js/admin/route.js" />
         <option value="$PROJECT_DIR$/js/admin/admin.js" />
         <option value="$PROJECT_DIR$/App/Admin/View/Index/index.html" />
@@ -218,18 +251,37 @@
         <option value="$PROJECT_DIR$/App/Home/View/Index/index.html" />
         <option value="$PROJECT_DIR$/plugin/index.js" />
         <option value="$PROJECT_DIR$/plugin/moveBlog/index.js" />
-        <option value="$PROJECT_DIR$/js/config.js" />
         <option value="$PROJECT_DIR$/js/base/function.js" />
-        <option value="$PROJECT_DIR$/js/blog/blog.js" />
         <option value="$PROJECT_DIR$/js/blog/route.js" />
-        <option value="$PROJECT_DIR$/js/blog/layout.js" />
         <option value="$PROJECT_DIR$/js/component/pagination.js" />
-        <option value="$PROJECT_DIR$/js/blog/blog-articleDetail.js" />
-        <option value="$PROJECT_DIR$/js/blog/blog-index.js" />
-        <option value="$PROJECT_DIR$/js/blog/blog-tags.js" />
         <option value="$PROJECT_DIR$/App/Home/Controller/BlogController.php" />
         <option value="$PROJECT_DIR$/js/blog/blog-articleList.js" />
         <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_archives.scss" />
+        <option value="$PROJECT_DIR$/js/blog/blog-tags.js" />
+        <option value="$PROJECT_DIR$/assets/scss/page/public/_extend.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_tags.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_blog.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/animate/_public.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/_page.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/_blog.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/home.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_index.scss" />
+        <option value="$PROJECT_DIR$/docs/样式管理.md" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_public.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_blog-mn.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/page/home/blog/_article.scss" />
+        <option value="$PROJECT_DIR$/js/blog/blog-index.js" />
+        <option value="$PROJECT_DIR$/assets/scss/utils/_tab.scss" />
+        <option value="$PROJECT_DIR$/js/blog/bus.js" />
+        <option value="$PROJECT_DIR$/App/Home/View/Blog/blog.html" />
+        <option value="$PROJECT_DIR$/js/config.js" />
+        <option value="$PROJECT_DIR$/js/blog/blog.js" />
+        <option value="$PROJECT_DIR$/assets/scss/_utils.scss" />
+        <option value="$PROJECT_DIR$/assets/scss/utils/_catalogue.scss" />
+        <option value="$PROJECT_DIR$/js/blog/blog-articleDetail.js" />
+        <option value="$PROJECT_DIR$/js/component/catalogue.js" />
+        <option value="$PROJECT_DIR$/js/blog/layout.js" />
+        <option value="$PROJECT_DIR$/js/component/tab.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -324,7 +376,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -403,18 +491,6 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -426,7 +502,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="App" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -441,6 +517,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shymean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -476,11 +586,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,19 +610,19 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/wamp/www/shymean/App/Home/Controller/BlogController.php" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wamp\www\shymean\plugin\moveBlog" />
-      <recent name="D:\wamp\www\shymean\assets\scss\layout" />
-      <recent name="D:\wamp\www\shymean\assets\scss\base" />
-      <recent name="D:\wamp\www\shymean\assets\scss\animate" />
-      <recent name="D:\wamp\www\shymean\assets\scss\page" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\wamp\www\shymean\uploads" />
       <recent name="D:\wamp\www\shymean\plugin" />
       <recent name="D:\wamp\www\shymean\plugin\test" />
       <recent name="D:\wamp\www\shymean\assets\css" />
       <recent name="D:\wamp\www\shymean\assets\scss" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\shymean\assets\scss\page\home" />
+      <recent name="D:\wamp\www\shymean\plugin\moveBlog" />
+      <recent name="D:\wamp\www\shymean\assets\scss\layout" />
+      <recent name="D:\wamp\www\shymean\assets\scss\base" />
+      <recent name="D:\wamp\www\shymean\assets\scss\animate" />
     </key>
   </component>
   <component name="RunManager">
@@ -621,135 +727,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_blog-sd.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/home.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/_animate.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/_base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/_layout.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/admin.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/public/_extend.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/index/_index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/public/_mixin.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/public/_single.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/public/_common.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/_home.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/scss/page/admin/_admin.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/bootstrap.min.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Home/View/Blog/blog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/admin/route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/admin/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/admin/layout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -761,7 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,7 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.295612">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.285714">
           <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -895,19 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5814978">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,112 +877,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/blog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2907489">
-          <caret line="41" column="106" selection-start-line="41" selection-start-column="106" selection-end-line="41" selection-end-column="106" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1486822994512" expanded="true" signature="478:1984" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="530:1958" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="578:860" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="906:1357" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="996:1326" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="1051:1291" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="1427:1929" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="2505:2668" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="2533:2655" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="2542:2603" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="2932:4041" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="2988:3575" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3018:3170" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3197:3399" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3432:3565" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3603:4030" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3750:3912" placeholder="..." />
-            <marker date="1486822994512" expanded="true" signature="3778:3901" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/pagination.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="88" selection-start-line="7" selection-start-column="3" selection-end-line="9" selection-end-column="88" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1486824391295" expanded="true" signature="551:1105" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Home/Controller/BlogController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4761906">
+        <state vertical-scroll-proportion="-0.0">
           <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
           <folding>
             <element signature="e#1172#1416#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/blog-index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <marker date="1486824661197" expanded="true" signature="339:1396" placeholder="..." />
-            <marker date="1486824661197" expanded="true" signature="414:1313" placeholder="..." />
-            <marker date="1486824661197" expanded="true" signature="456:1029" placeholder="..." />
-            <marker date="1486824661197" expanded="true" signature="504:1023" placeholder="..." />
-            <marker date="1486824661197" expanded="true" signature="684:1002" placeholder="..." />
-            <marker date="1486824661197" expanded="true" signature="1144:1286" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/blog-tags.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
-          <folding>
-            <marker date="1486824684381" expanded="true" signature="113:1036" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="144:523" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="170:218" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="258:512" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="554:1026" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="580:618" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="659:1015" placeholder="..." />
-            <marker date="1486824684381" expanded="true" signature="682:1002" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/blog/blog-articleDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="120" selection-start-line="22" selection-start-column="120" selection-end-line="22" selection-end-column="120" />
-          <folding>
-            <marker date="1486824612172" expanded="true" signature="247:734" placeholder="..." />
-            <marker date="1486824612172" expanded="true" signature="291:724" placeholder="..." />
-            <marker date="1486824612172" expanded="true" signature="329:653" placeholder="..." />
-            <marker date="1486824612172" expanded="true" signature="409:642" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1053,17 +911,288 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_archives.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.357142">
+        <state vertical-scroll-proportion="-47.92857">
           <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/blog-tags.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="49" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <marker date="1486868235063" expanded="true" signature="113:1053" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="140:546" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="171:219" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="247:535" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="270:522" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="573:1043" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="604:642" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="665:1032" placeholder="..." />
+            <marker date="1486868235063" expanded="true" signature="688:1019" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/public/_extend.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.357143">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/_animate.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.714286">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_tags.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69515014">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/_page.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.857143">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/_blog.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.214286">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45095694">
+          <caret line="1080" column="0" selection-start-line="1080" selection-start-column="0" selection-end-line="1080" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/home.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.761905">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/animate/_public.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.357143">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5714285">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_blog-mn.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.647806">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43612334">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <marker date="1486824391295" expanded="true" signature="551:1105" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/blog-index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7995595">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <marker date="1486891015837" expanded="true" signature="191:1260" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="266:1177" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="268:860" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="310:486" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="310:860" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="533:858" placeholder="..." />
+            <marker date="1486891015837" expanded="true" signature="984:1150" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_article.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.404762">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/page/home/blog/_public.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.5">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/utils/_tab.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38106236">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/_utils.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.642858">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/blog-articleDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="53" selection-start-line="64" selection-start-column="53" selection-end-line="64" selection-end-column="53" />
+          <folding>
+            <marker date="1486903831304" expanded="true" signature="265:773" placeholder="..." />
+            <marker date="1486903831304" expanded="true" signature="304:763" placeholder="..." />
+            <marker date="1486903831304" expanded="true" signature="334:684" placeholder="..." />
+            <marker date="1486903831304" expanded="true" signature="417:673" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Home/View/Blog/blog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.261905">
+          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/scss/utils/_catalogue.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.857143">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/catalogue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <marker date="1486903988089" expanded="true" signature="145:668" placeholder="..." />
+            <marker date="1486903988089" expanded="true" signature="205:662" placeholder="..." />
+            <marker date="1486903988089" expanded="true" signature="245:647" placeholder="..." />
+            <marker date="1486903988089" expanded="true" signature="352:629" placeholder="..." />
+            <marker date="1486903988089" expanded="true" signature="401:607" placeholder="..." />
+            <marker date="1486903988089" expanded="true" signature="463:581" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/blog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3634361">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/blog/layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1486904731864" expanded="true" signature="478:1984" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="530:1958" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="578:860" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="906:1357" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="996:1326" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="1051:1291" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="1427:1929" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="2505:2668" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="2533:2655" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="2542:2603" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="2939:5200" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="2995:4734" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="3023:4030" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="3127:4016" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="3168:3408" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="3455:3746" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="3799:3998" placeholder="..." />
+            <marker date="1486904731864" expanded="false" signature="4762:5189" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="4909:5071" placeholder="..." />
+            <marker date="1486904731864" expanded="true" signature="4937:5060" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/tab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <marker date="1486904953266" expanded="true" signature="141:743" placeholder="..." />
+            <marker date="1486904953266" expanded="true" signature="182:461" placeholder="..." />
+            <marker date="1486904953266" expanded="true" signature="211:435" placeholder="..." />
+            <marker date="1486904953266" expanded="true" signature="488:719" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor vertical-scroll-proportion="0.92517006">
-            <caret line="148" column="96" selection-start-line="148" selection-start-column="96" selection-end-line="148" selection-end-column="96" />
+          <first_editor vertical-scroll-proportion="0.81292516">
+            <caret line="158" column="19" selection-start-line="158" selection-start-column="19" selection-end-line="158" selection-end-column="19" />
             <folding />
           </first_editor>
           <second_editor />

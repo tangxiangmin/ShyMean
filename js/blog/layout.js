@@ -86,24 +86,45 @@ define([], function () {
     };
 
     // 侧边栏
+
     var aside = {
-        props: ['msg'],
+        props: ['catalogue'],
         template: `<aside class="page-sd">
 			<div :class="['side-container',{'active':isClose}]">
-				<div class="author-info">
-					<img src="/assets/img//tmp/head.jpg" alt="" width="100" height="100">
-					<h3 class="text-white">ShyMean</h3>
-					<p>一个不学无数且无趣的人。</p>
-				</div>
-				<div class="side-nav">
-					<a href=""><i class="iconfont icon-blog"></i> <br>博客</a>
-					<a href=""><i class="iconfont icon-lab"></i> <br>实验室</a>
-					<a href=""><i class="iconfont icon-bookshelf"></i> <br>书架</a>
-				</div>
-				<div class="author-contact">
-					<a href="#"><i class="iconfont icon-github"></i> GitHub</a>
-					<a href="#"><i class="iconfont icon-qq"></i> QQ</a>
-				</div>
+			    <tab :items="items">
+			        <catalogue slot="catalogue" :data="catalogues"></catalogue>
+			        <div  slot="website">
+			            <div class="author-info">
+                            <img src="/assets/img/tmp/head.jpg" alt="" width="100" height="100">
+                            <h3 class="text-white">ShyMean</h3>
+                            <p>一个不学无数且无趣的人。</p>
+                        </div>
+                        <div class="side-nav">
+                            <a href=""><i class="iconfont icon-blog"></i> <br>博客</a>
+                            <a href=""><i class="iconfont icon-lab"></i> <br>实验室</a>
+                            <a href=""><i class="iconfont icon-bookshelf"></i> <br>书架</a>
+                        </div>
+                        <div class="author-contact">
+                            <a href="#"><i class="iconfont icon-github"></i> GitHub</a>
+                            <a href="#"><i class="iconfont icon-qq"></i> QQ</a>
+                        </div>
+			        </div>
+			    </tab>
+			    <!--<div class="tab">-->
+                    <!--<ul class="tab_nav">-->
+                        <!--<li-->
+                            <!--:class="['tab_item',{active:1 == index}]"-->
+                            <!--v-for="(item,index) in items"-->
+                            <!--@click="active(index)">{{item.name}}-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<div :class="['tab_panel','active']">-->
+
+                    <!--</div>-->
+                    <!--<div :class="['tab_panel']">-->
+                        <!--<catalogue :data="catalogues"></catalogue>-->
+                    <!--</div>-->
+                 <!--</div>-->
 			</div>
 
 			<div class="side-tool">
@@ -121,7 +142,9 @@ define([], function () {
             return {
                 isHover: false,
                 isClose: false,
-                isTopShow: false
+                isTopShow: false,
+                items:['catalogue','website'],
+                catalogues:this.catalogue
             }
         },
         methods: {
@@ -136,9 +159,12 @@ define([], function () {
 
             backTop: function () {
                 document.body.scrollTop = 0;
-            }
+            },
+
         },
         mounted: function () {
+
+            // 返回顶部
             var h = window.screen.height / 20;
             var _that = this;
             document.addEventListener('scroll', function () {
@@ -148,22 +174,22 @@ define([], function () {
                 } else {
                     console.log("scrollTop这里出BUG啦~");
                 }
+                _that.isTopShow = scrollTop > h;
 
-                if (scrollTop > h) {
-                    _that.isTopShow = true;
-                } else {
-                    _that.isTopShow = false;
-                }
             });
+        },
+        watch:{
+            catalogue: function () {
+                // 接受来自文章详情的目录并传递给侧边栏
+                this.catalogues = this.catalogue
+            }
         }
     };
 
-    var layout = {
+    return {
         showAside:false,
         header:header,
         footer:footer,
         aside:aside
-    };
-
-    return layout;
+    };;
 });

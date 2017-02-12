@@ -1,23 +1,27 @@
 @charset "utf-8";
 
-.category-sec {
+.classify {
 
     margin-bottom: $basemargin*5;
     text-align: center;
-    .sec-hd {
+    &_hd {
         margin-bottom: $basemargin;
     }
+
+
 }
-.category-type {
+.category {
     font-size: 0;
-    a {
+    &_item {
         @extend %hover-dark;
         margin: 5px;
     }
 }
-.category-label {
-    a {
-        margin:0 5px;
-        @extend %hover-highlight;
+.tag {
+    word-wrap: break-word;
+    &_item {
+        display: inline-block;
+
+        margin: 5px;
     }
 }
