@@ -8,7 +8,7 @@ define(['xm'], function () {
     var xm = require('xm');
 
     return {
-        template:`<div :class="['page-bd','container']">
+        template:`<div :class="['page_bd','container']">
 
 				<div class="archives">
 				    <div class="archives_count">{{countWord}}</div>
@@ -84,9 +84,7 @@ define(['xm'], function () {
         watch:{
             $route: function (to, form) {
                 this.active = to.params.active;
-                console.log(this.active);
                 this.getData();
-                console.log(this.articleGroup);
             }
         },
         filters:{

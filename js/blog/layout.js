@@ -21,11 +21,9 @@ define([], function () {
     // 头部
     var header = {
         template:`<header class="bg-gray">
-                    <div class="container page-hd">
-                        <h1 class="page-title">
-                            <span class="title-before animated slideInLeft"></span>
+                    <div class="container page_hd">
+                        <h1 class="page_title">
                             <router-link to="/index/1">{{msg.title}}</router-link>
-                            <span class="title-after animated slideInRight" ></span>
                         </h1>
                         <div class="show-md">
                             <div :class="['btn-list',{close:isActive}]" @click="showNav">
@@ -36,13 +34,11 @@ define([], function () {
                                 </div>
                             </div>
                         </div>
-                        <nav :class="['page-nav',{active:isActive}]">
-                            <router-link to="/index/1" :class="['nav-item']"><i :class="['iconfont','icon-home']"></i> 首页</router-link>
-                            <router-link to="/tags" :class="['nav-item']"><i :class="['iconfont','icon-tag']"></i> 标签</router-link>
-                            <router-link :to="{name:'articleList',params:{type:'archives',name:'archives',active:1}}" :class="['nav-item']"><i :class="['iconfont','icon-archives']"></i> 归档</router-link>
+                        <nav :class="['nav-responsive',{active:isActive}]">
+                            <router-link to="/index/1" :class="['nav_item']"><i :class="['iconfont','icon-home']"></i> 首页</router-link>
+                            <router-link to="/tags" :class="['nav_item']"><i :class="['iconfont','icon-tag']"></i> 标签</router-link>
+                            <router-link :to="{name:'articleList',params:{type:'archives',name:'archives',active:1}}" :class="['nav_item']"><i :class="['iconfont','icon-archives']"></i> 归档</router-link>
                         </nav>
-
-
                     </div>
                 </header>`,
         data:function(){
@@ -68,8 +64,8 @@ define([], function () {
 
     // 底部
     var footer = {
-        template:`<footer class="bg-gray page-ft">
-				<div class="container">
+        template:`<footer class="bg-gray">
+				<div class="container page_ft">
 					<p>
 						©Shymean 2016 - {{new Date().getFullYear()}}
 					</p>
@@ -89,45 +85,30 @@ define([], function () {
 
     var aside = {
         props: ['catalogue'],
-        template: `<aside class="page-sd">
-			<div :class="['side-container',{'active':isClose}]">
+        template: `<aside>
+			<div :class="['page_sd',{'active':isClose}]">
 			    <tab :items="items">
-			        <catalogue slot="catalogue" :data="catalogues"></catalogue>
+			        <catalogue slot="catalogue" :data="catalogue"></catalogue>
 			        <div  slot="website">
-			            <div class="author-info">
+			            <div>
                             <img src="/assets/img/tmp/head.jpg" alt="" width="100" height="100">
                             <h3 class="text-white">ShyMean</h3>
                             <p>一个不学无数且无趣的人。</p>
                         </div>
-                        <div class="side-nav">
-                            <a href=""><i class="iconfont icon-blog"></i> <br>博客</a>
-                            <a href=""><i class="iconfont icon-lab"></i> <br>实验室</a>
-                            <a href=""><i class="iconfont icon-bookshelf"></i> <br>书架</a>
+                        <div class="nav-border">
+                            <a href="" class="nav_item"><i class="iconfont icon-blog"></i> <br>博客</a>
+                            <a href="" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
+                            <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
                         </div>
                         <div class="author-contact">
-                            <a href="#"><i class="iconfont icon-github"></i> GitHub</a>
-                            <a href="#"><i class="iconfont icon-qq"></i> QQ</a>
+                            <a href="#" ><i class="iconfont icon-github"></i> GitHub</a>
+                            <a href="#" ><i class="iconfont icon-qq"></i> QQ</a>
                         </div>
 			        </div>
 			    </tab>
-			    <!--<div class="tab">-->
-                    <!--<ul class="tab_nav">-->
-                        <!--<li-->
-                            <!--:class="['tab_item',{active:1 == index}]"-->
-                            <!--v-for="(item,index) in items"-->
-                            <!--@click="active(index)">{{item.name}}-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                    <!--<div :class="['tab_panel','active']">-->
-
-                    <!--</div>-->
-                    <!--<div :class="['tab_panel']">-->
-                        <!--<catalogue :data="catalogues"></catalogue>-->
-                    <!--</div>-->
-                 <!--</div>-->
 			</div>
 
-			<div class="side-tool">
+			<div class="page_tool">
 				<div :class="['btn-list','hide-md',{'hover':isHover},{'close':isClose}]" @click="toggleAside"  @mouseover="toggleList" @mouseout="toggleList">
 					<div class="btn-icon">
 						<span class="btn-line"></span>
@@ -143,8 +124,10 @@ define([], function () {
                 isHover: false,
                 isClose: false,
                 isTopShow: false,
-                items:['catalogue','website'],
-                catalogues:this.catalogue
+                items:[{
+                    slot:'website',
+                    title:'站点资料'
+                }],
             }
         },
         methods: {
@@ -160,9 +143,16 @@ define([], function () {
             backTop: function () {
                 document.body.scrollTop = 0;
             },
-
         },
         mounted: function () {
+            // 判断当前路由
+            if (this.$route.name == 'articleDetail') {
+
+                this.items.unshift({
+                    slot:"catalogue",
+                    title:"文章目录"
+                })
+            }
 
             // 返回顶部
             var h = window.screen.height / 20;
@@ -179,9 +169,15 @@ define([], function () {
             });
         },
         watch:{
-            catalogue: function () {
-                // 接受来自文章详情的目录并传递给侧边栏
-                this.catalogues = this.catalogue
+            $route(to,from){
+                if (from.name == 'articleDetail'){
+                    this.items.shift();
+                }else if (to.name == 'articleDetail') {
+                    this.items.unshift({
+                        slot:"catalogue",
+                        title:"文章目录"
+                    })
+                }
             }
         }
     };

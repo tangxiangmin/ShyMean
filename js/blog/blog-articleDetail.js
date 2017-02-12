@@ -14,7 +14,7 @@ define(['marked'], function () {
 
     return {
         props:[],
-        template:`<div :class="['page-bd','container']">
+        template:`<div :class="['page_bd','container']">
 
             <article class="article">
 				<div class="text-center">
@@ -90,7 +90,7 @@ define(['marked'], function () {
                             break;
                     }
 
-                    var id = type + '_' + count[type];
+                    var id = title[2];
                     var str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
                     content = content.replace(title[0],str);
                 }

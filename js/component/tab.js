@@ -7,11 +7,11 @@ define([], function () {
     return {
         props:['items'],
         template:`<div class="tab">
-                    <ul class="tab_nav">
+                    <ul class="tab_nav" v-if="items.length > 1">
                         <li
                             :class="['tab_item',{active:isActive == index}]"
                             v-for="(item,index) in items"
-                            @click="active(index)">{{item}}
+                            @click="active(index)">{{item.title}}
                         </li>
                     </ul>
 
@@ -19,7 +19,7 @@ define([], function () {
                         :class="['tab_panel',{active:isActive == index}]"
                         v-for="(item,index) in items"
                         >
-                        <slot :name="item"></slot>
+                        <slot :name="item.slot"></slot>
                     </div>
                  </div>`,
         data: function () {

@@ -5,7 +5,7 @@
 
 define([], function () {
     return {
-        template:`<div :class="['page-bd','container']">
+        template:`<div :class="['page_bd','container']">
 				<div class="classify">
 					<div class="classify_hd">
 						当前共 {{categories.length}} 个分类

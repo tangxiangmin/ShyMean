@@ -9,7 +9,7 @@ define(['marked'], function () {
     // 首页文章列表
     return {
         props:[],
-        template:`<div :class="['page-bd','container']">
+        template:`<div :class="['page_bd','container']">
                 <article class="test article" v-for="article in articles">
                     <h2 class="article_hd">
                         <router-link class="article_title" :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>

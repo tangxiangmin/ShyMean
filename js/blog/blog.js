@@ -50,7 +50,7 @@ require(['/js/config.js'], function () {
                 blogHeader:layout.blogHeader,
                 blogFooter:layout.blogFooter,
                 showAside:layout.showAside,
-                catalogue: {} ,
+                catalogue: [] ,
             },
             router:router,
             methods:{
@@ -64,6 +64,10 @@ require(['/js/config.js'], function () {
             watch:{
                 $route: function (to,from) {
                     document.body.scrollTop = 0;
+
+                    if (to.name != 'articleDetail'){
+                        this.catalogue = [];
+                    }
                 }
             }
         });

@@ -28,5 +28,9 @@
                 color: darken($cyan,20%);
             }
         }
+
+        img {
+            max-width: 100%;
+        }
     }
 }
