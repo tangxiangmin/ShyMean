@@ -1,24 +1,24 @@
 @charset "utf-8";
 
 .article{
-    margin-bottom:rem(60);
-
+    margin-bottom: 3rem;
+    font-size: 16px;
+    color: #333;
     &_hd {
         font-weight: normal;
-        margin:0 0 10px 0 ;
     }
-    &_title {
+    &_tt {
         @extend %hover-underline;
     }
 
     &_info {
-        font-size: 12px;
+        @include text-sm;
         color: $text-gray;
         word-spacing: 3px;
     }
 
     // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
-    &_content {
+    &_ct {
         margin: 10px 0;
         line-height: 2em;
         a {
@@ -31,6 +31,16 @@
 
         img {
             max-width: 100%;
+        }
+    }
+    &_tag {
+        display: inline-block;
+        background-color: $gray;
+        font-size: 14px;
+        padding: 5px;
+        &:hover {
+            background-color: darken(#f6f8fa,20%);
+            color: lighten($gray,20%);
         }
     }
 }

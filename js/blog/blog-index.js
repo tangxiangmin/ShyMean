@@ -10,16 +10,16 @@ define(['marked'], function () {
     return {
         props:[],
         template:`<div :class="['page_bd','container']">
-                <article class="test article" v-for="article in articles">
+                <article class="article" v-for="article in articles">
                     <h2 class="article_hd">
-                        <router-link class="article_title" :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
+                        <router-link class="article_tt" :to="{ name: 'articleDetail', params: { id: article.id }}">{{article.title}}</router-link>
                     </h2>
                     <div class="article_info">
                         发表于{{article.created_at}} |
                         分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}" class="hover-highlight" >{{article.category}}</router-link > |
                         评论 {{article.comment_id}}
                     </div>
-                    <div class="article_content" v-html="article.content"></div>
+                    <div class="article_ct" v-html="article.content"></div>
                     <div class="article_ft">
                         <router-link class="hover-highlight" :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文</router-link>
                     </div>

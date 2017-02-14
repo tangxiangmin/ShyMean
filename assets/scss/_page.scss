@@ -3,12 +3,14 @@
 	前端页面样式
  */
 
-// 公用
-@import 'page/public/_mixin';
-@import 'page/public/_extend';
-@import 'page/public/_single';
-@import 'page/public/_common';
+@import "page/public/_index";
+
+// 站点首页
+@import "page/index/_index";
 
 // 博客
-@import "page/home/_blog";
+@import "page/blog/_index";
+
+// 实验室
+@import "page/lab/_index";
 

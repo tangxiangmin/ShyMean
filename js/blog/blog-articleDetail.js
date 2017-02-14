@@ -25,7 +25,12 @@ define(['marked'], function () {
 						评论 {{article.comment_id}}
 					</div>
 				</div>
-				<div class="article_content" v-html="article.content"></div>
+				<div class="article_ct" v-html="article.content"></div>
+				<div class="article_ft">
+				    <a href="#" class="article_tag">#标签</a>
+				    <a href="#" class="article_tag">#标签</a>
+				    <a href="#" class="article_tag">#标签</a>
+				</div>
 			</article>
 			</div>
 			`,

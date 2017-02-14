@@ -15,9 +15,9 @@ define([],function () {
     return  {
         props: ['name','page','active'],
         template:`<nav class="pagination" v-if="pageNum > 1" >
-                    <router-link :to="{ name: name, params:{ active: active - 1 }}" :class="['pagination-item']" v-if="active > 1"><i class="iconfont icon-back"></i></router-link>
-		            <router-link  v-for="n in pageNum" :to="{ name: name, params: { active: n }}" :class="['pagination-item',{'pagination-current':active == n}]">{{n}}</router-link>
-		            <router-link :to="{ name: name, params: { active: active - 0+1 }}" :class="['pagination-item']" v-if="active < pageNum"><i class="iconfont icon-forward"></i></router-link>
+                    <router-link :to="{ name: name, params:{ active: active - 1 }}" :class="['pagination_item']" v-if="active > 1"><i class="iconfont icon-back"></i></router-link>
+		            <router-link  v-for="n in pageNum" :to="{ name: name, params: { active: n }}" :class="['pagination_item',{'pagination_current':active == n}]">{{n}}</router-link>
+		            <router-link :to="{ name: name, params: { active: active - 0+1 }}" :class="['pagination_item']" v-if="active < pageNum"><i class="iconfont icon-forward"></i></router-link>
 				</nav>`,
         data: function () {
             return {

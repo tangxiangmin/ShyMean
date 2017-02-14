@@ -1,15 +1,18 @@
 @charset "utf-8";
 
 code {
-	padding: 2px 4px;
+	padding: 2px 6px;
+	// margin在某些时候导致长代码换行，需要处理这个BUG
+	margin:0 5px;
 
-	font-size: 90%;
-	font-family: inherit;
-	color: #c7254e;
-	background-color: #f9f2f4;
-	border-radius: 4px;
-	letter-spacing: 1px;
+	color: #fff;
+	background-color: $dark;
+	font-family: Georgia,serif;
+	word-break: break-all;
+
+	border-radius: 5px;
 }
+
 pre {
 	overflow: auto;
 	margin: 20px 0;
@@ -22,24 +25,27 @@ pre {
 	line-height: 1.8;
 	font-family: inherit;
 	color: #4d4d4c;
+
 	code {
+		border: none;
 		padding: 0;
 		color: inherit;
 		background: transparent;
 		letter-spacing: 0;
-
 	}
 }
 
 blockquote {
-	border: 1px solid #ccc;
-	border-left-width: 6px;
-	@include border-radius(0 4px 4px 0);
+	overflow: auto;
+
 	margin-left: 0;
 	margin-right: 0;
 	padding: 10px 10px 10px 20px;
 
-	overflow: auto;
 	background: $gray;
 	color: $text-gray;
+
+	border: 1px solid #ccc;
+	border-left-width: 6px;
+	@include border-radius(0 4px 4px 0);
 }

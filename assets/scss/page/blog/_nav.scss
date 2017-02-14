@@ -1,9 +1,11 @@
 @charset "utf-8";
 
+// 入口导航位于index/index中
+
 // 响应式导航
 
 // 小屏幕
-@media screen and (max-width: nth(nth($break-point,2),1)){
+@media screen and (max-width: nth(nth($breakPoint,2),1)){
     .nav-responsive {
         @include fx-basis(100%);
         @include fx-shrink(0);
@@ -23,7 +25,7 @@
 }
 
 // 大屏幕
-@media screen and (min-width: nth(nth($break-point,2),1)){
+@media screen and (min-width: nth(nth($breakPoint,2),1)){
     .nav-responsive {
         float: right;
         @include fx;
@@ -45,7 +47,7 @@
 // 1.侧边栏
 .nav-border {
     font-size: 0;
-    margin: $basemargin 0;
+    margin: 1.5rem 0;
     .nav_item {
         display: inline-block;
         width: 60px;

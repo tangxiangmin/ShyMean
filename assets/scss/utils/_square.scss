@@ -43,10 +43,10 @@
 // 颗粒类
 .square{
 	@include square;
+	.square_inner {
+		@include square-inner;
+	}
 }
 .square-box {
 	@include square-box;
-}
-.square-inner {
-	@include square-inner;
 }

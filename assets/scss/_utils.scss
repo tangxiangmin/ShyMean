@@ -3,10 +3,18 @@
 /**
 	相关组件样式
  */
+
 @import "utils/_list";
 @import "utils/_tab";
-@import "utils/_form";
+
+// 表单
+@import "utils/form/_form";
+@import "utils/form/_choice";
+@import "utils/form/_input";
+
 @import "utils/_btn";
+
+// 站点
 @import "utils/_pagination";
 @import "utils/_markdown";
 @import "utils/_catalogue";

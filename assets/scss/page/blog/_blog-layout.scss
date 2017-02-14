@@ -7,10 +7,12 @@
 .page_hd {
     padding-top: 15px;
     padding-bottom: 15px;
+
     @include fx;
     @include fx-main(space-between);
     @include fx-cross(center);
     @include fx-wrap;
+
 }
 
 
@@ -47,9 +49,11 @@
 }
 .page_bd {
     min-height: calc(100vh - 78px - 98px);
-    padding-top: rem(30);
+    padding-top: rem(200);
 
 }
+
+
 /*
     博客侧边栏
 */
@@ -82,25 +86,15 @@
     .media {
         margin: $basemargin 0;
     }
-
-    .author-contact {
-        a {
-            margin-right: 10px;
-            padding: 5px 0;
-            @include border-b;
-            &:before {
-                content: '';
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 5px;
-                width: 4px;
-                height: 4px;
-                background: $yellow;
-                border-radius: 2px;
-            }
-        }
+}
+// 侧边栏的响应式
+@media screen and (max-width: nth(nth($breakPoint,2),1)){
+    .page_sd {
+        display: none;
     }
-
+    .page_mn.active {
+        padding-right: 0;
+    }
 }
 
 // 功能按钮

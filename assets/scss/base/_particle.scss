@@ -3,13 +3,13 @@
  * ---定义了颗粒类---
  */
 
-// 浮动 
-
+// 浮动
 .fl {
 	float: left;
 }
+
 .fr {
-	float: right;
+	float: right !important;
 }
 
 // 清浮动
@@ -19,35 +19,18 @@
 		content:"";
 		display:block;
 		clear:both;
-		visibility:hidden;
-		height:0
 	}
 }
 .clearfix {
 	@include clearfix;
 }
-
-.oh {
-	overflow: hidden;
-}
-// 盒子模型
-.ib {
-    display: inline-block ;
-}
-.block {
-	display: block;
-}
 @mixin block {
 	display: block;
-	height: 100%;
+	width: 100%;
 }
-
-.i {
-	display: inline-block;
-}
-
-.hide {
-    display: none;
+.block {
+    display: block;
+    width: 100%;
 }
 
 //图片
@@ -56,10 +39,6 @@
 	margin: 0 auto;
 	max-width: 100%;
 }
-.img-circle {
-	@include border-radius(50%);
-}
-
 
 // 外边距
 // 为了处理页面统一的边距，定义了$basemargin变量，而未使用对应的混合器
@@ -91,6 +70,14 @@ $baseborder: 1px solid #d6d6d6 !default;
 @mixin border-lr($b: $baseborder) {
 	border-left: $b;
 	border-right: $b;
+}
+
+// 透明度
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    // IE8 filter
+    $opacity-ie: ($opacity * 100);
+    filter: alpha(opacity=$opacity-ie);
 }
 
 

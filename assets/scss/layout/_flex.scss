@@ -3,112 +3,116 @@
 	flex布局
 	参考https://github.com/lzxb/flex.css.git声明式布局语法
 	已修改部分源码，并加入了网格系统
+	更新：这种做法与行内样式无异
  */
 
-
-/**
+@if (is-flex) {
+	/**
 	容器 flex
  */
-[flex] {
-	display: flex;
 
-	// 默认wrap允许响应式布局
-	flex-wrap: wrap;
+	[flex] {
+		display: flex;
 
-	@include box-sizing;
-}
+		// 默认wrap允许响应式布局
+		flex-wrap: wrap;
 
-// 主轴方向
-$dirArr:column row column-reverse row-reverse ;
-@each $dir in $dirArr{
-	[flex~='dir:#{$dir}']{
-		flex-direction: $dir;
-	}
-}
-
-// 子项换行
-$wrapArr:wrap nowrap wrap-reverse;
-@each $wrap in $wrapArr {
-	[flex~='wrap:#{$wrap}'] {
-		flex-wrap: $wrap;
-	}
-}
-
-// 主轴对齐
-$mainArr:(start flex-start) (center center) (end flex-end) (between space-between) (around space-around);
-@each $main in $mainArr {
-	[flex~='main:#{nth($main,1)}'] {
-		justify-content: nth($main,2);
-	}
-}
-
-// 侧轴对齐
-$crossArr:(start flex-start) (center center) (end flex-end) (baseline baseline) (stretch stretch);
-@each $cross in $crossArr {
-	[flex~='cross:#{nth($cross,1)}'] {
-		align-items: nth($cross,2);
-	}
-}
-
-/**
-	子项 item
- */
-
-[flex] > [item] {
-	display: block;
-	@include box-sizing;
-}
-
-// 子项独立对齐方式
-@each $cross in $crossArr {
-	[item~='align:#{nth($cross,1)}']{
-		align-self: nth($cross,2);
-	}
-}
-
-@for $i from 1 through 5 {
-	// 排列顺序
-	[item~='order:#{$i}']{
-		order: $i;
+		@include box-sizing;
 	}
 
-	// 放大比例
-	[item~='grow:#{$i}']{
-		flex-grow: $i;
+	// 主轴方向
+	$dirArr:column row column-reverse row-reverse ;
+	@each $dir in $dirArr{
+		[flex~='dir:#{$dir}']{
+			flex-direction: $dir;
+		}
 	}
 
-	// 缩小比例
-	[item~='shrink:#{$i}']{
-		flex-shrink: $i;
+	// 子项换行
+	$wrapArr:wrap nowrap wrap-reverse;
+	@each $wrap in $wrapArr {
+		[flex~='wrap:#{$wrap}'] {
+			flex-wrap: $wrap;
+		}
 	}
-}
 
-// 响应式网格
-$flexBreakPoint: (768px 750px) (992px 970px) (1200px 1170px);
-$flexColNum: 12;
-$flexSize:xs sm md lg;
-
-@for $i from 1 through $flexColNum {
-	[item~='xs:#{$i}']{
-		flex-basis: percentage($i/12);
+	// 主轴对齐
+	$mainArr:(start flex-start) (center center) (end flex-end) (between space-between) (around space-around);
+	@each $main in $mainArr {
+		[flex~='main:#{nth($main,1)}'] {
+			justify-content: nth($main,2);
+		}
 	}
-	%container {
-		width: 100%;
+
+	// 侧轴对齐
+	$crossArr:(start flex-start) (center center) (end flex-end) (baseline baseline) (stretch stretch);
+	@each $cross in $crossArr {
+		[flex~='cross:#{nth($cross,1)}'] {
+			align-items: nth($cross,2);
+		}
 	}
-}
 
-@for $i from 1 through length($flexBreakPoint) {
-	@media screen and (min-width: nth(nth($flexBreakPoint,$i),1)) {
+	/**
+        子项 item
+     */
 
-		@for $j from 1 through $flexColNum {
-			[item~='#{nth($flexSize,$i+1)}:#{$j}']{
-				flex-basis: percentage($j/12);
-			}
+	[flex] > [item] {
+		display: block;
+		@include box-sizing;
+	}
+
+	// 子项独立对齐方式
+	@each $cross in $crossArr {
+		[item~='align:#{nth($cross,1)}']{
+			align-self: nth($cross,2);
+		}
+	}
+
+	@for $i from 1 through 5 {
+		// 排列顺序
+		[item~='order:#{$i}']{
+			order: $i;
+		}
+
+		// 放大比例
+		[item~='grow:#{$i}']{
+			flex-grow: $i;
+		}
+
+		// 缩小比例
+		[item~='shrink:#{$i}']{
+			flex-shrink: $i;
+		}
+	}
+
+	// 响应式网格
+	$flexBreakPoint: (768px 750px) (992px 970px) (1200px 1170px);
+	$flexColNum: 12;
+	$flexSize:xs sm md lg;
+
+	@for $i from 1 through $flexColNum {
+		[item~='xs:#{$i}']{
+			flex-basis: percentage($i/12);
 		}
 		%container {
-			width: nth(nth($flexBreakPoint,$i),2) ;
+			width: 100%;
 		}
 	}
+
+	@for $i from 1 through length($flexBreakPoint) {
+		@media screen and (min-width: nth(nth($flexBreakPoint,$i),1)) {
+
+			@for $j from 1 through $flexColNum {
+				[item~='#{nth($flexSize,$i+1)}:#{$j}']{
+					flex-basis: percentage($j/12);
+				}
+			}
+			%container {
+				width: nth(nth($flexBreakPoint,$i),2) ;
+			}
+		}
+	}
+
 }
 
 

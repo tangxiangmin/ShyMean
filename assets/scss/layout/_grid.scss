@@ -1,92 +1,96 @@
 @charset "utf-8";
-/**
- * ---grid---
- */
-// 参考bootstrap的网格系统
-// 移除了pull和offset类
-// 移除了槽宽
 
-$size:xs sm md lg;
-$break-point: (768px 750px) (992px 900px) (1200px 1170px) !default;
+/*--------------grid-------------*/
 
-//$break-point:(600px 600px)(920px 600px)(1220px 900px) !default;
-$col-num: 12 !default;
-$gutter: 15px !default;
+// 简易版网格系统，命名参考bootstrap
 
+@if ($is-grid) {
 
-.container-fluid {
-	width: 100%;
+    $grid-size:xs sm md lg;
+    $breakPoint: (768px 750px) (992px 900px) (1200px 1170px) !default;
+
+    $colNum: 12 !default;
+    $gutter: 15px !default;
+
+    .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding:$gutter;
+    }
+
+    .container-fluid {
+        width: 100%;
+    }
+
+    .row {
+        @include clearfix;
+    }
+    // 媒体查询
+
+    %col {
+        position: relative;
+        min-height: 1px;
+    }
+
+    @for $i from 1 through $colNum {
+        @for $j from 1 through length($grid-size) {
+            .col-#{nth($grid-size,$j)}-#{$i}{
+                @extend %col;
+                padding: $gutter;
+            }
+        }
+    }
+
+    @each $s in $grid-size {
+        @if (index($grid-size,$s) == 1){
+            .hide-xs {
+                display: none;
+            }
+        }@else {
+            .show-#{$s} {
+                display: none;
+            }
+        }
+    }
+
+    // xs
+    @for $i from 1 through $colNum {
+        .col-#{nth($grid-size,1)}-#{$i}{
+            width: percentage($i/$colNum);
+            float: left;
+        }
+    }
+
+    // sm md lg
+    @for $i from 1 through length($breakPoint) {
+        @media screen and (min-width: nth(nth($breakPoint,$i),1)) {
+            .container {
+                width: nth(nth($breakPoint,$i),2);
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @for $j from 1 through $colNum {
+                .col-#{nth($grid-size,$i+1)}-#{$j}{
+                    width: percentage($j/$colNum);
+                    float: left;
+                }
+            }
+        }
+
+        // 显示和隐藏
+        @media screen and (max-width: nth(nth($breakPoint,$i),1)){
+            .hide-#{nth($grid-size,$i+1)} {
+                display: none !important;
+            }
+
+            .show-#{nth($grid-size,$i+1)} {
+                display: block ;
+            }
+        }
+    }
 }
 
-.row {
-	@include clearfix;
-}
-// 媒体查询
 
-%col {
-	position: relative;
-	min-height: 1px;
-}
-@for $i from 1 through $col-num {
-	@for $j from 1 through length($size) {
-		.col-#{nth($size,$j)}-#{$i}{
-			@extend %col;
-			padding: $gutter;
-		}
-	}
-}
-
-// xs
-@for $i from 1 through $col-num {
-	.col-#{nth($size,1)}-#{$i}{
-		width: percentage($i/$col-num);
-		float: left;
-	}
-}
-.container {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	padding:$gutter;
-}
-.hide-xs {
-	display: none;
-}
-
-@each $s in $size {
-	.show-#{$s} {
-		display: none;
-	}
-}
-.show-xs {
-	display: block;
-}
-
-// sm md lg
-@for $i from 1 through length($break-point) {
-	@media screen and (min-width: nth(nth($break-point,$i),1)) {
-		.container {
-			width: nth(nth($break-point,$i),2);
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		@for $j from 1 through $col-num {
-			.col-#{nth($size,$i+1)}-#{$j}{
-				width: percentage($j/$col-num);
-				float: left;
-			}
-		}
-	}
-	@media screen and (max-width: nth(nth($break-point,$i),1)){
-		.hide-#{nth($size,$i+1)} {
-			display: none !important;
-		}
-		.show-#{nth($size,$i+1)} {
-			display: block;
-		}
-	}
-}
-/**
- * ---end grid---
- */
+/*--------------end grid-------------*/

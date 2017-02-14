@@ -1,0 +1,13 @@
+@charset "utf-8";
+.inputGroup {
+    @include fx;
+    @include fx-cross(center);
+    @include fx-main(center);
+
+    @include border;
+    @include text-sm;
+    &_input {
+        border: none ;
+        padding: 0 10px;
+    }
+}

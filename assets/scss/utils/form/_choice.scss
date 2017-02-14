@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+// 定制单选框和复选框样式
+
+$formChoice-size: 20px;
+$formChoice-type:('checkbox' 'checkbox') ('radio' 'radio') ('radio' 'radio-square');
+
+%formChoice {
+    $r: 1.25rem;
+    display: inline-block;
+    font-size: 0;
+
+    position: relative;
+    z-index: 10;
+    width: $formChoice-size;
+    height: $formChoice-size;
+
+    // 标签文字无法对齐
+    vertical-align: middle;
+}
+
+%formChoice-input {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    @include opacity(0);
+}
+
+%formChoice-icon {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    @include fx-center;
+
+    font-size: 0;
+    @include border;
+}
+
+%formChoice-active {
+    font-size: 0.85rem;
+    color: $basecolor;
+}
+
+@each $type in $formChoice-type {
+    .#{nth($type, 2)} {
+
+        @extend %formChoice;
+
+        input[type=#{nth($type, 1)}] {
+            @extend %formChoice-input;
+        }
+
+        // 图标
+        i {
+            @extend %formChoice-icon;
+            @if(nth($type, 2) == 'radio'){
+                border-radius: 50%;
+            }
+        }
+
+        [type=#{nth($type, 1)}]:checked + i {
+            @extend %formChoice-active;
+            border-color: $basecolor;
+        }
+    }
+}

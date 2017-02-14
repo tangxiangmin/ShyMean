@@ -2,6 +2,7 @@
 // 归档
 
 .archives {
+    font-size: 16px;
     border-left: 4px solid $gray;
     @mixin archives-dot($r) {
         &:before {
@@ -31,17 +32,18 @@
 
     .archives_count {
         @extend %archives;
-        @include archives-dot(12px);
         position: relative;
         top: -0.5em;
+
+        @include archives-dot(12px);
     }
 
     .archives_title {
-        font-size: 20px;
         font-weight: normal;
         padding-top: $basepadding*2;
         padding-bottom: $basepadding*2;
 
+        @include text-lg;
         @include archives-dot(10px);
         @extend %archives;
     }

@@ -1,34 +1,67 @@
 @charset "utf-8";
 
-/*
-  配置文件
-*/
-@import "_config";
+// 主要用于配置相关的基础变量和参数，如网格断点等
 
-/*
-  基础样式
-*/
+// rem布局
+$is-mobile: true;
+$remwidth: 750;
+
+// 网格系统
+$is-grid:true;
+$gutter: 0;
+$colNum: 12;
+$breakPoint: (768px 750px) (992px 900px) (1200px 1170px) ;
+
+// 伸缩盒布局
+$is-flex: true;
+
+// 基础变量
+
+$basemargin: 20px;
+$basepadding: 20px;
+$baseborder: 1px solid #d6d6d6;
+
+
+// 网格系统
+$gutter: 0 15px;
+$col-num: 12;
+$breakPoint:(600px 600px)(920px 600px)(1220px 900px);
+
+
+// 颜色
+$yellow: #FF9900;
+$green: #33CC66;
+$blue: #3366FF;
+$purple: #9900FF;
+
+
+$basecolor: #6699FF ;
+
+// 页面
+
+
+// vue
+[v-cloak] {
+    display: none;
+}
+
+//----------------------------引入------------------------------//
+
+// 基础样式
 @import "_base";
 
-/*
-  布局样式
-*/
+// 布局样式
 @import "_layout";
 
-/*
-  动画样式
-*/
-@import "animate";
-
-/*
-  组件样式
-*/
+// 组件样式
 @import "_utils";
 
-/*
-  页面样式
-*/
-@import "page/home/_blog";
+// 页面样式
+@import "_page";
+
+// 动画样式
+@import "_animate";
+
 
 
 

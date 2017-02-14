@@ -7,17 +7,6 @@
 
 define([], function () {
 
-    // rem布局
-    !(function () {
-        let newRem = function() {
-            let html = document.documentElement;
-            html.style.fontSize = html.getBoundingClientRect().width / 10 + 'px';
-        };
-        window.addEventListener('resize', newRem, false);
-        newRem();
-    })();
-
-
     // 头部
     var header = {
         template:`<header class="bg-gray">
@@ -86,7 +75,7 @@ define([], function () {
     var aside = {
         props: ['catalogue'],
         template: `<aside>
-			<div :class="['page_sd',{'active':isClose}]">
+			<div :class="['page_sd','hide-md',{'active':isClose}]">
 			    <tab :items="items">
 			        <catalogue slot="catalogue" :data="catalogue"></catalogue>
 			        <div  slot="website">
@@ -100,9 +89,9 @@ define([], function () {
                             <a href="" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
                         </div>
-                        <div class="author-contact">
-                            <a href="#" ><i class="iconfont icon-github"></i> GitHub</a>
-                            <a href="#" ><i class="iconfont icon-qq"></i> QQ</a>
+                        <div class="contact">
+                            <a href="#" class="contact_link"><i class="iconfont icon-github"></i> GitHub</a>
+                            <a href="#" class="contact_link"><i class="iconfont icon-qq"></i> QQ</a>
                         </div>
 			        </div>
 			    </tab>

@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.contact {
+    &_link {
+        margin-right: 10px;
+        padding: 5px 0;
+
+        @include border-b;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 4px;
+            height: 4px;
+            background: $yellow;
+            border-radius: 2px;
+        }
+    }
+}

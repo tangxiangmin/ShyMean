@@ -33,11 +33,5 @@
     @extend %hover-highlight;
 }
 
-%hover-dark {
-    @include transition(background-color linear .2s);
-    &:hover {
-        @extend .bg-dark;
-        border: 1px solid $dark;
-    }
-}
+
 

@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/*--------------- 表单 --------------*/
+
+// 布局
+
+// 水平表单
+.form-horizontal {
+	.form-group {
+		@include fx;
+		@include fx-cross(center);
+
+        margin-bottom: 10px;
+	}
+}
+
+// 内联表单
+.form-inline {
+    @include fx;
+    @include fx-wrap(nowrap);
+    @include fx-cross(center);
+
+    .form-group {
+        margin-right: $basepadding;
+    }
+}
+
+
+

@@ -1,7 +1,8 @@
 @charset "utf-8";
 .pagination {
 	$size: 30px;
-	margin: $basepadding*2 0;
+	font-size: 14px;
+	margin: 3rem 0;
 	%base {
 		display: inline-block;
 		min-width: $size;
@@ -9,13 +10,16 @@
 		line-height: $size;
 		text-align: center;
 		border: 1px solid #f8f8f8;
+		&:hover {
+			background: #f8f8f8;
+		}
 	}
-	.pagination-item,.pagination-space {
+	&_item, &_space {
 		@extend %base;
 	}
-	.pagination-current {
+	&_current {
 		@extend %base;
-		background: $gray;
+		background: #f8f8f8;
 	}
 
 }

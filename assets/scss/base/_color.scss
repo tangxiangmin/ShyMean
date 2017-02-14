@@ -41,10 +41,10 @@ $colorArr:(red $red #fff)
 		color: nth($color,2);
 	}
 }
+
 .text-gray {
 	color: #999;
 }
-
 
 // 文字选中状态
 ::selection {
