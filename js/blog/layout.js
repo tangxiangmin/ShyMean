@@ -90,8 +90,8 @@ define([], function () {
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
                         </div>
                         <div class="contact">
-                            <a href="#" class="contact_link"><i class="iconfont icon-github"></i> GitHub</a>
-                            <a href="#" class="contact_link"><i class="iconfont icon-qq"></i> QQ</a>
+                            <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i class="iconfont icon-github"></i> GitHub</a>
+                            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=645234650&amp;site=qq&amp;menu=yes" class="contact_link" target="_blank"><i class="iconfont icon-qq"></i> QQ</a>
                         </div>
 			        </div>
 			    </tab>

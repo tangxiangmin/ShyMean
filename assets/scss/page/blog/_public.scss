@@ -33,5 +33,12 @@
     @extend %hover-highlight;
 }
 
+@mixin page-shadow {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 100;
+    box-shadow: 14px 11px 27px #888;
+}
+
 
 

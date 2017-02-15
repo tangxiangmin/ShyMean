@@ -27,9 +27,8 @@ define(['marked'], function () {
 				</div>
 				<div class="article_ct" v-html="article.content"></div>
 				<div class="article_ft">
-				    <a href="#" class="article_tag">#标签</a>
-				    <a href="#" class="article_tag">#标签</a>
-				    <a href="#" class="article_tag">#标签</a>
+				    <router-link :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}" v-for="tag in getTags" class="article_tag">#{{tag}}</router-link>
+
 				</div>
 			</article>
 			</div>
@@ -111,5 +110,20 @@ define(['marked'], function () {
                 article:{},
             }
         },
+        computed:{
+            getTags: function () {
+                var tags = this.article['tags'];
+                if (!tags) {
+                    return '';
+                }
+
+                return tags.split(",").map((val)=>{
+                    return val.trim()
+                });;
+            }
+        },
+        filters:{
+
+        }
     };
 });

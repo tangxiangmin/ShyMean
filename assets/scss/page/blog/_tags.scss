@@ -33,7 +33,18 @@
     word-wrap: break-word;
     &_item {
         display: inline-block;
-
-        margin: 10px 5px;
+        margin: 10px;
+        &.text-xs {
+            font-size: 12px;
+        }
+        &.text-sm {
+            font-size: 15.6px;
+        }
+        &.text-md {
+            font-size: 22.8px;
+        }
+        &.text-lg {
+            font-size: 30px;
+        }
     }
 }
