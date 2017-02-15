@@ -2,6 +2,8 @@
  * Created by admin on 2017/2/10.
  */
 
+// 迁移本地Hexo博文到数据库，输出一条insert语句
+
 
 let fs = require('fs');
 var SqlString = require('sqlstring');
