@@ -793,6 +793,16 @@ html {
 .radio-square [type=radio]:checked + i {
   border-color: #6699FF; }
 
+/*
+     <div class="inputGroup">
+        <input type="text" @input="input" placeholder="数据库被删掉了..." class="inputGroup_input">
+        <div class="inputGroup_icon">
+            <button class="btn">
+                <i class="iconfont icon-search"></i>
+            </button>
+        </div>
+    </div>
+*/
 .inputGroup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -808,6 +818,43 @@ html {
   .inputGroup_input {
     border: none;
     padding: 0 10px; }
+
+.search {
+  font-size: 16px;
+  position: relative; }
+  .search_hd {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #d6d6d6; }
+  .search_input {
+    padding: 5px 10px;
+    border: none; }
+  .search_icon {
+    padding: 5px 10px; }
+  .search_bd {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid #d6d6d6;
+    border-right: 1px solid #d6d6d6; }
+  .search_item {
+    padding: 5px 10px;
+    color: #999;
+    border-bottom: 1px solid #d6d6d6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .search_item:hover, .search_item.hover {
+      color: #333;
+      background-color: #f5f5f5; }
 
 /**
     btn
@@ -1343,9 +1390,12 @@ blockquote {
     background: #FF9900;
     border-radius: 2px; }
 
-.lab .page-top {
-  overflow: hidden;
+.lab .lab_hd {
   margin: 0.26667rem 0;
+  border: 1px solid #ddd;
+  z-index: 100;
+  padding: 1.33333rem;
+  box-shadow: 14px 11px 27px #888;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1355,26 +1405,24 @@ blockquote {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-.lab .page-title {
-  margin: 0;
-  text-align: center;
-  color: #9900FF; }
-
-.lab-list {
-  padding: 0 1.33333rem; }
-
-.lab-item {
+.lab .lab_nav {
+  padding: 1.33333rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  z-index: 100;
+  box-shadow: 14px 11px 27px #888; }
+.lab .lab_item {
   position: relative;
   padding-left: 30px;
   margin-bottom: -1px;
   line-height: 40px;
-  border: 1px solid transparent;
+  font-size: 75%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s; }
-  .lab-item:before {
+  .lab .lab_item:before {
     content: '';
     position: absolute;
     left: 8px;
@@ -1387,16 +1435,16 @@ blockquote {
     -webkit-transition: all ease 0.3s;
     transition: all ease 0.3s;
     border-radius: 4px; }
-  .lab-item:hover {
+  .lab .lab_item:hover {
     z-index: 1;
     padding-left: 70px;
     background-color: #f5f5f5;
     border-color: gainsboro; }
-    .lab-item:hover:before {
+    .lab .lab_item:hover:before {
       background-color: #333; }
-  .lab-item a {
-    display: block;
-    width: 100%; }
+.lab .lab_link {
+  display: block;
+  width: 100%; }
 
 /**
 	相关动画
