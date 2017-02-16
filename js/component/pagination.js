@@ -27,8 +27,10 @@ define([],function () {
         watch:{
             page:function(){
                 this.pageNum = Math.ceil(this.page.total/this.page.num);
+
             },
         },
+
     };
 
 });

@@ -3,6 +3,9 @@
 // 入口导航位于index/index中
 
 // 响应式导航
+.nav-responsive {
+    font-size: 16px;
+}
 
 // 小屏幕
 @media screen and (max-width: nth(nth($breakPoint,2),1)){
@@ -43,8 +46,7 @@
     }
 }
 
-// 竖线分隔的导航，出现在：
-// 1.侧边栏
+// 竖线分隔的导航
 .nav-border {
     font-size: 0;
     margin: 1.5rem 0;

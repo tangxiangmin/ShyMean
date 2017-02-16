@@ -5,7 +5,7 @@
 
 define([], function () {
     return {
-        template:`<div :class="['page_bd','container']">
+        template:`<div :class="['page','container']">
 				<div class="classify">
 					<div class="classify_hd">
 						当前共 {{categories.length}} 个分类
@@ -25,7 +25,7 @@ define([], function () {
 					<div class="tag">
 					    <router-link
 					        :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}"
-					        :class="['hover-highlight','tag_item',{'text-xs':tag_num<=2},{'text-sm':tag_num>2 && tag_num <=5},{'text-md':tag_num>5 && tag_num<=10},{'text-lg':tag_num>10}]"
+					        :class="['hover-highlight','tag_item',{'text-xs':tag_num<=1},{'text-sm':tag_num>1 && tag_num <=3},{'text-md':tag_num>3 && tag_num<=6},{'text-lg':tag_num>6}]"
 					        v-for="(tag_num,tag) in tags"
 					    >{{tag}}</router-link >
 

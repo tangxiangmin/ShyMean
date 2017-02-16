@@ -2,14 +2,16 @@
 
 
 @import "public";
+
 // 页面布局
-@import "blog-layout";
+@import "layout";
 
 // 页面组件
 @import "nav";
 @import "article";
 @import "tags";
 @import "archives";
+@import "tool";
 
 // 独立类
 @import "single";

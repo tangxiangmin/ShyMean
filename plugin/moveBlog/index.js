@@ -1,15 +1,14 @@
 /**
  * Created by admin on 2017/2/10.
  */
-
-// 迁移本地Hexo博文到数据库，输出一条insert语句
-
+"use strict";
 
 let fs = require('fs');
-var SqlString = require('sqlstring');
+let SqlString = require('sqlstring');
+let ep = require('eventproxy');
+
 
 const  test = false;
-// _posts文件夹为Hexo存放博文的目录
 let floder = test?'test':'_posts';
 
 let files = fs.readdirSync(floder,'utf-8');
@@ -20,30 +19,30 @@ let reTitle = /title:\s*([^]*?)[\r\n]/;
 let reDate = /date:\s*([^]*?)[\r\n]/;
 
 let reCategory = /categories:\s*-\s*([^]*?)[\r\n]/;
-let reTags = /tags:\s*-\s*([^]*?)[\r\n]/;
+// let reTags = /tags:\s*(-\s*([^]*?))*(?=categories)/g;
+let reTags = /tags:\s*-\s*([^]*?)(?=categories)/;
 let re = /---([^]*?)---([^]*)/;
 
 
+let count = 0;
 let ouputCount = 0;
 let start = new Date();
 
 // 重置测试文件
-let output = 'output.txt';
+let output = 'output.sql';
 
 if (fs.existsSync(output)){
     fs.unlink(output);
 }
 
-// 拆分头部信息和主要内容
-
 files.forEach((file)=>{
     fs.readFile(floder+'/'+file,"utf-8",function (err,data) {
         if(err) throw err;
 
-        let head = re.exec(data)[1];
+        // 拆分头部信息和主要内容
 
+        let head = re.exec(data)[1];
         let content = re.exec(data)[2];
-        // content = `Hel \ lo 'Wor"ld`;
 
         // 拆分头部信息
         let date = getMsg(head,reDate);
@@ -51,11 +50,20 @@ files.forEach((file)=>{
         // 将时间字符串转换成时间戳
         date = new Date(Date.parse(date.replace(/-/g, "/")));
         date = date.getTime()/1000;
+
+        let tags = getMsg(head,reTags);
+        if (tags === ''){
+            console.log("wtf: " + file);
+            console.log(head);
+        }
+        tags = tags.replace(/\-/g,',').replace(/[\t\n\r]/g,'');
+
+
         let post = {
             title: getMsg(head,reTitle),
             created_at: date,
             category: getMsg(head,reCategory),
-            tags: getMsg(head,reTags),
+            tags: tags,
             content: content
         };
 
@@ -73,11 +81,11 @@ files.forEach((file)=>{
         })
     })
 });
-
-
 function getMsg(str,re) {
     let res = re.exec(str);
     return res && res[1] || '';
 }
+
+
 
 
