@@ -1,16 +1,33 @@
 @charset "utf-8";
 
+@mixin page-shadow {
+    padding: rem(100);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 100;
+    @include box-shadow(7px 6px 16px #888);
+    @include transition;
+    &:hover {
+        @include box-shadow(14px 11px 27px #888)
+    }
+}
+
+@media screen and (min-width: nth(nth($breakPoint,2),1)) {
+    .article {
+        @include page-shadow;
+    }
+}
+
 .article{
     margin-bottom: 3rem;
     font-size: 16px;
     color: #333;
 
-    padding: rem(100);
-    @include page-shadow;
 
     &_hd {
         font-weight: normal;
     }
+
     &_tt {
         @extend %hover-underline;
     }
@@ -20,6 +37,23 @@
         color: $text-gray;
         word-spacing: 3px;
     }
+
+    &_ft {
+        margin: 2rem 0;
+
+    }
+
+    &_nav {
+        @include clearfix;
+    }
+    &_prev {
+        float: left;
+    }
+
+    &_next {
+        float: right;
+    }
+
 
     // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
     &_ct {
@@ -37,6 +71,8 @@
             max-width: 100%;
         }
     }
+
+    // 标签
     &_tag {
         display: inline-block;
         background-color: $gray;

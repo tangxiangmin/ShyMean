@@ -10,8 +10,8 @@ define([], function () {
     // 头部
     var header = {
         template:`<header class="bg-gray">
-                    <div class="container page_hd">
-                        <h1 class="page_title">
+                    <div class="container header">
+                        <h1 class="logo">
                             <router-link to="/index/1">{{msg.title}}</router-link>
                         </h1>
                         <div class="show-md">
@@ -54,7 +54,7 @@ define([], function () {
     // 底部
     var footer = {
         template:`<footer class="bg-gray">
-				<div class="container page_ft">
+				<div class="container footer">
 					<p>
 						©Shymean 2016 - {{new Date().getFullYear()}}
 					</p>
@@ -75,7 +75,7 @@ define([], function () {
     var aside = {
         props: ['catalogue'],
         template: `<aside>
-			<div :class="['page_sd','hide-md',{'active':isClose}]">
+			<div :class="['aside','hide-md',{'active':isClose}]">
 			    <tab :items="items">
 			        <catalogue slot="catalogue" :data="catalogue"></catalogue>
 			        <div  slot="website">
@@ -86,7 +86,7 @@ define([], function () {
                         </div>
                         <div class="nav-border">
                             <a href="" class="nav_item"><i class="iconfont icon-blog"></i> <br>博客</a>
-                            <a href="" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
+                            <a href="/Home/Lab/Lab" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
                         </div>
                         <div class="contact">
@@ -97,7 +97,7 @@ define([], function () {
 			    </tab>
 			</div>
 
-			<div class="page_tool">
+			<div class="tool">
 				<div :class="['btn-list','hide-md',{'hover':isHover},{'close':isClose}]" @click="toggleAside"  @mouseover="toggleList" @mouseout="toggleList">
 					<div class="btn-icon">
 						<span class="btn-line"></span>
@@ -136,7 +136,6 @@ define([], function () {
         mounted: function () {
             // 判断当前路由
             if (this.$route.name == 'articleDetail') {
-
                 this.items.unshift({
                     slot:"catalogue",
                     title:"文章目录"
@@ -159,7 +158,12 @@ define([], function () {
         },
         watch:{
             $route(to,from){
-                if (from.name == 'articleDetail'){
+                if (this.$route.name == 'articleDetail') {
+                    this.items[0] = {
+                        slot:"catalogue",
+                        title:"文章目录"
+                    };
+                }else if(from.name == 'articleDetail'){
                     this.items.shift();
                 }else if (to.name == 'articleDetail') {
                     this.items.unshift({

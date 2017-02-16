@@ -1,14 +1,20 @@
 @charset "utf-8";
 .pagination {
-	$size: 30px;
+	$size: 40px;
 	font-size: 14px;
 	margin: 3rem 0;
+
+	@include fx;
+	@include fx-cross(center);
 	%base {
 		display: inline-block;
 		min-width: $size;
 		height: $size;
 		line-height: $size;
 		text-align: center;
+	}
+
+	%item {
 		border: 1px solid #f8f8f8;
 		&:hover {
 			background: #f8f8f8;
@@ -17,8 +23,14 @@
 	&_item, &_space {
 		@extend %base;
 	}
+
+	&_item {
+		@extend %item;
+	}
+
 	&_current {
 		@extend %base;
+		@extend %item;
 		background: #f8f8f8;
 	}
 

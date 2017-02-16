@@ -13,7 +13,7 @@
 <body >
 	<div id="blog" v-cloak >
 
-		<main :class="['page_mn',{'active':showAside}]">
+		<main :class="['main',{'active':showAside}]">
 			<blog-header ></blog-header>
 			<!--<transition name="fade">-->
 			<router-view @article="article" ></router-view>

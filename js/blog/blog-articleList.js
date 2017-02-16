@@ -8,7 +8,7 @@ define(['xm'], function () {
     var xm = require('xm');
 
     return {
-        template:`<div :class="['page_bd','container']">
+        template:`<div :class="['page','container']">
 
 				<div class="archives">
 				    <div class="archives_count">{{countWord}}</div>

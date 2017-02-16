@@ -50,9 +50,18 @@ class BlogController extends Controller{
     public function articleDetail(){
         $id = $_REQUEST['id'];
         $article = $this->model->where('id = '.$id)->selectOne();
-        $article['created_at'] = date('Y-m-d',$article['created_at']);
+        $time = $article['created_at'];
+        $prev = $this->model->field('id, title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
+//        var_dump($prev);
+        $next = $this->model->field('id, title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
 
-        exit(json_encode($article));
+        $article['created_at'] = date('Y-m-d',$article['created_at']);
+        $data = array(
+            'prev'=>$prev,
+            'next'=>$next,
+            'article'=>$article,
+        );
+        exit(json_encode($data));
     }
 
     // 标签
