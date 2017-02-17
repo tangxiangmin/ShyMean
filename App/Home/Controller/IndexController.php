@@ -8,5 +8,7 @@ class IndexController extends Controller{
         $this->view('index');
     }
 
-
+    public function about(){
+        $this->view('about');
+    }
 }

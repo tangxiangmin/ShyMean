@@ -14,6 +14,7 @@ require.config({
         'router-config':'blog/route',
         //插件
         'marked':'lib/marked',
+        'highlight':'lib/highlight.pack',
         // 辅助函数
         'xm':'base/function',
         // 布局

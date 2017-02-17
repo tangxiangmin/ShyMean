@@ -2,15 +2,15 @@
 /**
  * 文章详情页面
  */
-require.config({
-    baseUrl:'/js',
-    paths:{
-        'marked':'lib/marked',
-    }
-});
-define(['marked'], function () {
+define(['marked','highlight'], function () {
 
     var marked = require('marked');
+
+    marked.setOptions({
+        highlight: function (code) {
+            return require('highlight').highlightAuto(code).value;
+        }
+    });
 
     return {
         props:[],
