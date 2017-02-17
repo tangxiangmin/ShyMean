@@ -143,10 +143,10 @@ define([], function () {
             }
 
             // 返回顶部
-            var h = window.screen.height / 20;
-            var _that = this;
+            let h = window.screen.height / 20;
+            let _that = this;
             document.addEventListener('scroll', function () {
-                var scrollTop = 0;
+                let scrollTop = 0;
                 if (document.body) {
                     scrollTop = document.body.scrollTop;
                 } else {
@@ -158,18 +158,21 @@ define([], function () {
         },
         watch:{
             $route(to,from){
-                if (this.$route.name == 'articleDetail') {
-                    this.items[0] = {
-                        slot:"catalogue",
-                        title:"文章目录"
-                    };
-                }else if(from.name == 'articleDetail'){
-                    this.items.shift();
-                }else if (to.name == 'articleDetail') {
+                // 判断是否显示目录
+                // 从其他页面进入文章详情
+                // 从当前文章进入下一篇文章
+                if (this.items.length == 1) {
                     this.items.unshift({
                         slot:"catalogue",
                         title:"文章目录"
                     })
+                }else if (from.name == 'articleDetail' && to.name == 'articleDetail') {
+                    this.items[0] = {
+                        slot:"catalogue",
+                        title:"文章目录"
+                    };
+                }else {
+                    this.items.shift();
                 }
             }
         }
