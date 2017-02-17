@@ -4,7 +4,7 @@
  */
 define(['marked','highlight'], function () {
 
-    var marked = require('marked');
+    let marked = require('marked');
 
     marked.setOptions({
         highlight: function (code) {
@@ -53,34 +53,34 @@ define(['marked','highlight'], function () {
                     return res.json();
                 }).then((data)=>{
 
-                    var article = data['article'];
-                    var prev = data['prev'];
-                    var next = data['next'];
+                    let article = data['article'];
+                    let prev = data['prev'];
+                    let next = data['next'];
 
-                    var content  = marked(article['content']);
+                    let content  = marked(article['content']);
                     // 最多只考虑了3级目录，应该够用了。
 
-                    var re = /<(h[2|3|4])[^]*?>([^]*?)<\/\1>/g;
-                    var title = null;
-                    var count = {
+                    let re = /<(h[2|3|4])[^]*?>([^]*?)<\/\1>/g;
+                    let title = null;
+                    let count = {
                         h2:0,
                         h3:0,
                         h4:0
                     };
 
-                    var titleArr = [];
+                    let titleArr = [];
 
                     while(title = re.exec(content)){
-                        var type = title[1];
+                        let type = title[1];
 
-                        var orderNum = '';
+                        let orderNum = '';
                         switch (type){
                             case "h2":
                                 count.h2++;
                                 count.h3 = 0;
                                 count.h4 = 0;
                                 orderNum = count.h2 + '. ';
-                                var h2 = {
+                                let h2 = {
                                     h2:orderNum+title[2],
                                     h3:[]
                                 };
@@ -90,7 +90,7 @@ define(['marked','highlight'], function () {
                                 count.h3++;
                                 count.h4 = 0;
                                 orderNum = count.h2 + '.' + count.h3 + '. ';
-                                var h3 = {
+                                let h3 = {
                                     h3:orderNum+title[2],
                                     h4:[]
                                 };
@@ -99,7 +99,7 @@ define(['marked','highlight'], function () {
                             case "h4":
                                 count.h4++;
                                 orderNum = count.h2 + '.' + count.h3 + '.' + count.h4 + '. ';
-                                var last = titleArr[titleArr.length - 1].h3;
+                                let last = titleArr[titleArr.length - 1].h3;
                                 last[last.length - 1].h4.push(orderNum+title[2]);
                                 break;
                             default:
@@ -107,8 +107,8 @@ define(['marked','highlight'], function () {
                                 break;
                         }
 
-                        var id = title[2];
-                        var str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
+                        let id = title[2];
+                        let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
                         content = content.replace(title[0],str);
                     }
                     // 数据由aside组件渲染
@@ -129,7 +129,7 @@ define(['marked','highlight'], function () {
         },
         computed:{
             getTags: function () {
-                var tags = this.article['tags'];
+                let tags = this.article['tags'];
                 if (!tags) {
                     return '';
                 }
