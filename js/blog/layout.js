@@ -159,9 +159,11 @@ define([], function () {
         watch:{
             $route(to,from){
                 // 判断是否显示目录
+
                 // 从其他页面进入文章详情
                 // 从当前文章进入下一篇文章
-                if (this.items.length == 1) {
+
+                if (this.items.length == 1 && to.name == 'articleDetail') {
                     this.items.unshift({
                         slot:"catalogue",
                         title:"文章目录"
@@ -171,7 +173,7 @@ define([], function () {
                         slot:"catalogue",
                         title:"文章目录"
                     };
-                }else {
+                }else if (from.name == 'articleDetail') {
                     this.items.shift();
                 }
             }
@@ -183,5 +185,5 @@ define([], function () {
         header:header,
         footer:footer,
         aside:aside
-    };;
+    };
 });

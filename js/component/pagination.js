@@ -9,23 +9,57 @@
  * <pagination :page="page" :active="active" name="articleList"></pagination>
  * 其中，this.page是由后台传递的配置参数，包括total总数量和num每页数量,this.active是通过路由获取的当前页码，name就是当前路由页面的字符串名称
  */
+/*
+*  2017-2-17
+*  限制分页数量，多余页码使用一个省略号代替
+*/
 
 define([],function () {
 
     return  {
         props: ['name','page','active'],
         template:`<nav class="pagination" v-if="pageNum > 1" >
-                    <router-link :to="{ name: name, params:{ active: active - 1 }}" :class="['pagination_item']" v-if="active > 1"><i class="iconfont icon-back"></i></router-link>
-		            <router-link  v-for="n in pageNum" :to="{ name: name, params: { active: n }}" :class="['pagination_item',{'pagination_current':active == n}]">{{n}}</router-link>
-		            <router-link :to="{ name: name, params: { active: active - 0+1 }}" :class="['pagination_item']" v-if="active < pageNum"><i class="iconfont icon-forward"></i></router-link>
+                    <div :class="['pagination_item']" v-if="active > 1">
+                        <router-link class="pagination_link" :to="{ name: name, params:{ active: active - 1 }}" ><i class="iconfont icon-back"></i></router-link></div>
+                    <div v-for="n in pageNum"  :class="['pagination_item',{'pagination_current':active == n}]" v-if="omit(n).msg">
+                       <span class="pagination_space" v-if="omit(n).flag">...</span>
+                        <router-link v-else  class="pagination_link" :to="{ name: name, params: { active: n }}" >{{n}}</router-link></div>                   
+                    <div :class="['pagination_item']" v-if="active < pageNum">
+                        <router-link :to="{ name: name, params: { active: active - 0+1 }}" class="pagination_link"><i class="iconfont icon-forward"></i></router-link>
+</div>
 				</nav>`,
         data: function () {
             return {
                 pageNum: 1,
             }
         },
+        methods:{
+            omit(n){
+                let flag = {
+                    msg:false,
+                    flag:false
+                };
+                let active = this.active - 0;
+                let num = this.pageNum;
+                let screen = window.screen.width;
+
+                const limit = screen < 768 ? 2:3;
+
+                if (n < limit || n > num - 1 || (n >= active - limit && n <= active + limit)) {
+                    // 显示首页，最后一页或当前页相关
+                    flag.msg = true;
+
+                    // 显示省略号
+                    if (n == active - limit || n == active + limit) {
+                        flag.flag = true;
+                    }
+                }
+
+                return flag;
+            }
+        },
         watch:{
-            page:function(){
+            page(){
                 this.pageNum = Math.ceil(this.page.total/this.page.num);
 
             },

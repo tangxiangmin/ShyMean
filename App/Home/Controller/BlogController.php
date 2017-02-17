@@ -8,6 +8,12 @@ use Core\Utils\Page;
 class BlogController extends Controller{
     private $model = null;
 
+    // 首页分页数量
+    private $indexPage = 10;
+
+    // 归档页分页数量
+    private $archivesPage = 20;
+
     public function __construct(){
         $this->model = new ArticleModel();
         parent::__construct();
@@ -22,7 +28,7 @@ class BlogController extends Controller{
 
     // 博客首页文章列表及分页
     public function index(){
-        $num = 10;
+        $num = $this->indexPage;
         $total = intval($this->model->count());
 
         $active = $_REQUEST['active'] - 1;
@@ -92,7 +98,7 @@ class BlogController extends Controller{
                 break;
         }
 
-        $num = 20;
+        $num = $this->archivesPage;
         $total = intval($this->model->where($where)->count());
         $active = $_REQUEST['active'] - 1 || 0;
 
