@@ -6,7 +6,11 @@
 require.config({
     baseUrl:'/js',
     paths:{
-
+        'index':'blog/blog-index',
+        'articleDetail':'blog/blog-articleDetail',
+        'tags':'blog/blog-tags',
+        'articleList':'blog/blog-articleList',
+        'layout':'blog/layout',
     }
 });
 

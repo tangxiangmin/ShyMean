@@ -8,11 +8,11 @@ require.config({
     paths:{
         // 框架依赖
         'vue':'lib/vue',
-        'vue-router':[/*'https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.min',*/'lib/vue-router'],
-        'vue-resource':[/*'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.min',*/'lib/vue-resource.min'],
+        'vue-router':['https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.min','lib/vue-router'],
+        'vue-resource':['https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.min','lib/vue-resource.min'],
         //插件
-        'marked':[/*'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min',*/'lib/marked'],
-        'highlight':[/*'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min',*/'lib/highlight.pack'],
+        'marked':['https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min','lib/marked'],
+        'highlight':['https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min','lib/highlight.pack'],
         // 辅助函数
         'xm':'base/function',
         // 全局路由配置

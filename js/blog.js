@@ -3,16 +3,44 @@
  * 引入界面的布局组件，包括基本的头部，底部，侧边栏和工具按钮组
  */
 
-require(['/js/config.js'], function () {
+require.config({
+    baseUrl:'/js',
+    paths:{
+        // 框架依赖
+        'vue':'lib/vue',
+        'vue-router':['https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.min','lib/vue-router'],
+        'vue-resource':['https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.min','lib/vue-resource.min'],
+        //插件
+        'marked':['https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min','lib/marked'],
+        'highlight':['https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min','lib/highlight.pack'],
+        // 辅助函数
+        'xm':'base/function',
+        // 全局路由配置
+        'router-config':'blog/route',
+        // 布局
+        'index':'blog/blog-index',
+        'articleDetail':'blog/blog-articleDetail',
+        'tags':'blog/blog-tags',
+        'articleList':'blog/blog-articleList',
+        'layout':'blog/layout',
+        // 组件
+        'pagination':'component/pagination',
+        'tab':'component/tab',
+        'catalogue':'component/catalogue',
+
+    }
+});
+
+//require(['config'], function () {
     require(['vue','vue-router','vue-resource','router-config','layout','pagination','tab','catalogue'], function () {
 
-        let Vue = require('vue');
+        var Vue = require('vue');
 
         // vue-routes
-        let VueRouter = require('vue-router');
+        var VueRouter = require('vue-router');
         Vue.use(VueRouter);
-        let routes = require('router-config');
-        let router = new VueRouter({
+        var routes = require('router-config');
+        var router = new VueRouter({
             routes:routes,
             //scrollBehavior (to, from, savedPosition) {
             //    return { x: 0, y: 0 }
@@ -20,16 +48,16 @@ require(['/js/config.js'], function () {
         });
 
         // vue-resource
-        let VueResource  = require('vue-resource');
+        var VueResource  = require('vue-resource');
         Vue.use(VueResource);
         Vue.http.options.emulateJSON = true;
         Vue.http.options.emulateHTTP = true;
 
 
         // 组件
-        let pagination = require('pagination');
-        let tab = require('tab');
-        let catalogue = require('catalogue');
+        var pagination = require('pagination');
+        var tab = require('tab');
+        var catalogue = require('catalogue');
 
         Vue.component('pagination',pagination);
         Vue.component('tab',tab);
@@ -37,7 +65,7 @@ require(['/js/config.js'], function () {
 
 
         // layout
-        let layout = require('layout');
+        var layout = require('layout');
         Vue.component('blog-header',layout.header);
         Vue.component('blog-footer',layout.footer);
         Vue.component('blog-aside',layout.aside);
@@ -73,5 +101,5 @@ require(['/js/config.js'], function () {
         });
 
     });
-});
+//});
 
