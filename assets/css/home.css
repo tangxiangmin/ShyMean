@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body {
+  background-color: red; }
+
 [v-cloak] {
   display: none; }
 
@@ -143,8 +146,8 @@ textarea {
  * ---end color---
  */
 /**
- * ---font---
- */
+  * ---font---
+  */
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
@@ -456,178 +459,145 @@ body {
     width: 600px;
     margin-left: auto;
     margin-right: auto; }
-
   .col-sm-1 {
     width: 8.33333%;
     float: left; }
-
   .col-sm-2 {
     width: 16.66667%;
     float: left; }
-
   .col-sm-3 {
     width: 25%;
     float: left; }
-
   .col-sm-4 {
     width: 33.33333%;
     float: left; }
-
   .col-sm-5 {
     width: 41.66667%;
     float: left; }
-
   .col-sm-6 {
     width: 50%;
     float: left; }
-
   .col-sm-7 {
     width: 58.33333%;
     float: left; }
-
   .col-sm-8 {
     width: 66.66667%;
     float: left; }
-
   .col-sm-9 {
     width: 75%;
     float: left; }
-
   .col-sm-10 {
     width: 83.33333%;
     float: left; }
-
   .col-sm-11 {
     width: 91.66667%;
     float: left; }
-
   .col-sm-12 {
     width: 100%;
     float: left; } }
+
 @media screen and (max-width: 600px) {
   .hide-sm {
     display: none !important; }
-
   .show-sm {
     display: block; } }
+
 @media screen and (min-width: 920px) {
   .container {
     width: 600px;
     margin-left: auto;
     margin-right: auto; }
-
   .col-md-1 {
     width: 8.33333%;
     float: left; }
-
   .col-md-2 {
     width: 16.66667%;
     float: left; }
-
   .col-md-3 {
     width: 25%;
     float: left; }
-
   .col-md-4 {
     width: 33.33333%;
     float: left; }
-
   .col-md-5 {
     width: 41.66667%;
     float: left; }
-
   .col-md-6 {
     width: 50%;
     float: left; }
-
   .col-md-7 {
     width: 58.33333%;
     float: left; }
-
   .col-md-8 {
     width: 66.66667%;
     float: left; }
-
   .col-md-9 {
     width: 75%;
     float: left; }
-
   .col-md-10 {
     width: 83.33333%;
     float: left; }
-
   .col-md-11 {
     width: 91.66667%;
     float: left; }
-
   .col-md-12 {
     width: 100%;
     float: left; } }
+
 @media screen and (max-width: 920px) {
   .hide-md {
     display: none !important; }
-
   .show-md {
     display: block; } }
+
 @media screen and (min-width: 1220px) {
   .container {
     width: 900px;
     margin-left: auto;
     margin-right: auto; }
-
   .col-lg-1 {
     width: 8.33333%;
     float: left; }
-
   .col-lg-2 {
     width: 16.66667%;
     float: left; }
-
   .col-lg-3 {
     width: 25%;
     float: left; }
-
   .col-lg-4 {
     width: 33.33333%;
     float: left; }
-
   .col-lg-5 {
     width: 41.66667%;
     float: left; }
-
   .col-lg-6 {
     width: 50%;
     float: left; }
-
   .col-lg-7 {
     width: 58.33333%;
     float: left; }
-
   .col-lg-8 {
     width: 66.66667%;
     float: left; }
-
   .col-lg-9 {
     width: 75%;
     float: left; }
-
   .col-lg-10 {
     width: 83.33333%;
     float: left; }
-
   .col-lg-11 {
     width: 91.66667%;
     float: left; }
-
   .col-lg-12 {
     width: 100%;
     float: left; } }
+
 @media screen and (max-width: 1220px) {
   .hide-lg {
     display: none !important; }
-
   .show-lg {
     display: block; } }
+
 /*--------------end grid-------------*/
 html {
   font-size: 16px; }
@@ -639,6 +609,7 @@ html {
     font-size: calc(100% + 2 * (100vw - 375px) / 39);
     font-size: -webkit-calc(16px + 2 * (100vw - 375px) / 39);
     font-size: calc(16px + 2 * (100vw - 375px) / 39); } }
+
 @media screen and (min-width: 414px) {
   html {
     /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
@@ -646,6 +617,7 @@ html {
     font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
     font-size: -webkit-calc(18px + 4 * (100vw - 414px) / 586);
     font-size: calc(18px + 4 * (100vw - 414px) / 586); } }
+
 @media screen and (min-width: 600px) {
   html {
     /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
@@ -653,6 +625,7 @@ html {
     font-size: calc(125% + 4 * (100vw - 600px) / 400);
     font-size: -webkit-calc(20px + 4 * (100vw - 600px) / 400);
     font-size: calc(20px + 4 * (100vw - 600px) / 400); } }
+
 @media screen and (min-width: 1000px) {
   html {
     /* 1000px往后是每100像素0.5px增加 */
@@ -660,6 +633,7 @@ html {
     font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
     font-size: -webkit-calc(22px + 6 * (100vw - 1000px) / 1000);
     font-size: calc(22px + 6 * (100vw - 1000px) / 1000); } }
+
 /**
 	相关组件样式
  */
@@ -787,6 +761,7 @@ html {
 
 .radio i {
   border-radius: 50%; }
+
 .radio [type=radio]:checked + i {
   border-color: #6699FF; }
 
@@ -1177,9 +1152,9 @@ blockquote {
 @media screen and (max-width: 920px) {
   .aside {
     display: none; }
-
   .main.active {
     padding-right: 0; } }
+
 .nav-responsive {
   font-size: 16px; }
 
@@ -1198,6 +1173,7 @@ blockquote {
       display: block;
       text-align: center;
       line-height: 40px; } }
+
 @media screen and (min-width: 920px) {
   .nav-responsive {
     float: right;
@@ -1212,6 +1188,7 @@ blockquote {
       transition: background ease 0.2s; }
       .nav-responsive .nav_item:hover {
         background: #e8e8e8; } }
+
 .nav-border {
   font-size: 0;
   margin: 1.5rem 0; }
@@ -1237,6 +1214,7 @@ blockquote {
       -ms-box-shadow: 14px 11px 27px #888;
       -o-box-shadow: 14px 11px 27px #888;
       box-shadow: 14px 11px 27px #888; } }
+
 .article {
   margin-bottom: 3rem;
   font-size: 16px;
@@ -1385,15 +1363,18 @@ blockquote {
   position: fixed;
   z-index: 9999;
   right: 15px; }
+
 .tool .btn-list {
   bottom: 65px; }
 
 .btn-list.hover .btn-line:first-child {
   -webkit-transform: translate(-8px, 6px) rotate(-45deg);
   transform: translate(-8px, 6px) rotate(-45deg); }
+
 .btn-list.hover .btn-line:last-child {
   -webkit-transform: translate(-8px, -6px) rotate(45deg);
   transform: translate(-8px, -6px) rotate(45deg); }
+
 .btn-list.close .btn-line {
   transform-origin: center; }
   .btn-list.close .btn-line:nth-of-type(2) {
@@ -1404,6 +1385,7 @@ blockquote {
   .btn-list.close .btn-line:last-child {
     -webkit-transform: translateY(-8px) rotate(45deg);
     transform: translateY(-8px) rotate(45deg); }
+
 .btn-list .btn-icon {
   overflow: hidden;
   width: 20px;
@@ -1464,12 +1446,14 @@ blockquote {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
+
 .lab .lab_nav {
   padding: 1.33333rem;
   background-color: #fff;
   border: 1px solid #ddd;
   z-index: 100;
   box-shadow: 14px 11px 27px #888; }
+
 .lab .lab_item {
   position: relative;
   padding-left: 30px;
@@ -1501,6 +1485,7 @@ blockquote {
     border-color: gainsboro; }
     .lab .lab_item:hover:before {
       background-color: #333; }
+
 .lab .lab_link {
   display: block;
   width: 100%; }
@@ -1508,5 +1493,26 @@ blockquote {
 /**
 	相关动画
  */
+.step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem; }
+
+.word-group {
+  display: inline-block; }
+
+.word-line:after {
+  content: attr(word);
+  position: absolute; }
+
+.word-line del {
+  display: block; }
 
 /*# sourceMappingURL=home.css.map */

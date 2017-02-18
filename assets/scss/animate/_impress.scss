@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+// 关于页面，使用impress框架，该页面所需要的样式和动画
+
+.step {
+    @include fx;
+    @include fx-cross(center);
+    @include fx-main(center);
+    line-height: 2rem;
+
+    a {
+        //text-decoration: underline;
+    }
+}
+
+
+
+.word-group {
+    display: inline-block;
+}
+.word-line {
+    &:after {
+        content:attr(word);
+        position: absolute;
+    }
+    del {
+        display: block;
+    }
+
+}
