@@ -1,11 +1,26 @@
 "use strict";
 
 var gulp =  require('gulp');
-var livereload = require('gulp-livereload');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps'); 
 
-gulp.task('watch',function () {
-   livereload.listen();
-   gulp.watch(['assets/**/**','js/**/**','App/**/**'],function (file) {
-       livereload.changed(file.path);
-   })
-});
+var livereload = require('gulp-livereload');
+// livereload({ start: true });
+
+// task
+gulp.task('scss',function(){
+	gulp.src("./assets/scss/*.scss")
+		.pipe(sourcemaps.init())
+			.pipe(sass().on('error', sass.logError))
+	    .pipe(sourcemaps.write('./'))
+	    .pipe(gulp.dest('./assets/css'))
+    	.pipe(livereload());
+})
+
+
+// auto
+gulp.task('default',function(){
+	livereload.listen();
+	gulp.watch('./assets/scss/*.scss',['scss']);
+
+})

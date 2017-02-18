@@ -85,9 +85,9 @@ define([], function () {
                             <p>一个不学无数且无趣的人。</p>
                         </div>
                         <div class="nav-border">
-                            <a href="" class="nav_item"><i class="iconfont icon-blog"></i> <br>博客</a>
                             <a href="/Home/Lab/Lab" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
+                             <a href="/Home/Index/about" class="nav_item"><i class="iconfont icon-info"></i> <br>关于</a>
                         </div>
                         <div class="contact">
                             <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i class="iconfont icon-github"></i> GitHub</a>
