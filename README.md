@@ -96,7 +96,7 @@ __技术框架__
 npm sqlstring
 ```
 
-整个博文迁移的脚本放在`plugin`文件夹下的`moveBlog`中。
+整个博文迁移的脚本打包成`hexo2mysql`模块放在`plugin`文件夹下的`hexo2mysql`中，可以直接在项目中通过`require('hexo2mysql').transform('_posts')`调用。
 
 ### 2017-2-11
 
@@ -152,5 +152,5 @@ goAnchor(val){
 
 遇见的几个问题是
 * 不能使用let关键字，会报错，改为var就不会了，此外还有比如`这些ES6的特性都会出现错误，导致文件没有压缩，不过好歹是合并在一起了，应该先进行一次babel转义才行
-* 由于存在build.js文件，因此之前的config.js已经不需要了，且之前单独定义了
+* 由于存在build.js文件，因此之前的config.js已经不需要了，且不知道为何在config中定义的模块id的文件不会被合并导致页面会直接加载相关文件。我猜测的原因是由于之前的config.js文件中只使用了`require.config()`方法进行配置，而没有显示的使用`define([],cb)`，导致在blog文件中`require(['config'])`的时候不加载任何依赖（好吧这是我瞎扯的）
 

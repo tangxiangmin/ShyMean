@@ -18,6 +18,7 @@
     }
 }
 
+
 .article{
     margin-bottom: 3rem;
     font-size: 16px;
@@ -59,6 +60,7 @@
     &_ct {
         margin: 10px 0;
         line-height: 2em;
+
         a {
             color: $cyan;
             text-decoration: underline;
@@ -69,6 +71,17 @@
 
         img {
             max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+
+        th,td {
+            border: $baseborder;
+            padding: 5px 10px;
         }
     }
 
