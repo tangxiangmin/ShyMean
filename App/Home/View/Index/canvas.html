@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+
+    <style>
+        body {
+            box-sizing: content-box;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #xmCanvas {
+            border: 2px solid #dedede;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="xmCanvas" width="600" height="600"></canvas>
+<script src="/js/lab/tetris.js"></script>
+<script>
+    window.onload = function () {
+
+        let tetr = new Tetris();
+        tetr.init();
+    }
+</script>
+
+</body>
+</html>
