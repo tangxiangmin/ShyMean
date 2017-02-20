@@ -4,9 +4,9 @@
 
 const shapes = [
     [
-        [0,1,0],
-        [1,1,0],
-        [0,1,0],
+        [0,1],
+        [1,1],
+        [0,1],
     ],
     [
         [0,1,0],
@@ -32,14 +32,17 @@ const spriteSize = 30;
 let col = canvasWidth/spriteSize;
 let ctx = canvas.getContext("2d");
 
-// 保存按钮情形
-
+// 按键
+const keyLeft = 37;
+const keyRight = 39;
+const keyUp = 38;
+const keyDown = 40;
+const keySpace = 32;
 
 /**
  * 精灵
  * @param
  * {
- *      size: the squre sprite width & height
  *      speed: animate speed
  * }
  * @constructor
@@ -49,16 +52,22 @@ function Sprite(params) {
     let shape = Math.floor(Math.random()*shapes.length);
     this.coords = shapes[shape];
 
-    this.size = params.size || 30;
-    this.speed = params.speed || 1000;
+
+    this.speed = params && params.speed || 1000;
     this.matrixSize = this.coords.length;
 
     // 随机位置
     let pos = Math.floor(Math.random()*col);
-    this.startPoint = {
-        x: pos*this.size,
+
+    this.position = {
+        x: pos*spriteSize,
         y: 0
+    };
+    this.size = {
+        w: this.coords[0].length,
+        h: this.coords.length
     }
+
 }
 
 Sprite.prototype = {
@@ -67,34 +76,78 @@ Sprite.prototype = {
     clear(){
         /* 清除相应区域 */
         // 应当根据coords进行清除，而不是直接清除这个9方格，暂时先挖个坑
-        ctx.clearRect(this.startPoint.x, this.startPoint.y, this.size*this.matrixSize, this.size*this          .matrixSize);
+        ctx.clearRect(this.position.x, this.position.y, spriteSize*this.matrixSize, spriteSize*this          .matrixSize);
     },
     draw(){
         /* 绘制新图像 */
-        let startPoint = this.startPoint,
-            size = this.size,
+        let position = this.position,
+            size = spriteSize,
             matrixSize = this.matrixSize;
 
         this.clear();
 
-        for (let i = 0; i < matrixSize; ++i){
-            for (let j = 0; j < matrixSize; ++j){
+        for (let i = 0,row = this.coords.length; i < row; ++i){
+            for (let j = 0,col=this.coords[i].length; j < col; ++j){
                 if (this.coords[i][j] == 1){
-                    ctx.fillRect(startPoint.x + size*j, startPoint.y+size*i, size, size);
+                    ctx.fillStyle = "#000";
+                    ctx.fillRect(position.x + size*j, position.y+size*i, size, size);
+                }else {
+                    ctx.fillStyle = "#ccc";
+                    ctx.fillRect(position.x + size*j, position.y+size*i, size, size);
                 }
             }
         }
+    },
+    _getSize(){
+
+
+        // 获取元素的实际宽度
+        let wMax = 0;
+        for (let i = 0, len = this.coords.length; i< len; i ++){
+            let count = 0;
+            for (let j = 0; j < len; ++j){
+                if (this.coords[i][j] == 1){
+                    count++;
+                    if (count > wMax) {
+                        wMax = count
+                    }
+                }
+            }
+        }
+
+        // 获取元素的宽度
+        this.size.w = wMax*spriteSize;
+
+
+    },
+    // 边界检测
+    _checkBoundary(){
+        let x = canvasWidth  - this.size.w;
+        let y = canvasHeight - this.size.h;
+
+
+        // 右侧临界点
+        if (this.position.x > x - spriteSize) {
+            this.position.x = x;
+            this.draw();
+            return keyRight;
+        }
+
+
     },
 
     // 接口
     init() {
         /* 初始化 */
-        // 随机位置
+        // 设置尺寸
+        this._getSize();
         this.draw();
 
         // 由于操作时单次按键而不是连续按键，因此使用定时器而不是requestAnimationFrame()
         let _that = this;
-        update();
+
+        // 下落
+        // update();
         function update() {
             _that.clear();
             _that.down();
@@ -104,25 +157,50 @@ Sprite.prototype = {
             }
 
         }
+
+        document.addEventListener("keyup", function (e) {
+
+            let boundary = _that._checkBoundary();
+            let keyCode = e.keyCode;
+
+            if (boundary == keyCode){
+                e.preventDefault();
+                return ;
+            }
+
+            _that.clear();
+            switch (keyCode){
+                case keySpace:
+                    _that.transform();
+                    break;
+                case keyLeft:
+                    _that.left();
+                    break;
+                case keyUp:
+                    console.log("⊙﹏⊙b汗，怎么能够往上面跑呢~~");
+                    break;
+                case keyRight:
+                    _that.right();
+                    break;
+                case keyDown:
+                    _that.down();
+                    break;
+            }
+            _that.draw();
+        }, false);
     },
     // 位移
     left(){
-        this.startPoint.x -= this.size;
-        if (this.startPoint.x < 0) {
-            this.startPoint.x = 0;
-        }
+        this.position.x -= spriteSize;
     },
     right(){
-        this.startPoint.x += this.size;
-        if (this.startPoint.x > canvasWidth - this.size*this.matrixSize) {
-            this.startPoint.x = canvasWidth - this.size*this.matrixSize;
-        }
+        this.position.x += spriteSize;
     },
     down(){
-        this.startPoint.y += this.size;
-        let y = canvasHeight - this.matrixSize*this.size;
-        if (this.startPoint.y > y){
-            this.startPoint.y = y;
+        this.position.y += spriteSize;
+        let y = canvasHeight - this.matrixSize*spriteSize;
+        if (this.position.y > y){
+            this.position.y = y;
         }
     },
     // 变形，顺时针转换90度
@@ -140,23 +218,17 @@ Sprite.prototype = {
 
         this.coords = tmp;
 
+        let w = this.size.w;
+        this.size.w = this.size.h;
+        this.size.w = w;
+        // this._getSize();
     },
     // 边界检测，这里存在BUG
     // 需要剔除数组中多余的占位符0
-    getBoundCheck(){
-        let y = canvasHeight - this.matrixSize*this.size;
-        let x = canvasWidth - this.matrixSize*this.size;
-
-        if (this.startPoint.y > y ||
-            this.startPoint.x > x ||
-            this.startPoint.x < 0 ){
-            return true;
-        }
-    },
     isBottom(){
-        let y = canvasHeight - this.matrixSize*this.size;
-        if (this.startPoint.y > y){
-            this.startPoint.y = y;
+        let y = canvasHeight - this.matrixSize*spriteSize;
+        if (this.position.y > y){
+            this.position.y = y;
             return true;
         }
     }
@@ -166,37 +238,12 @@ Sprite.prototype = {
  * 画布
  */
 function Tetris() {
-    this.sprite = new Sprite({size:30});
+    this.sprite = new Sprite();
     this.keyDown = {};
 
     this.init = function () {
         let sprite = this.sprite;
-
         sprite.init();
-
-        document.addEventListener("keyup", function (e) {
-            sprite.clear();
-            switch (e.keyCode){
-                case 32:
-                    sprite.transform();
-                    break;
-                case 37:
-                    sprite.left();
-                    break;
-                case 38:
-                    console.log("⊙﹏⊙b汗，怎么能够往上面跑呢~~");
-                    break;
-                case 39:
-                    sprite.right();
-                    break;
-                case 40:
-                    sprite.down();
-                    break;
-            }
-
-            sprite.draw();
-
-        }, false);
     }
 }
 
