@@ -6,17 +6,16 @@ const shapes = [
     [
         [0,1],
         [1,1],
+        [0,1]
+    ],
+    [
         [0,1],
+        [0,1],
+        [1,1]
     ],
     [
-        [0,1,0],
-        [0,1,0],
-        [1,1,0],
-    ],
-    [
-        [1,1,0],
-        [1,1,0],
-        [0,0,0],
+        [1,1],
+        [1,1]
     ],
 ];
 
@@ -30,6 +29,7 @@ let canvasHeight = canvas.height;
 const spriteSize = 30;
 
 let col = canvasWidth/spriteSize;
+
 let ctx = canvas.getContext("2d");
 
 // 按键
@@ -40,7 +40,7 @@ const keyDown = 40;
 const keySpace = 32;
 
 /**
- * 精灵
+ * 方块
  * @param
  * {
  *      speed: animate speed
@@ -49,186 +49,111 @@ const keySpace = 32;
  */
 function Sprite(params) {
     // 随机形状
-    let shape = Math.floor(Math.random()*shapes.length);
-    this.coords = shapes[shape];
+    let shape = shapes[Math.floor(Math.random()*shapes.length)];
+    this.coords = shape;
+    this.size = spriteSize;
+    this.w = shape[0].length;
+    this.h = shape.length;
 
-
-    this.speed = params && params.speed || 1000;
-    this.matrixSize = this.coords.length;
+    this.speed = 1000;
 
     // 随机位置
-    let pos = Math.floor(Math.random()*col);
-
-    this.position = {
-        x: pos*spriteSize,
-        y: 0
-    };
-    this.size = {
-        w: this.coords[0].length,
-        h: this.coords.length
-    }
-
+    this.x = Math.floor(Math.random()*col)*this.size;
+    this.y = 0;
+    //this.position = {
+    //    x: pos*this.size,
+    //    y: 0
+    //};
 }
 
 Sprite.prototype = {
     constructor: Sprite,
-    // 工具方法
     clear(){
-        /* 清除相应区域 */
         // 应当根据coords进行清除，而不是直接清除这个9方格，暂时先挖个坑
-        ctx.clearRect(this.position.x, this.position.y, spriteSize*this.matrixSize, spriteSize*this          .matrixSize);
+        var x = this.x,
+            y = this.y,
+            w = this.getWidth(),
+            h = this.getHeight();
+
+        ctx.clearRect(x, y, w, h);
     },
     draw(){
-        /* 绘制新图像 */
-        let position = this.position,
-            size = spriteSize,
-            matrixSize = this.matrixSize;
 
         this.clear();
-
-        for (let i = 0,row = this.coords.length; i < row; ++i){
-            for (let j = 0,col=this.coords[i].length; j < col; ++j){
+        for (let i = 0,row = this.h; i < row; ++i){
+            for (let j = 0,col= this.w; j < col; ++j){
                 if (this.coords[i][j] == 1){
                     ctx.fillStyle = "#000";
-                    ctx.fillRect(position.x + size*j, position.y+size*i, size, size);
+                    ctx.fillRect(this.x + this.size*j, this.y+this.size*i, this.size, this.size);
                 }else {
                     ctx.fillStyle = "#ccc";
-                    ctx.fillRect(position.x + size*j, position.y+size*i, size, size);
+                    ctx.fillRect(this.x + this.size*j, this.y+this.size*i, this.size, this.size);
                 }
             }
         }
     },
-    _getSize(){
-
-
-        // 获取元素的实际宽度
-        let wMax = 0;
-        for (let i = 0, len = this.coords.length; i< len; i ++){
-            let count = 0;
-            for (let j = 0; j < len; ++j){
-                if (this.coords[i][j] == 1){
-                    count++;
-                    if (count > wMax) {
-                        wMax = count
-                    }
-                }
-            }
-        }
-
-        // 获取元素的宽度
-        this.size.w = wMax*spriteSize;
-
-
+    getWidth(){
+        return this.size*this.w;
     },
-    // 边界检测
-    _checkBoundary(){
-        let x = canvasWidth  - this.size.w;
-        let y = canvasHeight - this.size.h;
-
-
-        // 右侧临界点
-        if (this.position.x > x - spriteSize) {
-            this.position.x = x;
-            this.draw();
-            return keyRight;
-        }
-
-
+    getHeight(){
+        return this.size*this.h;
     },
-
-    // 接口
     init() {
-        /* 初始化 */
-        // 设置尺寸
-        this._getSize();
+        // 初始化
         this.draw();
 
         // 由于操作时单次按键而不是连续按键，因此使用定时器而不是requestAnimationFrame()
-        let _that = this;
+        let sprite = this;
 
-        // 下落
-        // update();
-        function update() {
-            _that.clear();
-            _that.down();
-            _that.draw();
-            if (!_that.isBottom()){
-                setTimeout(update, _that.speed);
-            }
-
-        }
-
-        document.addEventListener("keyup", function (e) {
-
-            let boundary = _that._checkBoundary();
-            let keyCode = e.keyCode;
-
-            if (boundary == keyCode){
-                e.preventDefault();
-                return ;
-            }
-
-            _that.clear();
-            switch (keyCode){
-                case keySpace:
-                    _that.transform();
-                    break;
-                case keyLeft:
-                    _that.left();
-                    break;
-                case keyUp:
-                    console.log("⊙﹏⊙b汗，怎么能够往上面跑呢~~");
-                    break;
-                case keyRight:
-                    _that.right();
-                    break;
-                case keyDown:
-                    _that.down();
-                    break;
-            }
-            _that.draw();
-        }, false);
     },
-    // 位移
-    left(){
-        this.position.x -= spriteSize;
-    },
-    right(){
-        this.position.x += spriteSize;
-    },
-    down(){
-        this.position.y += spriteSize;
-        let y = canvasHeight - this.matrixSize*spriteSize;
-        if (this.position.y > y){
-            this.position.y = y;
-        }
-    },
-    // 变形，顺时针转换90度
+    // 方块转换
     transform() {
         let tmp = [];
-        for (let i = 0; i < this.matrixSize; ++i){
-            tmp.push([]);
+
+        for (let i = 0; i < this.w; ++i){
+            tmp[i] = [];
         }
 
-        for (let i = 0; i < this.matrixSize; ++i) {
-            for (let j = 0; j < this.matrixSize; ++j) {
-                tmp[j][2-i] = this.coords[i][j];
+        // 顺时针转换90度
+        for (let i = 0; i < this.h; ++i) {
+            for (let j = 0; j < this.w; ++j) {
+                tmp[j][this.h - 1 - i] = this.coords[i][j];
             }
         }
 
         this.coords = tmp;
 
-        let w = this.size.w;
-        this.size.w = this.size.h;
-        this.size.w = w;
-        // this._getSize();
+        // 长宽切换
+        let w = this.w;
+        this.w = this.h;
+        this.h = w;
     },
-    // 边界检测，这里存在BUG
-    // 需要剔除数组中多余的占位符0
-    isBottom(){
-        let y = canvasHeight - this.matrixSize*spriteSize;
-        if (this.position.y > y){
-            this.position.y = y;
+    checkBoundary(){
+        // left
+        if (this.x - this.size < 0){
+            this.x = 0;
+            return keyLeft;
+        }
+
+        // right
+        let x = canvasWidth - this.getWidth();
+        if (this.x  >= x ) {
+            this.x = x;
+            return keyRight;
+        }
+
+        // bottom
+        if (this.isDie()){
+            return keyDown;
+        }
+
+        return keyUp;
+    },
+
+    isDie(){
+        let y = canvasHeight - this.getHeight();
+        if (this.y >= y){
+            this.y = y;
             return true;
         }
     }
@@ -239,11 +164,60 @@ Sprite.prototype = {
  */
 function Tetris() {
     this.sprite = new Sprite();
-    this.keyDown = {};
 
     this.init = function () {
         let sprite = this.sprite;
         sprite.init();
+
+
+
+        // 下落
+        update();
+        function update() {
+            sprite.clear();
+            sprite.y += sprite.size;
+            sprite.draw();
+
+            if (!sprite.isDie()){
+                setTimeout(update, sprite.speed);
+            }else {
+                for (var i = 0; i < col; ++i){
+                    // 将方块的位置转化成画布的属性，用于计算消除
+                }
+                
+                // 新增另外一个方块
+            }
+        }
+
+        document.addEventListener("keyup", function (e) {
+            let boundary = sprite.checkBoundary();
+            let keyCode = e.keyCode;
+
+            if (boundary == keyCode){
+                e.preventDefault();
+                return ;
+            }
+
+            sprite.clear();
+            switch (keyCode){
+                case keySpace:
+                    sprite.transform();
+                    break;
+                case keyLeft:
+                    sprite.x -= sprite.size;
+                    break;
+                case keyUp:
+                    console.log("%c⊙﹏⊙b汗，怎么能够往上面跑呢~~除非开挂","color:green");
+                    break;
+                case keyRight:
+                    sprite.x += sprite.size;
+                    break;
+                case keyDown:
+                    sprite.y += sprite.size;
+                    break;
+            }
+            sprite.draw();
+        }, false);
     }
 }
 
