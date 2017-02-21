@@ -13,7 +13,7 @@
     opacity: 0;
 
     // 防止网速过快出现闪屏
-    @include animation(shadow-show 0.01s linear 2s forwards);
+    @include animation(shadow-show 0.01s linear 0.5s forwards);
     @mixin shadow-show {
         0% {
             opacity: 0;

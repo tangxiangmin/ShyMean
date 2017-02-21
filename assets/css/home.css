@@ -1010,7 +1010,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
 .hljs-params,
 .hljs-class .hljs-title {
-  color: #CC6600; }
+  color: #f8f8f2; }
 
 .hljs-string,
 .hljs-type,
@@ -1064,8 +1064,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  -webkit-animation: shadow-show 0.01s linear 2s forwards;
-  animation: shadow-show 0.01s linear 2s forwards; }
+  -webkit-animation: shadow-show 0.01s linear 0.5s forwards;
+  animation: shadow-show 0.01s linear 0.5s forwards; }
 
 @-webkit-keyframes shadow-show {
   0% {
