@@ -219,6 +219,9 @@ function Tetris() {
 
     // 得分
     this.score = 0;
+
+    // 暂停
+    this.pause = false;
 }
 
 Tetris.prototype = {
@@ -247,7 +250,6 @@ Tetris.prototype = {
     listen(){
         let _that = this;
         document.addEventListener("keyup", function (e) {
-            _that.checkBoundary();
             let keyCode = e.keyCode;
             switch (keyCode){
                 case keySpace:
@@ -289,32 +291,70 @@ Tetris.prototype = {
         // }
 
 
-        let yRange = [];
+        // 底部，停止方块继续移动
+        // 需要找到最合适的那一列，作为setActiveRange的参数
         let maxY = 0;
-        console.log(row + this.h - 1); //NAN
-        for (let i = 0; i < sprite.w; ++i){
-            //底部
+        let startY = row + sprite.h - 1;
+        // 画布中最高的和方块中最低的，差值最小的就是距离最小的，也就是应该根据这一列做计算
+        let spriteColArr = [],
+            boxColArr = [],
+            distance = [];
 
-            for (let j = row + this.h - 1; j < this.row; ++j){
-                console.log(j);
-                if (this.box[j][i + col] == 1){
-                    console.log("cannot to the bottom");
-                    maxY = canvasHeight - j * sprite.size;
+        for (let i = 0, len = sprite.w; i < len; ++i){
+            // 遍历方块上的坐标
+            for(let k = sprite.h - 1; k >= 0; --k){
+                if(sprite.coords[k][i] == 1) {
+                    spriteColArr.push(k);
+                    break;
+                }
+            }
+            // 遍历画布上的坐标
+            for (let j = row; j < this.row; ++j){
+                if (this.box[j][col+i] == 1){
+                    boxColArr[i] = j;
+                    distance[i] = j - spriteColArr[i];
+                    break;
+                }
+                // ...
+                if (j == this.row - 1) {
+                    boxColArr[i] = this.row - 1;
+                    distance[i] = this.row - 1 - spriteColArr[i];
                 }
             }
         }
-        console.log(maxY);
 
 
-        // sprite.setActiveRange([xRange, yRange]);
+        // 找到之和最大的，即为方块应该停在的那列
+        let minDistance =  Math.min.apply(null,distance);
+        let stopCol = distance.indexOf(minDistance);
+        //console.log(stopCol);
+        //console.log(spriteColArr);
+        ////console.log(spriteColArr[stopCol]);
+        //console.log(boxColArr);
+        //console.log(boxColArr[stopCol]);
+
+        //console.log("/////");
+        //console.log(boxColArr[stopCol] - 1);
+        console.log(stopCol);
+        let bottom = (boxColArr[stopCol] + 1)*sprite.size;
+        //
+        if (bottom == 0) {
+            this.gameOver();
+            return;
+        }
+
+        let yRange = [maxY*sprite.size, bottom];
+        sprite.setActiveRange([xRange, yRange]);
 
     },
     start(){
         let _that = this;
         update();
         function update() {
-
-            _that.sprite.down();
+            if (!this.pause) {
+                _that.sprite.down();
+                _that.checkBoundary();
+            }
 
             if (_that.sprite.isDie){
                 _that.toEnd();
@@ -404,8 +444,6 @@ Tetris.prototype = {
         this.score += score;
         console.log("当前得分: " + this.score);
     },
-
-
 
 };
 
