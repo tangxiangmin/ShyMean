@@ -27,6 +27,7 @@ require.config({
         'pagination':'component/pagination',
         'tab':'component/tab',
         'catalogue':'component/catalogue',
+        'popup':'component/popup',
 
     }
 });

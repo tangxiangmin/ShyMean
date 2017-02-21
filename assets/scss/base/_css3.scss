@@ -35,3 +35,7 @@
     -webkit-animation: $s;
     animation: $s;
 }
+@mixin animation-delay($s) {
+    -webkit-animation-delay: $s;
+            animation-delay: $s;
+}

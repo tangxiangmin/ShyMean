@@ -1046,6 +1046,74 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     text-overflow: ellipsis;
     white-space: nowrap; }
 
+.popup {
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  -webkit-animation: shadow-show 0.01s linear 2s forwards;
+  animation: shadow-show 0.01s linear 2s forwards; }
+
+@-webkit-keyframes shadow-show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.loading_dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #6699FF;
+  border-radius: 50%;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both; }
+  .loading_dot:nth-of-type(1) {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s; }
+  .loading_dot:nth-of-type(2) {
+    -webkit-animation-delay: -0.15s;
+    animation-delay: -0.15s; }
+
+@-webkit-keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
 /**
 	前端页面样式
  */

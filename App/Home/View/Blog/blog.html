@@ -21,8 +21,8 @@
 			<!--</transition>-->
 			<blog-footer></blog-footer>
 		</main>
-
 		<blog-aside @aside="toggleAside" :catalogue="catalogue"></blog-aside>
+		<popup type="loading" :show="isLoading"></popup>
 	</div>
 </body>
 </html>
