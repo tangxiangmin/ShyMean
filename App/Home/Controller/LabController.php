@@ -9,4 +9,13 @@ class LabController extends Controller{
         $this->view('lab');
     }
 
+    public function canvas(){
+        $this->view('canvas');
+    }
+
+    public function snake(){
+        $this->view('snake');
+    }
+
+
 }

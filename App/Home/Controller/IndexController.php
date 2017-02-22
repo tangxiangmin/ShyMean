@@ -8,9 +8,6 @@ class IndexController extends Controller{
         $this->view('index');
     }
 
-    public function canvas(){
-        $this->view('canvas');
-    }
 
     public function about(){
         $this->view('about');

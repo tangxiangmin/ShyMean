@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+
+    <style>
+        body {
+            box-sizing: content-box;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #xmCanvas {
+            border: 2px solid #dedede;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="xmCanvas" width="300" height="300"></canvas>
+<script>
+    let canvasWidth  = xmCanvas.width,
+            canvasHeight = xmCanvas.height;
+    let ctx = xmCanvas.getContext("2d");
+</script>
+<script src="/js/lab/snake.js"></script>
+<script>
+    window.onload = function () {
+
+
+        let game = new Game();
+    }
+</script>
+
+</body>
+</html>
