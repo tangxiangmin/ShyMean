@@ -14,6 +14,15 @@ const shapes = [
         [1,1],
         [1,1]
     ],
+    [
+        [0,1,1],
+        [1,1,0],
+    ]
+    // [
+    //     [1,1,0],
+    //     [0,1,0],
+    //     [0,1,1],
+    // ],
 ];
 
 
@@ -52,8 +61,8 @@ function Sprite(activeRange) {
     // 随机位置, -2防止溢出
 
     // 方块的初始坐标
-    this.col = Math.floor(Math.random()*(col-2) + 2);
-    this.row = -1;
+    this.col = Math.floor(Math.random()*(col-3));
+    this.row = 0;
 
     // 方块偏移原点的距离
     this.x = this.col *this.size;
@@ -111,7 +120,14 @@ Sprite.prototype = {
         let xEnd = xRange[1] - this.getWidth();
         this.activeWidth = [xStart,xEnd];
 
-        let yRange = activeRange[1];
+        this.setActiveHeight(activeRange[1]);
+        // let yRange = activeRange[1];
+        // let yStart = yRange[0];
+        // let yEnd = yRange[1] - this.getHeight();
+        // this.activeHeight = [yStart,yEnd];
+    },
+    setActiveHeight(yRange){
+        // console.log(yRange);
         let yStart = yRange[0];
         let yEnd = yRange[1] - this.getHeight();
         this.activeHeight = [yStart,yEnd];
@@ -217,6 +233,8 @@ function Tetris() {
         [0,canvasHeight]
     ];
 
+    // 设置范围
+    this.minHeight = canvasHeight/spriteSize;
     // 得分
     this.score = 0;
 
@@ -273,88 +291,12 @@ Tetris.prototype = {
 
         return this;
     },
-    checkBoundary(){
-        let sprite = this.sprite;
-        let row = sprite.getRow();
-        let col = sprite.getCol();
-
-        let xRange = [];
-        // for (let i = 0; i < sprite.h; ++i ){
-        //     // 左侧
-        //     if (this.box[row][col - i - 1] == 1 ){
-        //         console.log("左侧有东西，过不去");
-        //     }
-        //     // 右侧
-        //     if (this.box[row][col  + sprite.w + i] == 1 ){
-        //         console.log("右侧有东西，过不去");
-        //     }
-        // }
-
-
-        // 底部，停止方块继续移动
-        // 需要找到最合适的那一列，作为setActiveRange的参数
-        let maxY = 0;
-        let startY = row + sprite.h - 1;
-        // 画布中最高的和方块中最低的，差值最小的就是距离最小的，也就是应该根据这一列做计算
-        let spriteColArr = [],
-            boxColArr = [],
-            distance = [];
-
-        for (let i = 0, len = sprite.w; i < len; ++i){
-            // 遍历方块上的坐标
-            for(let k = sprite.h - 1; k >= 0; --k){
-                if(sprite.coords[k][i] == 1) {
-                    spriteColArr.push(k);
-                    break;
-                }
-            }
-            // 遍历画布上的坐标
-            for (let j = row; j < this.row; ++j){
-                if (this.box[j][col+i] == 1){
-                    boxColArr[i] = j;
-                    distance[i] = j - spriteColArr[i];
-                    break;
-                }
-                // ...
-                if (j == this.row - 1) {
-                    boxColArr[i] = this.row - 1;
-                    distance[i] = this.row - 1 - spriteColArr[i];
-                }
-            }
-        }
-
-
-        // 找到之和最大的，即为方块应该停在的那列
-        let minDistance =  Math.min.apply(null,distance);
-        let stopCol = distance.indexOf(minDistance);
-        //console.log(stopCol);
-        //console.log(spriteColArr);
-        ////console.log(spriteColArr[stopCol]);
-        //console.log(boxColArr);
-        //console.log(boxColArr[stopCol]);
-
-        //console.log("/////");
-        //console.log(boxColArr[stopCol] - 1);
-        console.log(stopCol);
-        let bottom = (boxColArr[stopCol] + 1)*sprite.size;
-        //
-        if (bottom == 0) {
-            this.gameOver();
-            return;
-        }
-
-        let yRange = [maxY*sprite.size, bottom];
-        sprite.setActiveRange([xRange, yRange]);
-
-    },
     start(){
         let _that = this;
         update();
         function update() {
-            if (!this.pause) {
-                _that.sprite.down();
-                _that.checkBoundary();
-            }
+            _that.checkBoundary();
+            _that.sprite.down();
 
             if (_that.sprite.isDie){
                 _that.toEnd();
@@ -362,6 +304,63 @@ Tetris.prototype = {
 
             setTimeout(update, _that.sprite.speed);
         }
+    },
+    checkBoundary(){
+        let sprite = this.sprite;
+        let row = sprite.getRow();
+        let col = sprite.getCol();
+
+        // 计算停止位置
+        // 画布中最高的和方块中最低的，差值最小的就是距离最小的，也就是应该根据这一列做计算作为设置范围的参数
+        let spriteColArr = [],
+            boxColArr = [];
+
+        let w = sprite.w,
+            h1 = sprite.h,
+            h2 = this.row;
+
+
+        for (let i = 0; i < w; ++i){
+            for (let j = h1 - 1; j >=0; --j){
+                if (sprite.coords[j][i] == 1){
+                    spriteColArr[i] = j;
+                    break;
+                }
+            }
+
+            boxColArr[i] = h2;
+
+            for (let k = h1 + row; k < h2; ++k){
+                if (this.box[k][col+ i] == 1){
+                    boxColArr[i] = k;
+
+                    // 底部不为空表示存在空隙
+                    if (spriteColArr[i] != h1 -1) {
+                        // console.log("特殊");
+                        boxColArr[i] += (h1 - 1) - spriteColArr[i];
+                    }
+                    break;
+                }
+            }
+        }
+
+
+
+        // 找到最小的高度作为限制
+        let minHeight =  Math.min.apply(null,boxColArr);
+        let stopCol = boxColArr.indexOf(minHeight);
+        if (this.box[row + 2][stopCol + col] == 1) {
+            console.log("停下");
+            this.sprite.isDie = true;
+        }else {
+            // 由于并不能向上移动，因此竖直方向上的范围只判断最下方位置
+            let activeHeight = [0, minHeight * sprite.size];
+            this.sprite.setActiveHeight(activeHeight);
+            if (activeHeight == h1*sprite.size) {
+                console.log("gameover")
+            }
+        }
+
     },
     toEnd(){
         let sprite = this.sprite;
