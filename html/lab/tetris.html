@@ -23,18 +23,13 @@
     </style>
 </head>
 <body>
-<canvas id="xmCanvas" width="300" height="300"></canvas>
-<script>
-    let canvasWidth  = xmCanvas.width,
-            canvasHeight = xmCanvas.height;
-    let ctx = xmCanvas.getContext("2d");
-</script>
-<script src="/js/lab/snake.js"></script>
+<canvas id="xmCanvas" width="300" height="600"></canvas>
+<script src="/js/lab/page/tetris.js"></script>
 <script>
     window.onload = function () {
 
-
-        let game = new Game();
+        let tetr = new Tetris();
+        tetr.init();
     }
 </script>
 

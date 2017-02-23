@@ -125,12 +125,12 @@ a:focus {
 }
 
 /*
-    Because the main point behind the impress.js demo is to demo impress.js
+    Because the main point behind the impress.js html is to html impress.js
     we display a fallback message for users with browsers that don't support
     all the features required by it.
 
     All of the content will be still fully accessible for them, but I want
-    them to know that they are missing something - that's what the demo is
+    them to know that they are missing something - that's what the html is
     about, isn't it?
 
     And then we hide the message, when support is detected in the browser.
@@ -204,7 +204,7 @@ a:focus {
 
     ;)
 
-    They cover everything what you see on first three steps of the demo.
+    They cover everything what you see on first three steps of the html.
 */
 .slide {
     display: block;

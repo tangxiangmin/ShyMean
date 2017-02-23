@@ -7,9 +7,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>关于</title>
-    <link href="../assets/css/impress-demo.css" rel="stylesheet" />
-    <link href="../assets/css/animate.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link href="/assets/css/impress-demo.css" rel="stylesheet" />
+    <link href="/assets/css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/home.css">
 </head>
 
 <body class="impress-not-supported">
@@ -18,19 +18,57 @@
     浏览器不支持~~~泪奔
 </div>
 <div id="impress">
-    <div id="welecome" class="step slide" data-x="-1000" data-y="-1500">
+    <!--<div id="bored" class="step slide" data-x="-1000" data-y="-1500">-->
 
-            <p>嗨~~， 你好！</p>
-            <p>欢迎来到 <a href="#" class="hover-highlight">shymean.com</a></p>
-            <p>我叫唐祥民，这是我的博客。</p>
-
-    </div>
-    <div id="job" class="step "  data-x="0" data-y="-1500">
-
-            作为一个混进码农里面的钳工，
-                我赌五毛钱你们不知道拧螺丝是“顺紧逆松”。
+        <!--<div class="text-center animated bounceInLeft">-->
+            <!--<p>嗨~~， 你好！</p>-->
+            <!--<p>欢迎来到 <a href="#" class="hover-highlight">shymean.com</a></p>-->
+            <!--<p>我叫唐祥民，这是我的博客。</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="step slide"  data-x="0" data-y="-1500">
 
     </div>
+
+
+
+    <!--<div id="title" class="step" data-x="0" data-y="0" data-scale="4">-->
+      <!--2-->
+    <!--</div>-->
+
+    <!--<div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">-->
+        <!--3-->
+    <!--</div>-->
+
+    <!--<div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">-->
+        <!--4-->
+    <!--</div>-->
+    <!--<div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">-->
+        <!--5-->
+    <!--</div>-->
+    <!--<div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">-->
+        <!--6-->
+    <!--</div>-->
+
+    <!--<div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">-->
+        <!--7-->
+    <!--</div>-->
+
+    <!--<div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">-->
+        <!--8-->
+    <!--</div>-->
+
+    <!--<div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">-->
+        <!--<p>one more thing...</p>-->
+    <!--</div>-->
+
+    <!--<div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">-->
+        <!--123213sad-->
+    <!--</div>-->
+
+    <!--<div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">-->
+        <!--最后一步拉-->
+    <!--</div>-->
 
 </div>
 
@@ -38,7 +76,15 @@
 <div class="hint">
     <p>请使用空格键或者方向键哦~~</p>
 </div>
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>移动端...</p>";
+    }
+</script>
 
+<!--<script src="/js/lib/impress.js"></script>-->
+
+<!--<script>impress("impress").init();</script>-->
 </body>
 </html>
 

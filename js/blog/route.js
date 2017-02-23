@@ -3,19 +3,7 @@
  * 配置路由
  */
 
-require.config({
-    baseUrl:'/js',
-    paths:{
-        'index':'blog/blog-index',
-        'articleDetail':'blog/blog-articleDetail',
-        'tags':'blog/blog-tags',
-        'articleList':'blog/blog-articleList',
-        'layout':'blog/layout',
-    }
-});
-
 define(['index','articleDetail','tags','articleList'], function () {
-
     // 引入组件
     var blogIndex = require('index');
     var articleDetail = require('articleDetail');

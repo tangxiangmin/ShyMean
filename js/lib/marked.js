@@ -353,7 +353,7 @@ Lexer.prototype.token = function(src, top, bq) {
       continue;
     }
 
-    // html
+    // demo
     if (cap = this.rules.html.exec(src)) {
       src = src.substring(cap[0].length);
       this.tokens.push({

@@ -19,11 +19,6 @@ class BlogController extends Controller{
         parent::__construct();
     }
 
-    // 博客入口
-    public function blog(){
-        $this->view('blog');
-    }
-
     //-------------接口------------//
 
     // 博客首页文章列表及分页

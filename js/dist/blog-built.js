@@ -460,16 +460,7 @@ define('articleList',['xm'], function () {
  * 配置路由
  */
 
-require.config({
-    baseUrl:'/js',
-    paths:{
-        'index':'blog/blog-index',
-        'articleDetail':'blog/blog-articleDetail',
-        'tags':'blog/blog-tags',
-        'articleList':'blog/blog-articleList',
-        'layout':'blog/layout',
-    }
-});
+
 
 define('router-config',['index','articleDetail','tags','articleList'], function () {
 
@@ -587,9 +578,9 @@ define('layout',[], function () {
                             <p>一个不学无数且无趣的人。</p>
                         </div>
                         <div class="nav-border">
-                            <a href="" class="nav_item"><i class="iconfont icon-blog"></i> <br>博客</a>
-                            <a href="/Home/Lab/Lab" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
+                            <a href="/Home/Lab/index" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
+                             <a href="/Home/Index/about" class="nav_item"><i class="iconfont icon-info"></i> <br>关于</a>
                         </div>
                         <div class="contact">
                             <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i class="iconfont icon-github"></i> GitHub</a>
@@ -840,8 +831,29 @@ define('catalogue',[], function () {
     }
 });
 /**
+ * Created by Administrator on 2017/2/21 0021.
+ */
+
+define('popup',[],function () {
+    return {
+        props:['type','show'],
+        template:`<div class="popup" v-show="show">
+                <div class="loading" v-if="type == 'loading'">
+                    <div class="loading_dot"></div>
+                    <div class="loading_dot"></div>
+                    <div class="loading_dot"></div>
+			    </div>
+                </div>`,
+        mounted(){},
+        data(){
+            return {
+
+            }
+        },
+    }
+});
+/**
  * Created by admin on 2017/1/21.
- * 引入界面的布局组件，包括基本的头部，底部，侧边栏和工具按钮组
  */
 
 require.config({
@@ -849,101 +861,109 @@ require.config({
     paths:{
         // 框架依赖
         'vue':'lib/vue',
-        'vue-router':['https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.min','lib/vue-router'],
-        'vue-resource':['https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.min','lib/vue-resource.min'],
+        'vue-router':[/*'https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.min',*/'lib/vue-router'],
+        'vue-resource':[/*'https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.min',*/'lib/vue-resource.min'],
         //插件
-        'marked':['https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min','lib/marked'],
-        'highlight':['https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min','lib/highlight.pack'],
+        'marked':[/*'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min',*/'lib/marked'],
+        'highlight':[/*'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min',*/'lib/highlight.pack'],
         // 辅助函数
         'xm':'base/function',
         // 全局路由配置
-        'router-config':'blog/route',
+        'router-config':'route',
         // 布局
-        'index':'blog/blog-index',
-        'articleDetail':'blog/blog-articleDetail',
-        'tags':'blog/blog-tags',
-        'articleList':'blog/blog-articleList',
-        'layout':'blog/layout',
+        'index':'blog/page/blog-index',
+        'articleDetail':'blog/page/blog-articleDetail',
+        'tags':'blog/page/blog-tags',
+        'articleList':'blog/page/blog-articleList',
+        'layout':'blog/page/layout',
         // 组件
         'pagination':'component/pagination',
         'tab':'component/tab',
         'catalogue':'component/catalogue',
-
+        'popup':'component/popup',
     }
 });
 
-//require(['config'], function () {
-    require(['vue','vue-router','vue-resource','router-config','layout','pagination','tab','catalogue'], function () {
+require(['vue','vue-router','vue-resource','router-config','layout','pagination','tab','catalogue','popup'], function () {
 
-        var Vue = require('vue');
+    var Vue = require('vue');
 
-        // vue-routes
-        var VueRouter = require('vue-router');
-        Vue.use(VueRouter);
-        var routes = require('router-config');
-        var router = new VueRouter({
-            routes:routes,
-            //scrollBehavior (to, from, savedPosition) {
-            //    return { x: 0, y: 0 }
-            //}
-        });
+    // vue-routes
+    var VueRouter = require('vue-router');
+    Vue.use(VueRouter);
+    var routes = require('router-config');
+    var router = new VueRouter({
+        routes:routes,
+        //scrollBehavior (to, from, savedPosition) {
+        //    return { x: 0, y: 0 }
+        //}
+    });
 
-        // vue-resource
-        var VueResource  = require('vue-resource');
-        Vue.use(VueResource);
-        Vue.http.options.emulateJSON = true;
-        Vue.http.options.emulateHTTP = true;
-
-
-        // 组件
-        var pagination = require('pagination');
-        var tab = require('tab');
-        var catalogue = require('catalogue');
-
-        Vue.component('pagination',pagination);
-        Vue.component('tab',tab);
-        Vue.component('catalogue',catalogue);
+    // vue-resource
+    var VueResource  = require('vue-resource');
+    Vue.use(VueResource);
+    Vue.http.options.emulateJSON = true;
+    Vue.http.options.emulateHTTP = true;
 
 
-        // layout
-        var layout = require('layout');
-        Vue.component('blog-header',layout.header);
-        Vue.component('blog-footer',layout.footer);
-        Vue.component('blog-aside',layout.aside);
+    // 组件
+    var pagination = require('pagination');
+    var tab = require('tab');
+    var catalogue = require('catalogue');
+    var popup = require('popup');
+
+    Vue.component('pagination',pagination);
+    Vue.component('tab',tab);
+    Vue.component('catalogue',catalogue);
+    Vue.component('popup',popup);
 
 
-        // 容器实例
-        var blog = new Vue({
-            el:"#blog",
-            data:{
-                blogHeader:layout.blogHeader,
-                blogFooter:layout.blogFooter,
-                showAside:layout.showAside,
-                catalogue: [] ,
+    // layout
+    var layout = require('layout');
+    Vue.component('blog-header',layout.header);
+    Vue.component('blog-footer',layout.footer);
+    Vue.component('blog-aside',layout.aside);
+
+
+    // 容器实例
+    var blog = new Vue({
+        el:"#blog",
+        data:{
+            blogHeader:layout.blogHeader,
+            blogFooter:layout.blogFooter,
+            showAside:layout.showAside,
+            catalogue: [] ,
+            isLoading: false,
+        },
+        router:router,
+        methods:{
+            toggleAside:function () {
+                this.showAside = !this.showAside;
             },
-            router:router,
-            methods:{
-                toggleAside:function () {
-                    this.showAside = !this.showAside;
-                },
-                article: function (catalogue) {
-                    this.$set(this,'catalogue',catalogue);
-                }
-            },
-            watch:{
-                $route: function (to,from) {
-                    document.body.scrollTop = 0;
+            article: function (catalogue) {
+                this.$set(this,'catalogue',catalogue);
+            }
+        },
+        watch:{
+            $route: function (to,from) {
+                document.body.scrollTop = 0;
 
-                    if (to.name != 'articleDetail'){
-                        this.catalogue = [];
-                    }
+                if (to.name != 'articleDetail'){
+                    this.catalogue = [];
                 }
             }
-        });
-
+        }
     });
-//});
 
+    // 加载动画
+    Vue.http.interceptors.push((request, next) => {
+        blog.isLoading = true;
+        next((response) => {
+            blog.isLoading = false;
+            return response
+        });
+    });
 
-define("blog", function(){});
+});
+define("_blog", function(){});
 
