@@ -82,7 +82,7 @@ define([], function () {
 			            <div>
                             <img src="/assets/img/tmp/head.jpg" alt="" width="100" height="100">
                             <h3 class="text-white">ShyMean</h3>
-                            <p>一个不学无数且无趣的人。</p>
+                            <p>一个不学无术且无趣的人。</p>
                         </div>
                         <div class="nav-border">
                             <a href="lab.html" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
