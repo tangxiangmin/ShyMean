@@ -34,7 +34,7 @@ define([], function () {
 			</div>
 			`,
         mounted:function(){
-            this.$http.get('/Home/Blog/tags').then((res)=>{
+            this.$http.get('blog_tags').then((res)=>{
                 return res.json();
             }).then((res)=>{
                 this.$set(this,'categories',res.categories);

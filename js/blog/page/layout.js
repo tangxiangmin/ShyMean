@@ -80,14 +80,14 @@ define([], function () {
 			        <catalogue slot="catalogue" :data="catalogue"></catalogue>
 			        <div  slot="website">
 			            <div>
-                            <img src="/assets/img/tmp/head.jpg" alt="" width="100" height="100">
+                            <img src="/dist/img/head.jpg" alt="" width="100" height="100">
                             <h3 class="text-white">ShyMean</h3>
                             <p>一个不学无术且无趣的人。</p>
                         </div>
                         <div class="nav-border">
-                            <a href="lab.html" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
+                            <a href="lab" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
                             <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
-                             <a href="about.html" class="nav_item"><i class="iconfont icon-info"></i> <br>关于</a>
+                             <a href="about" class="nav_item"><i class="iconfont icon-info"></i> <br>关于</a>
                         </div>
                         <div class="contact">
                             <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i class="iconfont icon-github"></i> GitHub</a>

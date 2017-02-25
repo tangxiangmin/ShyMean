@@ -36,7 +36,7 @@ define(['xm'], function () {
                     postData.active = 1;
                 }
 
-                this.$http.post('/Home/Blog/articleList',postData).then((res)=>{
+                this.$http.post('blog_articlelList',postData).then((res)=>{
                     return res.json();
                 }).then((res)=>{
                     var lists = res['lists'];

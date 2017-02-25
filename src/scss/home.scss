@@ -2,7 +2,6 @@
 
 // 主要用于配置相关的基础变量和参数，如网格断点等
 
-
 // rem布局
 $is-mobile: true;
 $remwidth: 750;
@@ -49,19 +48,19 @@ $basecolor: #6699FF ;
 //----------------------------引入------------------------------//
 
 // 基础样式
-@import "_base";
+@import "base";
 
 // 布局样式
-@import "_layout";
+@import "layout";
 
 // 组件样式
-@import "_utils";
+@import "utils";
 
 // 页面样式
-@import "_page";
+@import "page";
 
 // 动画样式
-@import "_animate";
+@import "animate";
 
 
 

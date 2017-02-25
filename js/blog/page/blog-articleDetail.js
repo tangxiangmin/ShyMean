@@ -49,7 +49,7 @@ define(['marked','highlight'], function () {
         },
         methods:{
             getData(){
-                this.$http.post('/Home/Blog/articleDetail',{id: this.$route.params.id}).then((res)=>{
+                this.$http.post('blog_articleDetail',{id: this.$route.params.id}).then((res)=>{
                     return res.json();
                 }).then((data)=>{
 
@@ -136,7 +136,7 @@ define(['marked','highlight'], function () {
 
                 return tags.split(",").map((val)=>{
                     return val.trim()
-                });;
+                });
             }
         },
 

@@ -15,15 +15,15 @@ require(['/js/base/config.js'], function () {
         let vm = new Vue({
             el:"#lab",
             mounted:function () {
-                this.$http.get('/Home/Lab/labList').then((res)=>{
-                    return res.json()
+                this.$http.get('lab_demoList').then((res)=>{
+                    return res.json();
                 }).then((data)=>{
                     this.$set(this,'items',data);
                 })
             },
             data:{
                 items:[]
-            }
+            },
         })
     })
 });

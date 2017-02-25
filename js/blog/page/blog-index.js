@@ -39,7 +39,7 @@ define(['marked'], function () {
         },
         methods:{
             getData: function () {
-                this.$http.post('/Home/Blog/index',{active: this.active}).then((res)=>{
+                this.$http.post('blog_index',{active: this.active}).then((res)=>{
 
                     return res.json();
 

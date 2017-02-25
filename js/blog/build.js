@@ -24,5 +24,5 @@
         'popup':'../component/popup',
     },
     name: "_blog",
-    out: "../dist/blog-built.js"
+    out: "../../dist/js/blog-built.js"
 })
