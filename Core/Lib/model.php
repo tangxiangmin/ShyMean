@@ -32,7 +32,7 @@ class Model {
     // ------------内部功能方法，执行PDO------------ //
 
     // 拼接sql语句
-    private function setSql(){
+    private function setSelectSql(){
         $sql = 'SELECT '.$this->distinct.$this->field.' FROM '.$this->table.$this->where.$this->group.$this->order.$this->limit;
 
         return $sql;
@@ -61,13 +61,18 @@ class Model {
     // 查询
     public function select(){
 
-        $res = $this->conn->query($this->setSql());
+        $res = $this->conn->query($this->setSelectSql());
         return $res->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function selectOne(){
-        $res = $this->conn->query($this->setSql());
+        $res = $this->conn->query($this->setSelectSql());
         return $res->fetch(\PDO::FETCH_ASSOC);
+    }
+    // 更新
+    public function update($str){
+        $sql = 'UPDATE '.$this->table.' SET '.$str.$this->where;
+        $this->conn->query($sql);
     }
 
     // ------------可选子句，用来修饰必选子句------------ //
@@ -107,6 +112,7 @@ class Model {
         $this->limit = ' LIMIT '.$num.' OFFSET '.$offset;
         return $this;
     }
+
 
     // ------------聚合函数------------ //
     public function count(){

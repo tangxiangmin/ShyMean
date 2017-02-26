@@ -1,4 +1,70 @@
-## 记录
+shymean
+===
+## 说明
+之前的博客是基于Hexo生成静态页面，然后挂在github下面的。
+后来打算将整个博客迁移到自己的虚拟主机上，方便在后台做一些事情（统计啥的），因此开始了博客V4.0版本的折腾。
+
+## 特点
+由于虚拟主机的限制，后端使用PHP响应请求及提供数据，前端使用JavaScript进行页面渲染和数据处理，前后端基本分离。
+
+前端：
+
+* 使用`Require.js`管理前端模块，使用`r.js`进行模块打包，使用`gulp`管理整个项目
+* 使用了包括`Vue.js`,`Vue-router`,`Vue-resource`，基于Vue实现了包括数据分页，博文目录等多个组件
+* 基本样式使用Hexo下的Next主题作为参考，使用Rem布局，使用BEM进行样式命名，并实现了响应式导航，动态按钮等UI组件
+* 使用`maked.js`和`highlight.js`，在客户端对markdown文档转义及代码语法高亮。
+
+后端:
+* 封装了一个简易的MVC框架
+* 实现了自定义路由，模型类，控制器类等
+
+迁移：
+由于需要将之前的Hexo博客文档迁移到数据库，因此编写了一个插件`hexo2mysql`，读取`_posts`下的全部markdown文档，获取相关的字段信息，拼接成Mysql语句，最后导入数据库。
+
+## 目录
+```
+│  .gitignore
+│  index.php          后端入口文件
+│  package.json
+│  gulpfile.js        gulp
+│  package.json
+│  README.md
+│
+├─dist                打包生成以及项目依赖
+│
+├─APP                 后端数据接口
+│      route.php      自定义路由
+│      Home           前端项目，包含控制器和模型
+│      Model          公用模型
+│
+├─Core                后端框架
+│      Core.php       核心文件
+│      Lib            基类库文件
+│      Config         配置文件
+│      Common         公用文件
+│
+├─html                前端页面
+│
+├─js                  前端JavaScript
+│      base           基础文件
+│      component      组件
+│      blog           博客模块
+│      lab            实验室模块
+│      lib            第三方库
+│      require.js
+│
+├─scss                样式表源文件
+│
+├─plugin              博客迁移插件
+```
+
+## TODO
+* [ ] 后台管理界面（待定）
+* [ ] 评论功能
+
+
+## 开发记录
+下面是整个项目的开发记录。
 
 ### 2016-12-31
 
@@ -157,7 +223,7 @@ goAnchor(val){
 
 ### 2017-2-21
 使用`vue-resocure`中间件`interceptors`搭建请求数据时的加载页面，为了防止网速过快loading层快速切换导致的闪屏，使用了`animation-delay`属性
-```css
+```scss
 @include animation(shadow-show 0.01s linear 2s forwards);
 @mixin shadow-show {
     0% {
@@ -177,3 +243,18 @@ goAnchor(val){
 * 在版块目录诸如blog下面包含入口文件，r.js和build.js文件。
 * 在page文件夹下包含版块所需的脚本文件。
 * 每个版块合并后的`*-built.js`存放在`js/dist`文件夹下
+
+### 2017-2-25
+今天对整个项目的文件目录重新管理，并开始修改后端的路由，最终目的是实现在URL路径与控制器映射上的完全分离，类似于Laravel那样优雅的自定义路径。
+
+倒腾了两个小时，终于搞定了最基础的模型，现在可以自定义URL了，类似于
+```
+Route::bind(['/','index'], function(){
+    return include(__HTML__.'index.html');
+});
+
+Route::bind('blog_index', '\App\Home\Controller\BlogController@blogIndex');
+```
+主要原理是使用了一个静态变量保存绑定的路由，然后跟据`$_SERVER_URI`来读取相关的控制器方法或者是执行相关的闭包。由于对PHP里面的闭包不熟悉，中间专门去查了一下，发现用法实际上跟JS貌似没有啥区别。
+
+之前采用TP里面的路由构造，产生的问题是像这样的单页面应用，也必须在控制器里面单独声明一个方法加载视图文件。由于index.php的存在，请求静态资源需要把整个路径都显式声明，现在这种绑定路由的方式还是比较舒服的，尽管需要声明绑定。把这个玩意折腾完，有必要深入学习Laravel了。

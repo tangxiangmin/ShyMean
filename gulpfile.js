@@ -14,11 +14,12 @@ gulp.task('hexo2mysql', function () {
 
 // 开发工具
 gulp.task('scss',function(){
-	gulp.src("./assets/scss/**.**")
+	console.log(1);
+	gulp.src("./scss/**/*.*")
 		.pipe(sourcemaps.init())
 			.pipe(sass().on('error', sass.logError))
 	    .pipe(sourcemaps.write('./'))
-	    .pipe(gulp.dest('./assets/css'))
+	    .pipe(gulp.dest('./dist/css'))
     	.pipe(livereload());
 });
 
@@ -26,6 +27,6 @@ gulp.task('scss',function(){
 // auto
 gulp.task('default',function(){
 	livereload.listen();
-	gulp.watch('./assets/scss/**/**',['scss']);
+	gulp.watch('./scss/**/*.*',['scss']);
 
 });

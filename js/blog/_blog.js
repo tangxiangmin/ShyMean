@@ -15,7 +15,7 @@ require.config({
         // 辅助函数
         'xm':'base/function',
         // 全局路由配置
-        'router-config':'route',
+        'router-config':'blog/route',
         // 布局
         'index':'blog/page/blog-index',
         'articleDetail':'blog/page/blog-articleDetail',

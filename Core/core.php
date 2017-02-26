@@ -5,19 +5,22 @@ class Core {
     // 核心启动方法
     static public function run(){
 
+        // 加载项目路由
+        include APP.'/route.php';
+
         $route = new Lib\Route();
-        $group = $route->group;
-        $ctrl = $route->ctrl;
-        $action = $route->action;
+        $url = $route->getRoute();
+        $ctrlName = $url['controller'];
+        $action = $url['action'];
 
         // 控制器完全限定名称
-        $ctrlName = '\\'.MOUDLE.'\\'.$group.'\Controller\\'.$ctrl.'Controller';
+//        $ctrlName = '\\'.MOUDLE.'\\'.$group.'\Controller\\'.$ctrl.'Controller';
         // 加载控制器文件
         try{
             $ctrl = new $ctrlName();
             $ctrl->$action();
         }catch (\Exception $e){
-            echo $e->getMessage();
+//            echo $e->getMessage();
         }
     }
 

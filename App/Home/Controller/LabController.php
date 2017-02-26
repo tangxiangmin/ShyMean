@@ -11,9 +11,16 @@ class LabController extends Controller{
         $this->model = new LabModel();
         parent::__construct();
     }
+    public function show(){
+        include('/html/lab.html');
+    }
 
     public function labList(){
         $res = $this->model->select();
         exit(json_encode($res));
+    }
+
+    public function test(){
+        echo "this is labcontroller test function";
     }
 }

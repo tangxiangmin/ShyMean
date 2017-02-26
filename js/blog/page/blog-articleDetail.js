@@ -22,6 +22,7 @@ define(['marked','highlight'], function () {
                     <div class="article_info">
                         发表于{{article.created_at}} |
                         分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
+                        浏览 {{article.browse}} |
                         评论 {{article.comment_id}}
                     </div>
                 </header>

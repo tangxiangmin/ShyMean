@@ -105,6 +105,9 @@
 // 定义相关的颗粒类，慎重使用颗粒类
 
 @if($is-flex){
-
+	.fx-space {
+		@include fx;
+		@include fx-main(space-between);
+	}
 }
 

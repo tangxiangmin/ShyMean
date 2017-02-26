@@ -13,6 +13,7 @@ require.config({
         //插件
         'marked':[/*'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min',*/'lib/marked'],
         'highlight':[/*'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min',*/'lib/highlight.pack'],
+        'impress':'lib/impress',
         // 辅助函数
         'xm':'function',
         // 全局路由配置

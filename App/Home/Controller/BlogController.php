@@ -22,7 +22,7 @@ class BlogController extends Controller{
     //-------------接口------------//
 
     // 博客首页文章列表及分页
-    public function index(){
+    public function blogIndex(){
         $num = $this->indexPage;
         $total = intval($this->model->count());
 
@@ -50,6 +50,9 @@ class BlogController extends Controller{
     // 文章详情
     public function articleDetail(){
         $id = $_REQUEST['id'];
+
+        $this->model->where('id = '.$id)->update('browse = browse+1');
+
         $article = $this->model->where('id = '.$id)->selectOne();
         $time = $article['created_at'];
         $prev = $this->model->field('id, title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
