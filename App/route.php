@@ -4,7 +4,7 @@ use \Core\Lib\Route;
 
 // 静态页面
 Route::bind(['/','index'], function(){
-    return include(HTML.'index.html');
+    return include(DIST.'index.html');
 });
 Route::bind('blog', function(){
     return include(HTML.'blog.html');

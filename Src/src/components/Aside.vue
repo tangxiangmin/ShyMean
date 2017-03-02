@@ -5,7 +5,7 @@
                 <catalogue slot="catalogue" :data="catalogue"></catalogue>
                 <div  slot="website">
                     <div>
-                        <img src="/src/assets/img/head.jpg" alt="" width="100" height="100">
+                        <img src="../assets/img/head.jpg" alt="" width="100" height="100">
                         <h3 class="text-white">ShyMean</h3>
                         <p>一个不学无术且无趣的人。</p>
                     </div>
@@ -35,19 +35,25 @@
     </aside>
 </template>
 <script>
+    import tab from '@/components/Tab';
+    import catalogue from '@/components/Catalogue';
+    
     export default {
         name:"blog-aside",
+        props: ['catalogue'],
         data: function () {
             return {
                 isHover: false,
                 isClose: false,
                 isTopShow: false,
+                
                 items:[{
                     slot:'website',
                     title:'站点资料'
                 }],
             }
         },
+        components:{tab, catalogue},
         methods: {
             toggleList: function () {
                 this.isHover = !this.isHover;

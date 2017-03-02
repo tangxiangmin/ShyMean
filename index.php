@@ -5,6 +5,7 @@ define('ROOT',dirname(__FILE__));
 define('CORE',ROOT.'/Core');
 define('APP',ROOT.'/App');
 define('MOUDLE','App');
+define('DIST',ROOT.'/dist/');
 define('HTML',ROOT.'/html/');
 
 // 调试模式

@@ -6,12 +6,12 @@
             <span class="pagination_space" v-if="omit(n).flag">...</span>
             <router-link v-else  class="pagination_link" :to="{ name: name, params: { active: n }}" >{{n}}</router-link></div>
         <div :class="['pagination_item']" v-if="active < pageNum">
-            <router-link :to="{ name: name, params: { active: active - 0+1 }}" class="pagination_link"><i class="iconfont icon-forward"></i></router-link>
+            <router-link :to="{ name: name, params: { active: active - 0+1 }}" class="pagination_link" ><i class="iconfont icon-forward"></i></router-link>
         </div>
     </nav>
 </template>
 <script>
-    export default{
+    export default {
         name:'pagination',
         props: ['name','page','active'],
         data: function () {
