@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+// 入口导航位于index/index中
+
+// 响应式导航
+.nav-responsive {
+    font-size: 16px;
+}
+
+// 小屏幕
+@media screen and (max-width: nth(nth($breakPoint,2),1)){
+    .nav-responsive {
+        @include fx-basis(100%);
+        @include fx-shrink(0);
+
+        height: 0;
+        overflow: hidden;
+        &.active {
+            margin-top: 20px;
+            height: auto;
+        }
+        .nav_item {
+            display: block;
+            text-align: center;
+            line-height: 40px;
+        }
+    }
+}
+
+// 大屏幕
+@media screen and (min-width: nth(nth($breakPoint,2),1)){
+    .nav-responsive {
+        float: right;
+        @include fx;
+
+        .nav_item {
+            display: block;
+            padding: 5px 10px;
+            @include border-radius;
+            @include transition(background ease .2s);
+
+            &:hover {
+                background: darken($gray,5%);
+            }
+        }
+    }
+}
+
+// 竖线分隔的导航
+.nav-border {
+    font-size: 0;
+    margin: 1.5rem 0;
+    .nav_item {
+        display: inline-block;
+        width: 60px;
+        font-size: 14px;
+        &:not(:first-of-type){
+            @include border-l;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+.lab {
+	.lab_hd{
+		margin: rem(20) 0;
+		border: 1px solid #ddd;
+		z-index: 100;
+		padding: rem(100);
+		box-shadow: 14px 11px 27px #888;
+
+		@include fx;
+		@include fx-main(space-between);
+		@include fx-cross(center);
+	}
+
+	.lab_nav{
+		padding: rem(100);
+		background-color: #fff;
+		border: 1px solid #ddd;
+		z-index: 100;
+		box-shadow: 14px 11px 27px #888;
+	}
+
+	.lab_item {
+		position: relative;
+		padding-left: 30px;
+		margin-bottom: -1px;
+
+		line-height: 40px;
+
+		@include text-sm;
+		@include text-overflow;
+		@include transition;
+
+		&:before {
+			$r: 8px;
+			content: '';
+			position: absolute;
+			left: $r;
+			top: 50%;
+			width: $r;
+			height: $r;
+			margin-top: -$r/2;
+			margin-left: -$r/2;
+			background-color: $gray;
+
+			@include transition;
+			@include border-radius;
+		}
+
+		&:hover {
+			z-index: 1;
+			padding-left: 70px;
+			background-color: $gray;
+			border-color: darken($gray,10%);
+			&:before {
+				background-color: $dark;
+			}
+		}
+	}
+	.lab_link {
+		@include block;
+	}
+}
+
+

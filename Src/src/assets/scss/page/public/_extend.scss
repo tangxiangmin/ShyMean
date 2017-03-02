@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+// 页面公共样式的父类，这里只书写使用占位符继承的抽象样式父类
+
+// 阴影
+%shadow {
+	&:before,&:after {
+		content:"";
+		position:absolute;
+		z-index:-1;
+		bottom:20px;
+
+		width:60%;
+		height:20px;
+		box-shadow:0 13px 10px rgba(0, 0, 0, 0.4);
+	}
+	&:before {
+		left:10px;
+		transform:rotate( -4deg);
+	}
+	&:after {
+		right:10px;
+		transform:rotate(4deg);
+	}
+}
+
+// 动画
+%hover-scale {
+	@include box-shadow;
+	@include transition(all .2s ease);
+	&:hover {
+		@include transform(scale(1.05));
+		@include box-shadow(0 0 4px 4px rgba(0,0,0,0.1));
+	}
+}
+
+%hover-underline {
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -3px;
+		height: 2px;
+		width: 100%;
+		background: currentcolor;
+		transform: scaleX(0);
+		@include transition(all ease .2s);
+	}
+	&:hover:after {
+		transform: scaleX(1);
+	}
+}

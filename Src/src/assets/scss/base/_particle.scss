@@ -1,0 +1,85 @@
+@charset "utf-8";
+/**
+ * ---定义了颗粒类---
+ */
+
+// 浮动
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right !important;
+}
+
+// 清浮动
+@mixin clearfix {
+	zoom:1;
+	&:after {
+		content:"";
+		display:block;
+		clear:both;
+	}
+}
+.clearfix {
+	@include clearfix;
+}
+@mixin block {
+	display: block;
+	width: 100%;
+}
+.block {
+    display: block;
+    width: 100%;
+}
+
+//图片
+.img-responsive {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+// 外边距
+// 为了处理页面统一的边距，定义了$basemargin变量，而未使用对应的混合器
+$basemargin: 20px !default;
+$basepadding: 20px !default;
+$baseborder: 1px solid #d6d6d6 !default;
+
+// 边框
+@mixin border($b: $baseborder) {
+	border: $b;
+}
+@mixin border-b($b:$baseborder) {
+	border-bottom: $b;
+}
+@mixin border-r($b:$baseborder) {
+	border-right: $b;
+}
+@mixin border-l($b:$baseborder) {
+	border-left: $b;
+}
+@mixin border-t($b:$baseborder) {
+	border-top: $b;
+}
+// 定义上下对称边框
+@mixin border-tb($b: $baseborder) {
+	border-top: $b;
+	border-bottom: $b;
+}
+@mixin border-lr($b: $baseborder) {
+	border-left: $b;
+	border-right: $b;
+}
+
+// 透明度
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    // IE8 filter
+    $opacity-ie: ($opacity * 100);
+    filter: alpha(opacity=$opacity-ie);
+}
+
+
+
+

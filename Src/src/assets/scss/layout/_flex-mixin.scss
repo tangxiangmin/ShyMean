@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+// 定义flex相关的混合器，实际上只是简单处理了flex的属性值，统一添加前缀，页面中禁止出现单个的flex样式属性
+@mixin fx{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+@mixin fx-inline{
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+// 下面的混合器均定义了一个与默认值不同但使用频率较高的默认属性
+
+// -------容器-------
+@mixin fx-dir($p:column) {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: $p;
+	        flex-direction: $p;
+}
+
+// 主轴对齐方式
+@mixin fx-main($p:center) {
+	-webkit-box-pack: $p;
+	    -ms-flex-pack: $p;
+	        justify-content: $p;
+}
+
+// 侧轴对齐方式
+@mixin fx-cross($p:center){
+	-webkit-box-align: $p;
+	    -ms-flex-align: $p;
+	        align-items: $p;
+}
+
+// 换行
+@mixin fx-wrap($p:wrap){
+	-ms-flex-wrap: $p;
+	    flex-wrap: $p;
+}
+
+// 多行
+@mixin fx-content($p:center){
+	-ms-flex-line-pack: $p;
+	    align-content: $p;
+}
+
+// -------子项-------
+
+// 排序
+@mixin fx-order($num:1){
+	-webkit-box-ordinal-group: $num;
+	    -ms-flex-order: $num;
+	        order: $num;
+}
+
+// 放大比例
+@mixin fx-grow($num:1){
+	-webkit-box-flex: $num;
+	    -ms-flex-positive: $num;
+	        flex-grow: $num;
+}
+
+// 缩小比例
+@mixin fx-shrink($num:0) {
+	-ms-flex-negative: $num;
+	    flex-shrink: $num;
+}
+
+// 主轴宽度
+@mixin fx-basis($w){
+	-ms-flex-preferred-size: $w;
+	    flex-basis: $w;
+}
+
+// 自身对齐
+@mixin fx-self($p:center){
+	-ms-flex-item-align: $p;
+	    -ms-grid-row-align: $p;
+	    align-self: $p;
+}
+
+// -------快捷键-------
+@mixin fx-center {
+	@include fx;
+	@include fx-main(center);
+	@include fx-cross(center);
+}
+
+@mixin fx-justify {
+	@include fx;
+	@include fx-main(space-between);
+	@include fx-cross(center);
+}
+
+@mixin fx-jusify-v{
+	@include fx;
+	@include fx-main(space-between);
+	@include fx-cross(center);
+}
+
+// 定义相关的颗粒类，慎重使用颗粒类
+
+@if($is-flex){
+	.fx-space {
+		@include fx;
+		@include fx-main(space-between);
+	}
+}
+

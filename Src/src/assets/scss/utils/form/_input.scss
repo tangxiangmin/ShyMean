@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*
+     <div class="inputGroup">
+        <input type="text" @input="input" placeholder="数据库被删掉了..." class="inputGroup_input">
+        <div class="inputGroup_icon">
+            <button class="btn">
+                <i class="iconfont icon-search"></i>
+            </button>
+        </div>
+    </div>
+*/
+
+.inputGroup {
+    @include fx;
+    @include fx-cross(center);
+    @include fx-main(center);
+
+    @include border;
+    @include text-sm;
+    &_input {
+        border: none ;
+        padding: 0 10px;
+    }
+}

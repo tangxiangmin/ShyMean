@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+@mixin page-shadow {
+    padding: rem(100);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    z-index: 100;
+    @include box-shadow(7px 6px 16px #888);
+    @include transition;
+    &:hover {
+        @include box-shadow(14px 11px 27px #888)
+    }
+}
+
+@media screen and (min-width: nth(nth($breakPoint,2),1)) {
+    .article {
+        @include page-shadow;
+    }
+}
+
+.article{
+    margin-bottom: 3rem;
+    font-size: 16px;
+    color: #333;
+
+
+    &_hd {
+        font-weight: normal;
+    }
+
+    &_tt {
+        @extend %hover-underline;
+    }
+
+    &_info {
+        @include text-sm;
+        color: $text-gray;
+        word-spacing: 3px;
+    }
+
+    &_ft {
+        margin: 2rem 0;
+
+    }
+
+    &_nav {
+        @include clearfix;
+    }
+    &_prev {
+        float: left;
+    }
+
+    &_next {
+        float: right;
+    }
+
+
+    // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
+    &_ct {
+        margin: 10px 0;
+        line-height: 2em;
+
+        a {
+            color: $cyan;
+            text-decoration: underline;
+            &:hover {
+                color: darken($cyan,20%);
+            }
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th,td {
+            @include border;
+        }
+    }
+
+    // 标签
+    &_tag {
+        display: inline-block;
+        background-color: $gray;
+        font-size: 14px;
+        padding: 5px;
+        margin-right: 5px;
+        &:hover {
+            background-color: darken(#f6f8fa,20%);
+            color: lighten($gray,20%);
+        }
+    }
+}
