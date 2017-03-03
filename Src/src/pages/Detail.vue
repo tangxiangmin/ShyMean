@@ -1,6 +1,6 @@
 <template>
     <div :class="['page','container']">
-        
+
         <article class="article">
             <header  class="text-center">
                 <h2 class="article_hd">{{article.title}}</h2>
@@ -18,21 +18,21 @@
             <div class="article_nav">
                 <router-link v-if="prev" class="hover-highlight article_prev" :to="{ name: 'articleDetail', params: { id: prev.id }}">{{prev.title}}</router-link>
                 <router-link v-if="next" class="hover-highlight article_next" :to="{ name: 'articleDetail', params: { id: next.id }}">{{next.title}}</router-link>
-            
+
             </div>
         </article>
     </div>
 </template>
 <script>
-    import marked from 'marked';
-    import highlight from 'highlight';
+    import marked from 'marked'
+    import highlight from 'highlight.js'
     
     marked.setOptions({
         highlight: function (code) {
             return highlight.highlightAuto(code).value;
         }
     });
-    
+
     export default{
         name:"articleDetail",
         data:function(){
@@ -53,10 +53,10 @@
                     let article = data['article'];
                     let prev = data['prev'];
                     let next = data['next'];
-                
+
                     let content  = marked(article['content']);
                     // 最多只考虑了3级目录，应该够用了。
-                
+
                     let re = /<(h[2|3|4])[^]*?>([^]*?)<\/\1>/g;
                     let title = null;
                     let count = {
@@ -64,12 +64,12 @@
                         h3:0,
                         h4:0
                     };
-                
+
                     let titleArr = [];
-                
+
                     while(title = re.exec(content)){
                         let type = title[1];
-                    
+
                         let orderNum = '';
                         switch (type){
                             case "h2":
@@ -103,16 +103,16 @@
                                 console.log("oops~");
                                 break;
                         }
-                    
+
                         let id = title[2];
                         let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
                         content = content.replace(title[0],str);
                     }
                     // 数据由aside组件渲染
                     this.$emit('article',titleArr);
-                
+
                     article['content'] = content;
-                
+
                     this.$set(this,'article',article);
                     this.$set(this,'prev',prev);
                     this.$set(this,'next',next);
@@ -130,7 +130,7 @@
                 if (!tags) {
                     return '';
                 }
-            
+
                 return tags.split(",").map((val)=>{
                     return val.trim()
                 });
@@ -139,5 +139,5 @@
     }
 </script>
 <style>
-    
+
 </style>

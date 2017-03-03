@@ -20,8 +20,8 @@
 </template>
 <script>
     import marked from 'marked';
-    
     import pagination from '@/components/Pagination.vue';
+
     export default {
         name: "blog-index",
         data:function(){

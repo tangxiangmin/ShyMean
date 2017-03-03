@@ -16,6 +16,7 @@
     import blogAside from './components/Aside';
 
     let components = {blogHeader, blogFooter, blogAside};
+
     export default {
         name: 'blog',
         components: components,
