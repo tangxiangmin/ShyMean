@@ -34,7 +34,7 @@
     export default{
         name:"tags",
         mounted:function(){
-            this.$http.get('blog_tags').then((res)=>{
+            this.$http.get('blog/tags').then((res)=>{
                 return res.json();
             }).then((res)=>{
                 this.$set(this,'categories',res.categories);

@@ -20,8 +20,7 @@
 </template>
 <script>
     import marked from 'marked';
-    import pagination from '@/components/Pagination.vue';
-
+    import pagination from '@/components/Pagination';
     export default {
         name: "blog-index",
         data:function(){
@@ -37,7 +36,7 @@
         },
         methods:{
             getData: function () {
-                this.$http.post('blog_index',{active: this.active}).then((res)=>{
+                this.$http.post('blog/index',{active: this.active}).then((res)=>{
 
                     return res.json();
 

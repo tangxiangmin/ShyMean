@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
 
+Vue.use(Router);
 Vue.use(VueResource);
+
 Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
 
-Vue.use(Router);
 
 import blogIndex from '@/pages/Index';
 import articleDetail from '@/pages/Detail';
@@ -16,11 +17,11 @@ import articleList from '@/pages/Archives';
 
 export default new Router({
     routes: [
-        {
-            path: '/',
-            name: 'index',
-            component: blogIndex
-        },
+        // {
+        //     path: '/',
+        //     name: 'index',
+        //     component: blogIndex
+        // },
         {
             path: '/index/:active',
             name: 'index',

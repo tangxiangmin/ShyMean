@@ -47,7 +47,7 @@
         },
         methods:{
             getData(){
-                this.$http.post('blog_articleDetail',{id: this.$route.params.id}).then((res)=>{
+                this.$http.post('blog/detail',{id: this.$route.params.id}).then((res)=>{
                     return res.json();
                 }).then((data)=>{
                     let article = data['article'];

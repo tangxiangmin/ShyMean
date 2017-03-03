@@ -17,9 +17,12 @@
     </div>
 </template>
 <script>
-    import xm from '../base/function';
+    import xm from '../base/function'
+    import pagination from '@/components/Pagination'
+    
     export default{
         name:"articleList",
+        components:{pagination},
         mounted:function(){
             this.getData();
         },
@@ -31,7 +34,7 @@
                     postData.active = 1;
                 }
             
-                this.$http.post('blog_articlelList',postData).then((res)=>{
+                this.$http.post('blog/archives',postData).then((res)=>{
                     return res.json();
                 }).then((res)=>{
                     var lists = res['lists'];

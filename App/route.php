@@ -21,10 +21,10 @@ Route::bind('about', function(){
 
 // 博客
 
-Route::bind('blog_articleDetail', '\App\Home\Controller\BlogController@articleDetail');
-Route::bind('blog_index', '\App\Home\Controller\BlogController@blogIndex');
-Route::bind('blog_articlelList', '\App\Home\Controller\BlogController@articleList');
-Route::bind('blog_tags', '\App\Home\Controller\BlogController@tags');
+Route::bind('blog/detail', '\App\Home\Controller\BlogController@articleDetail');
+Route::bind('blog/index', '\App\Home\Controller\BlogController@blogIndex');
+Route::bind('blog/archives', '\App\Home\Controller\BlogController@articleList');
+Route::bind('blog/tags', '\App\Home\Controller\BlogController@tags');
 
 
 // 实验室
