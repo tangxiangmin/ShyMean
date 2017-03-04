@@ -109,10 +109,10 @@
                         content = content.replace(title[0],str);
                     }
                     // 数据由aside组件渲染
-                    this.$emit('article',titleArr);
-
+                    this.$store.commit("setCatalogue", titleArr);
+                    
                     article['content'] = content;
-
+                    
                     this.$set(this,'article',article);
                     this.$set(this,'prev',prev);
                     this.$set(this,'next',next);
@@ -138,6 +138,7 @@
         },
     }
 </script>
-<style>
-
+<style lang="scss" rel="stylesheet/scss">
+    @import "../style/import";
+   
 </style>

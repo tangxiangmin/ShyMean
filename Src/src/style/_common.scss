@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+* {
+    box-sizing: border-box;
+}
+
+
+// HTML新增标签元素在IE9一下正确显示
+article,
+aside,
+footer,
+header,
+nav,
+section,
+main {
+    display: block;
+}
+
+
+// 去除某些浏览器对图片增加的边框
+img {
+    border: 0;
+}
+
+a {
+    color: inherit;
+    background: transparent;
+    text-decoration: none;
+
+}
+
+input,button,textarea,select,optgroup {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    background: inherit;
+}
+
+textarea,select,input,button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+textarea {
+    resize: none;
+}
+
+:focus {
+    outline: 0;
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+

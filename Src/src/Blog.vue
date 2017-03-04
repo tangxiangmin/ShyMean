@@ -2,18 +2,18 @@
     <div id="blog" v-cloak>
         <main :class="['main',{'active':showAside}]">
             <blog-header></blog-header>
-            <router-view @article="article"></router-view>
+            <router-view></router-view>
             <blog-footer></blog-footer>
         </main>
-      <blog-aside @aside="toggleAside" :catalogue="catalogue"></blog-aside>
+      <blog-aside @aside="toggleAside"></blog-aside>
       <popup type="loading" :show="isLoading"></popup>
     </div>
 </template>
 
 <script>
-    import blogHeader from './components/Header';
-    import blogFooter from './components/Footer';
-    import blogAside from './components/Aside';
+    import blogHeader from './pages/Header';
+    import blogFooter from './pages/Footer';
+    import blogAside from './pages/Aside';
     import popup from './components/Popup'
     
     
@@ -23,7 +23,6 @@
         components: components,
         data:function(){
             return {
-                catalogue: [] ,
                 showAside: false,
                 isLoading: false
             };
@@ -31,26 +30,31 @@
         methods:{
             toggleAside:function () {
                 this.showAside = !this.showAside;
-            },
-            article: function (catalogue) {
-                this.$set(this,'catalogue',catalogue);
             }
         },
         watch:{
             $route: function (to,from) {
                 document.body.scrollTop = 0;
-
-                if (to.name != 'articleDetail'){
-                    this.catalogue = [];
-                }
             }
         }
     }
 </script>
 
-<style>
-    @import "./assets/fonts/iconfont.css";
-    /*@import "./assets/css/home.css";*/
-    @import "./assets/css/home.css";
+<style lang="scss" rel="stylesheet/scss" scoped>
+    @import "./style/_import";
 
+    .main {
+        position: relative;
+        @include transition;
+        
+        &.active {
+            padding-right: 300px;
+        }
+    }
+    
+    .page {
+        min-height: calc(100vh - 78px - 98px);
+        padding-top: rem(200);
+        padding-bottom: rem(200);
+    }
 </style>

@@ -32,6 +32,43 @@
         }
     }
 </script>
-<style>
-    
+<style lang="scss" rel="stylesheet/scss">
+    @import "../style/import";
+    .tab {
+        font-size: 16px;
+        &_nav {
+            height: 40px;
+            @include list-unstyle;
+            @include fx;
+        }
+        
+        // 选项卡
+        &_item {
+            @include fx-grow;
+            line-height: 40px;
+            margin: 0 10px;
+            color: $text-gray;
+            text-align: center;
+            cursor: pointer;
+            
+            @include border-b;
+            
+            &.active {
+                color: $basecolor;
+            }
+        }
+        
+        // 选项面板
+        &_panel {
+            display: none;
+            width: 100%;
+            padding-top: 30px;
+            
+            &.active {
+                display:  block;
+            }
+        }
+    }
+
+
 </style>

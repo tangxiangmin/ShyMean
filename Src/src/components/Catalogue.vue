@@ -30,10 +30,9 @@
                 document.body.scrollTop = anchor.offsetTop
             }
         },
-        filters:{
-            anchor(val){
-                // 去除序号和开头的空格，返回正确的锚点
-            
+        computed:{
+            data(){
+                return this.$store.state.catalogue;
             }
         }
     }

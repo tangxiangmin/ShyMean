@@ -2,11 +2,11 @@
     <aside>
         <div :class="['aside','hide-md',{'active':isClose}]">
             <tab :items="items">
-                <catalogue slot="catalogue" :data="catalogue"></catalogue>
-                <div  slot="website">
-                    <div>
+                <catalogue slot="catalogue" ></catalogue>
+                <div slot="website">
+                    <div class="me">
                         <img src="../assets/img/head.jpg" alt="" width="100" height="100">
-                        <h3 class="text-white">ShyMean</h3>
+                        <h3>ShyMean</h3>
                         <p>一个不学无术且无趣的人。</p>
                     </div>
                     <div class="nav-border">
@@ -40,7 +40,6 @@
     
     export default {
         name:"blog-aside",
-        props: ['catalogue'],
         data: function () {
             return {
                 isHover: false,
@@ -94,10 +93,9 @@
         watch:{
             $route(to,from){
                 // 判断是否显示目录
-
                 // 从其他页面进入文章详情
                 // 从当前文章进入下一篇文章
-
+                
                 if (this.items.length == 1 && to.name == 'articleDetail') {
                     this.items.unshift({
                         slot:"catalogue",
@@ -115,6 +113,114 @@
         }
     }
 </script>
-<style>
+<style lang="scss" rel="stylesheet/scss" scoped>
+    @import "../style/import";
+    .aside {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        right:0;
+    
+        width: 320px;
+        height:100%;
+        padding: 0 $basepadding*2;
+    
+        color: $text-gray;
+        text-align: center;
+        background-color: $dark;
+    
+        @include transition;
+        @include transform(translateX(320px));
+        &.active {
+            @include transform(translateX(0px));
+        }
+    
+        a {
+            &:hover {
+                color: #fff;
+            }
+        }
+    
+        .media {
+            margin: $basemargin 0;
+        }
+    }
+    // 侧边栏的响应式
+    @media screen and (max-width: nth(nth($breakPoint,2),1)){
+        .aside {
+            display: none;
+        }
+        .main.active {
+            padding-right: 0;
+        }
+    }
+    .me {
+        color: $white;
+    }
+    
+    .tool {
+        %page-btn {
+            position: fixed;
+            z-index: 9999;
+        
+            // 在手机上跟顶部导航列表按钮对齐
+            right: 15px;
+        }
+        .btn-list {
+            bottom: 65px;
+        }
+    }
+    
+    .btn-top {
+        bottom: 20px;
+        color: #fff;
+    
+        @extend %page-btn;
+        @include transition;
+        @include transform(translateY(80px));
+        i {
+            font-size: 20px;
+            @include transition(all .2s ease);
+        }
+        &:hover {
+            i {
+                @include transform(translateY(-2px));
+            }
+        }
+        &.active {
+            @include transform(translateY(0px));
+        }
+    }
 
+    .nav-border {
+        font-size: 0;
+        margin: 1.5rem 0;
+        .nav_item {
+            display: inline-block;
+            width: 60px;
+            font-size: 14px;
+            &:not(:first-of-type){
+                @include border-l;
+            }
+        }
+    }
+    .contact {
+        &_link {
+            margin-right: 10px;
+            padding: 5px 0;
+        
+            @include border-b;
+        
+            &:before {
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+                width: 4px;
+                height: 4px;
+                background: $yellow;
+                border-radius: 2px;
+            }
+        }
+    }
 </style>

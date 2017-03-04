@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-gray">
+    <footer>
         <div class="container footer">
             <p>
                 ©Shymean 2016 - {{new Date().getFullYear()}}
@@ -20,4 +20,14 @@
         }
     }
 </script>
-<style></style>
+<style lang="scss" rel="stylesheet/scss" scoped>
+    @import "../style/_import";
+    footer {
+        background-color: $gray;
+    }
+    .footer {
+        overflow: hidden;
+        line-height: 2em;
+        font-size: 14px;
+    }
+</style>
