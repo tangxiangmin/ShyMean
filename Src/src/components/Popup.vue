@@ -13,6 +13,79 @@
         props: ['type', 'show'],
     }
 </script>
-<style>
+<style lang="scss" rel="stylesheet/scss">
+    @import "../style/import";
+    .popup {
+        position: fixed;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        @include fx-center;
+        
+        background-color: rgba(0,0,0,0.5);
+        opacity: 0;
+        
+        // 防止网速过快出现闪屏
+        @include animation(shadow-show 0.01s linear 0.5s forwards);
+        @mixin shadow-show {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @-webkit-keyframes shadow-show {
+            @include shadow-show;
+        }
+        
+        @keyframes show {
+            @include shadow-show;
+        }
+        
+    }
+    
+    // 加载
+    .loading {
+        &_dot {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: $basecolor;
+            @include border-radius(50%);
+            @include animation(sk-three-bounce 1.4s ease-in-out 0s infinite both);
+            
+            @for $i from 1 through 2 {
+                &:nth-of-type(#{$i}) {
+                    @include animation-delay(-0.15s * (3 - $i))
+                }
+            }
+        }
+        
+        // 加载动画
+        @mixin sk-three-bounce {
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+            40% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        
+        @-webkit-keyframes sk-three-bounce {
+            @include sk-three-bounce;
+        }
+        
+        @keyframes sk-three-bounce {
+            @include sk-three-bounce;
+        }
+    }
 
 </style>

@@ -1,5 +1,12 @@
-// 用于各组件中引入相关变量，混合器和继承类
 
-@import "variables";
-@import "mixin";
-@import "extend";
+// 用于各组件中引入相关变量，混合器和继承类
+@import "variables/_color";
+@import "variables/_layout";
+@import "variables/_font";
+
+@import "mixin/_css3";
+@import "mixin/_flex";
+@import "mixin/_particle";
+@import "mixin/_rem";
+
+@import "extend/_partical";

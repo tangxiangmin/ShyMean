@@ -44,6 +44,14 @@
         },
         mounted:function(){
             this.getData();
+            let asideTabItems = [{
+                slot:"catalogue",
+                title:"文章目录"
+            },{
+                slot:'website',
+                title:'站点资料'
+            }];
+            this.$store.commit("setAsideTabItems",asideTabItems);
         },
         methods:{
             getData(){
@@ -108,6 +116,7 @@
                         let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
                         content = content.replace(title[0],str);
                     }
+                    
                     // 数据由aside组件渲染
                     this.$store.commit("setCatalogue", titleArr);
                     
@@ -119,8 +128,10 @@
                 });
             }
         },
+
         watch:{
-            $route(){
+            $route(to,from){
+                this.$store.commit("setCatalogue", []);
                 this.getData();
             }
         },
@@ -140,5 +151,75 @@
 </script>
 <style lang="scss" rel="stylesheet/scss">
     @import "../style/import";
-   
+    
+    
+    @media screen and (min-width: nth(nth($breakPoint, 2), 1)) {
+        .article {
+            @include page-shadow;
+        }
+    }
+    .article {
+        margin-bottom: 3rem;
+        font-size: 16px;
+        color: #333;
+        
+        &_hd {
+            font-weight: normal;
+        }
+        
+        &_tt {
+            @extend %hover-underline;
+        }
+        
+        &_info {
+            font-size: $text-sm;
+            color: $text-gray;
+            word-spacing: 3px;
+        }
+        
+        &_ft {
+            margin: 1rem 0;
+        }
+        
+        &_nav {
+            @include clearfix;
+        }
+        &_prev {
+            float: left;
+        }
+        
+        &_next {
+            float: right;
+        }
+        
+        // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
+        &_ct {
+            margin: 10px 0;
+            line-height: 2em;
+            
+            a {
+                color: $cyan;
+                text-decoration: underline;
+                &:hover {
+                    color: darken($cyan, 20%);
+                }
+            }
+            
+            img {
+                max-width: 100%;
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+            th, td {
+                @include border;
+            }
+        }
+        
+    }
+
+
 </style>

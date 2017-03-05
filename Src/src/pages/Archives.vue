@@ -115,4 +115,79 @@
         }
     }
 </script>
-<style></style>
+<style lang="scss" rel="stylesheet/scss">
+    @import "../style/import";
+    .archives {
+        font-size: 16px;
+        border-left: 4px solid $gray;
+        
+        @mixin archives-dot($r) {
+            &:before {
+                width: $r;
+                height: $r;
+                border-radius: $r;
+                left: -($r+4)/2;
+            }
+        }
+        
+        %archives {
+            position: relative;
+            
+            padding-left: $basepadding;
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+                
+                background: #aaa;
+            }
+        }
+        
+        &_count {
+            @extend %archives;
+            position: relative;
+            top: -0.5em;
+            
+            @include archives-dot(12px);
+        }
+        
+        &_title {
+            font-weight: normal;
+            padding-top: $basepadding*2;
+            padding-bottom: $basepadding*2;
+            
+            @include text-lg;
+            @include archives-dot(10px);
+            @extend %archives;
+        }
+        
+        &_item {
+            line-height: 3em;
+            color: #666;
+            border-bottom: 2px dashed $gray;
+            
+            @extend %archives;
+            @include archives-dot(6px);
+            
+            &:hover {
+                color: #000;
+                &:before {
+                    background: $dark;
+                }
+            }
+        }
+        &_link {
+            @include block;
+            @include text-overflow;
+        }
+        &_date{
+            font-size: 12px;
+            margin-right: 15px;
+        }
+    }
+
+</style>

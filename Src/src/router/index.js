@@ -17,11 +17,10 @@ import articleList from '@/pages/Archives';
 
 export default new Router({
     routes: [
-        // {
-        //     path: '/',
-        //     name: 'index',
-        //     component: blogIndex
-        // },
+        {
+            path: '/',
+            redirect: '/index/1',
+        },
         {
             path: '/index/:active',
             name: 'index',

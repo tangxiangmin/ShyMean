@@ -1,7 +1,7 @@
 <template>
     <aside>
         <div :class="['aside','hide-md',{'active':isClose}]">
-            <tab :items="items">
+            <tab :items="tabItems">
                 <catalogue slot="catalogue" ></catalogue>
                 <div slot="website">
                     <div class="me">
@@ -45,14 +45,14 @@
                 isHover: false,
                 isClose: false,
                 isTopShow: false,
-                
-                items:[{
-                    slot:'website',
-                    title:'站点资料'
-                }],
             }
         },
         components:{tab, catalogue},
+        computed:{
+            tabItems(){
+                return this.$store.state.asideTabItems;
+            }
+        },
         methods: {
             toggleList: function () {
                 this.isHover = !this.isHover;
@@ -68,14 +68,6 @@
             },
         },
         mounted: function () {
-            // 判断当前路由
-            if (this.$route.name == 'articleDetail') {
-                this.items.unshift({
-                    slot:"catalogue",
-                    title:"文章目录"
-                })
-            }
-
             // 返回顶部
             let h = window.screen.height / 20;
             let _that = this;
@@ -90,27 +82,6 @@
 
             });
         },
-        watch:{
-            $route(to,from){
-                // 判断是否显示目录
-                // 从其他页面进入文章详情
-                // 从当前文章进入下一篇文章
-                
-                if (this.items.length == 1 && to.name == 'articleDetail') {
-                    this.items.unshift({
-                        slot:"catalogue",
-                        title:"文章目录"
-                    })
-                }else if (from.name == 'articleDetail' && to.name == 'articleDetail') {
-                    this.items[0] = {
-                        slot:"catalogue",
-                        title:"文章目录"
-                    };
-                }else if (from.name == 'articleDetail') {
-                    this.items.shift();
-                }
-            }
-        }
     }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
@@ -166,9 +137,16 @@
             // 在手机上跟顶部导航列表按钮对齐
             right: 15px;
         }
+        
         .btn-list {
             bottom: 65px;
         }
+    }
+    .btn-list {
+        position: fixed;
+        z-index: 9999;
+        right: 15px;
+        bottom: 65px;
     }
     
     .btn-top {

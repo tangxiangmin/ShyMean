@@ -37,4 +37,29 @@
         }
     }
 </script>
-<style></style>
+<style lang="scss" rel="stylesheet/scss">
+    @import "../style/import";
+    .catalogue {
+        text-align: left;
+        overflow: scroll;
+        font-size: 16px;
+        
+        // 侧边栏滚动条待修改
+        
+        max-height: 90vh;
+        .catalogue_group {
+            margin: 0 0 0 20px;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .catalogue_item {
+            line-height: 30px;
+            @include block;
+            @include text-overflow;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+</style>

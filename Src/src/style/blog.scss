@@ -1,5 +1,13 @@
 @import "import";
-@import "common";
-@import "mediaquery";
 
+@import "base/_reset";
+
+// 媒介查询
+@import "mediaquery/_grid";
+@import "mediaquery/_rem";
+@import "mediaquery/_query";
+
+// 公用类
+@import "class/partical";
+@import "class/markdown";
 

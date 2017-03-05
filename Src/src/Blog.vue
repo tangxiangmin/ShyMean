@@ -6,7 +6,7 @@
             <blog-footer></blog-footer>
         </main>
       <blog-aside @aside="toggleAside"></blog-aside>
-      <popup type="loading" :show="isLoading"></popup>
+      <popup type="loading" :show="loading"></popup>
     </div>
 </template>
 
@@ -24,8 +24,13 @@
         data:function(){
             return {
                 showAside: false,
-                isLoading: false
             };
+        },
+      
+        computed:{
+            loading(){
+                return this.$store.state.isLoading;
+            }
         },
         methods:{
             toggleAside:function () {
@@ -40,7 +45,7 @@
     }
 </script>
 
-<style lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss">
     @import "./style/_import";
 
     .main {

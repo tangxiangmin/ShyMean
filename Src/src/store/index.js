@@ -12,6 +12,11 @@ const store = new Vuex.Store({
     state: {
         test: "this is test",
         catalogue: [],
+        isLoading: false,
+        asideTabItems:[{
+            slot:'website',
+            title:'站点资料'
+        }]
     },
     mutations,
 });

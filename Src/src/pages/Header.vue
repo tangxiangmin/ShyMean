@@ -54,6 +54,7 @@
     @import "../style/_import";
     header {
         background-color: $gray;
+        margin-bottom: 2rem;
     }
     .header {
         padding-top: 15px;

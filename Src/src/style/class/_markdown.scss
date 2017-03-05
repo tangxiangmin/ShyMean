@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+code {
+	padding: 0 6px;
+	// margin在某些时候导致长代码换行，需要处理这个BUG
+	//margin:0 5px;
+	display: inline-block;
+	color: #f9263e;
+	font-family:"Source Code Pro","Georgia", "serif";
+	word-break: break-all;
+
+	background-color: rgba(0, 50, 100, 0.08);
+	border-radius: 5px;
+}
+
+pre {
+	overflow: auto;
+	margin: 20px 0;
+	padding: 15px;
+
+	@include border;
+	@include border-radius;
+	background: #1b2b34;
+
+	line-height: 1.8;
+	font-family: inherit;
+	color: #cdd3de;
+
+	code {
+		border: none;
+		padding: 0;
+		color: inherit;
+		background: transparent;
+		letter-spacing: 0;
+	}
+}
+
+blockquote {
+	overflow: auto;
+
+	margin-left: 0;
+	margin-right: 0;
+	padding: 10px 10px 10px 20px;
+
+	background: $gray;
+	color: $text-gray;
+
+	border: 1px solid #ccc;
+	border-left-width: 6px;
+	@include border-radius(0 4px 4px 0);
+}
+
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	background: #23241f;
+}
+
+.hljs,
+.hljs-tag,
+.hljs-subst {
+	color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+	color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+	color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+	color: #a6e22e;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+	color: #cf7178;
+}
+
+.hljs-symbol,
+.hljs-attribute {
+	color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-class .hljs-title {
+	color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+	color: #fac854;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+	color: #75715e;
+}
+

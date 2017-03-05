@@ -1,11 +1,23 @@
-body {
-    margin: 0;
-    min-height: 100vh;
-}
+
 * {
     box-sizing: border-box;
 }
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Verdana", "Microsoft Yahei", "Aril", "sans-serif";
+    color: #000;
+}
+
+.iconfont {
+    font-size: inherit;
+}
 
 // HTML新增标签元素在IE9一下正确显示
 article,

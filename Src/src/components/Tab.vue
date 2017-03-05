@@ -10,8 +10,7 @@
         
         <div
             :class="['tab_panel',{active:isActive == index}]"
-            v-for="(item,index) in items"
-        >
+            v-for="(item,index) in items">
             <slot :name="item.slot"></slot>
         </div>
     </div>
@@ -22,7 +21,7 @@
         props:['items'],
         data: function () {
             return {
-                isActive:0,
+                isActive: 0,
             }
         },
         methods:{
