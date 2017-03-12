@@ -5,10 +5,18 @@
             <header  class="text-center">
                 <h2 class="article_hd">{{article.title}}</h2>
                 <div class="article_info">
-                    发表于{{article.created_at}} |
-                    分类于 <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
-                    浏览 {{article.browse}} |
-                    评论 {{article.comment_id}}
+                    <span class="hide-sm">发表于</span>
+                    <span class="show-sm"><i class="iconfont icon-archives"></i></span>
+                    {{article.created_at}} |
+                    <span class="hide-sm">分类于</span>
+                    <span class="show-sm"><i class="iconfont icon-tag"></i></span>
+                    <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
+                    <span class="hide-sm">浏览</span>
+                    <span class="show-sm"><i class="iconfont icon-eye"></i></span>
+                    {{article.browse}} |
+                    <span class="hide-sm">评论</span>
+                    <span class="show-sm"><i class="iconfont icon-comment"></i></span>
+                     {{article.comment_id}}
                 </div>
             </header>
             <div class="article_ct" v-html="article.content"></div>
@@ -16,8 +24,8 @@
                 <router-link :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}" v-for="tag in getTags" :key="tag" class="article_tag">#{{tag}}</router-link>
             </footer>
             <div class="article_nav">
-                <router-link v-if="prev" class="hover-highlight article_prev" :to="{ name: 'articleDetail', params: { id: prev.id }}">{{prev.title}}</router-link>
-                <router-link v-if="next" class="hover-highlight article_next" :to="{ name: 'articleDetail', params: { id: next.id }}">{{next.title}}</router-link>
+                <router-link v-if="prev" class="hover-highlight article_prev" :to="{ name: 'articleDetail', params: { title: prev.title || 'tmp'}}">{{prev.title}}</router-link>
+                <router-link v-if="next" class="hover-highlight article_next" :to="{ name: 'articleDetail', params: { title: next.title || 'tmp'}}">{{next.title}}</router-link>
 
             </div>
         </article>
@@ -55,8 +63,11 @@
         },
         methods:{
             getData(){
-                this.$http.post('blog/detail',{id: this.$route.params.id}).then((res)=>{
+                let titleParam = this.$route.params.title;
+
+                this.$http.post('blog/detail',{title: titleParam}).then((res)=>{
                     return res.json();
+
                 }).then((data)=>{
                     let article = data['article'];
                     let prev = data['prev'];
@@ -152,7 +163,6 @@
 <style lang="scss" rel="stylesheet/scss">
     @import "../style/import";
     
-    
     @media screen and (min-width: nth(nth($breakPoint, 2), 1)) {
         .article {
             @include page-shadow;
@@ -162,6 +172,9 @@
         margin-bottom: 3rem;
         font-size: 16px;
         color: #333;
+        .show-sm {
+            display: inline-block;
+        }
         
         &_hd {
             font-weight: normal;
@@ -217,6 +230,21 @@
             th, td {
                 @include border;
             }
+        }
+        &_tag {
+             display: inline-block;
+             background-color: $gray;
+             font-size: 14px;
+             padding: 5px;
+             margin-right: 5px;
+            &:hover {
+                 background-color: darken(#f6f8fa,20%);
+                 color: lighten($gray,20%);
+            }
+        }
+        &_prev,&_next {
+            max-width: 45%;
+            @include text-overflow;
         }
         
     }

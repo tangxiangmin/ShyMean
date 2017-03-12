@@ -2,23 +2,29 @@
     <div :class="['page','container']">
         <article class="article" v-for="article in articles" :key="article">
             <h2 class="article_hd">
-                <router-link class="article_tt" :to="{ name: 'articleDetail', params: { id: article.id }}">
+                
+                <router-link class="article_tt" :to="{ name: 'articleDetail', params: { title: article.title || 'tmp'}}">
                     {{article.title}}
                 </router-link>
             </h2>
             <div class="article_info">
-                发表于{{article.created_at}} |
-                分类于
-                <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"
-                             class="hover-highlight">{{article.category}}
-                </router-link>
-                |
-                浏览 {{article.browse}} |
-                评论 {{article.comment_id}}
+                <span class="hide-sm">发表于</span>
+                <span class="show-sm"><i class="iconfont icon-archives"></i></span>
+                {{article.created_at}} |
+                <span class="hide-sm">分类于</span>
+                <span class="show-sm"><i class="iconfont icon-tag"></i></span>
+                <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
+                <span class="hide-sm">浏览</span>
+                <span class="show-sm"><i class="iconfont icon-eye"></i></span>
+                {{article.browse}} |
+                <span class="hide-sm">评论</span>
+                <span class="show-sm"><i class="iconfont icon-comment"></i></span>
+                {{article.comment_id}}
+
             </div>
             <div class="article_ct" v-html="article.content"></div>
             <div class="article_ft">
-                <router-link class="hover-highlight" :to="{ name: 'articleDetail', params: { id: article.id }}">阅读全文
+                <router-link class="hover-highlight" :to="{ name: 'articleDetail', params: { title: article.title || 'tmp'}}">阅读全文
                 </router-link>
             </div>
         </article>

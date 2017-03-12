@@ -8,7 +8,7 @@
                     <strong>{{group.year}}</strong>
                 </div>
                 <div class="archives_item" v-for="article in group.articles">
-                    <router-link class="archives_link" :to="{ name: 'articleDetail', params: { id: article.id }}"><span class="archives_date">{{article.created_at | dateFormat}}</span> {{article.title}}</router-link>
+                    <router-link class="archives_link" :to="{ name: 'articleDetail', params: { title: article.title }}"><span class="archives_date">{{article.created_at | dateFormat}}</span> {{article.title}}</router-link>
                 
                 </div>
             </section>

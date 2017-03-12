@@ -25,17 +25,21 @@ export default new Router({
             path: '/index/:active',
             name: 'index',
             component: blogIndex
-        },{
+        },/*{
             path: '/articleDetail/:id',
             name: 'articleDetail',
             component: articleDetail
-        },{
+        },*/{
             path: '/tags',
             component: tags
         },{
             path: '/articleList/:type/:name/:active',
             name: 'articleList',
             component: articleList
+        },{
+            path: '/title/:title',
+            name: 'articleDetail',
+            component: articleDetail
         }
     ]
 })

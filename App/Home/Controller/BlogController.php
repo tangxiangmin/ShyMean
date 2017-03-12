@@ -49,15 +49,16 @@ class BlogController extends Controller{
 
     // 文章详情
     public function articleDetail(){
-        $id = $_REQUEST['id'];
 
-        $this->model->where('id = '.$id)->update('browse = browse+1');
+        $title = $_REQUEST['title'];
 
-        $article = $this->model->where('id = '.$id)->selectOne();
+        $this->model->where("title = '".$title."'")->update('browse = browse+1');
+
+        $article = $this->model->where("title = '".$title."'")->selectOne();
+
         $time = $article['created_at'];
-        $prev = $this->model->field('id, title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
-//        var_dump($prev);
-        $next = $this->model->field('id, title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
+        $prev = $this->model->field('title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
+        $next = $this->model->field('title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
 
         $article['created_at'] = date('Y-m-d',$article['created_at']);
         $data = array(
