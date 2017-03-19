@@ -64,7 +64,7 @@
         @include fx;
         @include fx-cross(center);
         
-        margin: 3rem 0;
+        margin-top: 3rem;
         font-size: 0;
         border-top: 1px solid #f8f8f8;
         

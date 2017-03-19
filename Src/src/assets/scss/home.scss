@@ -19,23 +19,40 @@ $is-flex: true;
 
 $basemargin: 20px;
 $basepadding: 20px;
-$baseborder: 1px solid #d6d6d6;
-
+$baseborder: 1px solid #d7dde4;
 
 // 网格系统
 $gutter: 0 15px;
 $col-num: 12;
 $breakPoint:(600px 600px)(920px 600px)(1220px 900px);
 
-
 // 颜色
-$yellow: #FF9900;
-$green: #33CC66;
-$blue: #3366FF;
+$red: #FF3300;
+$oragne: #ff6600;
+$yellow: #ff9900;
+$green: #00cc66;
+$cyan: #6699FF;
+$blue: #3399ff;
 $purple: #9900FF;
+$dark: #333;
+$white: #fff;
+$gray: #9ea7b4;
+$text-gray: #657180;
+$bg-gray: #f5f7f9;
 
-
-$basecolor: #6699FF ;
+$basecolor: $cyan;
+// 安全色
+$colorArr:(red $red #fff)
+    (oragne $oragne #fff)
+    (yellow $yellow #fff)
+    (green $green #fff)
+    (cyan $cyan #fff)
+    (blue $blue #fff)
+    (purple $purple #fff)
+    (dark $dark #fff)
+    (white $white #000)
+    (gray $gray #000)
+    (base $basecolor #fff);
 
 // 页面
 

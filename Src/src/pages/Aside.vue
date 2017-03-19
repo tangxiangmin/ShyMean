@@ -10,9 +10,18 @@
                         <p>一个不学无术且无趣的人。</p>
                     </div>
                     <div class="nav-border">
-                        <a href="lab" class="nav_item"><i class="iconfont icon-lab"></i> <br>实验室</a>
-                        <a href="" class="nav_item"><i class="iconfont icon-bookshelf"></i> <br>书架</a>
-                        <a href="about" class="nav_item"><i class="iconfont icon-info"></i> <br>关于</a>
+                        <router-link to="/lab" class="nav_item">
+                            <i class="iconfont icon-lab"></i> <br>实验室
+                        </router-link>
+                        <router-link to="/book" class="nav_item">
+                            <i class="iconfont icon-bookshelf"></i> <br>书架
+                        </router-link>
+                        <router-link to="/msgBoard" class="nav_item">
+                            <i class="iconfont icon-info"></i> <br>留言
+                        </router-link>
+                        <router-link to="/about" class="nav_item">
+                            <i class="iconfont icon-info"></i> <br>关于
+                        </router-link>
                     </div>
                     <div class="contact">
                         <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i class="iconfont icon-github"></i> GitHub</a>

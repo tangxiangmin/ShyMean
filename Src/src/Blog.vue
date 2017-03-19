@@ -5,8 +5,8 @@
             <router-view></router-view>
             <blog-footer></blog-footer>
         </main>
-      <blog-aside @aside="toggleAside"></blog-aside>
-      <popup type="loading" :show="loading"></popup>
+        <blog-aside @aside="toggleAside"></blog-aside>
+        <popup type="loading" :show="loading"></popup>
     </div>
 </template>
 
@@ -50,8 +50,15 @@
 
     .main {
         position: relative;
-        @include transition;
+        /* 这里主要是为了让所有页面都保持滚动条，防止页面抖动*/
+        min-height: 101vh;
         
+        @include transition;
+        @include fx;
+        @include fx-dir(column);
+        & > .container {
+            @include fx-grow(2);
+        }
         &.active {
             padding-right: 300px;
         }

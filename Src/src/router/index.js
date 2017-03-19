@@ -13,6 +13,11 @@ import blogIndex from '@/pages/Index';
 import articleDetail from '@/pages/Detail';
 import tags from '@/pages/Tags';
 import articleList from '@/pages/Archives';
+import msgBoard from '@/pages/MsgBoard';
+import book from '@/pages/Book';
+import about from '@/pages/about';
+import lab from '@/pages/lab';
+
 
 
 export default new Router({
@@ -25,11 +30,7 @@ export default new Router({
             path: '/index/:active',
             name: 'index',
             component: blogIndex
-        },/*{
-            path: '/articleDetail/:id',
-            name: 'articleDetail',
-            component: articleDetail
-        },*/{
+        },{
             path: '/tags',
             component: tags
         },{
@@ -40,6 +41,18 @@ export default new Router({
             path: '/title/:title',
             name: 'articleDetail',
             component: articleDetail
+        },{
+            path: '/msgboard',
+            component: msgBoard
+        },{
+            path: '/book',
+            component: book
+        },{
+            path: '/about',
+            component: about
+        },{
+            path: '/lab',
+            component: lab
         }
     ]
 })

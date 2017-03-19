@@ -41,7 +41,6 @@
     @import "../style/import";
     .catalogue {
         text-align: left;
-        overflow: scroll;
         font-size: 16px;
         
         // 侧边栏滚动条待修改
