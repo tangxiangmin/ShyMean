@@ -68,6 +68,9 @@
 </template>
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import "../style/_import";
+    .msgboard {
+        font-size: 16px;
+    }
     .msgboard_hd {
         margin-bottom: 2rem;
     }

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Home\Controller;
-use App\Home\Model\ArticleModel;
+use App\Model\ArticleModel;
+use App\Model\BookModel;
+
 use Core\Lib\Controller;
-use Core\Utils\Page;
 
 class BlogController extends Controller{
-    private $model = null;
+    private $articleModel = null;
+    private $bookModel = null;
 
     // 首页分页数量
     private $indexPage = 10;
@@ -15,7 +17,8 @@ class BlogController extends Controller{
     private $archivesPage = 20;
 
     public function __construct(){
-        $this->model = new ArticleModel();
+        $this->articleModel = new ArticleModel();
+        $this->bookModel = new BookModel();
         parent::__construct();
     }
 
@@ -24,10 +27,10 @@ class BlogController extends Controller{
     // 博客首页文章列表及分页
     public function blogIndex(){
         $num = $this->indexPage;
-        $total = intval($this->model->count());
+        $total = intval($this->articleModel->count());
 
         $active = $_REQUEST['active'] - 1;
-        $articles = $this->model->orderBy('created_at')->limit($num,$active*$num)->select();
+        $articles = $this->articleModel->orderBy('created_at')->limit($num,$active*$num)->select();
 
         foreach($articles as &$article){
             $pos = strpos($article['content'],'<!--more-->');
@@ -52,13 +55,13 @@ class BlogController extends Controller{
 
         $title = $_REQUEST['title'];
 
-        $this->model->where("title = '".$title."'")->update('browse = browse+1');
+        $this->articleModel->where("title = '".$title."'")->update('browse = browse+1');
 
-        $article = $this->model->where("title = '".$title."'")->selectOne();
+        $article = $this->articleModel->where("title = '".$title."'")->selectOne();
 
         $time = $article['created_at'];
-        $prev = $this->model->field('title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
-        $next = $this->model->field('title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
+        $prev = $this->articleModel->field('title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
+        $next = $this->articleModel->field('title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
 
         $article['created_at'] = date('Y-m-d',$article['created_at']);
         $data = array(
@@ -71,8 +74,8 @@ class BlogController extends Controller{
 
     // 标签
     public function tags(){
-        $res['categories'] = $this->model->field('category, COUNT(category) AS category_num')->groupBy('category')->select();
-        $res['tags'] = $this->model->reset()->field('tags')->select();
+        $res['categories'] = $this->articleModel->field('category, COUNT(category) AS category_num')->groupBy('category')->select();
+        $res['tags'] = $this->articleModel->reset()->field('tags')->select();
 
         exit(json_encode($res));
     }
@@ -98,10 +101,10 @@ class BlogController extends Controller{
         }
 
         $num = $this->archivesPage;
-        $total = intval($this->model->where($where)->count());
+        $total = intval($this->articleModel->where($where)->count());
         $active = $_REQUEST['active'] - 1 || 0;
 
-        $res['lists'] = $this->model
+        $res['lists'] = $this->articleModel
                     ->field('Year(FROM_UNIXTIME(created_at)) AS year, created_at ,title, id')
                     ->where($where)
                     ->orderBy('created_at')
@@ -113,6 +116,11 @@ class BlogController extends Controller{
             'total'=>$total,
         );
         exit(json_encode($res));
+    }
 
+    public function books(){
+        $res = $this->bookModel->getAll();
+
+        exit(json_encode($res));
     }
 }

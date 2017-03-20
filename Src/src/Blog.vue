@@ -16,7 +16,6 @@
     import blogAside from './pages/Aside';
     import popup from './components/Popup'
     
-    
     let components = {blogHeader, blogFooter, blogAside, popup};
     export default {
         name: 'blog',

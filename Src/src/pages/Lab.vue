@@ -1,46 +1,15 @@
 <template>
     <div class="container">
         <nav class="nav-square row">
-            <div class="col-xs-6 col-sm-3 nav_item ">
+            <div class="col-xs-6 col-sm-3 nav_item " v-for="item in items">
                 <div class="square ">
-                    <a href="#" class="square_inner nav_link">
+                    <a href="javascript:;" class="square_inner nav_link">
                         <i class="iconfont icon-lab nav_icon"></i>
-                        <span>实验项目</span>
+                        <span>实验</span>
                     </a>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3 nav_item">
-                <div class="square ">
-                    <a href="#" class="square_inner nav_link">
-                        <i class="iconfont icon-blog nav_icon"></i>
-                        <span>博客</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 nav_item ">
-                <div class="square">
-                    <a href="#" class="square_inner nav_link">
-                        <i class="iconfont icon-bookshelf nav_icon"></i>
-                        <span>书架</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 nav_item">
-                <div class="square ">
-                    <a href="#" class="square_inner nav_link">
-                        <i class="iconfont icon-info nav_icon"></i>
-                        <span>关于</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 nav_item">
-                <div class="square ">
-                    <a href="#" class="square_inner nav_link">
-                        <i class="iconfont icon-info nav_icon"></i>
-                        <span>关于</span>
-                    </a>
-                </div>
-            </div>
+           
         </nav>
     </div>
 </template>
@@ -118,9 +87,11 @@
     export default{
         data(){
             return{
-                msg:'hello vue'
+                msg:'hello vue',
+                items:[1,2,3,4]
             }
         },
+        
       
     }
 </script>

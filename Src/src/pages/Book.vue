@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div class="container book">
+        <p>共计阅读{{books.length}}本书。</p>
         <table class="table">
             <thead>
                 <tr>
@@ -11,12 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>HTTP权威指南</td>
-                    <td>2017-01-03</td>
-                    <td>2017-03-05</td>
-                    <td>50%</td>
+                <tr v-for="book in books">
+                    <td>{{book.id}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.created_at |　dateFormat}}</td>
+                    <td>{{book.ended_at | dateFormat}}</td>
+                    <td>{{book.status}}</td>
                 </tr>
             </tbody>
         </table>
@@ -24,9 +25,11 @@
 </template>
 <style lang="scss" rel="stylesheet/scss">
     @import "../style/_import";
+    .book {
+        font-size: 16px;
+    }
     .table {
         width: 100%;
-        font-size: 16px;
         text-align: center;
         border-collapse: collapse;
         th,td {
@@ -37,10 +40,25 @@
    
 </style>
 <script>
+    import xm from '../base/function'
     export default{
         data(){
             return{
-                msg:'hello vue'
+                books: [],
+            }
+        },
+        mounted(){
+            this.$http.get('/blog/books').then((res)=> {
+                return res.json();
+            }).then((res)=>{
+                if (res) {
+                    this.books = res;
+                }
+            })
+        },
+        filters:{
+            dateFormat: function (val) {
+                return xm.dateFormat(val);
             }
         },
     }

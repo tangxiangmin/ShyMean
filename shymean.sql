@@ -20,3 +20,14 @@ CREATE TABLE shymean_lab(
     updated_at INT(11) NOT NULL DEFAULT 0,
     introduce VARCHAR(100) NOT NULL DEFAULT ''
 );
+
+-- 书架
+CREATE TABLE shymean_book (
+  id int(10) unsigned NOT NULL PRIMARY KEY auto_increment,
+  name varchar (255) NOT NULL DEFAULT '',
+  category varchar(30) NOT NULL DEFAULT '',
+  status VARCHAR(100) NOT NULL DEFAULT '',
+  created_at int(11) NOT NULL DEFAULT 0,
+  updated_at int(11) NOT NULL DEFAULT 0,
+  ended_at int(11) not null default 0
+)
