@@ -16,10 +16,7 @@
             <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
             <span class="hide-sm">浏览</span>
             <span class="show-sm"><i class="iconfont icon-eye"></i></span>
-            {{article.browse}} |
-            <span class="hide-sm">评论</span>
-            <span class="show-sm"><i class="iconfont icon-comment"></i></span>
-            {{article.comment_id}}
+            {{article.browse}}
         </div>
         <div class="article_ct" v-html="article.abstract"></div>
         <div class="article_ft">

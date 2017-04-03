@@ -12,7 +12,7 @@ class BookModel extends Model{
     }
 
     public function getAll(){
-        $res = $this->select();
+        $res = $this->orderBy("created_at")->select();
         return $res;
     }
 

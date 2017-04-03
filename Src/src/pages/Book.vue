@@ -12,12 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="book in books">
-                    <td>{{book.id}}</td>
+                <tr v-for="(book,index) in books">
+                    <td>{{index+1}}</td>
                     <td>{{book.name}}</td>
                     <td>{{book.created_at |　dateFormat}}</td>
                     <td>{{book.ended_at | dateFormat}}</td>
-                    <td>{{book.status}}</td>
+                    <td v-html="status(book.status)"></td>
                 </tr>
             </tbody>
         </table>
@@ -35,6 +35,9 @@
         th,td {
             @include border;
             padding: 10px;
+        }
+        a {
+            color: $basecolor;
         }
     }
    
@@ -56,10 +59,22 @@
                 }
             })
         },
+        methods: {
+            status(val){
+                if (val && val[0] == "#"){
+                    return `<a href="${val}">读书笔记</a>`;
+                }
+                return val;
+            },
+        },
         filters:{
             dateFormat: function (val) {
+                if (val == 0) {
+                    return "至今";
+                }
                 return xm.dateFormat(val);
-            }
+            },
+           
         },
     }
 </script>

@@ -2,11 +2,11 @@
     <div class="catalogue">
         <ul v-for="h2 in data" class="catalogue_group">
             <li>
-                <a href="javascript:void(0)" class="catalogue_item" @click="goAnchor(h2.h2)">{{h2.h2}}</a>
-                <ul v-for="h3 in h2.h3" class="catalogue_group">
+                <a href="javascript:;" class="catalogue_item" @click="goAnchor(h2.h2)">{{h2.h2}}</a>
+                <ul v-for="h3 in h2.h3" class="catalogue_group" v-if="h2.h3">
                     <li>
                         <a href="javascript:void(0)" @click="goAnchor(h3.h3)" class="catalogue_item">{{h3.h3}}</a>
-                        <ul class="catalogue_group">
+                        <ul class="catalogue_group" v-if="h3.h4">
                             <li v-for="h4 in h3.h4">
                                 <a href="javascript:void(0)" @click="goAnchor(h4)" class="catalogue_item">{{h4}}</a>
                             </li>
@@ -26,10 +26,12 @@
             goAnchor(val){
                 val = val.replace(/\d\./g,'');
                 val = '#' + val.trim();
-                var anchor = document.querySelector(val);
+                let anchor = document.querySelector(val);
                 document.body.scrollTop = anchor.offsetTop
-            }
+            },
+            
         },
+
         computed:{
             data(){
                 return this.$store.state.catalogue;

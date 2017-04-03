@@ -12,7 +12,6 @@ class BlogController extends Controller{
 
     // 首页分页数量
     private $indexPage = 10;
-
     // 归档页分页数量
     private $archivesPage = 20;
 
@@ -33,7 +32,6 @@ class BlogController extends Controller{
         $articles = $this->articleModel->getArticles($num, $active*$num);
 
         $res['articles'] = $articles;
-        // 那台虚拟机不支持[]的格式...
         $res['page'] = array(
             'num'=>$num,
             'total'=>$total,
@@ -53,26 +51,25 @@ class BlogController extends Controller{
 
         $this->articleModel->where("title = '".$title."'")->update('browse = browse+1');
 
-        $article = $this->articleModel->where("title = '".$title."'")->selectOne();
+        $article = $this->articleModel->getArticleDetail($title);
+
 
         $time = $article['created_at'];
-        $prev = $this->articleModel->field('title')->where('created_at > '.$time)->orderby('created_at')->selectOne();
-        $next = $this->articleModel->field('title')->where('created_at < '.$time)->orderBy('created_at')->selectOne();
+        $prev = $this->articleModel->getPrevArticle($time);
+        $next = $this->articleModel->getNextArticle($time);
 
-        $article['created_at'] = date('Y-m-d',$article['created_at']);
         $data = array(
             'prev'=>$prev,
             'next'=>$next,
             'article'=>$article,
         );
+
         exit(json_encode($data));
     }
 
     // 标签
     public function tags(){
-        $res['categories'] = $this->articleModel->field('category, COUNT(category) AS category_num')->groupBy('category')->select();
-        $res['tags'] = $this->articleModel->reset()->field('tags')->select();
-
+        $res = $this->articleModel->getTags();
         exit(json_encode($res));
     }
 
@@ -81,7 +78,11 @@ class BlogController extends Controller{
         $type = $_POST['type'];
         $name = $_POST['name'];
         $where = '';
+        $num = $this->archivesPage;
+        $active = $_REQUEST['active'] - 1 || 0;
+        $offset = $active*$num;
 
+        // 判断是标签，分类还是归档
         switch ($type){
             case 'archives':
                 $where = "id > 0";
@@ -96,21 +97,15 @@ class BlogController extends Controller{
                 break;
         }
 
-        $num = $this->archivesPage;
-        $total = intval($this->articleModel->where($where)->count());
-        $active = $_REQUEST['active'] - 1 || 0;
 
-        $res['lists'] = $this->articleModel
-                    ->field('Year(FROM_UNIXTIME(created_at)) AS year, created_at ,title, id')
-                    ->where($where)
-                    ->orderBy('created_at')
-                    ->limit($num,$active*$num)
-                    ->select();
+        $total = intval($this->articleModel->where($where)->count());
+        $res['lists'] = $this->articleModel->getArticleList($where, $num, $offset);
 
         $res['page'] = array(
             'num'=>$num,
             'total'=>$total,
         );
+
         exit(json_encode($res));
     }
 

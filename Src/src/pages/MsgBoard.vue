@@ -17,19 +17,6 @@
                     </div>
                 </div>
             </div>
-            <div class="msg_item media">
-                <div class="media_sd">
-                    <img src="../assets/img/head.jpg" alt="" class="media_img">
-                </div>
-                <div class="media_mn">
-                    <div class="media_tt">锚点 <span class="browser">iOS 8.4WebKit 600.1.4</span> </div>
-                    <div class="media_ct">真有趣</div>
-                    <div class="media_ft">
-                        <time>2016-12-22 22:44</time>
-                        <span class="fr">回复</span>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="msgboard_ft">
             <form action="" class="form">
@@ -55,7 +42,7 @@
                     <label  class="form_label">留言内容</label>
                     <div class="form_item">
                         <textarea name="" class="form_textarea">
-                            
+                        
                         </textarea>
                     </div>
                 </div>
@@ -78,7 +65,7 @@
         margin: 2rem 0;
     }
     .msg_item {
-        
+    
     }
     .form {
         &_group {
