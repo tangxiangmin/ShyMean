@@ -6,27 +6,12 @@ use \Core\Lib\Route;
 Route::bind(['/','index'], function(){
     return include(DIST.'index.html');
 });
-//Route::bind('blog', function(){
-//    return include(HTML.'blog.html');
-//});
-//Route::bind('lab', function(){
-//    return include(HTML.'lab.html');
-//});
-//Route::bind('about', function(){
-//    return include(HTML.'about.html');
-//});
-
 
 // 数据接口
+Route::bind('blog/detail', '\App\Controller\BlogController@articleDetail');
+Route::bind('blog/index', '\App\Controller\BlogController@blogIndex');
+Route::bind('blog/stick', '\App\Controller\BlogController@stickiedArticles');
+Route::bind('blog/archives', '\App\Controller\BlogController@articleList');
+Route::bind('blog/tags', '\App\Controller\BlogController@tags');
+Route::bind('blog/books', '\App\Controller\BlogController@books');
 
-// 博客
-
-Route::bind('blog/detail', '\App\Home\Controller\BlogController@articleDetail');
-Route::bind('blog/index', '\App\Home\Controller\BlogController@blogIndex');
-Route::bind('blog/archives', '\App\Home\Controller\BlogController@articleList');
-Route::bind('blog/tags', '\App\Home\Controller\BlogController@tags');
-Route::bind('blog/books', '\App\Home\Controller\BlogController@books');
-
-
-// 实验室
-//Route::bind('lab_demoList', '\App\Home\Controller\LabController@labList');

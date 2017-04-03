@@ -59,7 +59,7 @@
                 slot:'website',
                 title:'站点资料'
             }];
-            this.$store.commit("setAsideTabItems",asideTabItems);
+            this.$store.commit("setAsideTabItems", asideTabItems);
         },
         methods:{
             getData(){
@@ -85,8 +85,8 @@
                     };
 
                     let titleArr = [];
-
-                    while(title = re.exec(content)){
+                    try {
+                        while(title = re.exec(content)){
                         let type = title[1];
 
                         let orderNum = '';
@@ -126,6 +126,9 @@
                         let id = title[2];
                         let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
                         content = content.replace(title[0],str);
+                    }
+                    }catch(e){
+                        console.log(1);
                     }
                     
                     // 数据由aside组件渲染

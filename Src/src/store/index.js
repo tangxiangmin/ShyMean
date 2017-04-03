@@ -16,7 +16,13 @@ const store = new Vuex.Store({
         asideTabItems:[{
             slot:'website',
             title:'站点资料'
-        }]
+        }],
+        // 缓存置顶文章
+        stickiedArticles: [],
+        // 缓存标签和分类
+        tags: [],
+        categories: [],
+
     },
     mutations,
 });

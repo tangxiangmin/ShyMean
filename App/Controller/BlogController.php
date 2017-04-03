@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Home\Controller;
+namespace App\Controller;
 use App\Model\ArticleModel;
 use App\Model\BookModel;
 
@@ -28,16 +28,9 @@ class BlogController extends Controller{
     public function blogIndex(){
         $num = $this->indexPage;
         $total = intval($this->articleModel->count());
-
         $active = $_REQUEST['active'] - 1;
-        $articles = $this->articleModel->orderBy('created_at')->limit($num,$active*$num)->select();
 
-        foreach($articles as &$article){
-            $pos = strpos($article['content'],'<!--more-->');
-            $abs = substr($article['content'],0,$pos);
-            $article['content'] = $abs;
-            $article['created_at'] = date('Y-m-d',$article['created_at']);
-        }
+        $articles = $this->articleModel->getArticles($num, $active*$num);
 
         $res['articles'] = $articles;
         // 那台虚拟机不支持[]的格式...
@@ -46,7 +39,10 @@ class BlogController extends Controller{
             'total'=>$total,
         );
 
-
+        exit(json_encode($res));
+    }
+    function stickiedArticles(){
+        $res = $this->articleModel->getStickiedArticles();
         exit(json_encode($res));
     }
 
@@ -120,7 +116,6 @@ class BlogController extends Controller{
 
     public function books(){
         $res = $this->bookModel->getAll();
-
         exit(json_encode($res));
     }
 }

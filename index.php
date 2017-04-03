@@ -14,8 +14,6 @@ ini_set('display_errors','1');
 // 加载函数库
 include CORE.'/Common/function.php';
 
-
-
 // 加载核心文件
 include CORE.'/Core.php';
 

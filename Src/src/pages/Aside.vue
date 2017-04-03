@@ -16,9 +16,9 @@
                         <router-link to="/book" class="nav_item">
                             <i class="iconfont icon-bookshelf"></i> <br>书架
                         </router-link>
-                        <router-link to="/msgBoard" class="nav_item">
-                            <i class="iconfont icon-comment"></i> <br>留言
-                        </router-link>
+                        <!--<router-link to="/msgBoard" class="nav_item">-->
+                            <!--<i class="iconfont icon-comment"></i> <br>留言-->
+                        <!--</router-link>-->
                         <router-link to="/about" class="nav_item">
                             <i class="iconfont icon-info"></i> <br>关于
                         </router-link>
@@ -44,6 +44,7 @@
     </aside>
 </template>
 <script>
+    import xm from '../base/function'
     import tab from '@/components/Tab';
     import catalogue from '@/components/Catalogue';
     
@@ -79,17 +80,16 @@
         mounted: function () {
             // 返回顶部
             let h = window.screen.height / 20;
-            let _that = this;
-            document.addEventListener('scroll', function () {
+            document.addEventListener('scroll', xm.debounce(()=>{
                 let scrollTop = 0;
                 if (document.body) {
                     scrollTop = document.body.scrollTop;
                 } else {
                     console.log("scrollTop这里出BUG啦~");
                 }
-                _that.isTopShow = scrollTop > h;
-
-            });
+                
+                this.isTopShow = scrollTop > h;
+            }, 10));
         },
     }
 </script>

@@ -1,65 +1,61 @@
 <template>
     <div :class="['page','container']">
-        <article class="article" v-for="article in articles" :key="article">
-            <h2 class="article_hd">
-                
-                <router-link class="article_tt" :to="{ name: 'articleDetail', params: { title: article.title || 'tmp'}}">
-                    {{article.title}}
-                </router-link>
-            </h2>
-            <div class="article_info">
-                <span class="hide-sm">发表于</span>
-                <span class="show-sm"><i class="iconfont icon-archives"></i></span>
-                {{article.created_at}} |
-                <span class="hide-sm">分类于</span>
-                <span class="show-sm"><i class="iconfont icon-tag"></i></span>
-                <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
-                <span class="hide-sm">浏览</span>
-                <span class="show-sm"><i class="iconfont icon-eye"></i></span>
-                {{article.browse}} |
-                <span class="hide-sm">评论</span>
-                <span class="show-sm"><i class="iconfont icon-comment"></i></span>
-                {{article.comment_id}}
-
-            </div>
-            <div class="article_ct" v-html="article.content"></div>
-            <div class="article_ft">
-                <router-link class="hover-highlight" :to="{ name: 'articleDetail', params: { title: article.title || 'tmp'}}">阅读全文
-                </router-link>
-            </div>
-        </article>
+        <abstract :article="article" v-for="article in stickiedArticles" :key="article" :isStickied="true"></abstract>
+        <abstract :article="article" v-for="article in articles" :key="article"></abstract>
         <pagination :page="page" :active="active" name="index"></pagination>
     </div>
 </template>
 <script>
     import marked from 'marked';
+    import xm from '../base/function'
     import pagination from '@/components/Pagination';
+    import abstract from './Abstract';
     export default {
         name: "blog-index",
         data: function () {
             return {
                 page: {},
                 articles: [],
+                stickiedArticles:[],
                 active: this.$route.params.active || 1
             }
         },
-        components: {pagination},
+        components: {pagination, abstract},
         mounted: function () {
-            this.getData();
+            this.getArticles();
+            
+            // 缓存置顶文章
+            let stickiedArticles = this.$store.state.stickiedArticles;
+            if (stickiedArticles.length) {
+                this.stickiedArticles = stickiedArticles;
+            }else {
+                this.getStickiedArticles();
+            }
         },
         methods: {
-            getData: function () {
-                this.$http.post('blog/index', {active: this.active}).then((res) => {
-                    
+            handleArticle(articles){
+                articles = articles.map((val) => {
+                    val['abstract'] = marked(val['abstract']);
+                    val['created_at'] = xm.dateFormat(val['created_at']);
+                    return val;
+                });
+                return articles;
+            },
+            getStickiedArticles(){
+                this.$http.post('blog/stick').then((res) => {
                     return res.json();
-                    
+                }).then((articles) => {
+                    articles = this.handleArticle(articles);
+                    this.$set(this, 'stickiedArticles', articles);
+                    this.$store.commit("setStickiedArticles", articles);
+                });
+            },
+            getArticles() {
+                this.$http.post('blog/index', {active: this.active}).then((res) => {
+                    return res.json();
                 }).then((res) => {
                     let articles = res['articles'], page = res['page'];
-                    articles = articles.map((val) => {
-                        val['content'] = marked(val['content']);
-                        return val;
-                    });
-                    
+                    articles = this.handleArticle(articles);
                     this.$set(this, 'articles', articles);
                     
                     page.active = this.active;
@@ -71,7 +67,7 @@
             $route: function (to, from) {
                 
                 this.active = to.params.active;
-                this.getData();
+                this.getArticles();
             }
         }
     }

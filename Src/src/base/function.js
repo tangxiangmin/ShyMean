@@ -7,15 +7,15 @@
  *
  * @param UNIX时间戳
  */
-var dateFormat = function (val) {
-    var date = new Date(val*1000);
+let dateFormat = function (val) {
+    let date = new Date(val*1000);
 
-    var year = date.getFullYear();
+    let year = date.getFullYear();
 
-    var month = date.getMonth() + 1;
+    let month = date.getMonth() + 1;
     month = getTwo(month);
 
-    var day = date.getDate();
+    let day = date.getDate();
     day = getTwo(day);
 
     function getTwo(n){
@@ -27,7 +27,7 @@ var dateFormat = function (val) {
 };
 
 // 深复制，用于分页组件传递参数
-var extend = function(target, options) {
+let extend = function(target, options) {
 
     for (name in options) {
         copy = options[name];
@@ -43,8 +43,21 @@ var extend = function(target, options) {
     return target;
 }
 
+// 防抖函数
+let debounce = function (fn, delay) {
+    let timer = null;
+    return function () {
+        let args = arguments;
+        let self = this;
+        clearTimeout(timer);
+        setTimeout(function () {
+            fn.call(self, args);
+        },delay);
+    }
+};
 
 module.exports =  {
-    dateFormat: dateFormat,
-    extend: extend
+    dateFormat,
+    extend,
+    debounce
 };

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 2017/3/20
- * Time: 21:04
- */
 
 namespace App\Model;
 
@@ -21,4 +15,5 @@ class BookModel extends Model{
         $res = $this->select();
         return $res;
     }
+
 }
