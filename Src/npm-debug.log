@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'dev' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle shymean@1.0.0~predev: shymean@1.0.0
+6 silly lifecycle shymean@1.0.0~predev: no script for predev, continuing
+7 info lifecycle shymean@1.0.0~dev: shymean@1.0.0
+8 verbose lifecycle shymean@1.0.0~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle shymean@1.0.0~dev: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\wamp\www\shymean\Src\node_modules\.bin;E:\Python27\Lib\site-packages\PyQt4;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\microsoft shared\TigerKin;C:\Program Files (x86)\GtkSharp\2.12\bin;E:/Python;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;E:\Python27\gnuplot\binary;C:\Program Files\Git\cmd;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\wamp\bin\php\php5.5.12;C:\Users\admin\Desktop\FDK\Tools\win;E:\MinGW\bin;D:\wkhtmltopdf\bin;C:\Ruby23-x64\bin;D:\COCOS\Cocos2d-x\Cocos2d-x-3.10\templates;D:\COCOS\Cocos2d-x\Cocos2d-x-3.10\tools\cocos2d-console\bin;\Cocos2d-x-3.10\templates;\Cocos2d-x-3.10\templates;\Cocos2d-x-3.10\templates;COCOS\Cocos2d-x\Cocos2d-x-3.10\tools\cocos2d-console\bin;cocos2d-x\templates;\Cocos2d-x-3.10\tools\cocos2d-console\bin;E:/Python27;cocos\tools\Python27;D:\QT4 + VS2008\4.7.3\bin;C:\Users\admin\AppData\Roaming\npm;D:\wamp\bin\php\php5.5.12\php.exe
+10 verbose lifecycle shymean@1.0.0~dev: CWD: D:\wamp\www\shymean\Src
+11 silly lifecycle shymean@1.0.0~dev: Args: [ '/d /s /c', 'node build/dev-server.js' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at exports._errnoException (util.js:1026:11)
+12 verbose stack     at process.kill (internal/process.js:172:13)
+12 verbose stack     at process.listener (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitNone (events.js:91:20)
+12 verbose stack     at process.emit (events.js:185:7)
+12 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:199:44)
+13 verbose cwd D:\wamp\www\shymean\Src
+14 error Windows_NT 10.0.10586
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
+16 error node v6.9.1
+17 error npm  v3.10.8
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
