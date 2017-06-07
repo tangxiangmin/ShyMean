@@ -1,6 +1,5 @@
 <template>
     <div :class="['page','container']">
-
         <article class="article">
             <header  class="text-center">
                 <h2 class="article_hd">{{article.title}}</h2>

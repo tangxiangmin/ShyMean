@@ -75,11 +75,14 @@ class BlogController extends Controller{
 
     // 列表页
     public function articleList(){
-        $type = $_POST['type'];
-        $name = $_POST['name'];
+        $postdata = json_decode($GLOBALS["HTTP_RAW_POST_DATA"], true);
+
+        $type = $postdata['type'];
+        $name = $postdata['name'];
+
         $where = '';
         $num = $this->archivesPage;
-        $active = $_REQUEST['active'] - 1 || 0;
+        $active = $postdata['active'] - 1 || 0;
         $offset = $active*$num;
 
         // 判断是标签，分类还是归档

@@ -10,9 +10,9 @@
                         <p>一个不学无术且无趣的人。</p>
                     </div>
                     <div class="nav-border">
-                        <router-link to="/lab" class="nav_item">
-                            <i class="iconfont icon-lab"></i> <br>实验室
-                        </router-link>
+                        <!--<router-link to="/lab" class="nav_item">-->
+                            <!--<i class="iconfont icon-lab"></i> <br>实验室-->
+                        <!--</router-link>-->
                         <router-link to="/book" class="nav_item">
                             <i class="iconfont icon-bookshelf"></i> <br>书架
                         </router-link>

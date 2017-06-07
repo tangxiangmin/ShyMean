@@ -20,6 +20,8 @@
     import xm from '../base/function'
     import pagination from '@/components/Pagination'
     
+    import { getArchives } from "@/api/article"
+    
     export default{
         name:"articleList",
         components:{pagination},
@@ -33,21 +35,19 @@
                 if (postData.active == ''){
                     postData.active = 1;
                 }
-            
-                this.$http.post('blog/archives',postData).then((res)=>{
-                    return res.json();
-                }).then((res)=>{
-                    var lists = res['lists'];
-                    var page = res['page'];
-                
-                    var articleGroup = [];
-                    var cursor = 0;
-                
+    
+                getArchives(postData).then(res=>{
+                    let lists = res['lists'];
+                    let page = res['page'];
+    
+                    let articleGroup = [];
+                    let cursor = 0;
+    
                     articleGroup[cursor] = {
                         year: lists && lists[0] && lists[0].year,
                         articles: []
                     };
-                
+    
                     lists.forEach((val)=>{
                         if (val.year !== articleGroup[cursor].year){
                             cursor++;
@@ -59,7 +59,7 @@
                             articleGroup[cursor].articles.push(val);
                         }
                     });
-                
+    
                     this.num = page.total;
                     this.$set(this,'articleGroup',articleGroup);
                     this.$set(this,'page',page);

@@ -10,6 +10,9 @@
     import xm from '../base/function'
     import pagination from '@/components/Pagination';
     import abstract from './Abstract';
+    
+    
+    import { getStickArticles, getArticles } from "@/api/article"
     export default {
         name: "blog-index",
         data: function () {
@@ -42,15 +45,14 @@
                 return articles;
             },
             getStickiedArticles(){
-                this.$http.post('blog/stick').then((res) => {
-                    return res.json();
-                }).then((articles) => {
+                getStickArticles().then(articles=>{
                     articles = this.handleArticle(articles);
                     this.$set(this, 'stickiedArticles', articles);
                     this.$store.commit("setStickiedArticles", articles);
                 });
             },
             getArticles() {
+               
                 this.$http.post('blog/index', {active: this.active}).then((res) => {
                     return res.json();
                 }).then((res) => {

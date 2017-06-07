@@ -1,10 +1,11 @@
 <template>
     <footer class="bg-gray">
         <div class="container footer">
-            <p>
-                ©Shymean 2016 - {{new Date().getFullYear()}}
-            </p>
             <p v-if="msg.sign">{{msg.sign}}</p>
+            <p>
+                Copyright © Shymean 2016 - {{new Date().getFullYear()}}
+                <a style="display: inline-block" href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank">粤ICP备17060238号-1</a>
+            </p>
         </div>
     </footer>
 </template>

@@ -32,6 +32,7 @@
     </div>
 </template>
 <script>
+    import { getTags } from "@/api/article"
     export default{
         name:"tags",
         data(){
@@ -57,10 +58,7 @@
         },
         methods: {
             getTags(){
-                this.$http.get('blog/tags').then((res)=>{
-                    return res.json();
-                }).then((res)=>{
-                    
+                getTags().then(res=>{
                     // 暂时没有想到如何在数据库处理标签数据，因此目前只能采取这种折中的办法
                     let tags = {
                         length: 0,
@@ -78,11 +76,11 @@
                             }
                         });
                     });
-                    
+    
                     // 更新标签
                     this.$set(this,'tags',tags);
                     this.$store.commit("setTags", tags);
-                    
+    
                     // 更新分类
                     this.$set(this,'categories', res.categories);
                     this.$store.commit("setCategories", res.categories);

@@ -10,7 +10,8 @@ CREATE TABLE shymean_article(
   status tinyint(1) NOT NULL DEFAULT 1,
   comment_id int(20) NOT NULL DEFAULT 0,
   created_at int(11) NOT NULL DEFAULT 0,
-  updated_at int(11) NOT NULL DEFAULT 0
+  updated_at int(11) NOT NULL DEFAULT 0,
+  browse int(11) NOT NULL DEFAULT 0
 );
 
 -- 书架
