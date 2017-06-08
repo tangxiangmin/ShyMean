@@ -8,6 +8,7 @@ define('MOUDLE','App');
 define('DIST',ROOT.'/dist/');
 define('HTML',ROOT.'/html/');
 
+
 // 调试模式
 ini_set('display_errors','1');
 

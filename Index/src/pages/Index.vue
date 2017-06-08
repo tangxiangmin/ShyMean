@@ -52,16 +52,14 @@
                 });
             },
             getArticles() {
-               
-                this.$http.post('blog/index', {active: this.active}).then((res) => {
-                    return res.json();
-                }).then((res) => {
-                    let articles = res['articles'], page = res['page'];
-                    articles = this.handleArticle(articles);
-                    this.$set(this, 'articles', articles);
+                getArticles({active: this.active}).then(data=>{
+                    let { articles, page } = data;
                     
+                    articles = this.handleArticle(articles);
                     page.active = this.active;
-                    this.$set(this, 'page', page);
+    
+                    this.articles = articles;
+                    this.page = page;
                 });
             },
         },

@@ -31,10 +31,8 @@
         methods:{
             getData: function () {
                 let postData = this.$route.params;
-            
-                if (postData.active == ''){
-                    postData.active = 1;
-                }
+
+                postData.active = postData.active || 1;
     
                 getArchives(postData).then(res=>{
                     let lists = res['lists'];

@@ -1,4 +1,7 @@
 /node_modules
-/uploads
-/_posts
-/output.sql
+uploads/
+_posts/
+output.sql
+.idea/
+
+App/Config/db.php

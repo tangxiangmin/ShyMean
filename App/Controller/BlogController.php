@@ -15,9 +15,15 @@ class BlogController extends Controller{
     // 归档页分页数量
     private $archivesPage = 20;
 
+
     public function __construct(){
         $this->articleModel = new ArticleModel();
         $this->bookModel = new BookModel();
+            if (isset($GLOBALS["HTTP_RAW_POST_DATA"])){
+                $_REQUEST = json_decode($GLOBALS["HTTP_RAW_POST_DATA"], true);
+
+            }
+
         parent::__construct();
     }
 
@@ -75,14 +81,12 @@ class BlogController extends Controller{
 
     // 列表页
     public function articleList(){
-        $postdata = json_decode($GLOBALS["HTTP_RAW_POST_DATA"], true);
-
-        $type = $postdata['type'];
-        $name = $postdata['name'];
+        $type = $_REQUEST['type'];
+        $name = $_REQUEST['name'];
 
         $where = '';
         $num = $this->archivesPage;
-        $active = $postdata['active'] - 1 || 0;
+        $active = $_REQUEST['active'] - 1 || 0;
         $offset = $active*$num;
 
         // 判断是标签，分类还是归档

@@ -13,5 +13,6 @@ Route::bind('blog/index', '\App\Controller\BlogController@blogIndex');
 Route::bind('blog/stick', '\App\Controller\BlogController@stickiedArticles');
 Route::bind('blog/archives', '\App\Controller\BlogController@articleList');
 Route::bind('blog/tags', '\App\Controller\BlogController@tags');
+
 Route::bind('blog/books', '\App\Controller\BlogController@books');
 

@@ -43,7 +43,10 @@
    
 </style>
 <script>
-    import xm from '../base/function'
+    import { getBooks } from "@/api/book"
+    
+    import xm from '@/base/function'
+    
     export default{
         data(){
             return{
@@ -51,28 +54,18 @@
             }
         },
         mounted(){
-            this.$http.get('/blog/books').then((res)=> {
-                return res.json();
-            }).then((res)=>{
-                if (res) {
-                    this.books = res;
-                }
+            getBooks().then(books=>{
+                this.books = books;
             })
         },
         methods: {
             status(val){
-                if (val && val[0] == "#"){
-                    return `<a href="${val}">读书笔记</a>`;
-                }
-                return val;
+                return val && val[0] === "#" ? `<a href="${val}">读书笔记</a>` : val
             },
         },
         filters:{
             dateFormat: function (val) {
-                if (val == 0) {
-                    return "至今";
-                }
-                return xm.dateFormat(val);
+                return val === 0 ? "至今" : xm.dateFormat(val);
             },
            
         },

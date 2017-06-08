@@ -17,7 +17,7 @@ class Conf {
         }
 
         // 加载配置文件
-        $path = ROOT.'/Core/Config/'.$file.'.php';
+        $path = APP.'/Config/'.$file.'.php';
         if (is_file($path)){
             $conf = include $path;
             if (is_null($name)){

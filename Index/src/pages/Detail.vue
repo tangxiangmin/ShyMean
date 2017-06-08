@@ -32,6 +32,8 @@
     import marked from 'marked'
     import highlight from 'highlight.js'
     
+    import { getArticleDetail } from "@/api/article"
+    
     marked.setOptions({
         highlight: function (code) {
             return highlight.highlightAuto(code).value;
@@ -61,18 +63,15 @@
         methods:{
             getData(){
                 let titleParam = this.$route.params.title;
-
-                this.$http.post('blog/detail',{title: titleParam}).then((res)=>{
-                    return res.json();
-
-                }).then((data)=>{
+                
+                getArticleDetail({title: titleParam}).then(data=>{
                     let article = data['article'];
                     let prev = data['prev'];
                     let next = data['next'];
-
+    
                     let content  = marked(article['content']);
                     // 最多只考虑了3级目录，应该够用了。
-
+    
                     let re = /<(h[2|3|4])[^]*?>([^]*?)<\/\1>/g;
                     let title = null;
                     let count = {
@@ -80,57 +79,57 @@
                         h3:0,
                         h4:0
                     };
-
+    
                     let titleArr = [];
                     try {
                         while(title = re.exec(content)){
-                        let type = title[1];
-
-                        let orderNum = '';
-                        switch (type){
-                            case "h2":
-                                count.h2++;
-                                count.h3 = 0;
-                                count.h4 = 0;
-                                orderNum = count.h2 + '. ';
-                                let h2 = {
-                                    h2:orderNum+title[2],
-                                    h3:[]
-                                };
-                                titleArr.push(h2);
-                                break;
-                            case "h3":
-                                count.h3++;
-                                count.h4 = 0;
-                                orderNum = count.h2 + '.' + count.h3 + '. ';
-                                let h3 = {
-                                    h3:orderNum+title[2],
-                                    h4:[]
-                                };
-                                titleArr[titleArr.length - 1].h3.push(h3);
-                                break;
-                            case "h4":
-                                count.h4++;
-                                orderNum = count.h2 + '.' + count.h3 + '.' + count.h4 + '. ';
-                                let last = titleArr[titleArr.length - 1].h3;
-                                last[last.length - 1].h4.push(orderNum+title[2]);
-                                break;
-                            default:
-                                console.log("oops~");
-                                break;
+                            let type = title[1];
+            
+                            let orderNum = '';
+                            switch (type){
+                                case "h2":
+                                    count.h2++;
+                                    count.h3 = 0;
+                                    count.h4 = 0;
+                                    orderNum = count.h2 + '. ';
+                                    let h2 = {
+                                        h2:orderNum+title[2],
+                                        h3:[]
+                                    };
+                                    titleArr.push(h2);
+                                    break;
+                                case "h3":
+                                    count.h3++;
+                                    count.h4 = 0;
+                                    orderNum = count.h2 + '.' + count.h3 + '. ';
+                                    let h3 = {
+                                        h3:orderNum+title[2],
+                                        h4:[]
+                                    };
+                                    titleArr[titleArr.length - 1].h3.push(h3);
+                                    break;
+                                case "h4":
+                                    count.h4++;
+                                    orderNum = count.h2 + '.' + count.h3 + '.' + count.h4 + '. ';
+                                    let last = titleArr[titleArr.length - 1].h3;
+                                    last[last.length - 1].h4.push(orderNum+title[2]);
+                                    break;
+                                default:
+                                    console.log("oops~");
+                                    break;
+                            }
+            
+                            let id = title[2];
+                            let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
+                            content = content.replace(title[0],str);
                         }
-
-                        let id = title[2];
-                        let str = `<${type} id='${id}'>${orderNum + title[2]}</${type}>`;
-                        content = content.replace(title[0],str);
-                    }
                     }catch(e){
                         console.log("BUGS~");
                     }
-                    
+    
                     // 数据由aside组件渲染
                     this.$store.commit("setCatalogue", titleArr);
-                    
+    
                     article['content'] = content;
                     article['created_at'] = xm.dateFormat(article['created_at']);
                     this.$set(this,'article',article);
