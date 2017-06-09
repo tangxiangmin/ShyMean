@@ -5,10 +5,40 @@ ShyMean
 * [博客链接](http://shymean.com)
 * [开发记录](./doc/)
 
-## V0.2.0
+## 目录结构
+```
+shymean/ 
+    |-APP/             接口
+        |- Config
+        |- Controller
+        |- Middleware
+        |- Model
+        |- route.php
+    |-Core/           PHP框架核心
+        |- Common
+        |- Lib
+        |- Core.php
+    |-Index/          vue-cli项目
+        |- src        前端源码
+        |- ...
+    |-plugin/         一些开发插件
+        |- hexo2mysql
+        |- ...
+    |-dist/           webpack输出目录
+    |-docs/           开发记录
+    |-index.php       入口文件
+    |-...
+```
+
+## 版本记录
+
+### V0.3.0
+换了阿里云服务器，域名也已经备案了，因此尝试进一步更新。
+
+### V0.2.0
 由于之前改动比较频繁，项目十分散乱，现在决定使用`Vue-cli`重写相关部分，包括组件和样式等部分，同时准备学习`webpack`。
 
-## V0.1.0
+### V0.1.0
 由于虚拟主机的限制，后端使用PHP响应请求及提供数据，前端使用JavaScript进行页面渲染和数据处理，前后端基本分离。
 
 前端：
