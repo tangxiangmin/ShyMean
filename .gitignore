@@ -2,6 +2,6 @@
 uploads/
 _posts/
 output.sql
-.idea/
+/.idea
 
 App/Config/db.php
