@@ -65,7 +65,7 @@
         },
         filters:{
             dateFormat: function (val) {
-                return val === 0 ? "至今" : xm.dateFormat(val);
+                return val === '0' ? "至今" : xm.dateFormat(val);
             },
            
         },

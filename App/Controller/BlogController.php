@@ -19,11 +19,9 @@ class BlogController extends Controller{
     public function __construct(){
         $this->articleModel = new ArticleModel();
         $this->bookModel = new BookModel();
-            if (isset($GLOBALS["HTTP_RAW_POST_DATA"])){
-                $_REQUEST = json_decode($GLOBALS["HTTP_RAW_POST_DATA"], true);
-
-            }
-
+        if (isset($GLOBALS["HTTP_RAW_POST_DATA"])){
+            $_REQUEST = json_decode($GLOBALS["HTTP_RAW_POST_DATA"], true);
+        }
         parent::__construct();
     }
 

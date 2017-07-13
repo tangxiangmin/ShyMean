@@ -74,6 +74,21 @@ class Model {
         $sql = 'UPDATE '.$this->table.' SET '.$str.$this->where;
         $this->conn->query($sql);
     }
+    // 增加
+    public function insert($data){
+        $field = " (";
+        $val = " (";
+
+        foreach ($data as $k=>$v){
+            $field .= $k . ",";
+            $val .= $v . ",";
+        }
+
+        $field = substr($field, 0, -1).")";
+        $val = substr($val, 0, -1).")";
+        $sql = 'INSERT INTO '.$this->table.$field." VALUES ".$val;
+        $this->conn->query($sql);
+    }
 
     // ------------可选子句，用来修饰必选子句------------ //
 

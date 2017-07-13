@@ -1,9 +1,17 @@
 <?php
 // 绑定路由与控制器
 use \Core\Lib\Route;
+use App\Model\VisitorModel;
 
 // 静态页面
 Route::bind(['/','index'], function(){
+    $ip =  $_SERVER["REMOTE_ADDR"];
+
+    if ($ip != "127.0.0.1"){
+        $visitorModel = new VisitorModel();
+        $visitorModel->add($ip);
+    }
+
     return include(DIST.'index.html');
 });
 

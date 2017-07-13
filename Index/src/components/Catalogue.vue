@@ -2,19 +2,18 @@
     <div class="catalogue">
         <ul v-for="h2 in data" class="catalogue_group">
             <li>
-                <a href="javascript:;" class="catalogue_item" @click="goAnchor(h2.h2)">{{h2.h2}}</a>
+                <a href="javascript:;" class="catalogue_item" :title="h2.h2" @click="goAnchor(h2.h2)">{{h2.h2}}</a>
                 <ul v-for="h3 in h2.h3" class="catalogue_group" v-if="h2.h3">
                     <li>
-                        <a href="javascript:void(0)" @click="goAnchor(h3.h3)" class="catalogue_item">{{h3.h3}}</a>
+                        <a href="javascript:void(0)" :title="h3.h3" @click="goAnchor(h3.h3)" class="catalogue_item">{{h3.h3}}</a>
                         <ul class="catalogue_group" v-if="h3.h4">
                             <li v-for="h4 in h3.h4">
-                                <a href="javascript:void(0)" @click="goAnchor(h4)" class="catalogue_item">{{h4}}</a>
+                                <a href="javascript:void(0)" @click="goAnchor(h4)" :title="h4" class="catalogue_item">{{h4}}</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-        
         </ul>
     </div>
 </template>
