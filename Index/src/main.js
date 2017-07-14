@@ -1,8 +1,11 @@
+import "@/assets/fonts/iconfont.css";
+import "@/style/blog.scss";
 
 import Vue from 'vue'
-import Blog from './Blog'
-import router from './router'
-import store from './store'
+import Blog from '@/Blog'
+
+import router from '@/router'
+import store from '@/store'
 
 // 请求拦截器
 import "@/api"
@@ -12,15 +15,17 @@ import "@/api"
 
 Vue.config.productionTip = false;
 
-import "@/assets/fonts/iconfont.css";
-import "@/style/blog.scss";
-
 let blog = new Vue({
     el: '#blog',
-    components: {Blog},
+    components: { Blog },
     template: '<Blog/>',
     router,
     store,
+});
+
+changyan.api.config({
+    appid: 'cyt6VyDws',
+    conf: 'prod_0c399ea5f3cc9a3cae8a9fdf7820aabb'
 });
 
 // 路由

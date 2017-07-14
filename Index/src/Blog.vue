@@ -2,10 +2,11 @@
     <div id="blog" v-cloak>
         <main :class="['main',{'active':showAside}]">
             <blog-header></blog-header>
-            <router-view></router-view>
+            <router-view style="flex: 1"></router-view>
             <blog-footer></blog-footer>
         </main>
         <blog-aside @aside="toggleAside"></blog-aside>
+        
         <popup type="loading" :show="loading"></popup>
     </div>
 </template>
@@ -55,6 +56,7 @@
         @include transition;
         @include fx;
         @include fx-dir(column);
+    
         & > .container {
             @include fx-grow(2);
         }

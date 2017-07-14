@@ -50,11 +50,10 @@
 
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import "../style/_import";
-    header {
-        background-color: $gray;
-        margin-bottom: 2rem;
-    }
+
     .header {
+        background-color: $gray;
+    
         padding-top: 15px;
         padding-bottom: 15px;
         font-size: 80%;

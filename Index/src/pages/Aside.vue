@@ -16,9 +16,9 @@
                         <router-link to="/book" class="nav_item">
                             <i class="iconfont icon-bookshelf"></i> <br>书架
                         </router-link>
-                        <!--<router-link to="/msgBoard" class="nav_item">-->
-                            <!--<i class="iconfont icon-comment"></i> <br>留言-->
-                        <!--</router-link>-->
+                        <router-link to="/msgBoard" class="nav_item">
+                            <i class="iconfont icon-comment"></i> <br>留言
+                        </router-link>
                         <router-link to="/about" class="nav_item">
                             <i class="iconfont icon-info"></i> <br>关于
                         </router-link>

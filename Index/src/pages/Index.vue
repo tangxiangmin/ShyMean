@@ -11,7 +11,6 @@
     import pagination from '@/components/Pagination';
     import abstract from './Abstract';
     
-    
     import { getStickArticles, getArticles } from "@/api/article"
     export default {
         name: "blog-index",
