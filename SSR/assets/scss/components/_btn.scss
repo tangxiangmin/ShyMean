@@ -1,0 +1,57 @@
+%page-btn {
+
+	width: 30px;
+	height:30px;
+
+	background: $dark;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-list {
+	@extend %page-btn;
+	&.hover {
+		.btn-line {
+			&:first-child {
+				transform: translate(-8px,6px) rotate(-45deg);
+
+			}
+			&:last-child {
+				transform: translate(-8px,-6px) rotate(45deg);
+			}
+		}
+	}
+	&.close{
+		.btn-line{
+			transform-origin: center;
+			&:nth-of-type(2){
+				opacity: 0;
+			}
+			&:first-child {
+				transform: translateY(8px) rotate(-45deg);
+
+			}
+			&:last-child {
+				transform: translateY(-8px) rotate(45deg);
+			}
+		}
+	}
+	.btn-icon {
+		overflow: hidden;
+		width: 20px;
+
+		font-size: 0;
+		line-height: 8px;
+
+		.btn-line {
+			display: inline-block;
+			width: 20px;
+			height: 2px;
+			background: #fff;
+			transition: all linear .3s;
+		}
+	}
+}

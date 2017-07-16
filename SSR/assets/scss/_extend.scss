@@ -1,0 +1,40 @@
+%page-btn {
+
+    width: 30px;
+    height:30px;
+
+    background: $dark;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%hover-highlight {
+    color: #666;
+    transition: border-color ease .3s;
+    border-bottom: $baseborder;
+    &:hover {
+        color: #000;
+        border-color: #000;
+    }
+}
+
+%hover-underline {
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 2px;
+        width: 100%;
+        background: currentcolor;
+        transform: scaleX(0);
+        transition: all ease .2s;
+    }
+    &:hover:after {
+        transform: scaleX(1);
+    }
+}

@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+ /* ---font--- */
+
+
+//  字体
+$basefont:16px/1.5 "Microsoft Yahei",Arial !default;
+
+// 默认页面字体
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	font: $basefont;
+}
+
+.iconfont {
+	font-size: inherit;
+}
+
+// 文本对齐
+$wordPos:left center right ;
+@each $pos in $wordPos {
+	.text-#{$pos} {
+		text-align: $pos;
+	}
+}
+
+// 文本缩进
+.text-indent {
+	text-indent: 2em;
+}
+
+// 字体大小
+$fontSize: (xxs 10px) (xs 12px) (sm 14px) (md 16px) (lg 24px);
+@each $font in $fontSize{
+	.text-#{nth($font, 1)} {
+		font-size: nth($font, 2);
+	}
+}
+
+/* ---font end--- */
+
+ 
+
