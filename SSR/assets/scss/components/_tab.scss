@@ -1,0 +1,35 @@
+.tab {
+	font-size: 16px;
+	&_nav {
+		display: flex;
+		height: 40px;
+		@include list-unstyle;
+	}
+
+	// 选项卡
+	&_item {
+		flex: 1;
+		line-height: 40px;
+		margin: 0 10px;
+		color: $text-gray;
+		text-align: center;
+		cursor: pointer;
+
+		@include border-b;
+
+		&.active {
+			color: $basecolor;
+		}
+	}
+
+	// 选项面板
+	&_panel {
+		display: none;
+		width: 100%;
+		padding-top: 30px;
+
+		&.active {
+			display:  block;
+		}
+	}
+}

@@ -61,7 +61,12 @@ class Model {
     where(params, logic = "AND"){
         logic = ' ' + logic;
 
-        this._where = params ? SqlString.format(`?`, params).replace(",", logic) : "1";
+        if (typeof params === "string"){
+            this._where = params;
+        }else if(typeof params === "object"){
+            this._where = params ? SqlString.format(`?`, params).replace(",", logic) : "1";
+        }
+
         return this;
     }
 
@@ -145,8 +150,7 @@ class Model {
     }
     // 聚集函数
     count(){
-        let sql = this.getSelectSql();
-        return this.query(`SELECT COUNT(*) as total FROM ${this._tableName}`).then(res=>res[0]);
+        return this.field("COUNT(*) as total").find();
     }
 }
 

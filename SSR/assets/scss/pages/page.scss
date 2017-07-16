@@ -1,7 +1,13 @@
 
 .page {
 	// sidebar active
-	transition: all linear .3s;
+	$page-left-transition: all ease .3s;
+	transition: $page-left-transition;
+	.container {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
 	&.active {
 		padding-right: 300px;
 	}
@@ -44,7 +50,7 @@
 		text-align: center;
 		background-color: $dark;
 
-		transition: all linear .3s;
+		transition: $page-left-transition;
 		transform: translateX(320px);
 		&.active {
 			transform: translateX(0);

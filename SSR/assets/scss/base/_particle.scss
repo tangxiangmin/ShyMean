@@ -62,6 +62,29 @@
 	padding-top: $basepadding/2;
 	padding-bottom: $basepadding/2;
 }
+
+.hover-underline {
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -3px;
+		height: 2px;
+		width: 100%;
+		background: $dark;
+		transform: scaleX(0);
+		transition: all ease .3s;
+	}
+
+	&:hover:after {
+		transform: scaleX(1);
+	}
+}
+
+.hover-highlight {
+	@extend %hover-highlight;
+}
 /* ---particle end--- */
 
 

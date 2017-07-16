@@ -14,6 +14,8 @@
     import blogFooter from '~components/Footer';
     import blogAside from '~components/Aside';
 
+    import axios from  '~plugins/axios';
+    
     export default {
         name: 'blog',
         components: { blogHeader, blogFooter, blogAside },
@@ -21,6 +23,10 @@
             return {
                 showAside: false,
             };
+        },
+        mounted(){
+        
+           
         },
         methods: {
             toggleAside: function () {

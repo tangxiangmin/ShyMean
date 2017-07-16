@@ -23,9 +23,6 @@
                 pageNum: this.page,
             }
         },
-        mounted(){
-            console.log(this.page)
-        },
         methods: {
             omit(n){
                 let flag = {

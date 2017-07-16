@@ -3,5 +3,6 @@
  */
 export default {
     tags: [],
-    categories: []
+    categories: [],
+    catalogue: [],
 }

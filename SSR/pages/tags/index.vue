@@ -7,7 +7,7 @@
             </div>
             <div class="category">
                 <router-link
-                        :to="{name:'articleList',params:{type:'category',name:category.category || 'tmp',active:1}}"
+                        :to="`/category/${category.category}`"
                         class="category_item"
                         v-for="category in categories"
                         :key="category"
@@ -21,7 +21,7 @@
             </div>
             <div class="tag">
                 <router-link
-                        :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}"
+                        :to="`/tags/${tag}`"
                         :class="['hover-highlight','tag_item',{'text-xs':tag_num<=1},{'text-sm':tag_num>1 && tag_num <=3},{'text-md':tag_num>3 && tag_num<=6},{'text-lg':tag_num>6}]"
                         v-for="(tag_num, tag) in tags"
                         v-if="tag != 'length'"
@@ -38,7 +38,7 @@
     import axios from "~plugins/axios"
     
     export default{
-        name:"tags",
+        name: "tags",
         data(){
             return {
                 categories:[],
@@ -82,7 +82,7 @@
                             }
                         });
                     });
-
+                    
                     // 更新标签
                     this.$set(this,'tags',tags);
                     this.$store.commit("setTags", tags);
