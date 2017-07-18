@@ -1,8 +1,0 @@
-@media screen and (max-width: nth(nth($breakPoint,2),1)){
-    .aside {
-        display: none;
-    }
-    .main.active {
-        padding-right: 0;
-    }
-}

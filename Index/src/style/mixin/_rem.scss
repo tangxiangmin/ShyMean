@@ -1,7 +1,0 @@
-@function rem($px){
-    @if (unitless($px)){
-        @return 1rem * ($px*10/$remwidth);
-    }@else {
-        @return 1rem * ($px*10/$remwidth px);
-    }
-}
