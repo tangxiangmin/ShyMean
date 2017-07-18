@@ -4,7 +4,7 @@
         <template v-for="article in articles">
             <abstract :article="article"></abstract>
         </template>
-        <pagination :page="page" :currentPage="currentPage" name="index"></pagination>
+        <pagination :page="page" :currentPage="currentPage" name="home"></pagination>
     </div>
 </template>
 {{{{/raw}}}}
