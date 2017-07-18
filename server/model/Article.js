@@ -45,6 +45,9 @@ class Article extends Model{
     getNextArticle(created_at){
         return this.field("title").where(`created_at < ${created_at}`).order("created_at").find();
     }
+    updateBrowse(id){
+        return this.increment(id, "browse");
+    }
 }
 
 module.exports = new Article;

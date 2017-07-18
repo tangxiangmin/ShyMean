@@ -130,6 +130,15 @@ class Model {
 
     update(primarykey, params){
         let sql = SqlString.format(`UPDATE ${this._tableName} SET ? WHERE ${this._primarykey} = '${primarykey}'`, params);
+        return this.query(sql).then((data)=>{
+            let { affectedRows } = data;
+            return { affectedRows };
+        },(err)=>{
+            console.log(err);
+        });
+    }
+    increment(primarykey, field){
+        let sql = `UPDATE ${this._tableName} SET ${field} = ${field} + 1 WHERE ${this._primarykey} = '${primarykey}'`;
 
         return this.query(sql).then((data)=>{
             let { affectedRows } = data;

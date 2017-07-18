@@ -25,11 +25,14 @@ router.get("/visitor", function (req, res, next) {
             res.json({
                 status: 200,
                 message: "Hello, 偷偷记录一下, 想必您不会介意吧~",
-                now: Date.now()/1000
+                ip
             });
         })
     }else {
-        res.json({});
+        res.json({
+            status: 304,
+            ip
+        });
     }
 });
 

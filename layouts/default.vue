@@ -45,7 +45,6 @@
                         if (data.status === 200){
                             sessionStorage.setItem(RECOGNIZE, 1);
                         }
-                        console.log(data)
                     })
                 }
             }

@@ -27,6 +27,7 @@ router.get('/article/:title', function (req, res, next) {
         Promise.all([
             article.getPrevArticle(created_at),
             article.getNextArticle(created_at),
+            article.updateBrowse(data.id)
         ]).then((siblings)=>{
             res.json({
                 article: data,

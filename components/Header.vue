@@ -2,7 +2,7 @@
     <header class="page_hd">
         <div class="container header">
             <h1 class="logo">
-                <router-link to="/index/1">{{msg.title}}</router-link>
+                <router-link to="/home/1">{{msg.title}}</router-link>
             </h1>
             <div class="show-md">
                 <div :class="['btn-list',{close:isActive}]" @click="showNav">
