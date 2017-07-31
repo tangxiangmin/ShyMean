@@ -76,7 +76,8 @@
                         }
                     });
 
-                    this.num = page.total;
+//                    this.num = page.total;
+                    this.num = lists.length;
                     this.$set(this,'articleGroup',articleGroup);
                     this.$set(this,'page',page);
                 })
@@ -101,19 +102,8 @@
                 let name = this.name;
                 
                 let word = '';
-                switch (type){
-                    case 'archive':
-                        word = 'OK!目前共计 '+this.num+' 篇日志。继续努力。';
-                        break;
-                    case 'category':
-                        word = name + ' 分类。';
-                        break;
-                    case 'tag':
-                        word = name + ' 标签';
-                        break;
-                    default :
-                        word = '程序又出BUG啦~~~';
-                }
+                word = 'OK!目前共计 '+this.num+' 篇日志。继续努力。';
+               
 
                 return word;
             }

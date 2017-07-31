@@ -27,28 +27,30 @@ router.get('/article/:title', function (req, res, next) {
         Promise.all([
             article.getPrevArticle(created_at),
             article.getNextArticle(created_at),
-            article.updateBrowse(data.id)
+            // article.updateBrowse(data.id)
         ]).then((siblings)=>{
             res.json({
                 article: data,
                 prev: siblings[0],
                 next: siblings[1],
             });
+        }).catch(e=>{
+            console.log(e);
         })
     })
 
 });
 
-router.get("/articleList/:type/:name", function (req, res, next) {
-    let { type, name } = req.params;
+router.get("/articleList/:type/:id", function (req, res, next) {
+    let { type, id } = req.params;
     let getArticlesList;
 
     switch (type){
         case "category":
-            getArticlesList = article.getCategoryList(name);
+            getArticlesList = article.getArticleByTag(id);
             break;
         case "tag":
-            getArticlesList = article.getTagList(name);
+            getArticlesList = article.getArticleByTag(id);
             break;
         case "archive":
             getArticlesList = article.getArchiveList();

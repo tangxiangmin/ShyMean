@@ -5,17 +5,18 @@ import { Router } from 'express'
 
 let router = Router();
 
-import article from "../model/Article"
+import Tag from "../model/Tag"
 
 router.get('/tags', function (req, res, next) {
-    let categories = article.field("category, COUNT(category) AS category_num").group("category").select();
-    article.reset();
-    let tags = article.field("tags").select();
-    Promise.all([categories, tags]).then(data=>{
+
+    Promise.all([
+        Tag.getCategories(),
+        Tag.getTags(),
+    ]).then(data=>{
         res.json({
             categories: data[0],
             tags: data[1]
         });
-    })
+    });
 });
 export default router

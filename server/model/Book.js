@@ -3,18 +3,12 @@
  */
 let Model = require("../core/Model");
 
-class Book extends Model{
-    constructor(tableName){
-        super();
-        this._tableName = "shymean_book";
-        this._primarykey = "id";
-    }
+let Book = new Model("shymean_book");
 
+Object.assign(Book, {
     getBooks(){
-        let fields = "";
-        return this.order("created_at").select();
+        return this.orderBy("created_at").select();
     }
+});
 
-}
-
-module.exports = new Book;
+module.exports = Book;

@@ -10,15 +10,19 @@
                     {{article.created_at}} |
                     <span class="hide-sm">分类于</span>
                     <span class="show-sm"><i class="iconfont icon-tag"></i></span>
-                    <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{article.category}}</router-link > |
-                    <span class="hide-sm">浏览</span>
-                    <span class="show-sm"><i class="iconfont icon-eye"></i></span>
-                    {{article.browse}}
+                    
+                    <template v-for="category in article.categories">
+                        <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{category}}</router-link >
+                    </template>
+                    
+                    <!--<span class="hide-sm">浏览</span>-->
+                    <!--<span class="show-sm"><i class="iconfont icon-eye"></i></span>-->
+                    <!--{{article.browse}}-->
                 </div>
             </header>
             <div class="article_ct" v-html="article.content"></div>
             <footer class="article_ft">
-                <router-link :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}" v-for="tag in getTags" :key="tag" class="article_tag">#{{tag}}</router-link>
+                <router-link :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}" v-for="tag in article.tags" :key="tag" class="article_tag">#{{tag}}</router-link>
             </footer>
             <div class="article_nav">
                 <router-link v-if="prev" class="hover-highlight article_prev" :to="{ name: 'articleDetail', params: { title: prev.title || 'tmp'}}">{{prev.title}}</router-link>
@@ -111,14 +115,11 @@
         async asyncData({ params, error }){
             try {
                 let res = await axios.get(`/api/article/${ params.title }`);
+                
                 let { article, prev, next } = res.data;
-
                 article.content = marked(article.content);
-
                 let { content, catelogue} = formateCatelogue(article['content']);
-                
                 article.content = content;
-                
                 return {
                     article,
                     prev,
@@ -126,22 +127,12 @@
                     catelogue
                 }
             }catch (e){
+                
+                console.log(e)
             }
         },
         mounted:function(){
             this.$store.commit("setCatalogue", this.catelogue);
-        },
-        computed:{
-            getTags: function () {
-                let tags = this.article['tags'];
-                if (!tags) {
-                    return '';
-                }
-
-                return tags.split(",").map((val)=>{
-                    return val.trim()
-                });
-            },
         },
         destroyed(){
             this.$store.commit("setCatalogue", []);

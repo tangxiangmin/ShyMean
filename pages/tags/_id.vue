@@ -14,7 +14,7 @@
         data(){
             return {
                 type: "tag",
-                name: this.$route.params.name
+                name: this.$route.params.id
             }
         },
     }

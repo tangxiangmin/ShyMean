@@ -7,11 +7,11 @@
             </div>
             <div class="category">
                 <router-link
-                        :to="`/category/${category.category}`"
+                        :to="`/tags/${category.id}`"
                         class="category_item"
                         v-for="category in categories"
                         :key="category"
-                >{{category.category}} ({{category.category_num}})</router-link >
+                >{{category.name}} ({{category.category_num}})</router-link >
         
             </div>
         </div>
@@ -20,13 +20,13 @@
                 当前共 {{tags.length}} 个标签
             </div>
             <div class="tag">
-                <router-link
-                        :to="`/tags/${tag}`"
-                        :class="['hover-highlight','tag_item',{'text-xs':tag_num<=1},{'text-sm':tag_num>1 && tag_num <=3},{'text-md':tag_num>3 && tag_num<=6},{'text-lg':tag_num>6}]"
-                        v-for="(tag_num, tag) in tags"
-                        v-if="tag != 'length'"
-                        :key="tag_num"
-                >{{tag}}</router-link >
+                <template v-for="tag in tags">
+                    <router-link
+                            :to="`/tags/${tag.id}`"
+                            :class="['hover-highlight', 'tag_item', tagSize(tag.tag_num)]"
+                            :key="tag">{{ tag.name }}</router-link >
+                </template>
+               
         
             </div>
         </div>
@@ -46,7 +46,7 @@
             }
         },
         computed: {
-
+        
         },
         mounted:function(){
             let tags = this.$store.state.tags,
@@ -61,35 +61,27 @@
             }
         },
         methods: {
+            tagSize(num){
+                if (num <= 2) {
+                    return "text-xs";
+                } else if (num > 2 && num <= 5) {
+                    return "text-sm";
+                } else if (num > 5 && num <= 8) {
+                    return "text-md"
+                } else {
+                    return "text-lg";
+                }
+            },
             getTags(){
                 axios.get("/api/tags").then(res=>{
-                    let { data } = res;
-                    // 暂时没有想到如何在数据库处理标签数据，因此目前只能采取这种折中的办法
-                    let tags = {
-                        length: 0,
-                    };
-                    
-                    let tagsNum = 0;
-                    data.tags.forEach((val)=>{
-                        let sigleTag = val['tags'].split(',');
-                        sigleTag.forEach((val)=>{
-                            val = val.trim();
-                            if (val in tags) {
-                                tags[val]++;
-                            }else {
-                                tags[val] = 1;
-                                tags.length++;
-                            }
-                        });
-                    });
-                    
+                    let { categories, tags } = res.data;
                     // 更新标签
-                    this.$set(this,'tags',tags);
+                    this.tags = tags
                     this.$store.commit("setTags", tags);
-
+                    
                     // 更新分类
-                    this.$set(this,'categories', data.categories);
-                    this.$store.commit("setCategories", data.categories);
+                    this.categories = categories;
+                    this.$store.commit("setCategories", categories);
                 });
             }
         },

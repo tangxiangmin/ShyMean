@@ -23,7 +23,7 @@
         async asyncData({ params, error }){
             try {
                 let articlesData = await axios.get(`/api/article/${params.page}/${SIZE}`);
-
+                
                 let articles = articlesData.data.map((val) => {
                     val['abstract'] = marked(val['abstract']);
                     return val;
@@ -38,6 +38,7 @@
                     page
                 };
             }catch (e){
+                console.log(e);
                 error({ statusCode: 404, message: '未知错误' });
             }
         },

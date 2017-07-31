@@ -18,7 +18,6 @@
 		margin: 10px 5px;
 		border: 1px solid $dark;
 
-		@include text-sm;
 		&:hover {
 			background-color: $dark;
 			color: #fff;
