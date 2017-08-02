@@ -5,4 +5,5 @@ export default {
     tags: [],
     categories: [],
     catalogue: [],
+    changyanTpl: "",
 }

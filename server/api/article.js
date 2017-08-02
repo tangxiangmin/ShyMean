@@ -41,16 +41,16 @@ router.get('/article/:title', function (req, res, next) {
 
 });
 
-router.get("/articleList/:type/:id", function (req, res, next) {
-    let { type, id } = req.params;
+router.get("/articleList/:type/:name", function (req, res, next) {
+    let { type, name } = req.params;
     let getArticlesList;
 
     switch (type){
         case "category":
-            getArticlesList = article.getArticleByTag(id);
+            getArticlesList = article.getArticleByTag(name);
             break;
         case "tag":
-            getArticlesList = article.getArticleByTag(id);
+            getArticlesList = article.getArticleByTag(name);
             break;
         case "archive":
             getArticlesList = article.getArchiveList();

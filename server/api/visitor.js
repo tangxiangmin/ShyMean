@@ -20,12 +20,11 @@ router.get("/visitor", function (req, res, next) {
 
     let { referrer } = req.query;
 
-    if (ip == "127.0.0.1"){
+    if (ip !== "127.0.0.1"){
         visitor.saveVisitRecord(ip, referrer).then(data=>{
             res.json({
                 status: 200,
                 message: "Hello, 偷偷记录一下, 想必您不会介意吧~",
-                data
             });
         })
     }else {

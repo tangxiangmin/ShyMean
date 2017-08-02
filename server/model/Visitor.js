@@ -19,11 +19,6 @@ Object.assign(Visitor, {
                 created_at: Date.now()/1000
             })
         })
-        // this.insert({
-        //     ip,
-        //     referrer,
-        //     created_at: Date.now()/1000
-        // });
     },
     getIpLocation(ip){
         let url = `http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=${ip}`;

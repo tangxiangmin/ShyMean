@@ -7,7 +7,8 @@ let Book = new Model("shymean_book");
 
 Object.assign(Book, {
     getBooks(){
-        return this.orderBy("created_at").select();
+        return this.orderBy("created_at")
+            .select();
     }
 });
 

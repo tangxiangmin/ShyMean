@@ -14,7 +14,6 @@ Object.assign(tag, {
             .join("shymean_article_tag AS a_t", "t.id", "a_t.tag_id")
             .groupBy("t.id")
             .select(["t.name", "t.id", "COUNT(*) AS category_num"]).then(data=>{
-                console.log(this.sql);
                 return data
             });
     },

@@ -13,7 +13,7 @@
             <span class="show-sm"><i class="iconfont icon-tag"></i></span>
             <template v-for="category in article.categories">
                 <router-link
-                        :to="`/category/${category}`"
+                        :to="`/tags/${category}`"
                         class="hover-highlight">{{category}}
                 </router-link>
             </template>

@@ -12,7 +12,10 @@
                     <span class="show-sm"><i class="iconfont icon-tag"></i></span>
                     
                     <template v-for="category in article.categories">
-                        <router-link :to="{name:'articleList',params:{type:'category',name:article.category || 'tmp',active:1}}"  class="hover-highlight">{{category}}</router-link >
+                        
+                        <router-link
+                                :to="`/tags/${category}`"
+                                class="hover-highlight">{{category}}</router-link >
                     </template>
                     
                     <!--<span class="hide-sm">浏览</span>-->
@@ -22,11 +25,23 @@
             </header>
             <div class="article_ct" v-html="article.content"></div>
             <footer class="article_ft">
-                <router-link :to="{name:'articleList',params:{type:'tag',name:tag || 'tmp',active:1}}" v-for="tag in article.tags" :key="tag" class="article_tag">#{{tag}}</router-link>
+                <template  v-for="tag in article.tags">
+                    <router-link
+                            :to="`/tags/${tag}`"
+                            :key="tag"
+                            class="article_tag">#{{tag}}</router-link>
+                </template>
+               
             </footer>
             <div class="article_nav">
-                <router-link v-if="prev" class="hover-highlight article_prev" :to="{ name: 'articleDetail', params: { title: prev.title || 'tmp'}}">{{prev.title}}</router-link>
-                <router-link v-if="next" class="hover-highlight article_next" :to="{ name: 'articleDetail', params: { title: next.title || 'tmp'}}">{{next.title}}</router-link>
+                <router-link
+                        v-if="prev"
+                        class="hover-highlight article_prev"
+                        :to="`/article/${prev.title}`">{{prev.title}}</router-link>
+                <router-link
+                        v-if="next"
+                        class="hover-highlight article_next"
+                        :to="`/article/${next.title}`">{{next.title}}</router-link>
         
             </div>
         </article>
@@ -112,31 +127,38 @@
     
     export default{
         name:"articleDetail",
-        async asyncData({ params, error }){
-            try {
-                let res = await axios.get(`/api/article/${ params.title }`);
-                
-                let { article, prev, next } = res.data;
-                article.content = marked(article.content);
-                let { content, catelogue} = formateCatelogue(article['content']);
-                article.content = content;
-                return {
-                    article,
-                    prev,
-                    next,
-                    catelogue
-                }
-            }catch (e){
-                
-                console.log(e)
+        data(){
+            return {
+                article: {},
+                prev: {},
+                next: {},
+                catelogue: []
             }
         },
-        mounted:function(){
-            this.$store.commit("setCatalogue", this.catelogue);
+        mounted(){
+            this.getArticle();
+        },
+       
+        methods: {
+            getArticle(){
+                let { title } = this.$route.params;
+                axios.get(`/api/article/${ title }`).then(res=>{
+                    let { article, prevArticle, nextArticle } = res.data;
+                    article.content = marked(article.content);
+                    let { content, catelogue} = formateCatelogue(article['content']);
+                    article.content = content;
+                    
+                    this.article = article;
+                    this.prev = prevArticle;
+                    this.next = nextArticle;
+                    this.catelogue = catelogue;
+                    this.$store.commit("setCatalogue", catelogue);
+                })
+            }
         },
         destroyed(){
             this.$store.commit("setCatalogue", []);
-        }
+        },
     }
 </script>
 

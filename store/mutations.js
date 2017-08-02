@@ -14,5 +14,9 @@ export default {
     },
     setCategories(state, categories){
         state.categories = categories;
+    },
+    // 缓存畅言留言板
+    setChangyanTpl(state, html){
+        state.changyanTpl = html;
     }
 }

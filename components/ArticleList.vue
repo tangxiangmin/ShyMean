@@ -2,7 +2,7 @@
 <template>
     <div class="container">
         <div class="archives">
-            <div class="archives_count">{{countWord}}</div>
+            <div class="archives_count" v-html="countWord"></div>
             <section v-for="group in articleGroup">
                 <div class="archives_title">
                     <strong>{{group.year}}</strong>
@@ -98,13 +98,16 @@
         },
         computed:{
             countWord: function () {
-                let type = this.type;
-                let name = this.name;
-                
+                let { type, name } = this;
                 let word = '';
-                word = 'OK!目前共计 '+this.num+' 篇日志。继续努力。';
-               
-
+                
+                switch (type){
+                    case "tag":
+                        word = `${name}`;
+                        break;
+                    default:
+                        word = 'OK!目前共计 '+this.num+' 篇日志。继续努力。';
+                }
                 return word;
             }
         }

@@ -33,25 +33,22 @@
         async asyncData(){
             try {
                 let res = await axios.get("/api/books");
-                
                 return {
                     books: res.data
                 }
             }catch (e){
                 console.log(e)
             }
-
         },
-      
-      
         methods: {
             status(val){
-                return val && val[0] === "#" ? `<a href="${val}">读书笔记</a>` : val
+                return val && val[0] === "/" ? `<a href="${val}">读书笔记</a>` : val
             },
         },
         filters:{
             dateFormat: function (val) {
-                return val === '0' ? "至今" : val;
+                let date = new Date(val*1000);
+                return val === 0 ? "至今" : `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
             },
 
         },

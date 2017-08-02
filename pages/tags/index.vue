@@ -7,7 +7,7 @@
             </div>
             <div class="category">
                 <router-link
-                        :to="`/tags/${category.id}`"
+                        :to="`/tags/${category.name}`"
                         class="category_item"
                         v-for="category in categories"
                         :key="category"
@@ -22,7 +22,7 @@
             <div class="tag">
                 <template v-for="tag in tags">
                     <router-link
-                            :to="`/tags/${tag.id}`"
+                            :to="`/tags/${tag.name}`"
                             :class="['hover-highlight', 'tag_item', tagSize(tag.tag_num)]"
                             :key="tag">{{ tag.name }}</router-link >
                 </template>
