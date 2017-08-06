@@ -4,7 +4,7 @@
         <template v-for="article in articles">
             <abstract :article="article"></abstract>
         </template>
-        <pagination :page="page" :currentPage="currentPage" name="home"></pagination>
+        <pagination :page="page" :currentPage="currentPage" name="/"></pagination>
     </div>
 </template>
 {{{{/raw}}}}
@@ -52,7 +52,7 @@
         },
         computed: {
             currentPage(){
-                return this.$route.params.page;
+                return this.$route.params.page || 1;
             }
         },
         method: {

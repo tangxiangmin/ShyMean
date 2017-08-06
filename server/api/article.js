@@ -22,6 +22,11 @@ router.get('/article/:page/:size', function (req, res, next) {
 
 router.get('/article/:title', function (req, res, next) {
     let { title } = req.params;
+
+    req.socket.on("error", function() {
+        console.log(req.params);
+    });
+
     article.getArticleByTitle(title).then(data=>{
         let created_at = (new Date(data.created_at)).getTime()/1000;
         Promise.all([
@@ -34,6 +39,7 @@ router.get('/article/:title', function (req, res, next) {
                 prev: siblings[0],
                 next: siblings[1],
             });
+            res.end();
         }).catch(e=>{
             console.log(e);
         })

@@ -1,13 +1,13 @@
 {{{{raw}}}}
 <template>
     <div class="container">
-        <article class="article">
+        <article class="article article-detail">
             <header  class="text-center">
                 <h2 class="article_hd">{{article.title}}</h2>
                 <div class="article_info">
                     <span class="hide-sm">发表于</span>
                     <span class="show-sm"><i class="iconfont icon-archives"></i></span>
-                    {{article.created_at}} |
+                    <time>{{article.created_at}} </time>|
                     <span class="hide-sm">分类于</span>
                     <span class="show-sm"><i class="iconfont icon-tag"></i></span>
                     
@@ -140,17 +140,18 @@
         },
        
         methods: {
+            // todo 这里使用asyncData在重新刷新页面时会报 socket hang up的错误，暂时无法解决
             getArticle(){
                 let { title } = this.$route.params;
                 axios.get(`/api/article/${ title }`).then(res=>{
-                    let { article, prevArticle, nextArticle } = res.data;
+                    let { article, prev, next } = res.data;
                     article.content = marked(article.content);
                     let { content, catelogue} = formateCatelogue(article['content']);
                     article.content = content;
                     
                     this.article = article;
-                    this.prev = prevArticle;
-                    this.next = nextArticle;
+                    this.prev = prev;
+                    this.next = next;
                     this.catelogue = catelogue;
                     this.$store.commit("setCatalogue", catelogue);
                 })

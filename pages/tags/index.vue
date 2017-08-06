@@ -26,10 +26,12 @@
                             :class="['hover-highlight', 'tag_item', tagSize(tag.tag_num)]"
                             :key="tag">{{ tag.name }}</router-link >
                 </template>
-               
-        
             </div>
         </div>
+        <!--<div class="search">-->
+            <!--<input type="text" placeholder="想找点啥" class="search_input">-->
+            <!--<button class="search_btn"><i class="iconfont icon-search"></i></button>-->
+        <!--</div>-->
     </div>
 </template>
 {{{{/raw}}}}

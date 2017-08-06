@@ -49,7 +49,7 @@
 	&_item {
 		line-height: 3em;
 		color: #666;
-		border-bottom: 2px dashed $gray;
+		//border-bottom: 2px dashed $gray;
 
 		@extend %archives;
 		@include archives-dot(6px);

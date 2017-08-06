@@ -5,7 +5,7 @@
  */
 
 let Model = require("mysql-xmodel");
-let config = require("../config/db-example.json");
+let config = require("../config/db.json");
 
 Model.init(config);
 

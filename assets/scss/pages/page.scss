@@ -27,6 +27,12 @@
 		padding-top: 30px;
 		padding-bottom: 30px;
 		min-height: calc(100vh - 124px);
+		$size: 30px 30px;
+		$color: $gray;
+		background-image:
+				linear-gradient($color 1px,transparent 0),
+				linear-gradient(90deg, $color 1px,transparent 0);
+		background-size:$size, $size;
 	}
 
 	&_ft {

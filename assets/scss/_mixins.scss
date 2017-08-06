@@ -84,7 +84,7 @@ $baseborder: 1px solid #d6d6d6 !default;
 @mixin page-shadow {
 	padding: 2em;
 	background-color: #fff;
-	border: 1px solid #ddd;
+	outline: 1px solid #ddd;
 	z-index: 100;
 	box-shadow: 7px 6px 16px #888;
 	transition: all ease .3s;
