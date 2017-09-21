@@ -4,8 +4,8 @@
             <tab :items="tabItems">
                 <div slot="website">
                     <div class="me">
-                        <img src="~assets/img/head.jpg" alt="" width="100" height="100">
-                        <h3>ShyMean</h3>
+                        <img src="~assets/img/head.jpg" alt="shymean" width="100" height="100">
+                        <h3>shymean</h3>
                         <p>一个不学无术且无趣的人。</p>
                     </div>
                     <div class="nav-border">

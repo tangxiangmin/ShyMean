@@ -19,8 +19,8 @@
 
     const SIZE = 10;
     export default {
-        components: { Abstract, Pagination },
-        async asyncData({ params, error }){
+        components: {Abstract, Pagination},
+        async asyncData({params, error}){
             try {
                 let articlesData = await axios.get(`/api/article/${params.page}/${SIZE}`);
 
@@ -31,14 +31,14 @@
 
                 // todo 缓存总页
                 let pageData = await axios.get('/api/articleSize');
-                let page = Math.ceil( pageData.data.total / SIZE);
+                let page = Math.ceil(pageData.data.total / SIZE);
 
                 return {
                     articles,
                     page
                 };
-            }catch (e){
-                error({ statusCode: 404, message: '未知错误' });
+            } catch (e) {
+                error({statusCode: 404, message: '未知错误'});
             }
         },
         data(){
@@ -47,16 +47,13 @@
             };
         },
         mounted(){
-
         },
         computed: {
             currentPage(){
                 return this.$route.params.page || 1;
             }
         },
-        method: {
-
-        }
+        method: {}
     }
 
 </script>
