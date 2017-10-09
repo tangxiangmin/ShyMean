@@ -23,7 +23,16 @@
                     <!--{{article.browse}}-->
                 </div>
             </header>
-            <div class="article_ct" v-html="article.content"></div>
+            <div class="loading" v-if="isLoading">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="article_ct" v-else v-html="article.content">
+            
+            </div>
             <footer class="article_ft">
                 <template  v-for="tag in article.tags">
                     <router-link
@@ -129,10 +138,13 @@
         name:"articleDetail",
         data(){
             return {
-                article: {},
+                article: {
+                    title: this.$route.params.title,
+                },
                 prev: {},
                 next: {},
-                catelogue: []
+                catelogue: [],
+                isLoading: true,
             }
         },
         mounted(){
@@ -154,6 +166,8 @@
                     this.next = next;
                     this.catelogue = catelogue;
                     this.$store.commit("setCatalogue", catelogue);
+                    
+                    this.isLoading = false;
                 })
             }
         },
