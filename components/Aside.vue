@@ -21,6 +21,9 @@
                         <router-link to="/about" class="nav_item">
                             <i class="iconfont icon-info"></i> <br>关于
                         </router-link>
+                        <router-link to="/friend" class="nav_item">
+                            <i class="iconfont icon-blog"></i> <br>友链
+                        </router-link>
                     </div>
                     <div class="contact">
                         <a href="https://github.com/tangxiangmin" class="contact_link" target="_blank"><i
