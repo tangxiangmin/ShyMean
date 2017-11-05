@@ -10,11 +10,11 @@
 </template>
 
 <script>
-    import blogHeader from '~components/Header';
-    import blogFooter from '~components/Footer';
-    import blogAside from '~components/Aside';
+    import blogHeader from '~/components/Header';
+    import blogFooter from '~/components/Footer';
+    import blogAside from '~/components/Aside';
 
-    import axios from  '~plugins/axios';
+    import axios from  '~/plugins/axios';
     
     export default {
         name: 'blog',

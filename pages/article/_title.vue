@@ -62,7 +62,7 @@
     import marked from 'marked'
     import highlight from 'highlight.js'
     
-    import axios from "~plugins/axios"
+    import axios from "~/plugins/axios"
     
     marked.setOptions({
         highlight: function (code) {

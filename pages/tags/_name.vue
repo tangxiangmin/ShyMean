@@ -7,7 +7,7 @@
 {{{{/raw}}}}
 
 <script>
-    import ArticleList from "~components/ArticleList"
+    import ArticleList from "~/components/ArticleList"
     
     export default {
         components: { ArticleList },

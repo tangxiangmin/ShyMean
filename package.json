@@ -15,20 +15,28 @@
     "axios": "^0.16.1",
     "cross-env": "^5.0.0",
     "express": "^4.15.3",
+    "nuxt": "^1.0.0-alpha.3",
+    "source-map-support": "^0.4.15",
     "highlight.js": "^9.12.0",
     "log4js": "^2.3.2",
     "marked": "^0.3.6",
     "mysql": "^2.13.0",
     "mysql-xmodel": "^1.0.2",
-    "nuxt": "^1.0.0-alpha.3",
-    "source-map-support": "^0.4.15",
     "sqlstring": "^2.2.0",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "backpack-core": "^0.3.0",
-    "node-sass": "^4.5.3",
+    "backpack-core": "^0.4.1",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6"
   }
 }

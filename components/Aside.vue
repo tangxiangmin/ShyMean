@@ -51,8 +51,8 @@
     </aside>
 </template>
 <script>
-    import Tab from "~components/Tab"
-    import Catalogue from "~components/Catalogue"
+    import Tab from "~/components/Tab"
+    import Catalogue from "~/components/Catalogue"
 
     function debounce(fn, delay) {
         let timer = null;

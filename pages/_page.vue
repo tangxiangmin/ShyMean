@@ -10,12 +10,12 @@
 {{{{/raw}}}}
 
 <script>
-    import axios from "~plugins/axios"
+    import axios from "~/plugins/axios"
 
     import marked from 'marked';
 
-    import Abstract from  "~components/Abstract"
-    import Pagination from "~components/Pagination"
+    import Abstract from  "~/components/Abstract"
+    import Pagination from "~/components/Pagination"
     
     const SIZE = 10;
     export default {
