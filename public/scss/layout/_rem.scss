@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+// 关于设置rem，之前是使用JS监听屏幕宽度实现的，
+// 最近发现张鑫旭大神的博文有新的方法，试了一下感觉很爽，
+// http://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/
+
+html {
+    font-size: 16px;
+}
+
+// 计算公式：字体范围*（（当前屏幕大小-最小适应大小）/（最大适应-最小适应））
+@media screen and (min-width: 375px) {
+    html {
+        // iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px
+        // 取百分数是为了safri上面的bug
+        font-size: calc(100% + 2 * (100vw - 375px) / 39);
+        font-size: calc(16px + 2 * (100vw - 375px) / 39);
+    }
+}
+@media screen and (min-width: 414px) {
+    html {
+        // 414px-1000px每100像素宽字体增加1px(18px-22px)
+        font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
+        font-size: calc(18px + 4 * (100vw - 414px) / 586);
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        // 600px-1000px每100像素宽字体增加1px(20px-24px)
+        font-size: calc(125% + 4 * (100vw - 600px) / 400);
+        font-size: calc(20px + 4 * (100vw - 600px) / 400);
+    }
+}
+@media screen and (min-width: 1000px) {
+    html {
+        // 1000px往后是每100像素0.5px增加
+        font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+        font-size: calc(22px + 6 * (100vw - 1000px) / 1000);
+    }
+}
+
+
+// 使用rem进行移动端布局，默认按照iphone6的设计图750px标准
+$remwidth: 750 !default;
+
+// 根据设计图尺寸返回对应的rem值
+// 由于暂时没有查到SCSS中如何去除单位，目前只能采用这种折中的办法进行处理
+@function rem($px){
+    @if (unitless($px)){
+        @return 1rem * ($px/$remwidth);
+    }@else {
+        @return 1rem * ($px/$remwidth px);
+    }
+}

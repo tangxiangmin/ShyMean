@@ -1,0 +1,15 @@
+<div class="archives">
+    <div class="archives_count">OK!目前共计 <%= page.posts.length %> 篇日志。继续努力。</div>
+    <section>
+        <div class="archives_title"><strong>2017</strong></div>
+        <% page.posts.forEach(function(item){%>
+        <div class="archives_item">
+            <a href="<%= url_for(item.path) %>" class="archives_link">
+                <span class="archives_date"><%= date(item.date, 'YYYY-MM-DD')%></span>
+                <%= item.title %>
+            </a>
+        </div>
+        <% }) %>
+    </section>
+</div>
+<%- partial('./pagination')%>

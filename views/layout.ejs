@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <%- css('css/blog') %>
+    <%- css('css/fonts/iconfont') %>
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css">-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.1.25/jquery.fancybox.min.css">
+    <script src="/js/require.js" data-main="/js/main"></script>
+</head>
+<body>
+<div id="blog" class="page page-theme-base" v-cloak>
+    <blog-header></blog-header>
+    <%- partial('_partial/header') %>
+    <main class="page_mn" >
+        <div class="container">
+            <%- body %>
+        </div>
+    </main>
+
+    <%- partial('_partial/aside') %>
+    <%- partial('_partial/footer') %>
+
+</div>
+
+</body>
+</html>

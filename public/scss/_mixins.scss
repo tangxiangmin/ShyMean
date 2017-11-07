@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+// 清浮动
+@mixin clearfix {
+	zoom:1;
+	&:after {
+		content:"";
+		display:table;
+		clear:both;
+	}
+}
+
+// 文本溢出
+@mixin text-xs {
+	font-size: 60%;
+}
+@mixin text-sm {
+	font-size: 75%;
+}
+@mixin text-md {
+	font-size: 100%;
+}
+@mixin text-lg {
+	font-size: 150%;
+}
+
+// 单行
+@mixin text-overflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// 多行
+@mixin text-overflow-line($i:2) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp:$i;
+}
+
+// 边框
+$baseborder: 1px solid #d6d6d6 !default;
+@mixin border($b: $baseborder) {
+	border: $b;
+}
+@mixin border-b($b:$baseborder) {
+	border-bottom: $b;
+}
+@mixin border-r($b:$baseborder) {
+	border-right: $b;
+}
+@mixin border-l($b:$baseborder) {
+	border-left: $b;
+}
+@mixin border-t($b:$baseborder) {
+	border-top: $b;
+}
+@mixin border-tb($b: $baseborder) {
+	border-top: $b;
+	border-bottom: $b;
+}
+@mixin border-lr($b: $baseborder) {
+	border-left: $b;
+	border-right: $b;
+}
+
+// 透明度
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	// IE8 filter
+	$opacity-ie: ($opacity * 100);
+	filter: alpha(opacity=$opacity-ie);
+}
+
+// 列表
+@mixin list-unstyle {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin page-shadow {
+	padding: 2em;
+	background-color: #fff;
+	outline: 1px solid #ddd;
+	z-index: 100;
+	box-shadow: 7px 6px 16px #888;
+	transition: all ease .3s;
+	&:hover {
+		box-shadow: 14px 11px 27px #888;
+	}
+}

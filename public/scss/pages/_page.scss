@@ -1,0 +1,160 @@
+
+.page {
+	// sidebar active
+	$page-left-transition: all ease .3s;
+	transition: $page-left-transition;
+	.container {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	&.active {
+		padding-right: 300px;
+	}
+
+	// reserve theme stylesheet
+	&.page-theme-base{
+		.page_hd, .page_ft {
+			background-color: $gray;
+		}
+	}
+
+	// components
+	&_hd {
+
+	}
+	&_mn {
+		padding-top: 30px;
+		padding-bottom: 30px;
+		min-height: calc(100vh - 124px);
+		$size: 30px 30px;
+		$color: $gray;
+		background-image:
+				linear-gradient($color 1px,transparent 0),
+				linear-gradient(90deg, $color 1px,transparent 0);
+		background-size:$size, $size;
+	}
+
+	&_ft {
+
+		overflow: hidden;
+		line-height: 2em;
+		font-size: 14px;
+	}
+
+	&_sd {
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		right:0;
+
+		width: 320px;
+		height:100%;
+		padding: 0 $basepadding*2;
+
+		color: $text-gray;
+		text-align: center;
+		background-color: $dark;
+
+		transition: $page-left-transition;
+		transform: translateX(320px);
+		&.active {
+			transform: translateX(0);
+		}
+
+		a {
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		.me {
+			color: $white;
+		}
+
+
+
+		.nav-border {
+			font-size: 0;
+			margin: 1.5rem 0;
+			.nav_item {
+				display: inline-block;
+				width: 60px;
+				font-size: 14px;
+				&:not(:first-of-type){
+					@include border-l;
+				}
+			}
+		}
+		.contact {
+			&_link {
+				margin-right: 10px;
+				padding: 5px 0;
+
+				@include border-b;
+
+				&:before {
+					content: '';
+					display: inline-block;
+					vertical-align: middle;
+					margin-right: 5px;
+					width: 4px;
+					height: 4px;
+					background: $yellow;
+					border-radius: 2px;
+				}
+			}
+		}
+	}
+}
+//@media screen and (max-width: nth(nth($breakPoint,2),1)){
+//	.page_sd {
+//		display: none;
+//	}
+//	.page_mn.active {
+//		padding-right: 0;
+//	}
+//}
+
+.tool {
+	%page-btn {
+		position: fixed;
+		z-index: 9999;
+
+		// 在手机上跟顶部导航列表按钮对齐
+		right: 15px;
+	}
+
+	.btn-list {
+		bottom: 65px;
+	}
+	.btn-list {
+		position: fixed;
+		z-index: 9999;
+		right: 15px;
+		bottom: 65px;
+	}
+
+	.btn-top {
+		bottom: 20px;
+		color: #fff;
+
+		@extend %page-btn;
+		transition: all linear .3s;
+		transform: translateY(80px);
+
+		i {
+			font-size: 20px;
+			transition: all ease .2s;
+		}
+		&:hover {
+			i {
+				transform: translateY(-2px);
+			}
+		}
+		&.active {
+			transform: translateY(0px);
+		}
+	}
+}
+

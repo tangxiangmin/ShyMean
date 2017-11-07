@@ -1,0 +1,21 @@
+<header class="page_hd" data-v-04342fbc="">
+    <div class="container header" data-v-04342fbc="">
+        <h1 class="logo" data-v-04342fbc="">
+            <a href="/" class="nuxt-link-exact-active nuxt-link-active" data-v-04342fbc="">橙红年代</a>
+        </h1>
+        <div class="show-md" data-v-04342fbc="">
+            <div class="btn-list" data-v-04342fbc="">
+                <div class="btn-icon" data-v-04342fbc="">
+                    <span class="btn-line" data-v-04342fbc=""></span>
+                    <span class="btn-line" data-v-04342fbc=""></span>
+                    <span class="btn-line" data-v-04342fbc=""></span>
+                </div>
+            </div>
+        </div>
+        <nav class="nav-responsive" data-v-04342fbc="">
+            <% for (var i in theme.menu){ %>
+            <a class="nav_item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+            <% } %>
+        </nav>
+    </div>
+</header>
