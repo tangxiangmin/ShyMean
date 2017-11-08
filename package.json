@@ -8,7 +8,9 @@
     "koa": "^2.4.1",
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
-    "koa-views": "^6.1.1"
+    "koa-views": "^6.1.1",
+    "mysql-xmodel": "^1.0.3",
+    "swig": "^1.4.2"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,8 +1,13 @@
 
+let articleModel = require("../model/ArticleModel")
 
 class IndexController {
     async index(ctx){
-        ctx.body = "Hello index"
+        let res = await articleModel.getArticles(10, 1);
+
+        await ctx.render('index', {
+            articles: res
+        })
     }
 
     async tags(ctx){

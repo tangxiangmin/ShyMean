@@ -13,9 +13,9 @@
             </div>
         </div>
         <nav class="nav-responsive" data-v-04342fbc="">
-            <% for (var i in theme.menu){ %>
-            <a class="nav_item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-            <% } %>
+            <a class="nav_item" href="123">标签</a>
+            <a class="nav_item" href="123">归档</a>
+            <a class="nav_item" href="123">关于</a>
         </nav>
     </div>
 </header>

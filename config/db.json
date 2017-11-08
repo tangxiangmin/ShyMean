@@ -1,7 +1,6 @@
 {
-  "host": "localhost",
+  "host": "45.77.153.232",
   "user": "root",
   "password": "123456",
-  "database": "shymean",
-  "prefix": "shymean_"
+  "database": "shymean"
 }

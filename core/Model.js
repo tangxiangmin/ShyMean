@@ -1,21 +1,10 @@
 // base model class
 
-// todo
-let instance = null
 
-class Model {
+let Model = require("mysql-xmodel")
+let dbConfig = require("../config/db.json")
 
-    constructor(table){
-        this.table = table;
-    }
+// 创建连接池
+Model.init(dbConfig)
 
-    static getInstance(){
-        if (!instance){
-            instance = new Model(table);
-        }
-
-        return instance;
-    }
-}
-
-
+module.exports = Model

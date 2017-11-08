@@ -9,3 +9,7 @@ class ProfileController {
         await ctx.render("friend")
     }
 }
+
+module.exports = ()=>{
+    return new ProfileController();
+}
