@@ -1,0 +1,27 @@
+{
+  "name": "shymean",
+  "version": "0.4.0",
+  "description": "shymean blog",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "koa": "^2.4.1",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa-views": "^6.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangxiangmin/ShyMean.git"
+  },
+  "author": "shymean",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tangxiangmin/ShyMean/issues"
+  },
+  "homepage": "https://github.com/tangxiangmin/ShyMean#readme"
+}
