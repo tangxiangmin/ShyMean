@@ -15,8 +15,7 @@
     <section><h3 class="about_hd">关于博客</h3>
         <div class="about_ct"><p>阮老师说：“博客首先是一种知识管理工具，其次才是传播工具。”</p>
             <p>因此这个博客主要记录我正在学习的东西，难免会有问题，欢迎各位大佬指正。</p>
-            <p>博客前端使用<a href="http://vuejs.org/">Vue</a>搭建，后台使用<a href="https://expressjs.com/">Express</a>，结合<a
-                        href="https://nuxtjs.org/guide/views/#html-head">Nuxt</a>进行服务端渲染，主题参考<a
+            <p>博客前端使用<a href="https://www.npmjs.com/package/koa">Koa</a>同构渲染，主题参考<a
                         href="http://theme-next.iissnan.com/">Next</a>，项目托管在<a
                         href="https://github.com/tangxiangmin/ShyMean">github</a>，请多多指教。</p></div>
     </section>

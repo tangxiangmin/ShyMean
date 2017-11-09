@@ -18,7 +18,7 @@
                 <i class="iconfont icon-tag"></i>
             </span>
             {% for cate in post.categories %}
-            <a href="" class="hover-highlight">{{ cate }}</a>
+            <a href="/archive/{{ cate }}" class="hover-highlight">{{ cate }}</a>
             {% endfor %}
         </div>
         <div class="article_ct">
@@ -32,4 +32,5 @@
     </article>
     {% endfor %}
 
+    {% include "./_partial/pagination.swig" %}
 {% endblock %}

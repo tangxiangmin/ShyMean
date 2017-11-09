@@ -15,7 +15,7 @@
             <span class="hide-sm">分类于</span>
             <span class="show-sm"><i class="iconfont icon-tag"></i></span>
             {% for cate in article.categories %}
-                <a href="" class="hover-highlight">{{ cate.name }}</a>
+                <a href="/archive/{{ cate }}" class="hover-highlight">{{ cate }}</a>
             {% endfor %}
 
         </div>
@@ -25,13 +25,13 @@
     </div>
     <footer class="article_ft">
         {% for tag in article.tags %}
-        <a href="" class="article_tag">#{{ tag.name }}</a>
+        <a href="/archive/{{ tag }}" class="article_tag">#{{ tag }}</a>
         {% endfor %}
     </footer>
 
     <div class="article_nav">
-        <a href="/article/mockjs使用心得" class="hover-highlight article_prev">mockjs使用心得</a>
-        <a href="/article/博客SSR实践总结" class="hover-highlight article_next">博客SSR实践总结</a>
+        <a href="/article/{{ prev.title }}" class="hover-highlight article_prev">{{ prev.title }}</a>
+        <a href="/article/{{ next.title }}" class="hover-highlight article_next">{{ next.title }}</a>
     </div>
 </article>
 {% endblock %}

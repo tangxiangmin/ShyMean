@@ -7,7 +7,7 @@
     </div>
     <div class="category">
         {% for cate in categories %}
-            <a href="/" class="category_item">
+            <a href="/archive/{{ cate.name }}" class="category_item">
                {{ cate.name }}
             </a>
         {% endfor %}
@@ -34,7 +34,7 @@
                     {#fontSize = "text-lg";#}
                 {#}#}
             {#%>#}
-            <a href="/" class="hover-highlight tag_item {{ 'text-xs' }}">
+            <a href="/archive/{{ tag.name }}" class="hover-highlight tag_item {{ 'text-xs' }}">
                 {{ tag.name }}
             </a>
         {% endfor %}

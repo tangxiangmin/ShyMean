@@ -8,26 +8,38 @@ let formatCatalogue = require("../lib/catelogue")
 
 class IndexController {
     async index(ctx){
+        let page = ctx.param && ctx.param.page || 1;
+
         // todo
         // 缓存
-        let res = await articleModel.getArticles(10, 1);
+        // 分页类
+
+        let articles = await articleModel.getArticles(10, page);
+        let total = await articleModel.count();
 
         // todo 自定义swig过滤器
-        if (res && res.length){
-            res.forEach(item=>{
+        if (articles && articles.length){
+            articles.forEach(item=>{
                 item.abstract = marked(item.abstract)
             })
         }
 
         await ctx.render('index', {
-            articles: res
+            articles,
+            total,
+            page,
+            pageSize: 10
         })
     }
 
     async article(ctx){
 
         let title = ctx.params.title;
+
         let res = await articleModel.getArticleByTitle(title)
+        let prev = await articleModel.getPrevArticle(res.created_at)
+        let next = await articleModel.getNextArticle(res.created_at)
+
         let htm = marked(res.content)
 
         let {catalogue, content } = formatCatalogue(htm)
@@ -36,7 +48,9 @@ class IndexController {
 
         await ctx.render('article', {
             article: res,
-            catalogue
+            catalogue,
+            prev,
+            next
         })
     }
 
@@ -51,10 +65,19 @@ class IndexController {
     }
 
     async archive(ctx){
-        let lists = await articleModel.getArchiveList();
+        let lists = [];
+        let tag = ctx.params && ctx.params.tag;
+
+        if (tag){
+            // 标签、分类归档
+            lists = await articleModel.getArticleByTag(tag);
+        }else {
+            lists = await articleModel.getArchiveList();
+        }
 
         let articleGroup = [];
         let cursor = 0;
+        // 对归档按年份分组
         articleGroup[cursor] = {
             year: lists && lists[0] && lists[0].year,
             articles: []
@@ -74,7 +97,8 @@ class IndexController {
 
         await ctx.render('archive', {
             articleGroup,
-            total: lists.length
+            total: lists.length,
+            tag
         })
     }
 

@@ -3,7 +3,13 @@
 {% block main %}
 
 <div class="archives">
-    <div class="archives_count">OK!目前共计 {{ total }} 篇日志。继续努力。</div>
+    <div class="archives_count">
+        {% if tag %}
+            {{ tag }}
+        {% else %}
+            OK!目前共计 {{ total }} 篇日志。继续努力。
+        {% endif %}
+    </div>
     {% for group in articleGroup %}
     <section>
         <div class="archives_title"><strong>{{ group.year }}</strong></div>
