@@ -1,21 +1,21 @@
-<header class="page_hd" data-v-04342fbc="">
-    <div class="container header" data-v-04342fbc="">
-        <h1 class="logo" data-v-04342fbc="">
-            <a href="/" class="nuxt-link-exact-active nuxt-link-active" data-v-04342fbc="">橙红年代</a>
+<header class="page_hd">
+    <div class="container header">
+        <h1 class="logo">
+            <a href="/" title="橙红年代">橙红年代</a>
         </h1>
-        <div class="show-md" data-v-04342fbc="">
-            <div class="btn-list" data-v-04342fbc="">
-                <div class="btn-icon" data-v-04342fbc="">
-                    <span class="btn-line" data-v-04342fbc=""></span>
-                    <span class="btn-line" data-v-04342fbc=""></span>
-                    <span class="btn-line" data-v-04342fbc=""></span>
+        <div class="show-md">
+            <div class="btn-list">
+                <div class="btn-icon">
+                    <span class="btn-line"></span>
+                    <span class="btn-line"></span>
+                    <span class="btn-line"></span>
                 </div>
             </div>
         </div>
-        <nav class="nav-responsive" data-v-04342fbc="">
-            <a class="nav_item" href="123">标签</a>
-            <a class="nav_item" href="123">归档</a>
-            <a class="nav_item" href="123">关于</a>
+        <nav class="nav-responsive">
+            <a class="nav_item" href="/tags" title="标签">标签</a>
+            <a class="nav_item" href="/archive" title="归档">归档</a>
+            <a class="nav_item" href="/about" title="关于">关于</a>
         </nav>
     </div>
 </header>

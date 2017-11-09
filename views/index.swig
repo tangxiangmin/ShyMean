@@ -1,11 +1,10 @@
 {% extends './layout.swig' %}
 
 {% block main %}
-<div class="container">
     {%  for post in articles %}
         <article class="article">
         <h2 class="article_hd">
-            <a href="" class="article_tt">
+            <a href="/article/{{ post.title }}" class="article_tt">
                 {{ post.title }}
             </a>
         </h2>
@@ -13,15 +12,17 @@
             <span class="hide-sm">发表于</span>
             <span class="show-sm">
                 <i class="iconfont icon-archives"></i>
-            </span>2012-01-22 |
+            </span>{{ post.created_at | date('Y-m-d') }} |
             <span class="hide-sm">分类于</span>
             <span class="show-sm">
                 <i class="iconfont icon-tag"></i>
             </span>
-            <a href="" class="hover-highlight">JavaScript</a>
+            {% for cate in post.categories %}
+            <a href="" class="hover-highlight">{{ cate }}</a>
+            {% endfor %}
         </div>
         <div class="article_ct">
-            {{ post.abstract }}
+            {{ post.abstract | raw }}
         </div>
         <div class="article_ft">
 
@@ -31,5 +32,4 @@
     </article>
     {% endfor %}
 
-</div>
 {% endblock %}

@@ -16,8 +16,11 @@
     {% include './_partial/header.swig' %}
 
     <main class="page_mn" >
+        <div class="container">
+
         {% block main %}
         {% endblock %}
+        </div>
     </main>
 
     {% include './_partial/aside.swig' %}
