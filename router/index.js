@@ -14,5 +14,6 @@ router.get("/book", Index.book)
 
 router.get("/about", Profile.about)
 router.get("/friend", Profile.friend)
+router.get("/message", Profile.message)
 
 module.exports = router;

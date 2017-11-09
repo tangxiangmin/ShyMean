@@ -1,8 +1,7 @@
 <aside>
     <div class="page_sd hide-md">
         <div class="tab">
-            <!---->
-            <% if (is_post()) { %>
+            {% if catalogue %}
             <ul class="tab_nav">
                 <li class="tab_item active" data-target="#J_toc">
                     文章目录
@@ -12,10 +11,11 @@
                 </li>
             </ul>
             <div class="tab_panel active" id="J_toc">
-                <%- toc(page.content) %>
+                {% include "catalogue.swig" %}
             </div>
-            <% } %>
-            <div class="tab_panel <%= !is_post()?'active':'' %>" id="J_profile">
+            {% endif %}
+
+            <div class="tab_panel {% if !catalogue %} active {% endif %} " id="J_profile">
                 <div>
                     <div class="me">
                         <img src="http://shymean.com/_nuxt/img/head.dd612ee.jpg" alt="shymean" width="100" height="100">

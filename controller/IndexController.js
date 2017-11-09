@@ -1,8 +1,10 @@
 
 let articleModel = require("../model/ArticleModel")
 let tagModel = require("../model/TagModel")
+let bookModel = require("../model/BookModel")
 
 let marked = require("../lib/marked")
+let formatCatalogue = require("../lib/catelogue")
 
 class IndexController {
     async index(ctx){
@@ -26,11 +28,15 @@ class IndexController {
 
         let title = ctx.params.title;
         let res = await articleModel.getArticleByTitle(title)
-        res.content = marked(res.content)
+        let htm = marked(res.content)
+
+        let {catalogue, content } = formatCatalogue(htm)
+        res.content = content
 
 
         await ctx.render('article', {
-            article: res
+            article: res,
+            catalogue
         })
     }
 
@@ -45,11 +51,40 @@ class IndexController {
     }
 
     async archive(ctx){
-        await ctx.render('archive')
+        let lists = await articleModel.getArchiveList();
+
+        let articleGroup = [];
+        let cursor = 0;
+        articleGroup[cursor] = {
+            year: lists && lists[0] && lists[0].year,
+            articles: []
+        };
+
+        lists.forEach((val)=>{
+            if (val.year !== articleGroup[cursor].year){
+                cursor++;
+                articleGroup[cursor] = {
+                    year: val.year,
+                    articles: [val]
+                };
+            }else {
+                articleGroup[cursor].articles.push(val);
+            }
+        });
+
+        await ctx.render('archive', {
+            articleGroup,
+            total: lists.length
+        })
     }
 
     async book(ctx){
-        await ctx.render('book')
+
+        let books = await bookModel.getBooks();
+
+        await ctx.render('book', {
+            books
+        })
     }
 
 }
