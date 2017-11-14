@@ -14,15 +14,8 @@ class IndexController {
         // 缓存
         // 分页类
 
-        let articles = await articleModel.getArticles(10, page);
+        let articles = await articleModel.getArticles(10, page-1);
         let total = await articleModel.count();
-
-        // todo 自定义swig过滤器
-        if (articles && articles.length){
-            articles.forEach(item=>{
-                item.abstract = marked(item.abstract)
-            })
-        }
 
         await ctx.render('index', {
             articles,

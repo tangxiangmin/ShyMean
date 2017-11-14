@@ -9,7 +9,7 @@ const views = require("koa-views")
 const serve = require('koa-static')
 app.use(serve(path.join(__dirname)))
 
-const swigOptions = require("./lib/swig")
+require("./lib/swig")
 
 app.use(views(__dirname + '/views', {
     extension: "swig",

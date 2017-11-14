@@ -35,6 +35,10 @@
                             <i class="iconfont icon-info"></i>
                             <br>关于
                         </a>
+                        <a href="/friend" class="nav_item">
+                            <i class="iconfont icon-blog"></i>
+                            <br>友链
+                        </a>
                     </div>
                     <div class="contact">
                         <a href="https://github.com/tangxiangmin" target="_blank" class="contact_link">

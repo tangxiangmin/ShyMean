@@ -9,6 +9,7 @@
         {% for cate in categories %}
             <a href="/archive/{{ cate.name }}" class="category_item">
                {{ cate.name }}
+                ({{ cate.category_num }})
             </a>
         {% endfor %}
     </div>
@@ -21,21 +22,8 @@
     </div>
     <div class="tag">
         {% for tag in tags %}
-            {#{% set#}
-                {#var fontSize = "",#}
-                    {#num = tag.length;#}
-                {#if (num <= 2) {#}
-                    {#fontSize =  "text-xs";#}
-                {#} else if (num > 2 && num <= 5) {#}
-                    {#fontSize = "text-sm";#}
-                {#} else if (num > 5 && num <= 8) {#}
-                    {#fontSize = "text-md"#}
-                {#} else {#}
-                    {#fontSize = "text-lg";#}
-                {#}#}
-            {#%>#}
-            <a href="/archive/{{ tag.name }}" class="hover-highlight tag_item {{ 'text-xs' }}">
-                {{ tag.name }}
+            <a href="/archive/{{ tag.name }}" class="hover-highlight tag_item {{ tag.tag_num | tagSize }}">
+                {{ tag.name}}
             </a>
         {% endfor %}
     </div>

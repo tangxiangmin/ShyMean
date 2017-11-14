@@ -16,10 +16,10 @@
         <tbody>
         {% for book in books %}
             <tr>
-                <td>{{ 1 }}</td>
+                <td>{{ loop.index }}</td>
                 <td>{{book.name}}</td>
-                <td>{{book.created_at |　date("Y-m-d") }}</td>
-                <td>{{book.ended_at |　date("Y-m-d") }}</td>
+                <td>{{(book.created_at*1000) |　date("Y-m-d") }}</td>
+                <td>{{(book.ended_at*1000) |　date("Y-m-d") }}</td>
                 <td>
                     {% if book.status %}
                         <a href="{{ book.status }} ">读书笔记</a>

@@ -22,11 +22,11 @@
             {% endfor %}
         </div>
         <div class="article_ct">
-            {{ post.abstract | raw }}
+            {{ post.abstract | raw | marked }}
         </div>
         <div class="article_ft">
 
-            <a href="<%- 123 %>#more" class="hover-highlight">阅读全文
+            <a href="/article/{{ post.title }}" class="hover-highlight">阅读全文
             </a>
         </div>
     </article>

@@ -13,6 +13,10 @@
             </div>
         </div>
         <nav class="nav-responsive">
+            <a class="nav_item" href="/" title="首页">
+                <i class="iconfont icon-home"></i>
+                首页
+            </a>
             <a class="nav_item" href="/tags" title="标签">
                 <i class="iconfont icon-tag"></i>
                 标签
@@ -20,7 +24,7 @@
             <a class="nav_item" href="/archive" title="归档">
                 <i class="iconfont icon-archives"></i>
                 归档</a>
-            <a class="nav_item" href="/about" title="关于">关于</a>
+
         </nav>
     </div>
 </header>
