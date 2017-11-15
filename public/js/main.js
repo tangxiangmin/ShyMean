@@ -15,8 +15,28 @@ require.config({
     }
 });
 
+define("util", function () {
+    return {
+        debounce: function (fn, delay) {
+            var last;
+            return function () {
+                var ctx = this,
+                    args = arguments;
+                clearTimeout(last);
+
+                last = setTimeout(function () {
+
+                    fn.apply(ctx, args);
+
+                }, delay)
+            }
+
+        }
+    }
+})
+
 // 侧边栏
-define("aside", ["jquery"], function(){
+define("aside", ["jquery", "util"], function ($, util) {
     var Aside = {
         $switchBtn: $("#J_toggleSide"),
         init: function () {
@@ -24,7 +44,7 @@ define("aside", ["jquery"], function(){
                 $aside = $(".page_sd"),
                 $main = $("#blog");
 
-            $btn.on("click", function(){
+            $btn.on("click", function () {
                 $aside.toggleClass("active");
                 $main.toggleClass("active");
 
@@ -38,51 +58,74 @@ define("aside", ["jquery"], function(){
             })
         },
 
-        show: function(){
+        show: function () {
 
         },
-        hide: function(){},
+        hide: function () {
+        },
         backTop: {
-            speed: 2000,
+            speed: 300,
             $btn: $(".btn-top"),
             $body: $(document.body),
-            setVisible: function(){
+            setVisible: function () {
                 var $btn = this.$btn;
-                this.$body.scrollTop() > 200 ?  $btn.addClass("active") : $btn.removeClass("active");
+
+                $(document).scrollTop() > 200 ? $btn.addClass("active") : $btn.removeClass("active");
             },
 
-            listen: function(){
+            listen: function () {
                 var $btn = this.$btn,
                     $body = this.$body;
 
                 this.setVisible();
                 var self = this;
 
-                $(document).on("scroll", function () {
+                $(document).on("scroll", util.debounce(function () {
                     self.setVisible();
-                });
+                }, 50));
 
                 // todo debounce
                 $btn.on("click", function () {
-                    $body.animate({
+                    
+                    $("html, body").animate({
                         scrollTop: 0,
-                        speed: this.speed
-                    })
-                }.bind(this))
+                    }, self.speed )
+                })
             }
         },
     };
 
     return Aside;
 });
-define("tab", ["jquery"], function($){
+define("header", ["jquery"], function ($) {
+    return {
+        init: function () {
+            this._initDOM();
+            this.toggleNav();
+        },
+        _initDOM: function () {
+            var $header = $(".page_hd");
+            this.$btn = $header.find(".btn-list");
+            this.$nav = $header.find(".nav-responsive");
+        },
+        toggleNav: function () {
+            let $btn = this.$btn,
+                $nav = this.$nav;
+            $btn.on("click", function () {
+                $nav.toggleClass("active");
+            })
+        }
+    }
+})
+
+define("tab", ["jquery"], function ($) {
     $.fn.extend({
-        tab: function(){
-            return this.each(function(){
+        tab: function () {
+            return this.each(function () {
                 var $this = $(this),
                     $navItem = $this.find(".tab_item");
 
-                $navItem.on("click", function(){
+                $navItem.on("click", function () {
                     var $this = $(this);
                     var target = $this.data("target");
 
@@ -95,16 +138,16 @@ define("tab", ["jquery"], function($){
     })
 });
 
-require(["jquery", "hljs", "fancybox", "aside", "tab"], function(){
+require(["jquery", "fancybox", "aside", "tab", "header"], function () {
     var $ = require("jquery"),
-        hljs = require("hljs"),
-        Aside = require("aside");
+        Aside = require("aside"),
+        Header = require("header");
 
     var App = {
-        init: function(){
+        init: function () {
             Aside.backTop.listen();
             Aside.init();
-            hljs.initHighlightingOnLoad();
+            Header.init();
 
             $(".tab").tab();
 
