@@ -51,10 +51,18 @@ class IndexController {
         let categories = await tagModel.getCategories()
         let tags = await tagModel.getTags()
 
-        await ctx.render('tags', {
+        let data = {
             categories,
             tags
-        })
+        }
+
+        // todo 根据前后端渲染返回不同的数据
+        if (/^\/api/.test(ctx.request.url)){
+            ctx.body = data;
+        }else {
+            await ctx.render('tags', data)
+        }
+
     }
 
     async archive(ctx){

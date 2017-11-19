@@ -19,4 +19,8 @@ router.get("/about", Profile.about)
 router.get("/friend", Profile.friend)
 router.get("/message", Profile.message)
 
+//api router
+router.get("/api/tags", Index.tags)
+
+
 module.exports = router;

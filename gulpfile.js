@@ -13,14 +13,15 @@ let gulp        = require('gulp'),
     autoprefixer = require('gulp-autoprefixer');
 
 
+let config = require("./gulp-config");
 
 /* 路径配置 */
-const ASSETS_PATH = `./public`;
+const ASSETS_PATH = config.src;
 const STYLE_PATH = ASSETS_PATH + "/scss/**/*.scss";
 const SCRIPT_PATH = ASSETS_PATH + "/js";
 const SPRITE_PATH = ASSETS_PATH + "/sprite/**/*.png";
 
-const DEST_PATH = `./public`;
+const DEST_PATH = config.dist;
 const STYLE_DEST_PATH = DEST_PATH + "/css";
 const SCRIPT_DEST_PATH = DEST_PATH + "/js";
 const SPRITE_DEST_PATH = DEST_PATH + "/css/sprite";
@@ -55,10 +56,8 @@ gulp.task('scss:w', function () {
 
 // 脚本
 function parseJS() {
-    let PAGE_SCRIPT_PATH = SCRIPT_PATH + "/page";
-
     return gulp.src(SCRIPT_PATH + "/index.js")
-        .pipe(webpack(config.webpack(PAGE_SCRIPT_PATH)))
+        .pipe(webpack(config.webpack(SCRIPT_PATH)))
         .pipe(uglify())
         .pipe(gulp.dest(SCRIPT_DEST_PATH));
 }
