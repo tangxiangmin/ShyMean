@@ -7,7 +7,7 @@ let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
 class IndexController {
-    async index(ctx){
+    async index(ctx, next){
         let page = ctx.param && ctx.param.page || 1;
 
         // todo
@@ -17,15 +17,18 @@ class IndexController {
         let articles = await articleModel.getArticles(10, page-1);
         let total = await articleModel.count();
 
-        await ctx.render('index', {
+        ctx.state.data = {
             articles,
             total,
             page,
             pageSize: 10
-        })
+        }
+        ctx.state.view = "index"
+
+        await next();
     }
 
-    async article(ctx){
+    async article(ctx, next){
 
         let title = ctx.params.title;
 
@@ -38,34 +41,34 @@ class IndexController {
         let {catalogue, content } = formatCatalogue(htm)
         res.content = content
 
-
-        await ctx.render('article', {
+        ctx.state.data = {
             article: res,
             catalogue,
             prev,
             next
-        })
+        }
+
+        ctx.state.view = "article"
+
+        await next()
     }
 
-    async tags(ctx){
+    async tags(ctx, next){
         let categories = await tagModel.getCategories()
         let tags = await tagModel.getTags()
 
-        let data = {
+        ctx.state.data = {
             categories,
             tags
         }
 
-        // todo 根据前后端渲染返回不同的数据
-        if (/^\/api/.test(ctx.request.url)){
-            ctx.body = data;
-        }else {
-            await ctx.render('tags', data)
-        }
+        ctx.state.view = "tags"
+
+        await next()
 
     }
 
-    async archive(ctx){
+    async archive(ctx, next){
         let lists = [];
         let tag = ctx.params && ctx.params.tag;
 
@@ -96,20 +99,27 @@ class IndexController {
             }
         });
 
-        await ctx.render('archive', {
+        ctx.state.data = {
             articleGroup,
             total: lists.length,
             tag
-        })
+        }
+        ctx.state.view = "archive"
+
+        await next();
     }
 
-    async book(ctx){
+    async book(ctx, next){
 
         let books = await bookModel.getBooks();
 
-        await ctx.render('book', {
+        ctx.state.data = {
             books
-        })
+        }
+
+        ctx.state.view = "book"
+
+        await next()
     }
 
 }

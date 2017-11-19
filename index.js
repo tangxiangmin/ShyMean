@@ -32,4 +32,9 @@ app.use(async function(ctx, next){
 app.use(router.routes())
     .use(router.allowedMethods())
 
-app.listen(3000);
+
+let response = require("./isomorphic/response")
+
+app.use(response)
+
+app.listen(3000)
