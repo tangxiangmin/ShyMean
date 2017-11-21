@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/public/dist/fonts/iconfont.css">
 
     {#<script src="/public/dist/js/require.js" data-main="/public/dist/js/main"></script>#}
-    <script src="/public/dist/js/swig.min.js"></script>
+    <script src="//cdn.bootcss.com/swig/1.4.2/swig.js"></script>
     <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="/public/dist/js/index.js"></script>
 </head>

@@ -7,8 +7,9 @@ module.exports = async function(ctx){
     let url = ctx.request.url,
         data = ctx.state.data
 
+    let header = ctx.request.header;
 
-    if (/^\/api/.test(url)){
+    if (header['x-requested-with'] === 'XMLHttpRequest'){
 
         ctx.body = data;
 

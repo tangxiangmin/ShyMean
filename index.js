@@ -17,17 +17,10 @@ for(let key in filters){
     swig.setFilter(key, filters[key])
 }
 
-
-
 app.use(views(__dirname + '/views', {
     extension: "swig",
     // options: swigOptions
 }))
-
-app.use(async function(ctx, next){
-    console.log("recive")
-    await next()
-})
 
 app.use(router.routes())
     .use(router.allowedMethods())

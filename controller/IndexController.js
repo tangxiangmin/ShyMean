@@ -1,4 +1,3 @@
-
 let articleModel = require("../model/ArticleModel")
 let tagModel = require("../model/TagModel")
 let bookModel = require("../model/BookModel")
@@ -7,14 +6,14 @@ let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
 class IndexController {
-    async index(ctx, next){
+    async index(ctx, next) {
         let page = ctx.param && ctx.param.page || 1;
 
         // todo
         // 缓存
         // 分页类
 
-        let articles = await articleModel.getArticles(10, page-1);
+        let articles = await articleModel.getArticles(10, page - 1);
         let total = await articleModel.count();
 
         ctx.state.data = {
@@ -28,24 +27,24 @@ class IndexController {
         await next();
     }
 
-    async article(ctx, next){
+    async article(ctx, next) {
 
         let title = ctx.params.title;
 
         let res = await articleModel.getArticleByTitle(title)
-        let prev = await articleModel.getPrevArticle(res.created_at)
-        let next = await articleModel.getNextArticle(res.created_at)
+        let prevArticle = await articleModel.getPrevArticle(res.created_at)
+        let nextArticle = await articleModel.getNextArticle(res.created_at)
 
         let htm = marked(res.content)
 
-        let {catalogue, content } = formatCatalogue(htm)
+        let {catalogue, content} = formatCatalogue(htm)
         res.content = content
 
         ctx.state.data = {
             article: res,
             catalogue,
-            prev,
-            next
+            prev: prevArticle,
+            next: nextArticle
         }
 
         ctx.state.view = "article"
@@ -53,7 +52,7 @@ class IndexController {
         await next()
     }
 
-    async tags(ctx, next){
+    async tags(ctx, next) {
         let categories = await tagModel.getCategories()
         let tags = await tagModel.getTags()
 
@@ -68,14 +67,14 @@ class IndexController {
 
     }
 
-    async archive(ctx, next){
+    async archive(ctx, next) {
         let lists = [];
         let tag = ctx.params && ctx.params.tag;
 
-        if (tag){
+        if (tag) {
             // 标签、分类归档
             lists = await articleModel.getArticleByTag(tag);
-        }else {
+        } else {
             lists = await articleModel.getArchiveList();
         }
 
@@ -87,14 +86,14 @@ class IndexController {
             articles: []
         };
 
-        lists.forEach((val)=>{
-            if (val.year !== articleGroup[cursor].year){
+        lists.forEach((val) => {
+            if (val.year !== articleGroup[cursor].year) {
                 cursor++;
                 articleGroup[cursor] = {
                     year: val.year,
                     articles: [val]
                 };
-            }else {
+            } else {
                 articleGroup[cursor].articles.push(val);
             }
         });
@@ -109,7 +108,7 @@ class IndexController {
         await next();
     }
 
-    async book(ctx, next){
+    async book(ctx, next) {
 
         let books = await bookModel.getBooks();
 
@@ -124,6 +123,6 @@ class IndexController {
 
 }
 
-module.exports = ()=>{
+module.exports = () => {
     return new IndexController();
 }
