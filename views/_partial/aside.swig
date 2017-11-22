@@ -18,7 +18,7 @@
             <div class="tab_panel {% if !catalogue %} active {% endif %} " id="J_profile">
                 <div>
                     <div class="me">
-                        <img src="http://shymean.com/_nuxt/img/head.dd612ee.jpg" alt="shymean" width="100" height="100">
+                        <img src="/public/dist/img/avatar.jpg" alt="shymean" width="100" height="100">
                         <h3>shymean</h3>
                         <p>一个不学无术且无趣的人。</p>
                     </div>
@@ -27,10 +27,10 @@
                             <i class="iconfont icon-bookshelf"></i>
                             <br>书架
                         </a>
-                        <a href="/message" class="nav_item">
-                            <i class="iconfont icon-comment"></i>
-                            <br>留言
-                        </a>
+                        {#<a href="/message" class="nav_item">#}
+                            {#<i class="iconfont icon-comment"></i>#}
+                            {#<br>留言#}
+                        {#</a>#}
                         <a href="/about" class="nav_item">
                             <i class="iconfont icon-info"></i>
                             <br>关于
