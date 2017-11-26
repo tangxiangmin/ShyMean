@@ -85,13 +85,14 @@ $(function(){
 
             let tpls = {
                 '/': '/views/_page/index.swig',
+                '/\\d+': '/views/_page/index.swig',
                 '/article/.*?': '/views/_page/article.swig',
                 '/archive': '/views/_page/archive.swig',
                 '/archive/.*?': '/views/_page/archive.swig',
                 '/tags': '/views/_page/tags.swig',
                 '/book': '/views/_page/book.swig',
 
-                '/message': '/views/_page/message.swig',
+                // '/message': '/views/_page/message.swig',
                 '/friend': '/views/_page/friend.swig',
                 '/about': '/views/_page/about.swig',
             }

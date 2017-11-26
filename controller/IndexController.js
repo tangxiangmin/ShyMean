@@ -7,12 +7,9 @@ let formatCatalogue = require("../lib/catelogue")
 
 class IndexController {
     async index(ctx, next) {
-        let page = ctx.param && ctx.param.page || 1;
+        let page = ctx.params && ctx.params.page || 1;
 
-        // todo
-        // 缓存
         // 分页类
-
         let articles = await articleModel.getArticles(10, page - 1);
         let total = await articleModel.count();
 

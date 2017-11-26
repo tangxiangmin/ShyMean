@@ -49,6 +49,13 @@ class Router {
     }
 
     loadPage(href) {
+        let tpl = this.getTpl(href)
+
+        // 如果没有匹配路由，则按照普通链接跳转
+        if (!tpl){
+            return true
+        }
+
         let $main = this.$main,
             cache = this.cache
 
@@ -62,7 +69,6 @@ class Router {
 
         if (!cache[href]){
             // todo 决定只缓存模板还是缓存整个数据填充后的Html
-            let tpl = this.getTpl(href)
             handler.push($.get(tpl).then(res=>{
                 cache[href] = res;
             }))
@@ -79,6 +85,9 @@ class Router {
 
             this.render(htm)
         })
+
+        // 阻止默认跳转
+        return false
     }
 
     run(){
@@ -87,8 +96,7 @@ class Router {
         $(document).on("click", "a", function () {
 
             let href = $(this).attr("href")
-            self.loadPage(href)
-            return false;
+            return self.loadPage(href)
         })
 
         window.onpopstate = function (e) {

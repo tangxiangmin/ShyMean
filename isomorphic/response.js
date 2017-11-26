@@ -1,8 +1,5 @@
 // 根据渲染方式返回接口的数据或渲染模板中间件
 
-
-let tpls = require("./tpls")
-
 module.exports = async function(ctx){
     let url = ctx.request.url,
         data = ctx.state.data
