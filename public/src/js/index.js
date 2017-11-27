@@ -32,6 +32,7 @@ $(function(){
             this.responsiveNav()
             this.backTop()
             this.toggleAside()
+            this.tab()
         },
 
         responsiveNav(){
@@ -62,7 +63,26 @@ $(function(){
                 $btn.removeClass("hover");
             })
         },
+        tab(){
+            // todo rm
+            $.fn.extend({
+                tab:function () {
+                    return this.each(function () {
+                        let $this = $(this)
 
+                        let $items = $this.find(".tab_item")
+
+                        $items.on("click", function(){
+                            let target = $(this).data("target")
+                            $(this).addClass("active").siblings().removeClass("active");
+                            $(target).addClass("active").siblings().removeClass("active");
+                        })
+                    })
+                }
+            })
+
+            $(".tab").tab();
+        },
         backTop(){
             let $btn = $(".btn-top");
 
@@ -95,6 +115,7 @@ $(function(){
                 // '/message': '/views/_page/message.swig',
                 '/friend': '/views/_page/friend.swig',
                 '/about': '/views/_page/about.swig',
+                '/version': '/views/_page/version.swig',
             }
 
             let router = new Router(tpls, $main)

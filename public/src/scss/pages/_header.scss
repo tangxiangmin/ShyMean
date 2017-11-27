@@ -28,6 +28,16 @@
 	&:after {
 		bottom: -5px;
 	}
+	.version {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		transform: translateX(110%);
+		font-size: 40%;
+		&:hover {
+			color: $blue;
+		}
+	}
 }
 .nav-responsive {
 	font-size: 16px;

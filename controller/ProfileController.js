@@ -17,6 +17,11 @@ class ProfileController {
         ctx.state.view = "message"
         await next()
     }
+
+    async version(ctx, next){
+        ctx.state.view = "version"
+        await next()
+    }
 }
 
 module.exports = ()=>{

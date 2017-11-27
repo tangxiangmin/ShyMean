@@ -18,6 +18,7 @@ router.get("/book", Index.book)
 router.get("/about", Profile.about)
 router.get("/friend", Profile.friend)
 router.get("/message", Profile.message)
+router.get("/version", Profile.version)
 
 //api router
 router.get("/api/tags", Index.tags)

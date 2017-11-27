@@ -79,7 +79,7 @@ Object.assign(Article, {
     getArticleByTitle(title){
         return this.alias("a")
             .where("a.title", title)
-            .select(["a.id", "a.title", "FROM_UNIXTIME(a.created_at, '%Y-%m-%d %H:%i') AS created_at", "a.browse", "a.content"])
+            .select(["a.id", "a.title", "a.abstract", "FROM_UNIXTIME(a.created_at, '%Y-%m-%d %H:%i') AS created_at", "a.browse", "a.content"])
             .then(data=>{
                 return this.formatArticle(data).then(res=>{
                     return res[0]

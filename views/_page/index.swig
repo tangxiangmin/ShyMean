@@ -23,7 +23,7 @@
         </div>
         <div class="article_ft">
 
-            <a href="/article/{{ post.title }}" class="hover-highlight">阅读全文
+            <a href="/article/{{ post.title }}" title="阅读全文" class="hover-highlight">阅读全文
             </a>
         </div>
     </article>
