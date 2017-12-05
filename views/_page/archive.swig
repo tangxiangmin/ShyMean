@@ -1,3 +1,5 @@
+
+
 <div class="archives">
     <div class="archives_count">
         {% if tag %}
@@ -11,7 +13,7 @@
             <div class="archives_title"><strong>{{ group.year }}</strong></div>
             {% for item in group.articles %}
                 <div class="archives_item">
-                    <a href="/article/{{ item.title }}" class="archives_link">
+                    <a href="/article/{{ item.title }}" title="{{ item.title }}" class="archives_link">
                         <span class="archives_date">{{ item.created_at | date("Y-m-d") }}</span>
                         {{ item.title }}
                     </a>

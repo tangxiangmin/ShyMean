@@ -79,30 +79,42 @@ Object.assign(Article, {
     getArticleByTitle(title){
         return this.alias("a")
             .where("a.title", title)
-            .select(["a.id", "a.title", "a.abstract", "FROM_UNIXTIME(a.created_at, '%Y-%m-%d %H:%i') AS created_at", "a.browse", "a.content"])
+            .select(["a.id", "a.title", "a.abstract", "a.created_at", "a.browse", "a.content"])
             .then(data=>{
                 return this.formatArticle(data).then(res=>{
-                    return res[0]
+                    return res && res[0]
                 });
             })
     },
     getPrevArticle(created_at){
-        return this.where("created_at", ">", created_at)
-            .orderBy("created_at")
-            .limit(1)
-            .select("title")
-            .then(data=>{
-                return data && data[0] || {};
-            });
+        return this.query("SELECT title FROM shymean_article WHERE created_at > ? LIMIT 1", [
+            created_at
+        ]).then(data=>{
+            return data && data[0] || {};
+        })
+
+        // return this.where("created_at", ">", created_at)
+        //     .orderBy("created_at")
+        //     .limit(1)
+        //     .select("title")
+        //     .then(data=>{
+        //         return data && data[0] || {};
+        //     });
     },
     getNextArticle(created_at){
-        return this.where("created_at", "<", created_at)
-            .orderBy("created_at")
-            .limit(1)
-            .select("title")
-            .then(data=>{
-                return data && data[0] || {};
-            });
+        return this.query("SELECT title FROM shymean_article WHERE created_at < ? ORDER BY created_at DESC LIMIT 1", [
+            created_at
+        ]).then(data=>{
+            return data && data[0] || {};
+        })
+
+        // return this.where("created_at", "<", created_at)
+        //     .orderBy("created_at")
+        //     .limit(1)
+        //     .select("title")
+        //     .then(data=>{
+        //         return data && data[0] || {};
+        //     });
     },
     updateBrowse(id){
         // todo 文章自增

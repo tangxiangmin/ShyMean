@@ -37,8 +37,6 @@ let transition = {
             $load.show();
 
             $page.addClass("fadeOut")
-                .one('animationend', function(){
-                })
         }
     }
 

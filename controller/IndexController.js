@@ -36,9 +36,9 @@ class IndexController {
         let title = ctx.params.title;
 
         let res = await articleModel.getArticleByTitle(title)
+
         let prevArticle = await articleModel.getPrevArticle(res.created_at)
         let nextArticle = await articleModel.getNextArticle(res.created_at)
-
         let htm = marked(res.content)
 
         let {catalogue, content} = formatCatalogue(htm)

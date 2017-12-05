@@ -17,6 +17,12 @@
                         href="http://theme-next.iissnan.com/">Next</a>，项目托管在<a
                         href="https://github.com/tangxiangmin/ShyMean">github</a>，请多多指教。</p></div>
     </section>
+    <section><h3 class="about_hd">关于橙红年代</h3>
+        <div class="about_ct"><p>《橙红年代》里面，贝小帅望着刘子光说道：</p>
+            <p>"光哥，我以后要开一家网吧，楼上楼下几百台机子的那种"</p>
+            <p>这个场景，我无法忘记。</p>
+           </div>
+    </section>
     <section><h3 class="about_hd">其他</h3>
         <div class="about_ct"><p>版权声明：自由转载-非商用-保持署名。</p>
             <p>本站文章均为本人原创，参考文章我都会在文中进行声明，也请您转载时附上署名。</p></div>
