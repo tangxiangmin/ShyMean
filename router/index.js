@@ -4,6 +4,7 @@ let router = require("./router")
 // load controller
 let Index = require("../controller/IndexController")()
 let Profile = require("../controller/ProfileController")()
+let Test = require("../controller/TestController")()
 
 // define router
 router.get("/", Index.index)
@@ -20,8 +21,8 @@ router.get("/friend", Profile.friend)
 router.get("/message", Profile.message)
 router.get("/version", Profile.version)
 
-//api router
-router.get("/api/tags", Index.tags)
+
+router.get("/test", Test.index)
 
 
 module.exports = router;

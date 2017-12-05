@@ -2,14 +2,28 @@
 let swig = require("./tpl")
 let $ = require("jquery")
 
+
 class Router {
-    constructor(tpls, el){
+    /**
+     *
+     * @param tpls 模板配置文件
+     * @param el 页面容易元素
+     * @param transition 页面过渡效果
+     */
+    constructor(tpls, el, transition){
         this.tpls = tpls
 
         this.cache = {}
 
         this.$main = el
+
+        this.transition = transition
     }
+
+    install(plugin){
+        // todo 路由插件
+    }
+
 
     replaceUrl(url) {
         history.pushState({
@@ -39,11 +53,7 @@ class Router {
     render(htm) {
         let $main = this.$main
 
-        $main.removeClass("fadeOutRight")
-            .addClass("fadeInLeft")
-            .one('animationend', function(){
-                $(this).removeClass("fadeInLeft")
-            })
+        this.transition.in($main)
 
         $main.html(htm)
     }
@@ -59,7 +69,7 @@ class Router {
         let $main = this.$main,
             cache = this.cache
 
-        $main.addClass("fadeOutRight")
+        this.transition.out($main)
 
         this.replaceUrl(href)
 

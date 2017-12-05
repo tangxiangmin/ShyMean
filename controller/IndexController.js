@@ -2,6 +2,8 @@ let articleModel = require("../model/ArticleModel")
 let tagModel = require("../model/TagModel")
 let bookModel = require("../model/BookModel")
 
+let Pagination = require("../lib/Pagination")
+
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
@@ -10,15 +12,20 @@ class IndexController {
         let page = ctx.params && ctx.params.page || 1;
 
         // 分页类
-        let articles = await articleModel.getArticles(10, page - 1);
+        let pageSize = 10;
+        let articles = await articleModel.getArticles(pageSize, page - 1);
         let total = await articleModel.count();
+
+        let pagination = new Pagination(total.total, page, "", pageSize);
 
         ctx.state.data = {
             articles,
             total,
             page,
-            pageSize: 10
+            pageSize,
+            pagination: pagination.init()
         }
+
         ctx.state.view = "index"
 
         await next();

@@ -13,5 +13,4 @@
 
     {#<div class="pagination_item"><a href="/2" class="pagination_link"><i class="iconfont icon-forward"></i></a>#}
     {% endfor %}
-    </div>
 </nav>

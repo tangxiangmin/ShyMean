@@ -23,7 +23,12 @@
 	&_hd {
 
 	}
+
+
+
 	&_mn {
+		position: relative;
+
 		padding-top: 30px;
 		padding-bottom: 30px;
 		min-height: calc(100vh - 124px);
@@ -33,6 +38,14 @@
 				linear-gradient($color 1px,transparent 0),
 				linear-gradient(90deg, $color 1px,transparent 0);
 		background-size:$size, $size;
+	}
+
+	&_loading {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100px;
 	}
 
 	&_ft {

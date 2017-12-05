@@ -27,10 +27,10 @@
                             <i class="iconfont icon-bookshelf"></i>
                             <br>书架
                         </a>
-                        {#<a href="/message" class="nav_item">#}
-                            {#<i class="iconfont icon-comment"></i>#}
-                            {#<br>留言#}
-                        {#</a>#}
+                        <a href="/message" class="nav_item">
+                            <i class="iconfont icon-comment"></i>
+                            <br>留言
+                        </a>
                         <a href="/about" class="nav_item">
                             <i class="iconfont icon-info"></i>
                             <br>关于

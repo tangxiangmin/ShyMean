@@ -38,6 +38,7 @@
 	}
 }
 
+
 .article-detail {
 	&.article {
 		padding: 2em;
@@ -50,7 +51,7 @@
 		}
 
 		// 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
-		&_ct {
+		.article_ct {
 			margin: 10px 0;
 			line-height: 2em;
 
@@ -66,6 +67,11 @@
 				max-width: 100%;
 			}
 
+			td, th {
+				border: 1px solid $gray;
+				padding: 6px;
+				min-width: 6em;
+			}
 		}
 
 		&_tag {

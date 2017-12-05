@@ -4,9 +4,9 @@
 let $ = require("jquery")
 
 let Router = require("./router")
+let Transition = require("./transition")
 
 $(function(){
-
     let util = {
         debounce: function (fn, delay) {
             let last;
@@ -118,7 +118,7 @@ $(function(){
                 '/version': '/views/_page/version.swig',
             }
 
-            let router = new Router(tpls, $main)
+            let router = new Router(tpls, $main, Transition.Loading)
 
             router.run();
         }

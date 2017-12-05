@@ -17,7 +17,14 @@
                 <td>{{ loop.index }}</td>
                 <td>{{book.name}}</td>
                 <td>{{(book.created_at*1000) |　date("Y-m-d") }}</td>
-                <td>{{(book.ended_at*1000) |　date("Y-m-d") }}</td>
+
+                <td>
+                    {% if book.status %}
+                        {{(book.ended_at*1000) |　date("Y-m-d") }}
+                    {% else %}
+                        至今
+                    {% endif %}
+                </td>
                 <td>
                     {% if book.status %}
                         <a href="{{ book.status }} ">读书笔记</a>

@@ -28,14 +28,24 @@
     <script src="/public/dist/js/index.js"></script>
 </head>
 <body>
+
 <div id="blog" class="page page-theme-base">
+
     {% include './_partial/header.swig' %}
 
     <main class="page_mn" >
         <div class="container animated" id="page_wrap">
-
-        {% block main %}
-        {% endblock %}
+            {% block main %}
+            {% endblock %}
+        </div>
+        <div class="page_loading">
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </main>
 
