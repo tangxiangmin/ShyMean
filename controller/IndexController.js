@@ -2,7 +2,7 @@ let articleModel = require("../model/ArticleModel")
 let tagModel = require("../model/TagModel")
 let bookModel = require("../model/BookModel")
 
-let Pagination = require("../lib/Pagination")
+let Pagination = require("../lib/pagination")
 
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
@@ -39,6 +39,8 @@ class IndexController {
 
         let prevArticle = await articleModel.getPrevArticle(res.created_at)
         let nextArticle = await articleModel.getNextArticle(res.created_at)
+        // await articleModel.updateBrowse(res.id);
+
         let htm = marked(res.content)
 
         let {catalogue, content} = formatCatalogue(htm)

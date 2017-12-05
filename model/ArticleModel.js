@@ -58,7 +58,8 @@ Object.assign(Article, {
     },
     // 归档
     getArchiveList(){
-        return this.orderBy("created_at")
+        return this.where("status", 1)
+            .orderBy("created_at")
             .select(["id", "title", "FROM_UNIXTIME(created_at, '%Y-%m-%d %H:%i') AS created_at", "Year(FROM_UNIXTIME(created_at)) AS year"]);
     },
 
