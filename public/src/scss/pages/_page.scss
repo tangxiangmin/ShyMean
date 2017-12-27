@@ -10,6 +10,9 @@
 
 	&.active {
 		padding-right: 300px;
+		.catalogue {
+			display: none;
+		}
 	}
 
 	// reserve theme stylesheet
@@ -63,7 +66,7 @@
 
 		width: 320px;
 		height:100%;
-		padding: 0 $basepadding*2;
+		padding: $basepadding*2;
 
 		color: $text-gray;
 		text-align: center;

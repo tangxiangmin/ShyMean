@@ -20,7 +20,6 @@ module.exports = {
             externals: {
                 jquery: "window.jQuery",
                 swigjs: "window.swig"
-
             },
         }
     }

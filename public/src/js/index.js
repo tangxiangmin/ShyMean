@@ -1,12 +1,9 @@
-
-
-
 let $ = require("jquery")
 
 let Router = require("./router")
 let Transition = require("./transition")
 
-$(function(){
+$(function () {
     let util = {
         debounce: function (fn, delay) {
             let last;
@@ -26,16 +23,17 @@ $(function(){
     }
 
     let app = {
-        init(){
+        init() {
             this.setRouter()
 
             this.responsiveNav()
             this.backTop()
             this.toggleAside()
-            this.tab()
+
+            this.catalogue();
         },
 
-        responsiveNav(){
+        responsiveNav() {
             let $header = $(".page_hd");
 
             let $btn = $header.find(".btn-list"),
@@ -45,7 +43,7 @@ $(function(){
             })
         },
 
-        toggleAside(){
+        toggleAside() {
             let $btn = $("#J_toggleSide"),
                 $aside = $(".page_sd"),
                 $main = $("#blog");
@@ -63,27 +61,8 @@ $(function(){
                 $btn.removeClass("hover");
             })
         },
-        tab(){
-            // todo rm
-            $.fn.extend({
-                tab:function () {
-                    return this.each(function () {
-                        let $this = $(this)
 
-                        let $items = $this.find(".tab_item")
-
-                        $items.on("click", function(){
-                            let target = $(this).data("target")
-                            $(this).addClass("active").siblings().removeClass("active");
-                            $(target).addClass("active").siblings().removeClass("active");
-                        })
-                    })
-                }
-            })
-
-            $(".tab").tab();
-        },
-        backTop(){
+        backTop() {
             let $btn = $(".btn-top");
 
             $(document).on("scroll", util.debounce(function () {
@@ -94,13 +73,59 @@ $(function(){
             }, 50));
 
             $btn.on("click", function () {
-
                 $("html, body").animate({
                     scrollTop: 0,
-                }, self.speed )
+                }, self.speed)
             })
         },
-        setRouter(){
+
+        catalogue() {
+            
+            let $title = $(".article_ct h2"),
+                $catalogueItem = $(".catalogue_item.lv1");
+
+            // 找到当前视窗内的内容
+            function setCurrentCatalogue() {
+                if (!isArticlePage()) {
+                    return;
+                }
+
+                let i,
+                    len = $title.length;
+
+                for (i = 0; i < len; ++i) {
+                    let rectObject = $title[i].getBoundingClientRect();
+                    if (rectObject.top > 0) {
+                        break;
+                    }
+                }
+
+                i--;
+                if (i >= len) {
+                    i = len - 1;
+                } else if (i < 0) {
+                    i = 0;
+                }
+
+                $catalogueItem.removeClass("on").eq(i).addClass("on");
+            }
+
+            // todo 从Router暴露接口
+            function isArticlePage() {
+                let href = location.href;
+                return /article\/.*?/.test(href);
+            }
+
+            // 初始化
+            setCurrentCatalogue();
+
+            let listen = util.debounce(function () {
+                setCurrentCatalogue();
+            }, 50);
+
+            $(document).on("scroll", listen);
+        },
+        setRouter() {
             let $main = $("#page_wrap")
 
             let tpls = {
@@ -121,6 +146,12 @@ $(function(){
             let router = new Router(tpls, $main, Transition.Loading)
 
             router.run();
+
+            router.listen((item)=>{
+                this.catalogue();
+            })
+
+            this.router = router;
         }
     }
 

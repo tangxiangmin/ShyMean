@@ -18,6 +18,10 @@ class Router {
         this.$main = el
 
         this.transition = transition
+
+        this.cbs = [];
+
+        // todo 提供判断当前页面的接口
     }
 
     install(plugin){
@@ -40,6 +44,7 @@ class Router {
                 if (pageMap.hasOwnProperty(key)){
                     let re = new RegExp(`^${key}$`)
                     if (re.test(href)){
+
                         page = pageMap[key]
                         break
                     }
@@ -48,6 +53,10 @@ class Router {
         }
 
         return page
+    }
+
+    setTitle(title){
+        $("title").text(title);
     }
 
     render(htm) {
@@ -104,16 +113,36 @@ class Router {
         let self = this
 
         $(document).on("click", "a", function () {
-
             let href = $(this).attr("href")
-            return self.loadPage(href)
+
+            return self.change(href);
         })
 
         window.onpopstate = function (e) {
             let href = e.state.url
-            self.loadPage(href)
+
+            self.change(href)
         }
     }
+
+    change(href){
+
+        this.cbs.forEach(cb=>{
+            cb(this);
+        });
+
+        // todo 临时处理 修改页面标题
+        this.setTitle("橙红年代");
+
+        return this.loadPage(href);
+    }
+
+    listen(fn){
+        if (typeof fn === 'function'){
+            this.cbs.push(fn)
+        }
+    }
+
 }
 
 module.exports = Router;
