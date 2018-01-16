@@ -3,7 +3,7 @@
  */
 let Model = require("../core/Model");
 
-let Article = new Model("shymean_article");
+let Article = new Model("article");
 let Tag = require("./TagModel");
 let ArticleTag = require("./ArticleTagModel");
 
@@ -25,7 +25,7 @@ Object.assign(Article, {
 
             tasks.push(ArticleTag.alias("a_t")
                 .where("article_id", articleId)
-                .join("shymean_tag as t", "t.id", "a_t.tag_id")
+                .join("tag as t", "t.id", "a_t.tag_id")
                 .select("t.name, t.type").then(data=>{
                     data.forEach(tag=>{
                         let { type, name} = tag;
@@ -50,7 +50,7 @@ Object.assign(Article, {
             .limit(size-0)
             .offset(page*size || 0)
             .orderBy("created_at")
-            .select(["a.id", "a.title", "FROM_UNIXTIME(a.created_at, '%Y-%m-%d %H:%i') AS created_at", "a.browse", "a.abstract"])
+            .select(["a.id", "a.title", "a.created_at", "a.browse", "a.abstract"])
             .then(data=>{
                 return this.formatArticle(data);
             })
@@ -59,20 +59,30 @@ Object.assign(Article, {
     // 归档
     getArchiveList(){
         return this.where("status", 1)
-            .orderBy("created_at")
-            .select(["id", "title", "FROM_UNIXTIME(created_at, '%Y-%m-%d %H:%i') AS created_at", "Year(FROM_UNIXTIME(created_at)) AS year"]);
+          .orderBy("created_at")
+          .select([
+            "id",
+            "title",
+            "created_at",
+            "Year(created_at)AS year"
+          ]);
     },
 
     // 标签筛选文章列表
     getArticleByTag(tagname){
         // todo 标签和分类不会出现名称相同的情形
         return this.alias("a")
-            .distinct()
-            .where("t.id", "a_t.tag_id")
-            .join("shymean_tag AS t", "t.name", tagname)
-            .join("shymean_article_tag AS a_t", "a.id", "a_t.article_id")
-            .orderBy("created_at")
-            .select(["a.id", "a.title", "FROM_UNIXTIME(a.created_at, '%Y-%m-%d %H:%i') AS created_at", "Year(FROM_UNIXTIME(created_at)) AS year"])
+          .distinct()
+          .where("t.id", "a_t.tag_id")
+          .join("tag AS t", "t.name", tagname)
+          .join("article_tag AS a_t", "a.id", "a_t.article_id")
+          .orderBy("created_at")
+          .select([
+            "a.id",
+            "a.title",
+            "a.created_at",
+            "Year(a.created_at) AS year"
+          ]);
     },
 
 
@@ -88,34 +98,18 @@ Object.assign(Article, {
             })
     },
     getPrevArticle(created_at){
-        return this.query("SELECT title FROM shymean_article WHERE created_at > ? LIMIT 1", [
+        return this.query("SELECT title FROM article WHERE created_at > ? LIMIT 1", [
             created_at
         ]).then(data=>{
             return data && data[0] || {};
         })
-
-        // return this.where("created_at", ">", created_at)
-        //     .orderBy("created_at")
-        //     .limit(1)
-        //     .select("title")
-        //     .then(data=>{
-        //         return data && data[0] || {};
-        //     });
     },
     getNextArticle(created_at){
-        return this.query("SELECT title FROM shymean_article WHERE created_at < ? ORDER BY created_at DESC LIMIT 1", [
+        return this.query("SELECT title FROM article WHERE created_at < ? ORDER BY created_at DESC LIMIT 1", [
             created_at
         ]).then(data=>{
             return data && data[0] || {};
         })
-
-        // return this.where("created_at", "<", created_at)
-        //     .orderBy("created_at")
-        //     .limit(1)
-        //     .select("title")
-        //     .then(data=>{
-        //         return data && data[0] || {};
-        //     });
     },
     updateBrowse(id){
         // todo 文章自增

@@ -4,7 +4,7 @@
 let Model = require("../core/Model");
 let axios = require("axios");
 
-let Visitor = new Model("shymean_visitor");
+let Visitor = new Model("visitor");
 Object.assign(Visitor, {
     saveVisitRecord(ip, referrer = ""){
         return this.getIpLocation(ip).then(res=>{

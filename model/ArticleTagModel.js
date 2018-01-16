@@ -3,7 +3,7 @@
  */
 let Model = require("../core/Model");
 
-let articleTag = new Model("shymean_article_tag");
+let articleTag = new Model("article_tag");
 
 Object.assign(articleTag, {
 

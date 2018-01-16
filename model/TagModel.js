@@ -3,7 +3,7 @@
  */
 let Model = require("../core/Model");
 
-let tag = new Model("shymean_tag");
+let tag = new Model("tag");
 
 Object.assign(tag, {
     TYPE_TAG: 1,
@@ -11,7 +11,7 @@ Object.assign(tag, {
     getCategories(){
         return this.alias("t")
             .where("type", this.TYPE_CATEGORY)
-            .join("shymean_article_tag AS a_t", "t.id", "a_t.tag_id")
+            .join("article_tag AS a_t", "t.id", "a_t.tag_id")
             .groupBy("t.id")
             .select(["t.name", "t.id", "COUNT(*) AS category_num"]).then(data=>{
                 return data
@@ -20,7 +20,7 @@ Object.assign(tag, {
     getTags(){
         return this.alias("t")
             .where("type", this.TYPE_TAG)
-            .join("shymean_article_tag AS a_t", "t.id", "a_t.tag_id")
+            .join("article_tag AS a_t", "t.id", "a_t.tag_id")
             .groupBy("t.id")
             .select(["t.name", "t.id", "COUNT(*) AS tag_num"]);
     }

@@ -7,7 +7,7 @@
             <span class="show-sm">
                 <i class="iconfont icon-archives"></i>
             </span>
-            <time>{{ (article.created_at*1000) | date("Y-m-d") }}</time>
+            <time>{{ (article.created_at) | date("Y-m-d") }}</time>
             |
             <span class="hide-sm">分类于</span>
             <span class="show-sm"><i class="iconfont icon-tag"></i></span>

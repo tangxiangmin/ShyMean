@@ -3,7 +3,7 @@
  */
 let Model = require("../core/Model");
 
-let Book = new Model("shymean_book");
+let Book = new Model("book");
 
 Object.assign(Book, {
     getBooks(){
