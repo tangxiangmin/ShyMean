@@ -25,11 +25,13 @@
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
     "gulp-webpack": "^1.5.0",
-    "gulp.spritesmith": "^6.7.0"
+    "gulp.spritesmith": "^6.7.0",
+    "shelljs": "^0.8.1"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "supervisor -harmony index.js"
+    "dev": "supervisor -harmony index.js",
+    "deploy": "gulp deploy"
   },
   "repository": {
     "type": "git",

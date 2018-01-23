@@ -10,7 +10,8 @@ let gulp        = require('gulp'),
     spritesmith = require('gulp.spritesmith'),
     watch       = require("gulp-watch"),
     uglify      = require('gulp-uglify'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    shell = require('shelljs');
 
 
 let config = require("./gulp-config");
@@ -94,3 +95,18 @@ gulp.task("sprite", ["sprite:parse"], function () {
         if (err) throw err;
     });
 });
+
+gulp.task("deploy", function(){
+
+    let version = shell.exec('lsof -i:3000', {silent:true}).stdout;
+    let pid = /\s(\d+)\s/.exec(version)[1]
+
+    let script = [
+        "git pull origin master",
+        "forever stop 0",
+        `kill ${pid}`,
+        `forever start -c "npm run start" ./`
+    ]
+
+    shell.exec(script.join(";"));
+})

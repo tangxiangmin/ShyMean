@@ -20,7 +20,6 @@
     <section><h3 class="about_hd">关于橙红年代</h3>
         <div class="about_ct"><p>《橙红年代》里面，贝小帅望着刘子光说道：</p>
             <p>"光哥，我以后要开一家网吧，楼上楼下几百台机子的那种"</p>
-            <p>这个场景，我无法忘记。</p>
            </div>
     </section>
     <section><h3 class="about_hd">其他</h3>
