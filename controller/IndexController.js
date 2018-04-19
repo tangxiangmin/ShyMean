@@ -7,6 +7,7 @@ let Pagination = require("../lib/pagination")
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
+
 class IndexController {
     async index(ctx, next) {
         let page = ctx.params && ctx.params.page || 1;
@@ -17,6 +18,10 @@ class IndexController {
         let total = await articleModel.count();
 
         let pagination = new Pagination(total.total, page, "", pageSize);
+
+        articles.forEach(item=>{
+            item.abstract = marked(item.abstract)
+        })
 
         ctx.state.data = {
             articles,

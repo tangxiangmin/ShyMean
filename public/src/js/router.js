@@ -66,6 +66,13 @@ class Router {
 
         $main.html(htm)
     }
+    resetScrollTop(){
+        if (document.compatMode === "BackCompat"){
+            document.body.scrollTop = 0
+        }else {
+            document.documentElement.scrollTop = 0
+        }
+    }
 
     loadPage(href) {
         let tpl = this.getTpl(href)
@@ -91,7 +98,6 @@ class Router {
             handler.push($.get(tpl).then(res=>{
                 cache[href] = res;
             }))
-
         }
 
         Promise.all(handler).then(res=>{
@@ -103,6 +109,7 @@ class Router {
             // 缓存模板
 
             this.render(htm)
+            this.resetScrollTop()
         })
 
         // 阻止默认跳转
@@ -131,9 +138,7 @@ class Router {
             cb(this);
         });
 
-        // todo 临时处理 修改页面标题
         this.setTitle("橙红年代");
-
         return this.loadPage(href);
     }
 

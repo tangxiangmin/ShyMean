@@ -17,6 +17,7 @@ for(let key in filters){
     swig.setFilter(key, filters[key])
 }
 
+
 app.use(views(__dirname + '/views', {
     extension: "swig",
     // options: swigOptions
@@ -31,3 +32,4 @@ let response = require("./isomorphic/response")
 app.use(response)
 
 app.listen(3000)
+console.log('server listen at 3000')

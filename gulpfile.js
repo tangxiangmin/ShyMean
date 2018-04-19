@@ -11,7 +11,8 @@ let gulp        = require('gulp'),
     watch       = require("gulp-watch"),
     uglify      = require('gulp-uglify'),
     autoprefixer = require('gulp-autoprefixer'),
-    shell = require('shelljs');
+    shell = require('shelljs'),
+    cleanCSS     = require('gulp-clean-css');
 
 
 let config = require("./gulp-config");
@@ -28,17 +29,28 @@ const SCRIPT_DEST_PATH = DEST_PATH + "/js";
 const SPRITE_DEST_PATH = DEST_PATH + "/css/sprite";
 
 
+let env = gulp.env.env
+let isBuild = (env === 'production')
+
 // 样式表
 function parseSCSS() {
-    return gulp.src(STYLE_PATH)
-        .pipe(sourcemaps.init())
-        .pipe(sass.sync().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(STYLE_DEST_PATH));
+
+    if (isBuild) {
+        return gulp.src(STYLE_PATH)
+            .pipe(sass.sync().on('error', sass.logError))
+            .pipe(autoprefixer({
+                browsers: ['last 2 versions'],
+                cascade: false
+            }))
+            .pipe(cleanCSS())
+            .pipe(gulp.dest(STYLE_DEST_PATH));
+    } else {
+        return gulp.src(STYLE_PATH)
+            .pipe(sourcemaps.init())
+            .pipe(sass.sync().on('error', sass.logError))
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest(STYLE_DEST_PATH));
+    }
 }
 
 gulp.task('test', function () {
@@ -57,10 +69,16 @@ gulp.task('scss:w', function () {
 
 // 脚本
 function parseJS() {
-    return gulp.src(SCRIPT_PATH + "/index.js")
-        .pipe(webpack(config.webpack(SCRIPT_PATH)))
-        .pipe(uglify())
-        .pipe(gulp.dest(SCRIPT_DEST_PATH));
+    if (isBuild) {
+        return gulp.src(SCRIPT_PATH + "/index.js")
+            .pipe(webpack(config.webpack(SCRIPT_PATH)))
+            .pipe(uglify())
+            .pipe(gulp.dest(SCRIPT_DEST_PATH));
+    } else {
+        return gulp.src(SCRIPT_PATH + "/index.js")
+            .pipe(webpack(config.webpack(SCRIPT_PATH)))
+            .pipe(gulp.dest(SCRIPT_DEST_PATH));
+    }
 }
 gulp.task('js', function () {
     parseJS();

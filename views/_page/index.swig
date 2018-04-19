@@ -19,7 +19,7 @@
             {% endfor %}
         </div>
         <div class="article_ct">
-            {{ post.abstract | raw | marked }}
+            {{ post.abstract | raw }}
         </div>
         <div class="article_ft">
 

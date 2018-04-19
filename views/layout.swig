@@ -18,14 +18,13 @@
     {% endblock seo %}
 
 
-
     <link rel="stylesheet" href="/public/dist/css/blog.css">
     <link rel="stylesheet" href="/public/dist/css/animate.css">
     <link rel="stylesheet" href="/public/dist/fonts/iconfont.css">
 
-    <script src="//cdn.bootcss.com/swig/1.4.2/swig.js"></script>
-    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/public/dist/js/index.js"></script>
+    <script src="//cdn.bootcss.com/swig/1.4.2/swig.js" defer></script>
+    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="/public/dist/js/index.js" defer></script>
 </head>
 <body>
 

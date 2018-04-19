@@ -19,7 +19,9 @@ module.exports = {
             },
             externals: {
                 jquery: "window.jQuery",
-                swigjs: "window.swig"
+                swigjs: "window.swig",
+                marked: "window.marked",
+                'highlight.js': "window.hljs"
             },
         }
     }
