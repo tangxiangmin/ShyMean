@@ -7,6 +7,8 @@ let Pagination = require("../lib/pagination")
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
+let mongoCache = require('../core/Cache')
+
 
 class IndexController {
     async index(ctx, next) {
@@ -19,7 +21,7 @@ class IndexController {
 
         let pagination = new Pagination(total.total, page, "", pageSize);
 
-        articles.forEach(item=>{
+        articles.forEach(item => {
             item.abstract = marked(item.abstract)
         })
 
@@ -40,23 +42,31 @@ class IndexController {
 
         let title = ctx.params.title;
 
-        let res = await articleModel.getArticleByTitle(title)
+        // todo 缓存有效期
+        let data = await mongoCache.getArticle({title})
 
-        let prevArticle = await articleModel.getPrevArticle(res.created_at)
-        let nextArticle = await articleModel.getNextArticle(res.created_at)
-        // await articleModel.updateBrowse(res.id);
+        if (!data) {
+            let res = await articleModel.getArticleByTitle(title)
+            let prevArticle = await articleModel.getPrevArticle(res.created_at)
+            let nextArticle = await articleModel.getNextArticle(res.created_at)
 
-        let htm = marked(res.content)
+            let htm = marked(res.content)
 
-        let {catalogue, content} = formatCatalogue(htm)
-        res.content = content
+            let {catalogue, content} = formatCatalogue(htm)
+            res.content = content
 
-        ctx.state.data = {
-            article: res,
-            catalogue,
-            prev: prevArticle,
-            next: nextArticle
+            data = {
+                title,
+                article: res,
+                catalogue,
+                prev: prevArticle,
+                next: nextArticle
+            }
+
+            await mongoCache.saveArticle(data)
         }
+
+        ctx.state.data = data
 
         ctx.state.view = "article"
 
