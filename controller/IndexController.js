@@ -7,7 +7,7 @@ let Pagination = require("../lib/pagination")
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
-let mongoCache = require('../core/Cache')
+// let mongoCache = require('../core/Cache')
 
 
 class IndexController {
@@ -43,9 +43,9 @@ class IndexController {
         let title = ctx.params.title;
 
         // todo 缓存有效期
-        let data = await mongoCache.getArticle({title})
+        // let data = await mongoCache.getArticle({title})
 
-        if (!data) {
+        // if (!data) {
             let res = await articleModel.getArticleByTitle(title)
             let prevArticle = await articleModel.getPrevArticle(res.created_at)
             let nextArticle = await articleModel.getNextArticle(res.created_at)
@@ -63,8 +63,8 @@ class IndexController {
                 next: nextArticle
             }
 
-            await mongoCache.saveArticle(data)
-        }
+            // await mongoCache.saveArticle(data)
+        // }
 
         ctx.state.data = data
 
