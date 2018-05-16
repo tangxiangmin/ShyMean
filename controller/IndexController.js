@@ -45,23 +45,24 @@ class IndexController {
         // todo 缓存有效期
         // let data = await mongoCache.getArticle({title})
 
+
         // if (!data) {
-            let res = await articleModel.getArticleByTitle(title)
-            let prevArticle = await articleModel.getPrevArticle(res.created_at)
-            let nextArticle = await articleModel.getNextArticle(res.created_at)
+        let res = await articleModel.getArticleByTitle(title)
+        let prevArticle = await articleModel.getPrevArticle(res.created_at)
+        let nextArticle = await articleModel.getNextArticle(res.created_at)
 
-            let htm = marked(res.content)
+        let htm = marked(res.content)
 
-            let {catalogue, content} = formatCatalogue(htm)
-            res.content = content
+        let {catalogue, content} = formatCatalogue(htm)
+        res.content = content
 
-            data = {
-                title,
-                article: res,
-                catalogue,
-                prev: prevArticle,
-                next: nextArticle
-            }
+        let data = {
+            title,
+            article: res,
+            catalogue,
+            prev: prevArticle,
+            next: nextArticle
+        }
 
             // await mongoCache.saveArticle(data)
         // }
