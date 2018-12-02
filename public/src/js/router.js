@@ -1,4 +1,3 @@
-
 let swig = require("./tpl")
 let $ = require("jquery")
 
@@ -10,7 +9,7 @@ class Router {
      * @param el 页面容易元素
      * @param transition 页面过渡效果
      */
-    constructor(tpls, el, transition){
+    constructor(tpls, el, transition) {
         this.tpls = tpls
 
         this.cache = {}
@@ -21,10 +20,12 @@ class Router {
 
         this.cbs = [];
 
+        this.currentUrl = '';
+
         // todo 提供判断当前页面的接口
     }
 
-    install(plugin){
+    install(plugin) {
         // todo 路由插件
     }
 
@@ -39,11 +40,11 @@ class Router {
         let pageMap = this.tpls
         let page = pageMap[href]
 
-        if (!page){
-            for (let key in pageMap){
-                if (pageMap.hasOwnProperty(key)){
+        if (!page) {
+            for (let key in pageMap) {
+                if (pageMap.hasOwnProperty(key)) {
                     let re = new RegExp(`^${key}$`)
-                    if (re.test(href)){
+                    if (re.test(href)) {
 
                         page = pageMap[key]
                         break
@@ -55,7 +56,7 @@ class Router {
         return page
     }
 
-    setTitle(title){
+    setTitle(title) {
         $("title").text(title);
     }
 
@@ -66,10 +67,11 @@ class Router {
 
         $main.html(htm)
     }
-    resetScrollTop(){
-        if (document.compatMode === "BackCompat"){
+
+    resetScrollTop() {
+        if (document.compatMode === "BackCompat") {
             document.body.scrollTop = 0
-        }else {
+        } else {
             document.documentElement.scrollTop = 0
         }
     }
@@ -78,9 +80,14 @@ class Router {
         let tpl = this.getTpl(href)
 
         // 如果没有匹配路由，则按照普通链接跳转
-        if (!tpl){
+        if (!tpl) {
             return true
         }
+        if (this.currentUrl === href) {
+            return false
+        }
+
+        this.currentUrl = href;
 
         let $main = this.$main,
             cache = this.cache
@@ -93,14 +100,13 @@ class Router {
             $.get(`${href}`)
         ];
 
-        if (!cache[href]){
-            // todo 决定只缓存模板还是缓存整个数据填充后的Html
-            handler.push($.get(tpl).then(res=>{
+        if (!cache[href]) {
+            handler.push($.get(tpl).then(res => {
                 cache[href] = res;
             }))
         }
 
-        Promise.all(handler).then(res=>{
+        Promise.all(handler).then(res => {
             let data = res[0],
                 tpl = cache[href]
 
@@ -116,7 +122,7 @@ class Router {
         return false
     }
 
-    run(){
+    run() {
         let self = this
 
         $(document).on("click", "a", function () {
@@ -132,9 +138,9 @@ class Router {
         }
     }
 
-    change(href){
+    change(href) {
 
-        this.cbs.forEach(cb=>{
+        this.cbs.forEach(cb => {
             cb(this);
         });
 
@@ -142,8 +148,8 @@ class Router {
         return this.loadPage(href);
     }
 
-    listen(fn){
-        if (typeof fn === 'function'){
+    listen(fn) {
+        if (typeof fn === 'function') {
             this.cbs.push(fn)
         }
     }

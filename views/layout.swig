@@ -17,14 +17,24 @@
 
     {% endblock seo %}
 
+    {# 引入systemjs #}
+    <script type="systemjs-packagemap">
+        {
+          "packages": {
+            "swig": "//cdn.bootcss.com/swig/1.4.2/swig.js",
+            "jquery": "//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"
+          }
+        }
+    </script>
+    <script src="https://cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
 
-    <link rel="stylesheet" href="/public/dist/css/blog.css">
-    <link rel="stylesheet" href="/public/dist/css/animate.css">
-    <link rel="stylesheet" href="/public/dist/fonts/iconfont.css">
-
-    <script src="//cdn.bootcss.com/swig/1.4.2/swig.js" defer></script>
-    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js" defer></script>
-    <script src="/public/dist/js/index.js" defer></script>
+    {% if isDevelopment %}
+        <link rel="stylesheet" href="//localhost:8080/index.css">
+        <script src="//localhost:8080/index.js" defer></script>
+    {% else %}
+        <link rel="stylesheet" href="/public/dist/index.css">
+        <script src="/public/dist/index.js" defer></script>
+    {% endif %}
 </head>
 <body>
 
@@ -32,7 +42,7 @@
 
     {% include './_partial/header.swig' %}
 
-    <main class="page_mn" >
+    <main class="page_mn">
         <div class="container animated" id="page_wrap">
             {% block main %}
             {% endblock %}

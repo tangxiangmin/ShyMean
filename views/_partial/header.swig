@@ -25,6 +25,9 @@
             <a class="nav_item" href="/archive" title="归档">
                 <i class="iconfont icon-archives"></i>
                 归档</a>
+            <a class="nav_item" href="/fragment" title="碎片">
+                <i class="iconfont icon-archives"></i>
+                碎片</a>
 
         </nav>
     </div>

@@ -1,5 +1,6 @@
-let $ = require("jquery")
 
+
+let $ = require("jquery")
 let Router = require("./router")
 let Transition = require("./transition")
 
@@ -154,4 +155,5 @@ let app = {
     }
 }
 
-app.init();
+
+module.exports = app

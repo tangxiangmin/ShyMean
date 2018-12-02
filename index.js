@@ -1,3 +1,6 @@
+console.log('当前运行环境:' + process.env.NODE_ENV)
+
+
 const path = require("path")
 
 const Koa = require("koa")
@@ -13,10 +16,9 @@ app.use(serve(path.join(__dirname)))
 let filters = require("./lib/swig")
 let swig = require("swig")
 
-for(let key in filters){
+for (let key in filters) {
     swig.setFilter(key, filters[key])
 }
-
 
 app.use(views(__dirname + '/views', {
     extension: "swig",

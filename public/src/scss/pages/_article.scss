@@ -1,92 +1,92 @@
 @media screen and (min-width: nth(nth($breakPoint, 2), 1)) {
-  .article-detail {
-    @include page-shadow;
-  }
+    .article-detail {
+        @include page-shadow;
+        padding: 2em;
+    }
 }
 
 .article {
-  margin-bottom: 3rem;
-  font-size: 16px;
-  color: #333;
-  .show-sm {
-    display: inline-block;
-  }
-
-  &_hd {
-    font-weight: normal;
-  }
-
-  &_tt {
-    @extend %hover-underline;
-  }
-
-  &_info {
-    @include text-sm;
-    color: $text-gray;
-    word-spacing: 3px;
-    i {
-      margin: 0 3px;
+    margin-bottom: 3rem;
+    font-size: 16px;
+    color: #333;
+    .show-sm {
+        display: inline-block;
     }
-  }
 
-  &_ft {
-    margin: 1rem 0;
-  }
+    &_hd {
+        font-weight: normal;
+    }
 
-  &_nav {
-    @include clearfix;
-  }
+    &_tt {
+        @extend %hover-underline;
+    }
+
+    &_info {
+        @include text-sm;
+        color: $text-gray;
+        word-spacing: 3px;
+        i {
+            margin: 0 3px;
+        }
+    }
+
+    &_ft {
+        margin: 1rem 0;
+    }
+
+    &_nav {
+        @include clearfix;
+    }
 }
 
 .article-detail {
-  &.article {
-    padding: 2em;
-    &_prev {
-      float: left;
-    }
-
-    &_next {
-      float: right;
-    }
-
-    // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
-    .article_ct {
-      margin: 10px 0;
-      line-height: 2em;
-
-      a {
-        color: $cyan;
-        text-decoration: underline;
-        &:hover {
-          color: darken($cyan, 20%);
+    &.article {
+        &_prev {
+            float: left;
         }
-      }
 
-      img {
-        max-width: 100%;
-      }
+        &_next {
+            float: right;
+        }
 
-      td, th {
-        border: 1px solid $gray;
-        padding: 6px;
-        min-width: 6em;
-      }
-    }
+        // 文章的主要样式，一部分在markdown.scss中定义，另一部分常规标签需要在这里限制
+        .article_ct {
+            margin: 10px 0;
+            line-height: 2em;
 
-    &_tag {
-      display: inline-block;
-      background-color: $gray;
-      font-size: 14px;
-      padding: 5px;
-      margin-right: 5px;
-      &:hover {
-        background-color: darken(#f6f8fa, 20%);
-        color: lighten($gray, 20%);
-      }
+            a {
+                color: $cyan;
+                text-decoration: underline;
+                &:hover {
+                    color: darken($cyan, 20%);
+                }
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            td, th {
+                border: 1px solid $gray;
+                padding: 6px;
+                min-width: 6em;
+            }
+        }
+
+        &_tag {
+            display: inline-block;
+            background-color: $gray;
+            font-size: 14px;
+            padding: 5px;
+            margin-right: 5px;
+            &:hover {
+                background-color: darken(#f6f8fa, 20%);
+                color: lighten($gray, 20%);
+            }
+        }
+        &_prev, &_next {
+            max-width: 45%;
+            @include text-overflow;
+        }
     }
-    &_prev, &_next {
-      max-width: 45%;
-      @include text-overflow;
-    }
-  }
 }
