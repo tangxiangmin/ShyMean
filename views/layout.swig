@@ -33,8 +33,8 @@
         <link rel="stylesheet" href="//localhost:7999/index.css">
         <script src="//localhost:7999/index.js" defer></script>
     {% else %}
-        <link rel="stylesheet" href="/public/dist/index.css">
-        <script src="/public/dist/index.js" defer></script>
+        <link rel="stylesheet" href="/public/bundle/index.css">
+        <script src="/public/bundle/index.js" defer></script>
     {% endif %}
 </head>
 <body>
