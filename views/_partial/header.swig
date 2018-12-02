@@ -2,7 +2,7 @@
     <div class="container header">
         <h1 class="logo">
             <a href="/" title="橙红年代">橙红年代</a>
-            <a href="/version" title="博客版本记录" class="version"><sub>V0.4</sub></a>
+            <a href="/version" title="博客版本记录" class="version"><sub>V0.5</sub></a>
         </h1>
         <div class="show-md">
             <div class="btn-list">
@@ -25,10 +25,9 @@
             <a class="nav_item" href="/archive" title="归档">
                 <i class="iconfont icon-archives"></i>
                 归档</a>
-            <a class="nav_item" href="/fragment" title="碎片">
-                <i class="iconfont icon-archives"></i>
-                碎片</a>
-
+            <a class="nav_item" href="/demo" title="项目">
+                <i class="iconfont icon-code"></i>
+                项目</a>
         </nav>
     </div>
 </header>

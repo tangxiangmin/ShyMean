@@ -1,7 +1,11 @@
-
-
 <div class="about">
     <p>相关版本代码位于<a href="https://github.com/tangxiangmin/ShyMean">github</a>对应分支上。</p>
+    <section>
+        <h3 class="about_hd">V0.5.0</h3>
+        <div class="about_ct">
+            <p>重构了静态资源开发环境，优化打包部署流程，前后端同构渲染解耦</p>
+        </div>
+    </section>
     <section>
         <h3 class="about_hd">V0.4.0</h3>
         <div class="about_ct">
@@ -27,7 +31,7 @@
     <section>
         <h3 class="about_hd">V0.1.0</h3>
         <div class="about_ct">
-            <p>由于虚拟主机的限制，后端使用PHP响应请求及提供数据，前端使用JavaScript进行页面渲染和数据处理，前后端基本分离。</p>
+            <p>后端使用PHP响应请求及提供数据，前端使用JavaScript进行页面渲染和数据处理，前后端基本分离。</p>
         </div>
     </section>
 </div>

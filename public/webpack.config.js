@@ -63,7 +63,7 @@ module.exports = {
     devServer: {//配置此静态文件服务器，可以用来预览打包后项目
         contentBase: path.resolve(__dirname, './'),//开发服务运行时的文件根目录
         host: 'localhost',//主机地址
-        port: 8080,//端口号
+        port: 7999,//端口号
         compress: true//开发服务器是否启动gzip等压缩
     }
 

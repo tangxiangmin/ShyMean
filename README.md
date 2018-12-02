@@ -5,7 +5,23 @@ ShyMean
 * [博客链接](http://shymean.com)
 * [开发记录](./doc/)
 
+## 指令
+开发环境
+```
+# 启动spervisor服务器
+npm run dev
 
+# 启动静态资源服务器
+npm run static 
+```
+
+生成环境
+```
+# 静态资源打包
+npm run build
+# 启动服务器
+npm run start
+```
 
 ## 版本记录
 

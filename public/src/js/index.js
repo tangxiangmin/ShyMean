@@ -1,5 +1,3 @@
-
-
 let $ = require("jquery")
 let Router = require("./router")
 let Transition = require("./transition")
@@ -141,13 +139,14 @@ let app = {
             '/friend': '/views/_page/friend.swig',
             '/about': '/views/_page/about.swig',
             '/version': '/views/_page/version.swig',
+            '/demo': '/views/_page/demo.swig',
         }
 
         let router = new Router(tpls, $main, Transition.Loading)
 
         router.run();
 
-        router.listen((item)=>{
+        router.listen((item) => {
             this.catalogue();
         })
 

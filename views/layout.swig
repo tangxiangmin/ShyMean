@@ -10,6 +10,7 @@
     <meta name="baiduspider" content="all">
     <meta name="renderer" content="webkit">
 
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
     {% block seo %}
         <title>橙红年代</title>
         <meta name="keywords" content="shymean,橙红年代,前端开发,个人博客,HTML,CSS,JavaScript">
@@ -29,8 +30,8 @@
     <script src="https://cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
 
     {% if isDevelopment %}
-        <link rel="stylesheet" href="//localhost:8080/index.css">
-        <script src="//localhost:8080/index.js" defer></script>
+        <link rel="stylesheet" href="//localhost:7999/index.css">
+        <script src="//localhost:7999/index.js" defer></script>
     {% else %}
         <link rel="stylesheet" href="/public/dist/index.css">
         <script src="/public/dist/index.js" defer></script>
