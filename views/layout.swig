@@ -10,13 +10,16 @@
     <meta name="baiduspider" content="all">
     <meta name="renderer" content="webkit">
 
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
     {% block seo %}
         <title>橙红年代</title>
         <meta name="keywords" content="shymean,橙红年代,前端开发,个人博客,HTML,CSS,JavaScript">
         <meta name="describle" content="shymean前端开发个人博客,专注web前端、后端开发技术，总结工作经历及心得。">
 
     {% endblock seo %}
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
+
+    {% block css %}{% endblock css %}
 
     {# 引入systemjs #}
     <script type="systemjs-packagemap">

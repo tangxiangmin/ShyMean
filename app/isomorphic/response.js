@@ -17,7 +17,14 @@ module.exports = async function (ctx) {
         // 需要将路由映射到对应的模板，
         // 这里暂时约定通过ctx.state传递
         data = Object.assign({}, data, renderData)
-        await ctx.render(ctx.state.view, data)
+        try {
+            let tpl = ctx.state.view || "404"
+            tpl = "404"
+            await ctx.render(tpl, data)
+        } catch (e) {
+            console.log("模板渲染错误...")
+            console.log(e)
+        }
     }
 }
 

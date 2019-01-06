@@ -7,11 +7,12 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let pageExtractTextPlugin = new ExtractTextPlugin("index.css");
 
 module.exports = {
+    devtool: "source-map", //
     entry: {
-        index: path.resolve(__dirname, './src/index.js'),
+        index: path.resolve(__dirname, './index.js'),
     },
     output: {
-        path: path.resolve(__dirname, './bundle'),
+        path: path.resolve(__dirname, '../public/bundle'),
         filename: "[name].js"
     },
     module: {

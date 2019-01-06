@@ -19,14 +19,14 @@ let swig = require("swig")
 for (let key in filters) {
     swig.setFilter(key, filters[key])
 }
-
-app.use(views(__dirname + '/views', {
+app.use(views(path.resolve(__dirname, '../views'), {
     extension: "swig",
     // options: swigOptions
 }))
 
 app.use(router.routes())
     .use(router.allowedMethods())
+
 
 let response = require("./isomorphic/response")
 

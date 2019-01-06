@@ -31,11 +31,11 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "start": "export NODE_ENV=production && node index.js",
-    "build": "webpack --config=public/webpack.config.js",
-    "dev": "export NODE_ENV=development && supervisor -harmony index.js",
+    "start": "export NODE_ENV=production && node ./app/index.js",
+    "build": "webpack --config=static/webpack.config.js",
+    "dev": "export NODE_ENV=development && supervisor -harmony ./app/index.js",
     "deploy": "node ./scripts/deploy.js",
-    "static": "webpack-dev-server --inline --config=public/webpack.config.js --mode=development"
+    "static": "webpack-dev-server --inline --config=static/webpack.config.js --mode=development"
   },
   "repository": {
     "type": "git",
