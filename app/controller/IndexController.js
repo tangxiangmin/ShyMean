@@ -16,7 +16,8 @@ class IndexController {
 
         // 分页类
         let pageSize = 10;
-        let articles = await articleModel.getArticles(pageSize, page - 1);
+        let articles =   await articleModel.getArticles(pageSize, page - 1);
+
         let total = await articleModel.count();
 
         let pagination = new Pagination(total.total, page, "", pageSize);

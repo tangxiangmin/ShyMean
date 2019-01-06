@@ -13,7 +13,7 @@ function deploy() {
 
     let script = [
         "git pull origin master",
-        "npm run build",
+        // "npm run build",
         "forever stop 0",
         ( pid && `kill ${pid}`) || '',
         `forever start -c "npm run start" ./`

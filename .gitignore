@@ -3,5 +3,6 @@ node_modules
 .DS_Store
 
 config/db.json
-public/bundle/
-app/build/map.json
+# 本来下面两个文件需要忽略的，由于远程机器性能比较低，因此本地打包并放在版本库中
+#public/bundle/
+#app/build/map.json

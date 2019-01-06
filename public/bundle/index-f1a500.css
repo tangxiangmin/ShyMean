@@ -3,20 +3,12 @@
   height: 30px;
   background: #333;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  justify-content: center;
+  align-items: center; }
 
 .hover-highlight {
   color: #666;
-  -webkit-transition: border-color ease .3s;
-  -o-transition: border-color ease .3s;
   transition: border-color ease .3s;
   border-bottom: 1px solid #d6d6d6; }
   .hover-highlight:hover {
@@ -33,16 +25,10 @@
     height: 2px;
     width: 100%;
     background: currentcolor;
-    -webkit-transform: scaleX(0);
-        -ms-transform: scaleX(0);
-            transform: scaleX(0);
-    -webkit-transition: all ease .2s;
-    -o-transition: all ease .2s;
+    transform: scaleX(0);
     transition: all ease .2s; }
   .article_tt:hover:after {
-    -webkit-transform: scaleX(1);
-        -ms-transform: scaleX(1);
-            transform: scaleX(1); }
+    transform: scaleX(1); }
 
 /* ---color--- */
 .bg-red {
@@ -132,20 +118,12 @@
   height: 30px;
   background: #333;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  justify-content: center;
+  align-items: center; }
 
 .hover-highlight {
   color: #666;
-  -webkit-transition: border-color ease .3s;
-  -o-transition: border-color ease .3s;
   transition: border-color ease .3s;
   border-bottom: 1px solid #d6d6d6; }
   .hover-highlight:hover {
@@ -162,16 +140,10 @@
     height: 2px;
     width: 100%;
     background: currentcolor;
-    -webkit-transform: scaleX(0);
-        -ms-transform: scaleX(0);
-            transform: scaleX(0);
-    -webkit-transition: all ease .2s;
-    -o-transition: all ease .2s;
+    transform: scaleX(0);
     transition: all ease .2s; }
   .article_tt:hover:after {
-    -webkit-transform: scaleX(1);
-        -ms-transform: scaleX(1);
-            transform: scaleX(1); }
+    transform: scaleX(1); }
 
 .fl {
   float: left; }
@@ -234,16 +206,10 @@
     height: 2px;
     width: 100%;
     background: #333;
-    -webkit-transform: scaleX(0);
-        -ms-transform: scaleX(0);
-            transform: scaleX(0);
-    -webkit-transition: all ease .3s;
-    -o-transition: all ease .3s;
+    transform: scaleX(0);
     transition: all ease .3s; }
   .hover-underline:hover:after {
-    -webkit-transform: scaleX(1);
-        -ms-transform: scaleX(1);
-            transform: scaleX(1); }
+    transform: scaleX(1); }
 
 /* ---particle end--- */
 /* ---reset--- */
@@ -285,8 +251,7 @@ textarea {
   outline: 0; }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 /* ---end reset--- */
 /* ---font--- */
@@ -726,40 +691,24 @@ html {
   height: 30px;
   background: #333;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  justify-content: center;
+  align-items: center; }
 
 .btn-list.hover .btn-line:first-child {
-  -webkit-transform: translate(-8px, 6px) rotate(-45deg);
-      -ms-transform: translate(-8px, 6px) rotate(-45deg);
-          transform: translate(-8px, 6px) rotate(-45deg); }
+  transform: translate(-8px, 6px) rotate(-45deg); }
 
 .btn-list.hover .btn-line:last-child {
-  -webkit-transform: translate(-8px, -6px) rotate(45deg);
-      -ms-transform: translate(-8px, -6px) rotate(45deg);
-          transform: translate(-8px, -6px) rotate(45deg); }
+  transform: translate(-8px, -6px) rotate(45deg); }
 
 .btn-list.close .btn-line {
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center; }
+  transform-origin: center; }
   .btn-list.close .btn-line:nth-of-type(2) {
     opacity: 0; }
   .btn-list.close .btn-line:first-child {
-    -webkit-transform: translateY(8px) rotate(-45deg);
-        -ms-transform: translateY(8px) rotate(-45deg);
-            transform: translateY(8px) rotate(-45deg); }
+    transform: translateY(8px) rotate(-45deg); }
   .btn-list.close .btn-line:last-child {
-    -webkit-transform: translateY(-8px) rotate(45deg);
-        -ms-transform: translateY(-8px) rotate(45deg);
-            transform: translateY(-8px) rotate(45deg); }
+    transform: translateY(-8px) rotate(45deg); }
 
 .btn-list .btn-icon {
   overflow: hidden;
@@ -771,8 +720,6 @@ html {
     width: 20px;
     height: 2px;
     background: #fff;
-    -webkit-transition: all linear .3s;
-    -o-transition: all linear .3s;
     transition: all linear .3s; }
 
 .btn {
@@ -881,17 +828,12 @@ html {
   .article_prev, .article_next {
     max-width: 45%;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap; }
 
 .pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 3rem;
   border-top: 1px solid #f8f8f8; }
   .pagination .page-number, .pagination .next, .pagination .prev, .pagination .pagination_link, .pagination .pagination_space {
@@ -903,8 +845,6 @@ html {
     font-size: 14px;
     text-align: center;
     color: #999;
-    -webkit-transition: all linear .3s;
-    -o-transition: all linear .3s;
     transition: all linear .3s; }
     .pagination .page-number:before, .pagination .next:before, .pagination .prev:before, .pagination .pagination_link:before, .pagination .pagination_space:before {
       content: '';
@@ -982,8 +922,7 @@ blockquote {
     width: 200px;
     line-height: 30px;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap; }
     .catalogue .catalogue_item.lv1 {
       position: relative;
@@ -1022,24 +961,19 @@ blockquote {
     display: block;
     line-height: 30px;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap; }
 
 .tab {
   font-size: 16px; }
   .tab_nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     height: 40px;
     margin: 0;
     padding: 0;
     list-style: none; }
   .tab_item {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
     line-height: 40px;
     margin: 0 10px;
     color: #999;
@@ -1064,8 +998,6 @@ blockquote {
     border-bottom: 1px solid #d6d6d6;
     width: 16em;
     padding-right: 30px;
-    -webkit-transition: all ease .3s;
-    -o-transition: all ease .3s;
     transition: all ease .3s; }
     .search_input:focus {
       border-color: #fff; }
@@ -1189,8 +1121,6 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   font-style: italic; }
 
 .page {
-  -webkit-transition: all ease 0.3s;
-  -o-transition: all ease 0.3s;
   transition: all ease 0.3s; }
   .page .container {
     padding-left: 15px;
@@ -1206,8 +1136,6 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     padding-top: 30px;
     padding-bottom: 30px;
     min-height: calc(100vh - 124px);
-    background-image: -webkit-linear-gradient(#f5f5f5 1px, transparent 0), -webkit-linear-gradient(left, #f5f5f5 1px, transparent 0);
-    background-image: -o-linear-gradient(#f5f5f5 1px, transparent 0), -o-linear-gradient(left, #f5f5f5 1px, transparent 0);
     background-image: linear-gradient(#f5f5f5 1px, transparent 0), linear-gradient(90deg, #f5f5f5 1px, transparent 0);
     background-size: 30px 30px, 30px 30px; }
   .page_loading {
@@ -1231,16 +1159,10 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     color: #999;
     text-align: center;
     background-color: #333;
-    -webkit-transition: all ease 0.3s;
-    -o-transition: all ease 0.3s;
     transition: all ease 0.3s;
-    -webkit-transform: translateX(320px);
-        -ms-transform: translateX(320px);
-            transform: translateX(320px); }
+    transform: translateX(320px); }
     .page_sd.active {
-      -webkit-transform: translateX(0);
-          -ms-transform: translateX(0);
-              transform: translateX(0); }
+      transform: translateX(0); }
     .page_sd a:hover {
       color: #fff; }
     .page_sd .me {
@@ -1285,42 +1207,25 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .tool .btn-top {
   bottom: 20px;
   color: #fff;
-  -webkit-transition: all linear .3s;
-  -o-transition: all linear .3s;
   transition: all linear .3s;
-  -webkit-transform: translateY(80px);
-      -ms-transform: translateY(80px);
-          transform: translateY(80px); }
+  transform: translateY(80px); }
   .tool .btn-top i {
     font-size: 20px;
-    -webkit-transition: all ease .2s;
-    -o-transition: all ease .2s;
     transition: all ease .2s; }
   .tool .btn-top:hover i {
-    -webkit-transform: translateY(-2px);
-        -ms-transform: translateY(-2px);
-            transform: translateY(-2px); }
+    transform: translateY(-2px); }
   .tool .btn-top.active {
-    -webkit-transform: translateY(0px);
-        -ms-transform: translateY(0px);
-            transform: translateY(0px); }
+    transform: translateY(0px); }
 
 .header {
   background-color: #f5f5f5;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; }
 
 .logo {
   margin: 0;
@@ -1340,9 +1245,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     position: absolute;
     right: 0;
     bottom: 0;
-    -webkit-transform: translateX(110%);
-        -ms-transform: translateX(110%);
-            transform: translateX(110%);
+    transform: translateX(110%);
     font-size: 40%; }
     .logo .version:hover {
       color: #3366FF; }
@@ -1352,10 +1255,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
 @media screen and (max-width: 920px) {
   .nav-responsive {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
+    flex-basis: 100%;
+    flex-shrink: 0;
     height: 0;
     overflow: hidden; }
     .nav-responsive.active {
@@ -1369,15 +1270,11 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 @media screen and (min-width: 920px) {
   .nav-responsive {
     float: right;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex; }
     .nav-responsive .nav_item {
       display: block;
       padding: 5px 10px;
       border-radius: 3px;
-      -webkit-transition: background ease .2s;
-      -o-transition: background ease .2s;
       transition: background ease .2s; }
       .nav-responsive .nav_item:hover {
         background: #e8e8e8; } }
@@ -1460,8 +1357,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   .archives_link {
     display: block;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap; }
   .archives_date {
     font-size: 12px;
@@ -1473,15 +1369,11 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     background-color: #fff;
     outline: 1px solid #ddd;
     z-index: 100;
-    -webkit-box-shadow: 7px 6px 16px #888;
-            box-shadow: 7px 6px 16px #888;
-    -webkit-transition: all ease .3s;
-    -o-transition: all ease .3s;
+    box-shadow: 7px 6px 16px #888;
     transition: all ease .3s;
     padding: 2em; }
     .article-detail:hover {
-      -webkit-box-shadow: 14px 11px 27px #888;
-              box-shadow: 14px 11px 27px #888; } }
+      box-shadow: 14px 11px 27px #888; } }
 
 .article {
   margin-bottom: 3rem;
@@ -1540,8 +1432,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .article-detail.article_prev, .article-detail.article_next {
   max-width: 45%;
   overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap; }
 
 .book {
@@ -1575,5 +1466,3 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   text-decoration: underline; }
   .about a:hover {
     color: #0040ff; }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

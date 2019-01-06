@@ -1,7 +1,7 @@
 {
-  "host": "localhost",
+  "host": "45.77.153.232",
   "user": "root",
-  "password": "",
+  "password": "happyday",
   "database": "blog",
   "port": 3306
 }

@@ -10,7 +10,7 @@ let ArticleTag = require("./ArticleTagModel");
 Object.assign(Article, {
     count(){
         return this.select(["COUNT(*) AS total"]).then(res=>{
-            return res[0];
+            return res && res[0] || 0;
         })
     },
     // 处理原始数据，标签分类等
@@ -27,14 +27,18 @@ Object.assign(Article, {
                 .where("article_id", articleId)
                 .join("tag as t", "t.id", "a_t.tag_id")
                 .select("t.name, t.type").then(data=>{
-                    data.forEach(tag=>{
-                        let { type, name} = tag;
-                        if (type === TYPE_TAG){
-                            article.tags.push(name);
-                        }else if (type === TYPE_CATEGORY){
-                            article.categories.push(name);
-                        }
-                    })
+                    if(Array.isArray(data)){
+                        data.forEach(tag=>{
+                            let { type, name} = tag;
+                            if (type === TYPE_TAG){
+                                article.tags.push(name);
+                            }else if (type === TYPE_CATEGORY){
+                                article.categories.push(name);
+                            }
+                        })
+                    }else {
+                        console.log(data)
+                    }
                 }))
         });
 
@@ -52,7 +56,13 @@ Object.assign(Article, {
             .orderBy("created_at")
             .select(["a.id", "a.title", "a.created_at", "a.browse", "a.abstract"])
             .then(data=>{
-                return this.formatArticle(data);
+                if(Array.isArray(data)){
+                    return this.formatArticle(data);
+                }else {
+                    return []
+                }
+            }).catch(e=>{
+                console.log(e)
             })
 
     },
