@@ -34,7 +34,7 @@ function getOutputFileName(assets) {
 
 function getOutputFilePath(outputFile, outputPath) {
     // 服务器根目录
-    let serveRoot = path.resolve(__dirname, "../")
+    let serveRoot = path.resolve(__dirname, "../public")
 
     Object.keys(outputFile).forEach(key => {
         let val = outputFile[key]

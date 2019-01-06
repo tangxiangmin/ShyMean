@@ -1,7 +1,7 @@
 <aside>
     <div class="page_sd hide-md">
         <div class="me">
-            <img src="/public/img/avatar.jpeg" alt="shymean" width="100" height="100">
+            <img src="/img/avatar.jpeg" alt="shymean" width="100" height="100">
             <h3>shymean</h3>
             <p>一个不学无术且无趣的人。</p>
         </div>

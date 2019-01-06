@@ -3,6 +3,7 @@ const path = require("path")
 
 const Koa = require("koa")
 const app = new Koa()
+const serve = require('koa-static')
 
 let server = {
     start(){
@@ -17,10 +18,9 @@ let server = {
         console.log('server listen at 3000')
     },
     initStatic(){
-        const serve = require('koa-static')
         let staticPath = [
             path.resolve(__dirname, "../public"),
-            path.resolve(__dirname, "./favicon.ico"),
+            // path.resolve(__dirname, "./favicon.ico"),
         ];
 
         staticPath.forEach(staticUrl => {

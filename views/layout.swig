@@ -17,7 +17,7 @@
         <meta name="describle" content="shymean前端开发个人博客,专注web前端、后端开发技术，总结工作经历及心得。">
 
     {% endblock seo %}
-    <link rel="shortcut icon" href="/public/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
 
