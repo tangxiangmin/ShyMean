@@ -28,7 +28,6 @@ app.use(views(__dirname + '/views', {
 app.use(router.routes())
     .use(router.allowedMethods())
 
-
 let response = require("./isomorphic/response")
 
 app.use(response)

@@ -8,11 +8,11 @@ ShyMean
 ## 指令
 开发环境
 ```
-# 启动spervisor服务器
-npm run dev
-
 # 启动静态资源服务器
 npm run static 
+
+# 启动spervisor服务器
+npm run dev
 ```
 
 生成环境

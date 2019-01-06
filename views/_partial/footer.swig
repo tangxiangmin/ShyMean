@@ -2,7 +2,8 @@
     <div class="container footer">
         <p>世人的悲欢并不相通，我只是觉得他们吵闹。</p>
         <p>
-            Copyright © Shymean 2016 - 2018
+            {% set year = 2019 %}
+            Copyright © Shymean 2016 - {{ year | currentYear }}
             {#<a href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank" style="display:inline-block;">粤ICP备17060238号-1</a>#}
         </p>
     </div>

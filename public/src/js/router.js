@@ -69,11 +69,7 @@ class Router {
     }
 
     resetScrollTop() {
-        if (document.compatMode === "BackCompat") {
-            document.body.scrollTop = 0
-        } else {
-            document.documentElement.scrollTop = 0
-        }
+        window.scrollTo(0, 0)
     }
 
     loadPage(href) {
@@ -97,7 +93,7 @@ class Router {
         this.replaceUrl(href)
 
         let handler = [
-            $.get(`${href}`)
+            $.get(`${href}`, {async: true})
         ];
 
         if (!cache[href]) {

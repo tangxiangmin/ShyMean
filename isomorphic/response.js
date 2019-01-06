@@ -4,10 +4,13 @@ let renderData = require('../build/render')
 // 根据渲染方式返回接口的数据或渲染模板中间件
 module.exports = async function (ctx) {
     let url = ctx.request.url,
-        data = ctx.state.data
+        data = ctx.state.data,
+        params = ctx.query
 
-    let header = ctx.request.header;
-    let isAsyncRequest = header['x-requested-with'] === 'XMLHttpRequest'
+    let header = ctx.request.header || {};
+    // 异步请求增加async参数，避免被nginx缓存为模板cache
+    let isAsyncRequest = header['x-requested-with'] === 'XMLHttpRequest' && params.async === 'true'
+
     if (isAsyncRequest) {
         ctx.body = data;
     } else {

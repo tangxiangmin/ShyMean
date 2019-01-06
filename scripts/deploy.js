@@ -7,13 +7,15 @@ function deploy() {
     let shell = require('shelljs');
 
     let version = shell.exec('lsof -i:3000', {silent: true}).stdout;
-    let pid = /\s(\d+)\s/.exec(version)[1]
+
+    let rePid = /\s(\d+)\s/.exec(version)
+    let pid = rePid && rePid[1]
 
     let script = [
         "git pull origin master",
         "npm run build",
         "forever stop 0",
-        `kill ${pid}`,
+        ( pid && `kill ${pid}`) || '',
         `forever start -c "npm run start" ./`
     ]
 

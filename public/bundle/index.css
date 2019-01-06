@@ -931,13 +931,14 @@ code {
   padding: 0 6px;
   display: inline-block;
   color: #f9263e;
-  font-family: "Source Code Pro","Georgia", "serif";
+  font-family: monospace, monospace;
   word-break: break-all;
   background-color: rgba(0, 50, 100, 0.08);
   border-radius: 5px; }
 
 pre {
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 20px 0;
   padding: 15px;
   position: relative;

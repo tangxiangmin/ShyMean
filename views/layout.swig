@@ -30,8 +30,8 @@
     <script src="https://cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
 
     {% if isDevelopment %}
-        <link rel="stylesheet" href="//localhost:7999/index.css">
-        <script src="//localhost:7999/index.js" defer></script>
+        <link rel="stylesheet" href="//localhost:8080/index.css">
+        <script src="//localhost:8080/index.js"></script>
     {% else %}
         <link rel="stylesheet" href="/public/bundle/index.css">
         <script src="/public/bundle/index.js" defer></script>
