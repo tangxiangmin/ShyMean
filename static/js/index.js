@@ -127,19 +127,19 @@ let app = {
         let $main = $("#page_wrap")
 
         let tpls = {
-            '/': '/views/_page/index.swig',
-            '/\\d+': '/views/_page/index.swig',
-            '/article/.*?': '/views/_page/article.swig',
-            '/archive': '/views/_page/archive.swig',
-            '/archive/.*?': '/views/_page/archive.swig',
-            '/tags': '/views/_page/tags.swig',
-            '/book': '/views/_page/book.swig',
+            '/': '/public/view/index.swig',
+            '/\\d+': '/public/view/index.swig',
+            '/article/.*?': '/public/view/article.swig',
+            '/archive': '/public/view/archive.swig',
+            '/archive/.*?': '/public/view/archive.swig',
+            '/tags': '/public/view/tags.swig',
+            '/book': '/public/view/book.swig',
 
-            // '/message': '/views/_page/message.swig',
-            '/friend': '/views/_page/friend.swig',
-            '/about': '/views/_page/about.swig',
-            '/version': '/views/_page/version.swig',
-            '/demo': '/views/_page/demo.swig',
+            // '/message': '/public/view/message.swig',
+            '/friend': '/public/view/friend.swig',
+            '/about': '/public/view/about.swig',
+            '/version': '/public/view/version.swig',
+            '/demo': '/public/view/demo.swig',
         }
 
         let router = new Router(tpls, $main, Transition.Loading)

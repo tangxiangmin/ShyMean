@@ -8,6 +8,6 @@
 
 {% block main %}
 
-    {% include "./_page/archive.swig" %}
+    {% include "../public/view/archive.swig" %}
 
 {% endblock %}

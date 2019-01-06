@@ -8,5 +8,5 @@
  {% endblock seo %}
 
 {% block main %}
-    {% include "./_page/book.swig" %}
+    {% include "../public/view/book.swig" %}
 {% endblock %}

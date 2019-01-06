@@ -32,10 +32,10 @@
   },
   "scripts": {
     "start": "export NODE_ENV=production && node ./app/index.js",
-    "build": "webpack --config=static/webpack.config.js",
+    "build": "node scripts/build.js",
     "dev": "export NODE_ENV=development && supervisor -harmony ./app/index.js",
     "deploy": "node ./scripts/deploy.js",
-    "static": "webpack-dev-server --inline --config=static/webpack.config.js --mode=development"
+    "static": "webpack-dev-server --inline --config=static/webpack.config.js --env.development --mode=development"
   },
   "repository": {
     "type": "git",

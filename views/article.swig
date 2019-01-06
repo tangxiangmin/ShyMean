@@ -8,5 +8,5 @@
 {% endblock %}
 
 {% block main %}
-    {% include "./_page/article.swig" %}
+    {% include "../public/view/article.swig" %}
 {% endblock %}

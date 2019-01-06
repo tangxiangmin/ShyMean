@@ -1,5 +1,5 @@
 {% extends './layout.swig' %}
 
 {% block main %}
-    {% include "./_page/index.swig" %}
+    {% include "../public/view/index.swig" %}
 {% endblock %}

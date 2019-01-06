@@ -12,18 +12,18 @@ module.exports = async function (ctx) {
     let isAsyncRequest = header['x-requested-with'] === 'XMLHttpRequest' && params.async === 'true'
 
     if (isAsyncRequest) {
-        ctx.body = data;
+        ctx.body = data || {};
     } else {
         // 需要将路由映射到对应的模板，
         // 这里暂时约定通过ctx.state传递
         data = Object.assign({}, data, renderData)
         try {
-            let tpl = ctx.state.view || "404"
-            tpl = "404"
+            let tpl = ctx.state.view
             await ctx.render(tpl, data)
         } catch (e) {
-            console.log("模板渲染错误...")
-            console.log(e)
+            console.log(`模板渲染错误: ${url}`)
+            // console.log(e)
+            await ctx.render( "404")
         }
     }
 }

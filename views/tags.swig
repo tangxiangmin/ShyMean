@@ -9,5 +9,5 @@
  {% endblock seo %}
 
 {% block main %}
-    {% include './_page/tags.swig' %}
+    {% include '../public/view/tags.swig' %}
 {% endblock %}

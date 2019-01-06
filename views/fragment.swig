@@ -7,5 +7,5 @@
  {% endblock seo %}
 
 {% block main %}
-    {% include "./_page/fragment.swig" %}
+    {% include "../public/view/fragment.swig" %}
 {% endblock %}

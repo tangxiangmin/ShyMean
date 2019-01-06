@@ -8,5 +8,5 @@
 
 
 {% block main %}
-    {% include "./_page/friend.swig" %}
+    {% include "../public/view/friend.swig" %}
 {% endblock %}

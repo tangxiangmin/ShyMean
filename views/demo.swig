@@ -7,5 +7,5 @@
  {% endblock seo %}
 
 {% block main %}
-    {% include "./_page/demo.swig" %}
+    {% include "../public/view/demo.swig" %}
 {% endblock %}
