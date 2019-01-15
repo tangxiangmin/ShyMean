@@ -15,7 +15,7 @@ function deploy() {
         "git pull origin master",
         // "npm run build",
         "forever stop 0",
-        ( pid && `kill ${pid}`) || '',
+        ( pid && `kill ${pid}`) || 'echo 1',
         `forever start -c "npm run start" ./`
     ]
 
