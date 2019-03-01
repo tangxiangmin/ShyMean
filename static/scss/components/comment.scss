@@ -1,0 +1,32 @@
+
+.v {
+    .vwrap {
+        background-color: #f8f8f8;
+    }
+    .vheader {
+        .vinput {
+            font-size: 16px;
+        }
+    }
+
+    .veditor {
+        @include border();
+        font-size: 16px;
+    }
+    // 隐藏底部版本号信息
+    .info {
+        display: none;
+    }
+
+    // 评论列表
+    .vsys {
+        font-size: 14px !important;
+    }
+    .vmeta {
+        font-size: 16px !important;
+    }
+    .vcontent {
+        font-size: 14px !important;
+    }
+
+}

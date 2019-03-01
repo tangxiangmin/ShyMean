@@ -1,7 +1,7 @@
 {
-  "host": "45.77.153.232",
+  "host": "127.0.0.1",
   "user": "root",
   "password": "happyday",
-  "database": "blog",
+  "database": "shymean",
   "port": 3306
 }

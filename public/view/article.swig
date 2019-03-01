@@ -63,3 +63,4 @@
         <a href="/article/{{ next.title }}" class="hover-highlight article_next">{{ next.title }}</a>
     </div>
 </article>
+<div id="vcomments"></div>

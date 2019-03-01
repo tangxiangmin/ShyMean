@@ -10,12 +10,11 @@
     <meta name="baiduspider" content="all">
     <meta name="renderer" content="webkit">
 
-
     {% block seo %}
         <title>橙红年代</title>
+        <meta name="Description" content="Author: shymean, Category: IT Blog, Name: 橙红年代">
         <meta name="keywords" content="shymean,橙红年代,前端开发,个人博客,HTML,CSS,JavaScript">
         <meta name="describle" content="shymean前端开发个人博客,专注web前端、后端开发技术，总结工作经历及心得。">
-
     {% endblock seo %}
     <link rel="shortcut icon" href="/favicon.ico">
 
@@ -28,11 +27,13 @@
         {
           "packages": {
             "swig": "//cdn.bootcss.com/swig/1.4.2/swig.js",
-            "jquery": "//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"
+            "jquery": "//cdn.bootcss.com/jquery/3.2.1/jquery.min.js",
+            "av": "//cdn1.lncld.net/static/js/3.0.4/av-min.js",
+            "Valine": "//unpkg.com/valine/dist/Valine.min.js"
           }
         }
     </script>
-    <script src="https://cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
+    <script src="//cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
 
     <link rel="stylesheet" href="{{ staticResource.css }}">
     <script src="{{ staticResource.js }}" defer></script>
@@ -48,6 +49,7 @@
         <div class="container animated" id="page_wrap">
             {% block main %}
             {% endblock %}
+
         </div>
         <div class="page_loading">
             <div class="loading">

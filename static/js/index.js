@@ -2,6 +2,8 @@ let $ = require("jquery")
 let Router = require("./router")
 let Transition = require("./transition")
 
+let comment = require('./comment')
+
 let util = {
     debounce: function (fn, delay) {
         let last;
@@ -29,6 +31,9 @@ let app = {
         this.toggleAside()
 
         this.catalogue();
+
+        comment.init()
+
     },
 
     responsiveNav() {
@@ -129,7 +134,13 @@ let app = {
         let tpls = {
             '/': '/view/index.swig',
             '/\\d+': '/view/index.swig',
-            '/article/.*?': '/view/article.swig',
+            '/article/.*?': {
+                path: '/view/article.swig',
+                success() {
+                    console.log('article 加载成功')
+                    comment.init()
+                }
+            },
             '/archive': '/view/archive.swig',
             '/archive/.*?': '/view/archive.swig',
             '/tags': '/view/tags.swig',
@@ -139,6 +150,12 @@ let app = {
             '/about': '/view/about.swig',
             '/version': '/view/version.swig',
             '/demo': '/view/demo.swig',
+            '/message': {
+                path: '/view/message.swig',
+                success(){
+                    comment.init()
+                }
+            },
         }
 
         let router = new Router(tpls, $main, Transition.Loading)

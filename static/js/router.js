@@ -96,6 +96,14 @@ class Router {
             $.get(`${href}`, {async: true})
         ];
 
+        // 模板渲染后的回调
+        let onSuccess = () => {
+        }
+        if (tpl.success) {
+            onSuccess = tpl.success
+            tpl = tpl.path
+        }
+
         if (!cache[href]) {
             handler.push($.get(tpl).then(res => {
                 cache[href] = res;
@@ -112,6 +120,8 @@ class Router {
 
             this.render(htm)
             this.resetScrollTop()
+
+            onSuccess()
         })
 
         // 阻止默认跳转

@@ -1,0 +1,2 @@
+
+<div id="vcomments"></div>
