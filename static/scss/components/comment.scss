@@ -1,8 +1,9 @@
+// 评论样式重置
 
 #blog {
     .v {
         .vwrap {
-            background-color: #f8f8f8;
+            background-color: $gray;
         }
         .vheader {
             .vinput {
@@ -21,11 +22,14 @@
         }
 
         .vbtn {
-            padding: rem(15) rem(30);
-            font-size: rem(20);
+            padding: rem(10) rem(20);
+            font-size: rem(16);
             border-radius: rem(14);
         }
 
+        .vwrap .vcontrol .col {
+            font-size: rem(20);
+        }
         // 评论列表
         .vsys {
             font-size: 14px !important;

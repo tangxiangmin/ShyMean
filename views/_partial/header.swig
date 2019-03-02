@@ -25,9 +25,24 @@
             <a class="nav_item" href="/archive" title="归档">
                 <i class="iconfont icon-archives"></i>
                 归档</a>
+            <span class="show-md">
+                <a class="nav_item" href="/message" title="留言">
+                    <i class="iconfont icon-comment"></i>
+                    留言</a>
+                 <a class="nav_item" href="/about" title="关于">
+                    <i class="iconfont icon-info"></i>
+                    关于</a>
+                <a class="nav_item" href="/book" title="书架">
+                    <i class="iconfont icon-bookshelf"></i>
+                    书架</a>
+
+
+            </span>
+
             <a class="nav_item" href="/demo" title="项目">
                 <i class="iconfont icon-code"></i>
                 项目</a>
+
         </nav>
     </div>
 </header>

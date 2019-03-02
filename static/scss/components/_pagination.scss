@@ -1,9 +1,9 @@
 .pagination {
-	$size: 2rem;
+	$size: rem(70);
 	display: flex;
 	justify-content: center;
 
-	margin-top: 3rem;
+	margin-top: rem(50);
 	//font-size: 0;
 	border-top: 1px solid #f8f8f8;
 
