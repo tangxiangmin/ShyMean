@@ -7,10 +7,14 @@
 @import "extend";
 
 // 基础样式
-@import "base/index";
+@import "base/color";
+@import "base/particle";
+@import "base/reset";
+@import "base/font";
 
 // 布局样式
-@import "layout/index";
+@import "layout/grid";
+@import "layout/rem";
 
 // 组件样式
 @import "components/index";

@@ -4,23 +4,7 @@ let Transition = require("./transition")
 
 let comment = require('./comment')
 
-let util = {
-    debounce: function (fn, delay) {
-        let last;
-        return function () {
-            let ctx = this,
-                args = arguments;
-            clearTimeout(last);
-
-            last = setTimeout(function () {
-
-                fn.apply(ctx, args);
-
-            }, delay)
-        }
-
-    }
-}
+let util = require('./lib/util')
 
 let app = {
     init() {
