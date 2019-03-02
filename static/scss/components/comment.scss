@@ -1,32 +1,75 @@
 
-.v {
-    .vwrap {
-        background-color: #f8f8f8;
-    }
-    .vheader {
-        .vinput {
-            font-size: 16px;
+#blog {
+    .v {
+        .vwrap {
+            background-color: #f8f8f8;
         }
-    }
+        .vheader {
+            .vinput {
+                font-size: 16px;
+            }
+        }
 
-    .veditor {
-        @include border();
-        font-size: 16px;
-    }
-    // 隐藏底部版本号信息
-    .info {
-        display: none;
-    }
+        .veditor {
+            @include border();
+            font-size: 16px;
+            min-height: rem(300);
+        }
+        // 隐藏底部版本号信息
+        .info {
+            display: none;
+        }
 
-    // 评论列表
-    .vsys {
-        font-size: 14px !important;
-    }
-    .vmeta {
-        font-size: 16px !important;
-    }
-    .vcontent {
-        font-size: 14px !important;
+        .vbtn {
+            padding: rem(15) rem(30);
+            font-size: rem(20);
+            border-radius: rem(14);
+        }
+
+        // 评论列表
+        .vsys {
+            font-size: 14px !important;
+        }
+        .vmeta {
+            font-size: 16px !important;
+        }
+        .vcontent {
+            font-size: 14px !important;
+        }
+        .vinfo .col {
+            font-size: rem(20);
+        }
+        .vinfo .vcount .vnum {
+            font-size: rem(40);
+        }
+        .vlist .vcard {
+            padding-top: rem(20);
+
+        }
+         .vlist .vcard .vcontent {
+             margin-bottom: rem(40);
+             padding-top: rem(30);
+         }
+        .vlist .vcard .vimg {
+            width: rem(60);
+            height: rem(60);
+            padding: 0;
+            margin-right: rem(20);
+        }
+        .vlist .vcard .vhead .vnick {
+            font-size: rem(20);
+            margin-right: rem(20);
+        }
+        .vlist .vcard .vhead .vsys {
+            padding: rem(5) rem(10);
+        }
+
+        .vlist .vcard .vh .vtime {
+            font-size: rem(14);
+        }
+        .vlist .vcard .vh .vmeta .vat {
+            font-size: rem(14);
+        }
     }
 
 }

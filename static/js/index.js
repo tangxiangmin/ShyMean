@@ -15,7 +15,6 @@ let app = {
         this.toggleAside()
 
         this.catalogue();
-
         comment.init()
 
     },
@@ -121,7 +120,6 @@ let app = {
             '/article/.*?': {
                 path: '/view/article.swig',
                 success() {
-                    console.log('article 加载成功')
                     comment.init()
                 }
             },
