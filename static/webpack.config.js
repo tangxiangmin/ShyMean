@@ -32,7 +32,7 @@ module.exports = (env) => {
                     use: pageExtractTextPlugin.extract({
                         use: [
                             'css-loader?sourceMap',
-                            // "postcss-loader?sourceMap",
+                            "postcss-loader?sourceMap",
                             "sass-loader?sourceMap"
                         ]
                     }),

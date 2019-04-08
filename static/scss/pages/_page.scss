@@ -13,6 +13,9 @@
 		.catalogue {
 			display: none;
 		}
+		.page_sd {
+			transform: translateX(0);
+		}
 	}
 
 	// reserve theme stylesheet
@@ -74,9 +77,6 @@
 
 		transition: $page-left-transition;
 		transform: translateX(320px);
-		&.active {
-			transform: translateX(0);
-		}
 
 		a {
 			&:hover {

@@ -4,7 +4,7 @@ let Transition = require("./transition")
 
 let comment = require('./comment')
 
-let util = require('./lib/util')
+let util = require('./util')
 
 let app = {
     init() {
