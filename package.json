@@ -1,8 +1,20 @@
 {
   "name": "shymean",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "shymean blog",
-  "main": "index.js",
+  "main": "server/index.ts",
+  "scripts": {
+    "dev": "export NODE_ENV=development && nodemon --watch 'server/**/*' -e ts,tsx --exec ts-node ./server/index.ts",
+    "static": "webpack-dev-server --inline --config=static/webpack.config.js --env.development --mode=development",
+
+    "build": "npm run build:server && npm run build:static",
+
+    "build:static": "node scripts/build.js",
+    "build:server": "tsc server/index.ts --outDir app",
+
+    "deploy": "node ./scripts/deploy.js",
+    "start": "export NODE_ENV=production && pm2 start ./app/index.js",
+  },
   "dependencies": {
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
@@ -37,15 +49,6 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
-  },
-  "scripts": {
-    "start": "export NODE_ENV=production && node ./app/index.js",
-    "start:pm2": "export NODE_ENV=production && pm2 start ./app/index.js",
-    "build": "node scripts/build.js",
-    "dev:js": "export NODE_ENV=development && supervisor -harmony ./app/index.js",
-    "dev": "export NODE_ENV=development && nodemon --watch 'app/**/*' -e ts,tsx --exec ts-node ./app/index.ts",
-    "deploy": "node ./scripts/deploy.js",
-    "static": "webpack-dev-server --inline --config=static/webpack.config.js --env.development --mode=development"
   },
   "repository": {
     "type": "git",

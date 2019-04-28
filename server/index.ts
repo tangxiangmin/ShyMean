@@ -5,6 +5,9 @@ const app = new Koa()
 const serve = require('koa-static')
 
 import router from './router'
+import filters from "./lib/swig"
+
+import response from './isomorphic/response'
 
 let server = {
     start() {
@@ -32,10 +35,11 @@ let server = {
         const views = require("koa-views")
 
         // 全局自定义过滤器
-        let filters = require("./lib/swig")
+
         let swig = require("swig")
 
         for (let key in filters) {
+            // @ts-ignore
             swig.setFilter(key, filters[key])
         }
         app.use(views(path.resolve(__dirname, '../views'), {
@@ -48,7 +52,6 @@ let server = {
             .use(router.allowedMethods())
     },
     initIsomorphic() {
-        let response = require("./isomorphic/response")
         app.use(response)
     }
 }

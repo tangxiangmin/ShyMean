@@ -6,7 +6,7 @@ let highlight = require("highlight.js")
 
 marked.setOptions({
     renderer: new marked.Renderer(),
-    highlight: function (code) {
+    highlight: function (code: string) {
         return highlight.highlightAuto(code).value;
     },
     gfm: true,
@@ -18,4 +18,4 @@ marked.setOptions({
     smartypants: false
 })
 
-module.exports = marked
+export default marked

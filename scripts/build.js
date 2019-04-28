@@ -45,7 +45,7 @@ function getOutputFilePath(outputFile, outputPath) {
 }
 
 function createOutputMap(outputFile) {
-    let mapPath = path.resolve(__dirname, "../app/build/map.json")
+    let mapPath = path.resolve(__dirname, "../map.json")
 
     fs.writeFile(mapPath, JSON.stringify(outputFile), function (err) {
         if (err) throw err;

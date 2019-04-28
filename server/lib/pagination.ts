@@ -3,38 +3,45 @@
  */
 
 class Pagination {
-    constructor(total, current, router = "", size = 10){
+    total: number
+    current: number
+    size: number
+    router: string
+    totalPage: number
+
+    constructor(total: number, current: string, router = "", size = 10) {
         this.total = total;
         this.current = parseInt(current, 10);
         this.size = size;
 
 
         this.router = router;
-        this.totalPage = Math.ceil(this.total/this.size);
+        this.totalPage = Math.ceil(this.total / this.size);
 
     }
 
-    init(){
+    init() {
         return this.prev() + this.first() + this.siblings() + this.last() + this.next();
     }
 
-    _setCur(index){
+    _setCur(index: number) {
         return index === this.current ? 'pagination_current' : ''
     }
 
-    _setLink(page){
+    _setLink(page: number) {
         return `${this.router}/${page}`
     }
+
     //=== 页码 ===//
     // 首页
-    first(){
+    first() {
         return `<div class="pagination_item ${ this._setCur(1) }">
                     <a href="${this._setLink(1)}" class="pagination_link">1</a>
                 </div>`
     }
 
     // 尾页
-    last(){
+    last() {
         let last = this.totalPage;
 
         return `<div class="pagination_item ${ this._setCur(last) }">
@@ -43,33 +50,34 @@ class Pagination {
     }
 
     // 上一页
-    prev(){
+    prev() {
         let index = this.current - 1;
 
         return index ?
             `<div class="pagination_item">
                 <a href="${this._setLink(index)}" class="pagination_link">«</a>
-            </div>` :  ''
+            </div>` : ''
     }
 
     // 下一页
-    next(){
+    next() {
         let index = this.current + 1;
 
         return index !== this.totalPage ?
             `<div class="pagination_item">
                 <a href="${this._setLink(index)}" class="pagination_link">»</a>
-            </div>` :  ''
+            </div>` : ''
     }
+
     // 省略
-    omit(){
+    omit() {
         return `<div class="pagination_item">
                 <span class="pagination_space">...</span>
             </div>`
     }
 
     // 相邻展示页面
-    siblings(){
+    siblings() {
         let totalPage = this.totalPage;
 
         let cur = this.current,
@@ -78,9 +86,9 @@ class Pagination {
 
         let tpl = "";
 
-        if(prev <= 1){
+        if (prev <= 1) {
             prev = Math.max(cur, 2);
-        }else {
+        } else {
             tpl += this.omit();
         }
 
@@ -88,14 +96,14 @@ class Pagination {
             next = this.totalPage - 1;
         }
 
-        for (let i = prev; i <= next; ++i){
+        for (let i = prev; i <= next; ++i) {
             tpl += `
                 <div class="pagination_item ${ this._setCur(i) }">
                     <a href="${this._setLink(i)}" class="pagination_link">${i}</a>
                 </div>`;
         }
 
-        if (next < this.totalPage - 1){
+        if (next < this.totalPage - 1) {
             tpl += this.omit();
         }
 
@@ -103,4 +111,4 @@ class Pagination {
     }
 }
 
-module.exports = Pagination;
+export default Pagination;

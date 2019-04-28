@@ -6,7 +6,6 @@ let path = require('path');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = (env) => {
-
     let isProduction = env && env.production
     let fileHash = isProduction ? "-[chunkhash:6]" : ""
 

@@ -5,13 +5,7 @@
 let mysql = require('mysql2/promise')
 let connection: any
 
-const config: {
-    host: string,
-    user: string,
-    password: string,
-    database: string,
-    port: number
-} = require('../config/db')
+import config from '../config/db'
 
 try {
     ~(async () => {
@@ -22,7 +16,7 @@ try {
     console.log("mysql连接失败", e)
 }
 
-export default  {
+export default {
     getConnection() {
         if (!connection) {
             throw Error('no available connection')

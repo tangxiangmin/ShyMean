@@ -1,8 +1,8 @@
 // 此处同步开发环境变量 挂载模板需要的环境
-let renderData = require('../build/render')
+import renderData from '../build/render'
 
 // 根据渲染方式返回接口的数据或渲染模板中间件
-module.exports = async function (ctx) {
+export default async function (ctx: any) {
     let url = ctx.request.url,
         data = ctx.state.data,
         params = ctx.query
@@ -23,7 +23,7 @@ module.exports = async function (ctx) {
         } catch (e) {
             console.log(`模板渲染错误: ${url}`)
             // console.log(e)
-            await ctx.render( "404")
+            await ctx.render("404")
         }
     }
 }

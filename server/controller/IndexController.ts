@@ -4,10 +4,9 @@ import bookModel from "../model/book"
 import logger from '../util/logger'
 
 
-let Pagination = require("../lib/pagination")
-let marked = require("../lib/marked")
-let formatCatalogue = require("../lib/catelogue")
-
+import Pagination from "../lib/pagination"
+import marked from "../lib/marked"
+import formatCatalogue from "../lib/catelogue"
 
 export default {
     async index(ctx: any, next: Function) {
