@@ -1,27 +1,27 @@
-let articleModel = require("../model/ArticleModel")
-let tagModel = require("../model/TagModel")
-let bookModel = require("../model/BookModel")
+import articleModel from "../model/article"
+import tagModel from "../model/tag"
+import bookModel from "../model/book"
+import logger from '../util/logger'
+
 
 let Pagination = require("../lib/pagination")
-
 let marked = require("../lib/marked")
 let formatCatalogue = require("../lib/catelogue")
 
-// let mongoCache = require('../core/Cache')
 
-
-class IndexController {
-    async index(ctx, next) {
+export default {
+    async index(ctx: any, next: Function) {
         let page = ctx.params && ctx.params.page || 1;
 
         // 分页类
         let pageSize = 10;
-        let articles =   await articleModel.getArticles(pageSize, page - 1);
+        let articles = await articleModel.getArticles(pageSize, page - 1);
 
         let total = await articleModel.count();
 
         let pagination = new Pagination(total.total, page, "", pageSize);
 
+        // @ts-ignore
         articles.forEach(item => {
             item.abstract = marked(item.abstract)
         })
@@ -37,9 +37,9 @@ class IndexController {
         ctx.state.view = "index"
 
         await next();
-    }
+    },
 
-    async article(ctx, next) {
+    async article(ctx: any, next: () => void) {
 
         let title = ctx.params.title;
 
@@ -49,6 +49,7 @@ class IndexController {
 
         // if (!data) {
         let res = await articleModel.getArticleByTitle(title)
+
         let prevArticle = await articleModel.getPrevArticle(res.created_at)
         let nextArticle = await articleModel.getNextArticle(res.created_at)
 
@@ -65,7 +66,7 @@ class IndexController {
             next: nextArticle
         }
 
-            // await mongoCache.saveArticle(data)
+        // await mongoCache.saveArticle(data)
         // }
 
         ctx.state.data = data
@@ -73,12 +74,13 @@ class IndexController {
         ctx.state.view = "article"
 
         await next()
-    }
+    },
 
-    async tags(ctx, next) {
+    async tags(ctx: any, next: () => void) {
         let categories = await tagModel.getCategories()
         let tags = await tagModel.getTags()
 
+        logger.info(categories, tags)
         ctx.state.data = {
             categories,
             tags
@@ -88,9 +90,9 @@ class IndexController {
 
         await next()
 
-    }
+    },
 
-    async archive(ctx, next) {
+    async archive(ctx: any, next: () => void) {
         let lists = [];
         let tag = ctx.params && ctx.params.tag;
 
@@ -101,7 +103,7 @@ class IndexController {
             lists = await articleModel.getArchiveList();
         }
 
-        let articleGroup = [];
+        let articleGroup: any[] = [];
         let cursor = 0;
         // 对归档按年份分组
         articleGroup[cursor] = {
@@ -109,6 +111,7 @@ class IndexController {
             articles: []
         };
 
+        // @ts-ignore
         lists.forEach((val) => {
             if (val.year !== articleGroup[cursor].year) {
                 cursor++;
@@ -129,9 +132,9 @@ class IndexController {
         ctx.state.view = "archive"
 
         await next();
-    }
+    },
 
-    async book(ctx, next) {
+    async book(ctx: any, next: () => void) {
 
         let books = await bookModel.getBooks();
 
@@ -144,8 +147,4 @@ class IndexController {
         await next()
     }
 
-}
-
-module.exports = () => {
-    return new IndexController();
 }

@@ -1,12 +1,13 @@
-
 const path = require("path")
 
 const Koa = require("koa")
 const app = new Koa()
 const serve = require('koa-static')
 
+import router from './router'
+
 let server = {
-    start(){
+    start() {
         console.log('当前运行环境:' + process.env.NODE_ENV)
 
         this.initStatic()
@@ -17,7 +18,7 @@ let server = {
         app.listen(3000)
         console.log('server listen at 3000')
     },
-    initStatic(){
+    initStatic() {
         let staticPath = [
             path.resolve(__dirname, "../public"),
             // path.resolve(__dirname, "./favicon.ico"),
@@ -27,7 +28,7 @@ let server = {
             app.use(serve(staticUrl))
         })
     },
-    initTplEngine(){
+    initTplEngine() {
         const views = require("koa-views")
 
         // 全局自定义过滤器
@@ -42,13 +43,11 @@ let server = {
             // options: swigOptions
         }))
     },
-    initRouter(){
-        const router = require("./router")
-
+    initRouter() {
         app.use(router.routes())
             .use(router.allowedMethods())
     },
-    initIsomorphic(){
+    initIsomorphic() {
         let response = require("./isomorphic/response")
         app.use(response)
     }

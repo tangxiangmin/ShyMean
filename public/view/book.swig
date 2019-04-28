@@ -19,7 +19,7 @@
                 <td>{{(book.created_at) |　date("Y-m-d") }}</td>
 
                 <td>
-                    {% if book.ended_at !== '0000-00-00 00:00:00' %}
+                    {% if book.ended_at %}
                         {{(book.ended_at) |　date("Y-m-d") }}
                     {% else %}
                         ~

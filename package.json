@@ -4,6 +4,9 @@
   "description": "shymean blog",
   "main": "index.js",
   "dependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-router": "^7.0.40",
+    "@types/mysql2": "github:types/mysql2",
     "highlight.js": "^9.13.1",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
@@ -13,6 +16,7 @@
     "marked": "^0.3.19",
     "mongodb": "^3.1.10",
     "mysql-xmodel": "^1.0.3",
+    "mysql2": "^1.6.5",
     "swig": "^1.4.2"
   },
   "devDependencies": {
@@ -23,7 +27,9 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "log4js": "^4.1.0",
     "node-sass": "^4.10.0",
+    "nodemon": "^1.18.11",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "shelljs": "^0.8.3",
@@ -34,8 +40,10 @@
   },
   "scripts": {
     "start": "export NODE_ENV=production && node ./app/index.js",
+    "start:pm2": "export NODE_ENV=production && pm2 start ./app/index.js",
     "build": "node scripts/build.js",
-    "dev": "export NODE_ENV=development && supervisor -harmony ./app/index.js",
+    "dev:js": "export NODE_ENV=development && supervisor -harmony ./app/index.js",
+    "dev": "export NODE_ENV=development && nodemon --watch 'app/**/*' -e ts,tsx --exec ts-node ./app/index.ts",
     "deploy": "node ./scripts/deploy.js",
     "static": "webpack-dev-server --inline --config=static/webpack.config.js --env.development --mode=development"
   },

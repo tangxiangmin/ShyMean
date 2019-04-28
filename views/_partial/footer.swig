@@ -4,8 +4,9 @@
         <p>
             {% set year = 2019 %}
             Copyright © Shymean 2016 - {{ year | currentYear }}
-            {#<a href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank" style="display:inline-block;">粤ICP备17060238号-1</a>#}
+            <a href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank" >蜀ICP备19012392号-1</a>
         </p>
+
     </div>
     <div class="hide-xs">
         <script src="https://s19.cnzz.com/z_stat.php?id=1264491168&amp;web_id=1264491168"

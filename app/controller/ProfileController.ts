@@ -1,5 +1,25 @@
-class DemoController {
-    async index(ctx, next) {
+export default {
+    async about(ctx: { state: { view: string; }; }, next: () => void) {
+        ctx.state.view = "about"
+        await next()
+    },
+
+    async friend(ctx: { state: { view: string; }; }, next: () => void) {
+        ctx.state.view = "friend"
+
+        await next()
+    },
+
+    async message(ctx: { state: { view: string; }; }, next: () => void) {
+        ctx.state.view = "message"
+        await next()
+    },
+
+    async version(ctx: { state: { view: string; }; }, next: () => void) {
+        ctx.state.view = "version"
+        await next()
+    },
+    async demo(ctx: any, next: Function) {
         ctx.state.view = "demo"
         ctx.state.data = {
             demoGroup: [
@@ -10,7 +30,7 @@ class DemoController {
                         desc: '根据mock模板文件快速启动模拟数据服务器',
                         docUrl: 'https://www.npmjs.com/package/@shymean/mock-server',
                         githubUrl: 'https://github.com/tangxiangmin/mock-server#readme'
-                    },{
+                    }, {
                         name: 'img qiniu cdn',
                         desc: '该脚本用于将markdwon文件中的本地图片上传到七牛CND',
                         githubUrl: 'https://github.com/tangxiangmin/img_qiniu_cdn'
@@ -56,19 +76,16 @@ class DemoController {
                         name: '中秋海报（移动端）',
                         desc: '2018中秋节活动，通过拖拽素材生成一张祝福海报',
                         previewUrl: 'https://g.zhe800.com/h5/poster',
-                    }, {
+                    }, /*{
                         name: '豆腐下山（移动端）',
                         desc: '2017万圣节游戏活动，操作方块获得更多分数吧~',
                         previewUrl: 'http://api.doufu.diaobao.la/halloween2017/index',
-                    }]
+                    }*/]
                 },
 
             ]
         }
         await next()
     }
-}
 
-module.exports = () => {
-    return new DemoController()
 }
