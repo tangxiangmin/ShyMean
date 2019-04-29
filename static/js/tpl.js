@@ -1,7 +1,7 @@
 let swig = require("swigjs")
 
 // 前后端模板引擎共用一套自定义过滤器
-let filters = require("../../app/lib/swig")
+let filters = require("../../app/lib/swig")['default']
 
 for(let key in filters){
     swig.setFilter(key, filters[key])

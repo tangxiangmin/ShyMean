@@ -39,14 +39,14 @@ export default {
     async getArticles(size: number, page: number) {
         let conn = await mysql.getConnection()
 
-        let [list] = await conn.query(`select id, title, created_at,abstract from article`)
+        let [list] = await conn.query(`select id, title, created_at,abstract from article ORDER BY created_at DESC`)
 
         return this.formatArticle(list)
     },
     // 归档
     async getArchiveList() {
         let conn = await mysql.getConnection()
-        let [list] = await conn.query(`SELECT id, title, created_at, Year(created_at) AS year FROM article WHERE status = 1 ORDER BY created_at`)
+        let [list] = await conn.query(`SELECT id, title, created_at, Year(created_at) AS year FROM article WHERE status = 1 ORDER BY created_at DESC`)
         return list
     },
     // 标签筛选文章列表
