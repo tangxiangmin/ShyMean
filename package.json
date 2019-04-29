@@ -2,18 +2,15 @@
   "name": "shymean",
   "version": "0.6.0",
   "description": "shymean blog",
-  "main": "server/index.ts",
+  "main": "index.js",
   "scripts": {
     "dev": "export NODE_ENV=development && nodemon --watch 'server/**/*' -e ts,tsx --exec ts-node ./server/index.ts",
     "static": "webpack-dev-server --inline --config=static/webpack.config.js --env.development --mode=development",
-
     "build": "npm run build:server && npm run build:static",
-
     "build:static": "node scripts/build.js",
     "build:server": "tsc server/index.ts --outDir app",
-
     "deploy": "node ./scripts/deploy.js",
-    "start": "export NODE_ENV=production && pm2 start ./app/index.js",
+    "start": "export NODE_ENV=production && pm2 start ./app/index.js"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
@@ -25,7 +22,7 @@
     "koa-static": "^4.0.3",
     "koa-views": "^6.1.4",
     "live2d-widget": "git+https://github.com/xiazeyu/live2d-widget.js.git",
-    "marked": "^0.3.19",
+    "marked": "^0.6.2",
     "mongodb": "^3.1.10",
     "mysql-xmodel": "^1.0.3",
     "mysql2": "^1.6.5",
@@ -40,7 +37,7 @@
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "log4js": "^4.1.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.12.0",
     "nodemon": "^1.18.11",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
