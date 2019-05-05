@@ -23,7 +23,7 @@ export default async function (ctx: any) {
         } catch (e) {
             console.log(`模板渲染错误: ${url}`)
             // console.log(e)
-            await ctx.render("404")
+            await ctx.render("404", data)
         }
     }
 }

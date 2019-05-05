@@ -2,7 +2,7 @@
     <div class="container header">
         <h1 class="logo">
             <a href="/" title="橙红年代">橙红年代</a>
-            <a href="/version" title="博客版本记录" class="version"><sub>V0.6</sub></a>
+            <a href="/version" title="博客版本记录" class="version"><sub>V0.6.1</sub></a>
         </h1>
         <div class="show-md">
             <div class="btn-list">
