@@ -6,7 +6,7 @@
         {% for cate in categories %}
             <a href="/archive/{{ cate.name }}" title="{{ cate.name }}" class="category_item">
                 {{ cate.name }}
-                ({{ cate.category_num }})
+                ({{ cate.num }})
             </a>
         {% endfor %}
     </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="tag">
         {% for tag in tags %}
-            <a href="/archive/{{ tag.name }}" title="{{ tag.name }}" class="hover-highlight tag_item {{ tag.tag_num | tagSize }}">
+            <a href="/archive/{{ tag.name }}" title="{{ tag.name }}" class="hover-highlight tag_item {{ tag.num | tagSize }}">
                 {{ tag.name}}
             </a>
         {% endfor %}

@@ -1,6 +1,12 @@
 <div class="about">
     <p>相关版本代码位于<a href="https://github.com/tangxiangmin/ShyMean">github</a>对应分支上。</p>
     <section>
+        <h3 class="about_hd">V0.6.0</h3>
+        <div class="about_ct">
+            <p>使用typescript重构后台项目，重写model层，并增加自动部署</p>
+        </div>
+    </section>
+    <section>
         <h3 class="about_hd">V0.5.0</h3>
         <div class="about_ct">
             <p>重构了静态资源开发环境，优化打包部署流程，前后端同构渲染解耦</p>

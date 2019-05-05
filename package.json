@@ -10,7 +10,7 @@
     "build:static": "node scripts/build.js",
     "build:server": "tsc server/index.ts --outDir app",
     "deploy": "node ./scripts/deploy.js",
-    "start": "export NODE_ENV=production && pm2 start ./app/index.js"
+    "start": "export NODE_ENV=production && pm2 start ./app/index.js --name='blog'"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
@@ -36,6 +36,7 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "github-webhook-handler": "^0.7.1",
     "log4js": "^4.1.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.11",
