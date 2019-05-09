@@ -63,7 +63,7 @@ export default {
                     }, {
                         name: 'hexo-theme-shy',
                         desc: '当前博客同款的hexo博客主题',
-                        githubUrl: 'https://github.com/tang xiangmin/hexo-theme-shy'
+                        githubUrl: 'https://github.com/tangxiangmin/hexo-theme-shy'
                     }]
                 },
                 {

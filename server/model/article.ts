@@ -9,8 +9,8 @@ import Tag from './tag'
 export default {
     async count() {
         let conn = await mysql.getConnection()
-        let res = await conn.query(`select COUNT(*) as total from article`)
-        return res[0]
+        let [rows] = await conn.query(`select COUNT(*) as total from article`)
+        return rows[0]
     },
     async formatArticle(articles: any[]) {
         const {TYPE_TAG, TYPE_CATEGORY} = Tag;
@@ -39,7 +39,7 @@ export default {
     async getArticles(size: number, page: number) {
         let conn = await mysql.getConnection()
 
-        let [list] = await conn.query(`select id, title, created_at,abstract from article ORDER BY created_at DESC`)
+        let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, (page+1)*size])
 
         return this.formatArticle(list)
     },

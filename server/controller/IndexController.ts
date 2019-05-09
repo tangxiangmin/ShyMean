@@ -17,7 +17,6 @@ export default {
         let articles = await articleModel.getArticles(pageSize, page - 1);
 
         let total = await articleModel.count();
-
         let pagination = new Pagination(total.total, page, "", pageSize);
 
         // @ts-ignore
