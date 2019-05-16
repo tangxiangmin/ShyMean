@@ -39,7 +39,7 @@ export default {
     async getArticles(size: number, page: number) {
         let conn = await mysql.getConnection()
 
-        let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, (page+1)*size])
+        let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, page*size])
 
         return this.formatArticle(list)
     },
