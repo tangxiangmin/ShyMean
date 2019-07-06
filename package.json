@@ -10,7 +10,8 @@
     "build:static": "node scripts/build.js",
     "build:server": "tsc server/index.ts --outDir app",
     "deploy": "node ./scripts/deploy.js",
-    "start": "export NODE_ENV=production && pm2 start ./app/index.js --name='blog'"
+    "start": "export NODE_ENV=production && pm2 start ./app/index.js --name='blog'",
+    "upload": "ts-node scripts/upload.ts"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",

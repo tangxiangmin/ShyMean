@@ -5,6 +5,7 @@
 import mysql from '../core/mysql'
 
 import Tag from './tag'
+import {create} from "domain";
 
 export default {
     async count() {
@@ -14,7 +15,7 @@ export default {
     },
     async formatArticle(articles: any[]) {
         const {TYPE_TAG, TYPE_CATEGORY} = Tag;
-        let conn = mysql.getConnection()
+        let conn = await mysql.getConnection()
         for (let article of articles) {
             let articleId = article.id;
 
@@ -39,7 +40,7 @@ export default {
     async getArticles(size: number, page: number) {
         let conn = await mysql.getConnection()
 
-        let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, page*size])
+        let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, page * size])
 
         return this.formatArticle(list)
     },
@@ -74,6 +75,15 @@ export default {
         let conn = await mysql.getConnection()
         let [res] = await conn.query(`select title from article where created_at < ? limit 1`, [created_at])
         return res && res[0]
+    },
+    async addArticle(
+        content: string,
+        title: string,
+        created_at: number,
+        abstract: string,
+    ) {
+        let conn = await mysql.getConnection()
+        let [res] = await conn.query(`INSERT INTO article (content,title, created_at, abstract) VALUES (?,?,?,?)`, [content, title, created_at, abstract])
+        return res && res.insertId
     }
-
 }

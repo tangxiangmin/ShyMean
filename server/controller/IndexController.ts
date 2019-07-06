@@ -7,6 +7,7 @@ import logger from '../util/logger'
 import Pagination from "../lib/pagination"
 import marked from "../lib/marked"
 import formatCatalogue from "../lib/catelogue"
+import {log} from "util";
 
 export default {
     async index(ctx: any, next: Function) {
@@ -78,7 +79,6 @@ export default {
         let categories = await tagModel.getCategories()
         let tags = await tagModel.getTags()
 
-        logger.info(categories, tags)
         ctx.state.data = {
             categories,
             tags
@@ -143,6 +143,33 @@ export default {
         ctx.state.view = "book"
 
         await next()
+    },
+
+    // 增加文件上传，该接口用于本地上传，不公开开放
+    async addArticle(data: any) {
+        let {tags, content, title, abstract, created_at} = data
+
+        try {
+            let articleId = await articleModel.addArticle(content, title, created_at, abstract)
+            try {
+                for (let tag of tags) {
+                    const {name, type} = tag
+                    let tagInfo = await tagModel.getTagByName(name)
+                    let tagId
+                    if (!tagInfo) {
+                        tagId = await tagModel.addTag(name, type)
+                    } else {
+                        tagId = tagInfo.id
+                    }
+                    await tagModel.bindArticleTag(tagId, articleId)
+                }
+                return articleId
+            } catch (e) {
+                console.log('标签插入失败', e)
+            }
+        } catch (e) {
+            console.log('文章插入失败', e)
+        }
     }
 
 }
