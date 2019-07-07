@@ -85,5 +85,10 @@ export default {
         let conn = await mysql.getConnection()
         let [res] = await conn.query(`INSERT INTO article (content,title, created_at, abstract) VALUES (?,?,?,?)`, [content, title, created_at, abstract])
         return res && res.insertId
+    },
+    async removeArticleById(articleId: number) {
+        let conn = await mysql.getConnection()
+        await conn.query(`DELETE FROM article WHERE id = ?`, [articleId])
+        await conn.query(`DELETE FROM article_tag WHERE article_id = ?`, [articleId])
     }
 }

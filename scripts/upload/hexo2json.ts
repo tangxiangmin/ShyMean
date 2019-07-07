@@ -74,8 +74,9 @@ export default class Hexo2JSON {
 
         let re = /---([^]*?)---([^]*)/;
         // 拆分头部信息和主要内容
-        let head = re.exec(data)[1];
-        let content = re.exec(data)[2];
+        let res = re.exec(data);
+        let head = res[1];
+        let content = res[2];
 
         this.json = {
             title: getTitle(head),

@@ -150,10 +150,12 @@ export default {
         let {tags, content, title, abstract, created_at} = data
 
         try {
+            // 插入文章
             let articleId = await articleModel.addArticle(content, title, created_at, abstract)
             try {
                 for (let tag of tags) {
                     const {name, type} = tag
+                    // 更新标签
                     let tagInfo = await tagModel.getTagByName(name)
                     let tagId
                     if (!tagInfo) {
@@ -161,6 +163,7 @@ export default {
                     } else {
                         tagId = tagInfo.id
                     }
+                    // 将标签和文章关联
                     await tagModel.bindArticleTag(tagId, articleId)
                 }
                 return articleId
@@ -170,6 +173,24 @@ export default {
         } catch (e) {
             console.log('文章插入失败', e)
         }
-    }
+    },
+    // 文章更新接口
+    async editArticle(data: any) {
+        let {title} = data
 
+        let article = await articleModel.getArticleByTitle(title)
+        // 如果存在文章，先删除，而不是在原数据上更新
+        if (article) {
+            let articleId = article.id
+            try {
+                await articleModel.removeArticleById(articleId)
+                // 然后添加新的文章
+                return this.addArticle(data)
+            } catch (e) {
+                console.log(e)
+            }
+        } else {
+            return this.addArticle(data)
+        }
+    }
 }

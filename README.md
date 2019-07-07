@@ -23,3 +23,9 @@ npm run build:server
 # pm2启动服务端
 npm run start
 ```
+
+上传博客
+```
+# 上传本地markdown博文
+npm run upload /path_to_markdown_file/xxx.md
+```

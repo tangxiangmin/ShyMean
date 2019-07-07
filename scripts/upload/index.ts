@@ -4,12 +4,14 @@
 let fs = require('fs')
 
 import IndexController from '../../server/controller/IndexController'
+import tagModel from '../../server/model/tag'
+
 import Hexo2JSON from './hexo2json'
 
 function formatParams(data: any) {
     let {tags, categories, content, title, abstract, created_at} = data
     // 将分类也统一处理为标签，使用type字段分离
-    const TYPE_TAG = 1, TYPE_CATEGORY = 2;
+    const {TYPE_TAG, TYPE_CATEGORY} = tagModel
 
     let totalTags = tags.map((item: any) => {
         return {
@@ -22,7 +24,6 @@ function formatParams(data: any) {
             type: TYPE_CATEGORY
         }
     }));
-
 
     return {
         title,
@@ -46,17 +47,8 @@ export async function upload(file: string) {
         let data = parser.parse()
         let params = formatParams(data) // 格式化json，处理成接口需要的参数
 
-        return await IndexController.addArticle(params) // 调用控制器接口，插入数据
+        return await IndexController.editArticle(params) // 调用控制器接口，插入数据
     } catch (e) {
         console.log(e)
     }
 }
-
-// 批量上传
-export async function batchUpload(dir: string) {
-    this.files = fs.readdirSync(dir, 'utf-8');
-    this.files.forEach((file: string) => {
-        this.getInfo(file)
-    });
-}
-
