@@ -1,13 +1,10 @@
 import articleModel from "../model/article"
 import tagModel from "../model/tag"
 import bookModel from "../model/book"
-import logger from '../util/logger'
-
 
 import Pagination from "../lib/pagination"
 import marked from "../lib/marked"
 import formatCatalogue from "../lib/catelogue"
-import {log} from "util";
 
 export default {
     async index(ctx: any, next: Function) {

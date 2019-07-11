@@ -54,7 +54,7 @@ export default {
     async getArticleByTag(tagname: string) {
         let conn = await mysql.getConnection()
 
-        let [list] = await conn.query(`select a.id, a.title, a.created_at, Year(a.created_at) as year from article as a join tag as t on t.name = ? join article_tag as a_t on a.id = a_t.article_id where t.id = a_t.tag_id order by created_at`, [tagname])
+        let [list] = await conn.query(`select a.id, a.title, a.created_at, Year(a.created_at) as year from article as a join tag as t on t.name = ? join article_tag as a_t on a.id = a_t.article_id where t.id = a_t.tag_id order by created_at DESC`, [tagname])
         return list
     },
     // 文章详情
