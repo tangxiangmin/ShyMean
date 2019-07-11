@@ -19,5 +19,4 @@ log4js.configure({
     appenders: {base: {type: 'file', filename: path.resolve('./log', createDateLogFileName())}},
     categories: {default: {appenders: ['base'], level: 'debug'}}
 });
-
-export default logger
+module.exports = logger
