@@ -40,7 +40,6 @@ function showVersion() {
 Promise.all([
     System.import("jquery"),
     System.import("swig"),
-    // System.import("")
 ]).then(([]) => {
     showVersion()
 

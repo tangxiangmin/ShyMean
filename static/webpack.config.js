@@ -25,6 +25,12 @@ module.exports = (env) => {
                 {
                     test: /\.js$/,
                     loader: "babel-loader",
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/
                 },
                 {
                     test: /\.s?css$/,
@@ -57,10 +63,10 @@ module.exports = (env) => {
             'highlight.js': "window.hljs"
         },
         devServer: {//配置此静态文件服务器，可以用来预览打包后项目
-            contentBase: path.resolve(__dirname, './'),//开发服务运行时的文件根目录
-            host: 'localhost',//主机地址
-            port: 8080,//端口号
-            compress: true, //开发服务器是否启动gzip等压缩
+            contentBase: path.resolve(__dirname, './'),
+            host: 'localhost',
+            port: 8080,
+            compress: true,
         }
 
     }

@@ -10,7 +10,7 @@ import logger from "../server/util/logger";
 const inquirer = require('inquirer')
 
 // 原hexo项目的_posts目录
-const defaultRoot: string = `/Users/Txm/Desktop/github/blog-source/source/_posts/`
+const defaultRoot: string = `/Users/Txm/github/blog-source/source/_posts/`
 
 init()
 

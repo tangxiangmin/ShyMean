@@ -68,12 +68,12 @@ export default {
     },
     async getPrevArticle(created_at: string) {
         let conn = await mysql.getConnection()
-        let [res] = await conn.query(`select title from article where created_at > ? limit 1`, [created_at])
+        let [res] = await conn.query(`SELECT title FROM article WHERE created_at > ? ORDER BY created_at LIMIT 1 `, [created_at])
         return res && res[0]
     },
     async getNextArticle(created_at: string) {
         let conn = await mysql.getConnection()
-        let [res] = await conn.query(`select title from article where created_at < ? limit 1`, [created_at])
+        let [res] = await conn.query(`SELECT title FROM article WHERE created_at < ? ORDER BY created_at DESC LIMIT 1  `, [created_at])
         return res && res[0]
     },
     async addArticle(
