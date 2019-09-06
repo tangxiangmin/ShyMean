@@ -1,84 +1,103 @@
-/*
 
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+// 切换代码样式时，从https://highlightjs.org/static/demo/ 上选择一个喜欢的样式，然后切换
 
-*/
+//@import "../../../node_modules/highlight.js/styles/shades-of-purple.css";
+
+
+/**
+ * Shades of Purple Theme — for Highlightjs.
+ *
+ * @author (c) Ahmad Awais <https://twitter.com/mrahmadawais/>
+ * @link GitHub Repo → https://github.com/ahmadawais/Shades-of-Purple-HighlightJS
+ * @version 1.5.0
+ */
 
 .hljs {
-	display: block;
-	overflow-x: auto;
-	padding: 0.5em;
-	//background: #23241f;
+    display: block;
+    overflow-x: auto;
+    /* Custom font is optional */
+    /* font-family: 'Operator Mono', 'Fira Code', 'Menlo', 'Monaco', 'Courier New', 'monospace';  */
+    line-height: 1.45;
+    padding: 10px;
+    background: #2d2b57;
+    font-weight: normal;
+}
+
+.hljs-title {
+    color: #fad000;
+    font-weight: normal;
+}
+
+.hljs-name {
+    color: #a1feff;
+}
+
+.hljs-tag {
+    color: #ffffff;
+}
+
+.hljs-attr {
+    color: #f8d000;
+    font-style: italic;
+}
+
+.hljs-built_in,
+.hljs-selector-tag,
+.hljs-section {
+    color: #fb9e00;
+}
+
+.hljs-keyword {
+    color: #fb9e00;
 }
 
 .hljs,
-.hljs-tag,
 .hljs-subst {
-	color: #f8f8f2;
+    color: #e3dfff;
 }
 
-.hljs-strong,
-.hljs-emphasis {
-	color: #a8a8a2;
-}
-
+.hljs-string,
+.hljs-attribute,
+.hljs-symbol,
 .hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
-	color: #ae81ff;
-}
-
+.hljs-addition,
 .hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-selector-class {
-	color: #a6e22e;
+.hljs-regexp,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-tag,
+.hljs-quote,
+.hljs-deletion {
+    color: #4cd213;
 }
 
-.hljs-strong {
-	font-weight: bold;
+.hljs-meta,
+.hljs-meta-string {
+    color: #fb9e00;
 }
 
-.hljs-emphasis {
-	font-style: italic;
+.hljs-comment {
+    color: #ac65ff;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
+.hljs-literal,
 .hljs-name,
-.hljs-attr {
-	color: #f92672;
+.hljs-strong {
+    font-weight: normal;
 }
 
-.hljs-symbol,
-.hljs-attribute {
-	color: #66d9ef;
+.hljs-literal,
+.hljs-number {
+    color: #fa658d;
 }
 
-.hljs-params,
-.hljs-class .hljs-title {
-	color: #f8f8f2;
+.hljs-emphasis {
+    font-style: italic;
 }
 
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-	color: #e6db74;
-}
-
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-	color: #75715e;
-	font-style: italic;
+.hljs-strong {
+    font-weight: bold;
 }
