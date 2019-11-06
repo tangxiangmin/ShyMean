@@ -11,7 +11,8 @@
     "build:server": "tsc server/index.ts --outDir app",
     "deploy": "node ./scripts/deploy.js",
     "start": "export NODE_ENV=production && pm2 start ./app/index.js --name='blog'",
-    "upload": "export NODE_ENV=upload && ts-node scripts/upload.ts"
+    "upload": "export NODE_ENV=upload && ts-node scripts/upload.ts",
+    "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",

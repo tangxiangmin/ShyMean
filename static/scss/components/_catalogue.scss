@@ -24,8 +24,9 @@
 			position: relative;
 			padding-left: 10px;
 
+            // todo 需要处理左侧目录超长的问题
 			& + .catalogue_group {
-				//display: none;
+				display: none;
 			}
 
 			&.on {

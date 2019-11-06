@@ -189,5 +189,23 @@ export default {
         } else {
             return this.addArticle(data)
         }
+    },
+    // 删除文章
+    async deleteArticle(data: any) {
+        let {title} = data
+
+        let article = await articleModel.getArticleByTitle(title)
+        if (article) {
+            let articleId = article.id
+            try {
+                await articleModel.removeArticleById(articleId)
+                // 然后添加新的文章
+                return true
+            } catch (e) {
+                console.log(e)
+            }
+        } else {
+            return Promise.reject(`未查找到${title}`)
+        }
     }
 }
