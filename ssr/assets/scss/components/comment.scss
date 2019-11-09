@@ -1,0 +1,79 @@
+// 评论样式重置
+
+#blog {
+    .v {
+        .vwrap {
+            background-color: $gray;
+        }
+        .vheader {
+            .vinput {
+                font-size: 16px;
+            }
+        }
+
+        .veditor {
+            @include border();
+            font-size: 16px;
+            min-height: rem(300);
+        }
+        // 隐藏底部版本号信息
+        .info {
+            display: none;
+        }
+
+        .vbtn {
+            padding: rem(10) rem(20);
+            font-size: rem(16);
+            border-radius: rem(14);
+        }
+
+        .vwrap .vcontrol .col {
+            font-size: rem(20);
+        }
+        // 评论列表
+        .vsys {
+            font-size: 14px !important;
+        }
+        .vmeta {
+            font-size: 16px !important;
+        }
+        .vcontent {
+            font-size: 14px !important;
+        }
+        .vinfo .col {
+            font-size: rem(20);
+        }
+        .vinfo .vcount .vnum {
+            font-size: rem(40);
+        }
+        .vlist .vcard {
+            padding-top: rem(20);
+
+        }
+         .vlist .vcard .vcontent {
+             margin-bottom: rem(40);
+             padding-top: rem(30);
+         }
+        .vlist .vcard .vimg {
+            width: rem(60);
+            height: rem(60);
+            padding: 0;
+            margin-right: rem(20);
+        }
+        .vlist .vcard .vhead .vnick {
+            font-size: rem(20);
+            margin-right: rem(20);
+        }
+        .vlist .vcard .vhead .vsys {
+            padding: rem(5) rem(10);
+        }
+
+        .vlist .vcard .vh .vtime {
+            font-size: rem(14);
+        }
+        .vlist .vcard .vh .vmeta .vat {
+            font-size: rem(14);
+        }
+    }
+
+}

@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+code {
+    padding: 0 6px;
+    // margin在某些时候导致长代码换行，需要处理这个BUG
+    //margin:0 5px;
+    display: inline-block;
+    color: #f9263e;
+    font-family: Monaco, Menlo, 'Courier New', Consolas, monospace;
+    word-break: break-all;
+
+    background-color: rgba(0, 50, 100, 0.08);
+    border-radius: 5px;
+}
+
+pre {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    margin: 20px 0;
+    //padding: 15px;
+    position: relative;
+
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    //background: #1b2b34;
+
+    line-height: 1.4;
+    font-family: inherit;
+    color: #cdd3de;
+    font-size: 14px;
+
+    code {
+        @extend .hljs;
+        //border: none;
+        //padding: 0;
+        //color: inherit;
+        //background: transparent;
+        //letter-spacing: 0;
+    }
+}
+
+blockquote {
+    overflow: auto;
+
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 10px 10px 20px;
+
+    background: $gray;
+    color: $text-gray;
+
+    border: 1px solid #ccc;
+    border-left-width: 6px;
+    border-radius: 0 4px 4px 0;
+}
+
+// hightlightjs line number
+//code.has-numbering {
+//	margin-left: 10px;
+//	word-wrap: normal;
+//	word-break: keep-all;
+//	white-space: pre;
+//}
+//
+//.pre-numbering {
+//	position: absolute;
+//	top: 0;
+//	left: 0;
+//	width: 20px;
+//	height: 100%;
+//	padding: .5em 0.2em .5em 0;
+//	border-right: 1px solid #C3CCD0;
+//	border-radius: 3px 0 0 3px;
+//	background-color: #EEE;
+//	text-align: right;
+//	font-size: 1.0em;
+//	color: #AAA;
+//	list-style: none;
+//}
