@@ -1,5 +1,8 @@
 import {h, Component} from "nezha/dist/src";
 import {Link} from 'nezha/dist/router'
+import {connect} from 'nezha/dist/nax'
+import Spin from '../components/spin'
+
 
 function createNav(url: string, name: string, icon: string) {
     return {
@@ -41,19 +44,6 @@ const Header = () => {
                             </Link>)
                         })
                     }
-
-                    {/*        <span class="show-md">*/}
-                    {/*    <a class="nav_item" href="/message" title="留言">*/}
-                    {/*        <i class="iconfont icon-comment"></i>*/}
-                    {/*        留言</a>*/}
-                    {/*     <a class="nav_item" href="/about" title="关于">*/}
-                    {/*        <i class="iconfont icon-info"></i>*/}
-                    {/*        关于</a>*/}
-                    {/*    <a class="nav_item" href="/book" title="书架">*/}
-                    {/*        <i class="iconfont icon-bookshelf"></i>*/}
-                    {/*        书架</a>*/}
-                    {/*</span>*/}
-
                 </nav>
             </div>
         </header>
@@ -85,7 +75,18 @@ const asideNavList = [
     createNav('/about', '关于', 'icon-info'),
     createNav('/friend', '友链', 'icon-blog'),
 ]
-const Aside = ({toggleAside}) => {
+
+// 返回顶部
+const backTop = () => {
+    window.scroll(0, 0)
+}
+
+const Aside = connect(state => {
+    let globalState = state.global
+    return {
+        showBackTop: globalState.showBackTop
+    }
+})(({toggleAside, showBackTop}) => {
     return (<aside>
         <div class="page_sd hide-md">
             <div class="me">
@@ -119,16 +120,23 @@ const Aside = ({toggleAside}) => {
                     <span class="btn-line"></span>
                 </div>
             </div>
-            <div class="btn-top">
-                <i class="iconfont icon-top"></i>
+            <div class={"btn-top " + (showBackTop ? 'active' : '')} onClick={backTop}><i class="iconfont icon-top"/>
             </div>
         </div>
     </aside>)
-}
+})
 
+const Loading = connect((state) => {
+    return {
+        pageLoading: state.global.pageLoading
+    }
+})(({pageLoading}) => {
+    return <Spin show={pageLoading}/>
+})
 
 export {
     Header,
     Aside,
-    Footer
+    Footer,
+    Loading
 }

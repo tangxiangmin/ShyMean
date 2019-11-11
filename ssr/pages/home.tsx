@@ -3,6 +3,8 @@ import {Link} from "nezha/dist/router";
 import {connect} from 'nezha/dist/nax'
 import {getArticleList} from "../api";
 
+import Pagination from "../components/pagination";
+
 const Article = ({post}) => {
     return (<article class="article">
         <h2 class="article_hd">
@@ -35,20 +37,21 @@ const Home = connect((state) => {
     return {
         ...state.home
     }
-})(({articles = []}) => {
+})(({articles = [], total, page, location}) => {
     return (<div>
         {
             articles.map(post => {
                 return <Article post={post}/>
             })
         }
+        <Pagination total={total && total.total} router="/" current={parseInt(location.query.page, 10) || 1}/>
     </div>)
 })
 
 // @ts-ignore
-Home.asyncData = async (store) => {
+Home.asyncData = async (store, location) => {
     let searchParams = {
-        page: 1
+        page: location.query.page
     }
     let result = await getArticleList(searchParams)
     store.dispatch({

@@ -52,6 +52,9 @@
 		left: 0;
 		right: 0;
 		top: 100px;
+        &.active {
+            display: block;
+        }
 	}
 
 	&_ft {

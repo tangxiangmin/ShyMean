@@ -15,6 +15,12 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
+    externals: {
+        'SystemJS': 'window.System',
+        'jquery': "window.jQuery",
+        'swigjs': "window.swig",
+        'highlight.js': "window.hljs"
+    },
     module: {
         rules: [
             {

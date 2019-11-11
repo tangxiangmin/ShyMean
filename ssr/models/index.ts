@@ -7,6 +7,7 @@ import tags from './tags'
 import archive from "./archive";
 import book from './book'
 import article from './article'
+import globalState from "./global";
 
 export default combineReducers({
     home,
@@ -14,4 +15,5 @@ export default combineReducers({
     archive,
     book,
     article,
+    global: globalState
 })

@@ -13,7 +13,7 @@
 
 .btn-list {
 	@extend %page-btn;
-	&.hover {
+	&:hover {
 		.btn-line {
 			&:first-child {
 				transform: translate(-8px,6px) rotate(-45deg);

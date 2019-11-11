@@ -58,6 +58,19 @@ function getTemplate(html, initData) {
     <title>Document</title>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
     <link rel="stylesheet" href="/main.css">
+    <script type="systemjs-packagemap">
+        {
+          "packages": {
+            "swig": "//cdn.bootcss.com/swig/1.4.2/swig.js",
+            "jquery": "//cdn.bootcss.com/jquery/3.2.1/jquery.min.js",
+            "av": "//cdn1.lncld.net/static/js/3.0.4/av-min.js",
+            "Valine": "//unpkg.com/valine/dist/Valine.min.js",
+            "L2Dwidget": "//cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js"
+          }
+        }
+    </script>
+    <script src="//cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
+    
 </head>
 <body>
     <div id="root">${html}</div>

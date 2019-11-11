@@ -6,7 +6,7 @@ import {h, Component} from 'nezha/dist/src'
 
 import {Router, Link} from 'nezha/dist/router'
 import routes from './routes'
-import {Header, Aside, Footer} from './pages/layout'
+import {Header, Aside, Footer, Loading} from './pages/layout'
 
 class App extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
             asideVisible: false
         }
 
-        // todo 临时处理
+        // todo 临时处理，store变化后更新整个应用
         let {store} = props.context
         store.subscribe(() => {
             this.forceUpdate()
@@ -32,6 +32,7 @@ class App extends Component {
         let {url, onChange} = this.props
         let {asideVisible} = this.state
         let pageClassName = ['page', 'page-theme-base']
+
         if (asideVisible) pageClassName.push('active')
 
         return (
@@ -44,6 +45,7 @@ class App extends Component {
                 </main>
                 <Aside toggleAside={this.toggleAside}/>
                 <Footer/>
+                <Loading/>
             </div>
         )
     }

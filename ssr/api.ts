@@ -2,6 +2,8 @@
     对于服务端而言，需要连接数据库获取数据
     对于浏览器而言，需要通过ajax请求http接口获取数据
     使用axios，可以绕开浏览器和服务端的网络请求差异，减少同构工作量
+
+    由于之前的同构渲染服务器直接提供了查询接口，使用axios也可以避免重写服务端数据查询逻辑
  */
 import axios from 'axios'
 
@@ -12,7 +14,9 @@ axios.defaults.baseURL = 'http://localhost:3000/'
 
 // 获取首页文章列表
 export const getArticleList = async (params) => {
-    let result = await axios.get('/', {params})
+    let url = `/${params.page || 1}`
+
+    let result = await axios.get(url, {params})
     return result.data
 }
 

@@ -14,6 +14,8 @@ import BookList from "./pages/book";
 import Friend from "./pages/friend";
 import ArticleDetail from './pages/article'
 
+import Message from './pages/message'
+
 import Page404 from './pages/404'
 
 const routes: Array<RouteConfig> = [
@@ -27,7 +29,7 @@ const routes: Array<RouteConfig> = [
     {path: '/archive/:name', component: Archive},
     {path: '/book', component: BookList},
     {path: '/friend', component: Friend},
-    {path: '/message', component: Page404},
+    {path: '/message', component: Message},
     {path: '/article/:title', component: ArticleDetail},
 
     {component: Page404}

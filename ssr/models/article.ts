@@ -1,7 +1,5 @@
-
-
 const initState = {
-    article: {}
+    article: undefined
 }
 
 export default (state = initState, action) => {

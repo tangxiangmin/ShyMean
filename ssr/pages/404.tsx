@@ -1,8 +1,7 @@
 import {h, Component} from "nezha/dist/src";
 
-
 const Page404 = () => {
-    return (<div>404</div>)
+    return (<div>Not Found: 一个很单调的404</div>)
 }
 
 export default Page404
