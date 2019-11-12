@@ -14,7 +14,7 @@ let server = {
         console.log('当前运行环境:' + process.env.NODE_ENV)
 
         this.initStatic()
-        this.initTplEngine()
+        // this.initTplEngine()
         this.initRouter()
         this.initIsomorphic()
 

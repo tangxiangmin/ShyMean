@@ -7,12 +7,14 @@ import {getArticleDetail} from "../api";
 
 import Comment from './message'
 import Catalogue from '../components/catalogue'
+import {formatDate} from '../util'
+
 
 const ArticleDetail = connect((state) => {
     return {
         ...state.article
     }
-})(({article,catalogue, prev, next}) => {
+})(({article, catalogue, prev, next}) => {
     // todo 实现重定向错误
     if (!article) {
         return (<div>Oops...加载中</div>)
@@ -28,7 +30,7 @@ const ArticleDetail = connect((state) => {
                         <span class="show-sm">
                 <i class="iconfont icon-archives"/>
             </span>
-                        <time>{article.created_at}</time>
+                        <time>{formatDate(article.created_at)}</time>
                         |
                         <span class="hide-sm">分类于</span>
                         <span class="show-sm"><i class="iconfont icon-tag"/></span>
@@ -71,6 +73,18 @@ ArticleDetail.asyncData = async (store, location) => {
         type: 'store_article_detail',
         payload: result
     })
+    return result
+}
+
+// @ts-ignore
+ArticleDetail.serverSEO = async ({article}) => {
+
+    return article ? {
+        title: `${article.title}_shymean`,
+        keywords: `${article.tags.join(",")},${article.categories.join(",")},shymean,橙红年代,前端开发,博客`,
+
+    } : {}
+
 }
 
 export default ArticleDetail

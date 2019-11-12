@@ -13,16 +13,18 @@
 
 .btn-list {
 	@extend %page-btn;
-	&:hover {
-		.btn-line {
-			&:first-child {
-				transform: translate(-8px,6px) rotate(-45deg);
+	&.hover {
+        &:hover {
+            .btn-line {
+                &:first-child {
+                    transform: translate(-8px,6px) rotate(-45deg);
 
-			}
-			&:last-child {
-				transform: translate(-8px,-6px) rotate(45deg);
-			}
-		}
+                }
+                &:last-child {
+                    transform: translate(-8px,-6px) rotate(45deg);
+                }
+            }
+        }
 	}
 	&.close{
 		.btn-line{

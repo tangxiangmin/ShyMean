@@ -2,6 +2,7 @@ import {h, Component} from "nezha/dist/src";
 import {Link} from 'nezha/dist/router'
 import {connect} from 'nezha/dist/nax'
 import {getArchiveList} from '../api'
+import {formatDate} from '../util'
 
 const ArticleGroup = ({group}) => {
     const {year, articles} = group
@@ -12,7 +13,7 @@ const ArticleGroup = ({group}) => {
                 return (
                     <div className="archives_item">
                         <Link href={`/article/${item.title}`} title={item.title} className="archives_link">
-                            <span class="archives_date">{item.created_at}</span> {item.title}
+                            <span class="archives_date">{formatDate(item.created_at)}</span> {item.title}
                         </Link>
                     </div>
                 )
@@ -46,6 +47,16 @@ Archive.asyncData = async (store, location) => {
         type: 'store_archive_list',
         payload: result
     })
+    return result
+}
+
+// @ts-ignore
+Archive.serverSEO = async (data) => {
+    return {
+        title: '归档_shymean',
+        keywords: '博客归档,shymean,橙红年代',
+        description: '此页面统计了shymean博客文章的归档记录，用于快速索引文章列表。'
+    }
 }
 
 export default Archive

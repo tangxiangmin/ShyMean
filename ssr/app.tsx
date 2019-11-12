@@ -11,10 +11,6 @@ import {Header, Aside, Footer, Loading} from './pages/layout'
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            asideVisible: false
-        }
-
         // todo 临时处理，store变化后更新整个应用
         let {store} = props.context
         store.subscribe(() => {
@@ -22,18 +18,13 @@ class App extends Component {
         })
     }
 
-    toggleAside = () => {
-        this.setState({
-            asideVisible: !this.state.asideVisible
-        })
-    }
-
     render() {
-        let {url, onChange} = this.props
-        let {asideVisible} = this.state
+        let {url, onChange, context} = this.props
+        let {showAside} = context.store.getState().global // todo fix this
+
         let pageClassName = ['page', 'page-theme-base']
 
-        if (asideVisible) pageClassName.push('active')
+        if (showAside) pageClassName.push('active')
 
         return (
             <div id="blog" class={pageClassName.join(' ')}>
@@ -43,7 +34,7 @@ class App extends Component {
                         <Router onChange={onChange} routes={routes} url={url}/>
                     </div>
                 </main>
-                <Aside toggleAside={this.toggleAside}/>
+                <Aside/>
                 <Footer/>
                 <Loading/>
             </div>

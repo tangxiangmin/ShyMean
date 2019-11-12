@@ -1,5 +1,5 @@
 // 此处同步开发环境变量 挂载模板需要的环境
-import renderData from '../build/render'
+// import renderData from '../build/render'
 
 // 根据渲染方式返回接口的数据或渲染模板中间件
 export default async function (ctx: any) {

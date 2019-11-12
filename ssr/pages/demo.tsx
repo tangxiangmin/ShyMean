@@ -119,4 +119,13 @@ const Demo = () => {
     </div>)
 }
 
+// @ts-ignore
+Demo.serverSEO = ()=>{
+    return {
+        title: '代码项目_shymean',
+        keywords: 'demo,友链,shymean,橙红年代',
+        description: '此页面统计了shymean博客的demo',
+    }
+}
+
 export default Demo

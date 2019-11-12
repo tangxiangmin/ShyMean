@@ -4,6 +4,7 @@ import {connect} from 'nezha/dist/nax'
 import {getArticleList} from "../api";
 
 import Pagination from "../components/pagination";
+import {formatDate} from '../util'
 
 const Article = ({post}) => {
     return (<article class="article">
@@ -17,7 +18,7 @@ const Article = ({post}) => {
             <span class="show-sm">
                 <i class="iconfont icon-archives"/>
             </span>
-            <time>{post.created_at}</time>
+            <time>{formatDate(post.created_at)}</time>
             |<span class="hide-sm">分类于</span>
             <span class="show-sm"><i class="iconfont icon-tag"/></span>
             {
@@ -61,6 +62,17 @@ Home.asyncData = async (store, location) => {
             searchParams
         }
     })
+    return result
 }
+
+// @ts-ignore
+
+// Home.serverSEO = async (data) => {
+//     return {
+//         title: '',
+//         description: '',
+//         keywords: ''
+//     }
+// }
 
 export default Home

@@ -3,6 +3,8 @@ import {Link} from 'nezha/dist/router'
 import {connect} from 'nezha/dist/nax'
 import {getBookList} from "../api";
 
+import {formatDate} from "../util";
+
 const BookList = ({books = []}) => {
     return (
         <div class="container">
@@ -10,9 +12,8 @@ const BookList = ({books = []}) => {
             <table class="table">
                 <thead>
                 <tr>
-                    <th>编号</th>
                     <th>书名</th>
-                    <th>开始日期</th>
+                    <th>开始阅读</th>
                     <th>结束日期</th>
                     <th>状态</th>
                 </tr>
@@ -21,11 +22,9 @@ const BookList = ({books = []}) => {
                 {
                     books.map((book, index) => {
                         return (<tr>
-                            <td>{index}</td>
                             <td>{book.name}</td>
-                            <td>{book.created_at}</td>
-                            <td>{book.created_at}</td>
-                            <td>{book.ended_at || '~'}</td>
+                            <td>{formatDate(book.created_at)}</td>
+                            <td>{book.ended_at && formatDate(book.ended_at) || '~'}</td>
                             <td>{book.note}</td>
                         </tr>)
                     })
@@ -49,6 +48,22 @@ BookPage.asyncData = async (store) => {
         type: 'store_book_list',
         payload: result
     })
+    return result
+}
+
+// @ts-ignore
+BookPage.serverSEO = async ({books}) => {
+    let name = ''
+    if (Array.isArray(books)) {
+        name = books.reduce((acc, book) => {
+            return acc += book.name + ','
+        }, '')
+    }
+    return {
+        title: '书架_shymean',
+        keywords: '书架,shymean,橙红年代',
+        description: `此页面统计了shymean博客已经阅读的技术书籍，包括${name}等书籍。`
+    }
 }
 
 export default BookPage

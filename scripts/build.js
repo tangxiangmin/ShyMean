@@ -7,14 +7,14 @@ let webpack = require('webpack')
 let fs = require("fs")
 let path = require("path")
 
-let config = require("../static/webpack.config")({production: true})
+let config = require("../webpack.ssr.js")({production: true})
 const bundler = webpack(config)
 
 
 function getOutputFileName(assets) {
 
-    let entryScriptRe = /^index-.*\.js$/
-    let entryStyleRe = /^index-.*?\.css$/
+    let entryScriptRe = /^client-.*\.js$/
+    let entryStyleRe = /^client-.*?\.css$/
 
     let outputFile = {
         js: "",
@@ -34,7 +34,7 @@ function getOutputFileName(assets) {
 
 function getOutputFilePath(outputFile, outputPath) {
     // 服务器根目录
-    let serveRoot = path.resolve(__dirname, "../public")
+    let serveRoot = path.resolve(__dirname, "../ssr/dist/")
 
     Object.keys(outputFile).forEach(key => {
         let val = outputFile[key]
@@ -45,7 +45,7 @@ function getOutputFilePath(outputFile, outputPath) {
 }
 
 function createOutputMap(outputFile) {
-    let mapPath = path.resolve(__dirname, "../map.json")
+    let mapPath = path.resolve(__dirname, "../ssr/dist/map.json")
 
     fs.writeFile(mapPath, JSON.stringify(outputFile), function (err) {
         if (err) throw err;
@@ -54,6 +54,7 @@ function createOutputMap(outputFile) {
 }
 
 bundler.run((err, stats) => {
+    if (err) throw err
     let assets = stats.toJson().assets
 
     let outputFile = getOutputFileName(assets)

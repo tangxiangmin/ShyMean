@@ -6,3 +6,4 @@ npm run build
 
 # blog任务名称在package.json中start命令设置
 pm2 reload blog
+pm2 reload blog_ssr

@@ -2,6 +2,7 @@ import {h} from "nezha/dist/src";
 import {Link} from 'nezha/dist/router'
 import {connect} from 'nezha/dist/nax'
 import {getTags} from "../api";
+import tag from "../../server/model/tag";
 
 interface Tag {
     name: string,
@@ -79,7 +80,23 @@ TagsPage.asyncData = async (store) => {
         type: 'store_tags_list',
         payload: result
     })
+    return result
 }
+
+// @ts-ignore
+TagsPage.serverSEO = ({categories} = {}) => {
+    let name = ''
+    if (Array.isArray(categories)) {
+        name = categories.map(tag => tag.name).join(',')
+    }
+
+    return {
+        title: '标签_shymean',
+        keywords: `${name}`,
+        description: '此页面用于统计shymean博客文章的分类和标签，用于筛选相关类型的文章',
+    }
+}
+
 
 export default TagsPage
 

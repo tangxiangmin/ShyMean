@@ -7,7 +7,7 @@ import './assets/scss/blog.scss'
 
 import App from './app'
 import {createStore} from "./store";
-import {debounce, sleep} from "./util.js";
+import {debounce, sleep} from "./util";
 
 // @ts-ignore
 let store = createStore(window.INIT_DATA)
@@ -39,6 +39,8 @@ const onRouteChange = async (from, to) => {
 
 hydrateDOM(<App context={globalContext} onChange={onRouteChange}/>, document.getElementById("root"))
 
+document.title = '橙红年代'
+
 document.addEventListener('scroll', debounce(() => {
     store.dispatch({
         type: 'toggle_back_top',
@@ -47,3 +49,9 @@ document.addEventListener('scroll', debounce(() => {
 }, 100))
 
 
+showVersion()
+
+function showVersion() {
+    console.clear()
+    console.log("\n%c Shymean's Blog%cv0.7%c\n\n", "padding: 8px; background: #333; font-family: 'Sitka Heading'; font-weight: bold; font-size: large; color: white;", "padding: 8px; background: #999; font-family: 'Sitka Text'; font-size: large; color: #eee;", "")
+}

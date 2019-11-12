@@ -32,5 +32,13 @@ const About = () => {
         </div>
     )
 }
+// @ts-ignore
+About.serverSEO = (data) => {
+    return {
+        title: '关于_shymean',
+        description: '此页面介绍了shymean博客的相关信息，包括关于我、关于博客、关于橙红年代以及版权声明的信息。',
+        keywords: '个人简介,关于博客,橙红年代,shymean'
+    }
+}
 
 export default About

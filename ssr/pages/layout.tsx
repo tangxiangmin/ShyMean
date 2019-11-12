@@ -17,38 +17,52 @@ const navList = [
     createNav('/demo', '项目', 'icon-code'),
 ]
 
-const Header = () => {
-    return (<header class="page_hd">
-            <div class="container header">
-                <h1 class="logo">
-                    <Link href="/" title="橙红年代">橙红年代</Link>
-                    <Link href="/version" title="博客版本记录" className="version">
-                        <sub>V0.6.1</sub>
-                    </Link>
-                </h1>
-                <div class="show-md">
-                    <div class="btn-list">
-                        <div class="btn-icon">
-                            <span class="btn-line"></span>
-                            <span class="btn-line"></span>
-                            <span class="btn-line"></span>
+class Header extends Component {
+    state = {
+        isResponsive: false
+    }
+
+    toggleNav = () => {
+        this.setState({
+            isResponsive: !this.state.isResponsive
+        })
+    }
+
+    render() {
+        let {isResponsive} = this.state
+        return (<header class="page_hd">
+                <div class="container header">
+                    <h1 class="logo">
+                        <Link href="/" title="橙红年代">橙红年代</Link>
+                        <Link href="/version" title="博客版本记录" className="version">
+                            <sub>V0.7.0</sub>
+                        </Link>
+                    </h1>
+                    <div class="show-md">
+                        <div class={'btn-list ' + (isResponsive ? 'close' : '')} onclick={this.toggleNav}>
+                            <div class="btn-icon">
+                                <span class="btn-line"></span>
+                                <span class="btn-line"></span>
+                                <span class="btn-line"></span>
+                            </div>
                         </div>
                     </div>
+                    <nav class={'nav-responsive ' + (isResponsive ? 'active' : '')}>
+                        {
+                            navList.map(({url, name, icon}) => {
+                                return (<Link href={url} title={name} className="nav_item">
+                                    <i class={'iconfont ' + icon}></i>
+                                    {name}
+                                </Link>)
+                            })
+                        }
+                    </nav>
                 </div>
-                <nav class="nav-responsive">
-                    {
-                        navList.map(({url, name, icon}) => {
-                            return (<Link href={url} title={name} className="nav_item">
-                                <i class={'iconfont ' + icon}></i>
-                                {name}
-                            </Link>)
-                        })
-                    }
-                </nav>
-            </div>
-        </header>
-    )
+            </header>
+        )
+    }
 }
+
 
 const Footer = () => {
     let currentYear = new Date().getFullYear()
@@ -76,59 +90,77 @@ const asideNavList = [
     createNav('/friend', '友链', 'icon-blog'),
 ]
 
-// 返回顶部
-const backTop = () => {
-    window.scroll(0, 0)
+
+class AsideCom extends Component {
+    toggleAside = () => {
+        let {dispatch, showAside} = this.props
+        dispatch({
+            type: 'toggle_aside',
+            payload: !showAside
+        })
+    }
+
+    // 返回顶部
+    backTop = () => {
+        window.scroll(0, 0)
+    }
+
+    render() {
+        let {showBackTop, showAside} = this.props
+
+        return (<aside>
+            <div class="page_sd hide-md">
+                <div class="me">
+                    <img src="http://shymean.com/img/avatar.jpeg" alt="shymean" width="100" height="100"/>
+                    <h3>shymean</h3>
+                    <p>一个不学无术且无趣的人。</p>
+                </div>
+                <div class="nav-border">
+                    {
+                        asideNavList.map(({url, name, icon}) => {
+                            return (<Link href={url} title={name} className="nav_item">
+                                <i class={'iconfont ' + icon}/> <br/>
+                                {name}
+                            </Link>)
+                        })
+                    }
+                </div>
+                <div class="contact">
+                    <a href="https://github.com/tangxiangmin" target="_blank" class="contact_link">
+                        <i class="iconfont icon-github"/> GitHub</a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=645234650&amp;site=qq&amp;menu=yes"
+                       target="_blank" class="contact_link">
+                        <i class="iconfont icon-qq"/> QQ</a>
+                </div>
+            </div>
+            <div class="tool">
+                <div class={'btn-list hide-md ' + (showAside ? 'close' : 'hover')} onClick={this.toggleAside}>
+                    <div class="btn-icon">
+                        <span class="btn-line"></span>
+                        <span class="btn-line"></span>
+                        <span class="btn-line"></span>
+                    </div>
+                </div>
+                <div class={"btn-top " + (showBackTop ? 'active' : '')} onClick={this.backTop}><i
+                    class="iconfont icon-top"/>
+                </div>
+            </div>
+        </aside>)
+
+    }
 }
 
 const Aside = connect(state => {
     let globalState = state.global
     return {
-        showBackTop: globalState.showBackTop
+        showBackTop: globalState.showBackTop,
+        showAside: globalState.showAside
     }
-})(({toggleAside, showBackTop}) => {
-    return (<aside>
-        <div class="page_sd hide-md">
-            <div class="me">
-                <img src="http://shymean.com/img/avatar.jpeg" alt="shymean" width="100" height="100"/>
-                <h3>shymean</h3>
-                <p>一个不学无术且无趣的人。</p>
-            </div>
-            <div class="nav-border">
-                {
-                    asideNavList.map(({url, name, icon}) => {
-                        return (<Link href={url} title={name} className="nav_item">
-                            <i class={'iconfont ' + icon}/> <br/>
-                            {name}
-                        </Link>)
-                    })
-                }
-            </div>
-            <div class="contact">
-                <a href="https://github.com/tangxiangmin" target="_blank" class="contact_link">
-                    <i class="iconfont icon-github"/> GitHub</a>
-                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=645234650&amp;site=qq&amp;menu=yes"
-                   target="_blank" class="contact_link">
-                    <i class="iconfont icon-qq"/> QQ</a>
-            </div>
-        </div>
-        <div class="tool">
-            <div class="btn-list hide-md" onClick={toggleAside}>
-                <div class="btn-icon">
-                    <span class="btn-line"></span>
-                    <span class="btn-line"></span>
-                    <span class="btn-line"></span>
-                </div>
-            </div>
-            <div class={"btn-top " + (showBackTop ? 'active' : '')} onClick={backTop}><i class="iconfont icon-top"/>
-            </div>
-        </div>
-    </aside>)
-})
+})(AsideCom)
 
 const Loading = connect((state) => {
     return {
-        pageLoading: state.global.pageLoading
+        pageLoading: state.global.pageLoading,
     }
 })(({pageLoading}) => {
     return <Spin show={pageLoading}/>
