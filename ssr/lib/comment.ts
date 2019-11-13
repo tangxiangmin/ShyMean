@@ -3,20 +3,21 @@
  * 初始化Valine评论系统 文档https://valine.js.org/configuration.html
  */
 
-
+let isLoading = false
 export default {
     init() {
         // 只在浏览器中加载
-        if (typeof window === "undefined") {
+        if (typeof window === "undefined" || isLoading) {
             return
         }
-
+        isLoading = true
         let System = require('SystemJS')
 
         Promise.all([
             System.import("av"),
             System.import("Valine"),
         ]).then(([av, Valine]) => {
+            isLoading = false
             new Valine.default({
                 el: '#vcomments',
                 appId: 'J9BV8j1TlKO7MHkO6r1awhCA-gzGzoHsz',
