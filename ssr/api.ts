@@ -2,13 +2,14 @@
     对于服务端而言，需要连接数据库获取数据
     对于浏览器而言，需要通过ajax请求http接口获取数据
     使用axios，可以绕开浏览器和服务端的网络请求差异，减少同构工作量
-
     由于之前的同构渲染服务器直接提供了查询接口，使用axios也可以避免重写服务端数据查询逻辑
  */
 import axios from 'axios'
 
-// axios.defaults.baseURL = 'http://www.shymean.com/api/'
-axios.defaults.baseURL = 'http://localhost:3000/'
+let isBrowser = typeof window !== 'undefined'
+// 通过nginx转发到server服务,port:3000,  server端服务使用内网域名，减少cdn查询延迟
+axios.defaults.baseURL = isBrowser ? `//www.shymean.com/api/` : `http://localhost:3000/`
+// axios.defaults.baseURL = 'http://localhost:3000/'
 
 // todo 公共的拦截器
 

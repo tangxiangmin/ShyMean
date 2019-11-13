@@ -34,7 +34,7 @@ function getOutputFileName(assets) {
 
 function getOutputFilePath(outputFile, outputPath) {
     // 服务器根目录
-    let serveRoot = path.resolve(__dirname, "../ssr/dist/")
+    let serveRoot = path.resolve(__dirname, "../ssr/public/")
 
     Object.keys(outputFile).forEach(key => {
         let val = outputFile[key]
@@ -45,7 +45,7 @@ function getOutputFilePath(outputFile, outputPath) {
 }
 
 function createOutputMap(outputFile) {
-    let mapPath = path.resolve(__dirname, "../ssr/dist/map.json")
+    let mapPath = path.resolve(__dirname, "../ssr/public/map.json")
 
     fs.writeFile(mapPath, JSON.stringify(outputFile), function (err) {
         if (err) throw err;

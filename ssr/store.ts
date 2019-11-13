@@ -1,4 +1,4 @@
-import * as Nax from 'nezha/dist/nax'
+import * as Nax from '@shymean/nezha/dist/nax'
 
 import reducer from './models'
 

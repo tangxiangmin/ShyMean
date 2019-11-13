@@ -2,7 +2,7 @@
  * 2019/11/1 下午9:11
  * 一份前后台共用的路由配置，
  */
-import {RouteConfig} from "nezha/dist/router/Route";
+import {RouteConfig} from "@shymean/nezha/dist/router/Route";
 
 import About from './pages/about'
 import Home from './pages/home'

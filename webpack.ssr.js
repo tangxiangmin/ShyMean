@@ -15,7 +15,7 @@ module.exports = (env) => {
             client: path.resolve(__dirname, './ssr/client.tsx'),
         },
         output: {
-            path: path.resolve(__dirname, './ssr/dist'),
+            path: path.resolve(__dirname, './ssr/public/bundle'),
             filename: `[name]${fileHash}.js`
         },
         resolve: {

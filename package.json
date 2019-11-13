@@ -7,18 +7,16 @@
     "dev:server": "export NODE_ENV=development && nodemon --watch 'server/**/*' -e ts,tsx --exec ts-node ./server/index.ts",
     "build:server": "tsc server/index.ts --outDir app",
     "start:server": "export NODE_ENV=production && pm2 start --interpreter ./node_modules/.bin/ts-node server/index.ts --name='blog'",
-
     "dev:ssr": "concurrently 'webpack-dev-server --inline --config=webpack.ssr.js --env.development --mode=development' 'nodemon --watch \"./ssr/**/*\" -e ts,tsx --exec ts-node ./ssr/server.tsx'",
     "build:ssr": "node scripts/build.js",
     "start:ssr": "export NODE_ENV=production &&  pm2 start --interpreter ./node_modules/.bin/ts-node ./ssr/server.tsx --name='blog_ssr'",
-
     "build": "npm run build:server && npm run build:ssr",
     "deploy": "node ./scripts/deploy.js",
-
     "upload": "export NODE_ENV=upload && ts-node scripts/upload.ts",
     "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
   "dependencies": {
+    "@shymean/nezha": "^1.0.0",
     "@types/koa": "^2.0.52",
     "@types/koa-router": "^7.0.42",
     "@types/mysql2": "github:types/mysql2",
@@ -32,7 +30,6 @@
     "mongodb": "^3.3.4",
     "mysql-xmodel": "^1.0.3",
     "mysql2": "^1.7.0",
-    "nezha": "file:../nezha",
     "swig": "^1.4.2"
   },
   "devDependencies": {

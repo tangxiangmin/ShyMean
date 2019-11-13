@@ -1,7 +1,7 @@
 // 使用之前服务端渲染时的分页逻辑，处于seo考虑，暂时未提供onPageChange等接口
 
-import {h, Component} from "nezha/dist/src";
-import {Link} from "nezha/dist/router";
+import {h, Component} from "@shymean/nezha/dist/src";
+import {Link} from "@shymean/nezha/dist/router";
 
 class Pagination extends Component {
 

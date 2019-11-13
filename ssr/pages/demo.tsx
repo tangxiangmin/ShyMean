@@ -1,4 +1,4 @@
-import {Component, h} from 'nezha/dist/src'
+import {Component, h} from '@shymean/nezha/dist/src'
 
 interface DemoItem {
     name: string,

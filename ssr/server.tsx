@@ -4,21 +4,22 @@
  */
 require("@babel/register")(); // 支持tsx等
 
-import {getMatchRouteConfig} from "nezha/dist/router/Router";
-import {createLocation} from 'nezha/dist/router/location'
+import {getMatchRouteConfig} from "@shymean/nezha/dist/router/Router";
+import {createLocation} from '@shymean/nezha/dist/router/location'
 
 const express = require('express')
 const path = require('path')
 const app = express();
 
 import App from './app'
-import {Component, h, renderHTML} from 'nezha/src'
+import {Component, h, renderHTML} from '@shymean/nezha/dist/src'
+import {releaseRouter} from '@shymean/nezha/dist/router'
 import routes from "./routes";
 import {createStore} from "./store";
 
 import getTemplate from './template'
 
-app.use(express.static(path.resolve(__dirname, "./dist")));
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 app.get("/*", async (req, res) => {
     let url = req.url
@@ -42,6 +43,7 @@ app.get("/*", async (req, res) => {
     res.writeHead(200, {"Content-Type": "text/html"});
     let initData: any = store.getState()
 
+    releaseRouter() // 由于renderHTML中并没有实现unmount相关逻辑，因此需要在SSR中手动释放实例化的Router
     let tpl: string = getTemplate(html, initData, seoData)
     res.end(tpl);
 })

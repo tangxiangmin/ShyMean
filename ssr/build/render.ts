@@ -9,7 +9,7 @@ let isDevelopment = process.env.NODE_ENV === 'development' // 是否为开发环
 // 获取生产环境的资源路径
 function getProdResource() {
     try {
-        return require("../dist/map.json")
+        return require("../public/map.json")
     } catch (e) {
         console.log("未检测到webpack输出文件，执行npm run build:static")
         throw e;

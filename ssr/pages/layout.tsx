@@ -1,6 +1,6 @@
-import {h, Component} from "nezha/dist/src";
-import {Link} from 'nezha/dist/router'
-import {connect} from 'nezha/dist/nax'
+import {h, Component} from "@shymean/nezha/dist/src";
+import {Link} from '@shymean/nezha/dist/router'
+import {connect} from '@shymean/nezha/dist/nax'
 import Spin from '../components/spin'
 
 
@@ -111,7 +111,7 @@ class AsideCom extends Component {
         return (<aside>
             <div class="page_sd hide-md">
                 <div class="me">
-                    <img src="http://shymean.com/img/avatar.jpeg" alt="shymean" width="100" height="100"/>
+                    <img src="/img/avatar.jpeg" alt="shymean" width="100" height="100"/>
                     <h3>shymean</h3>
                     <p>一个不学无术且无趣的人。</p>
                 </div>

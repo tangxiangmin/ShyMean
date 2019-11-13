@@ -1,6 +1,6 @@
-import {h, Component} from "nezha/dist/src";
-import {Link} from "nezha/dist/router";
-import {connect} from 'nezha/dist/nax'
+import {h, Component} from "@shymean/nezha/dist/src";
+import {Link} from "@shymean/nezha/dist/router";
+import {connect} from '@shymean/nezha/dist/nax'
 import {getArticleList} from "../api";
 
 import Pagination from "../components/pagination";
