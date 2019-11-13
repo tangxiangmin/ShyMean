@@ -26,7 +26,7 @@ export function formatDate(date: string | Date) {
     }
     let y: string = date.getFullYear().toString()
     let m: string = (date.getMonth() + 1).toString()
-    let d: string = date.getDay().toString()
+    let d: string = date.getDate().toString()
 
     return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`
 }
