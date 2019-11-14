@@ -16,7 +16,7 @@
     "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
   "dependencies": {
-    "@shymean/nezha": "^1.0.0",
+    "@shymean/nezha": "^1.0.4",
     "@types/koa": "^2.0.52",
     "@types/koa-router": "^7.0.42",
     "@types/mysql2": "github:types/mysql2",

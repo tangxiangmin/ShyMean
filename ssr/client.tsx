@@ -48,7 +48,6 @@ document.addEventListener('scroll', debounce(() => {
     })
 }, 100))
 
-
 showVersion()
 
 function showVersion() {

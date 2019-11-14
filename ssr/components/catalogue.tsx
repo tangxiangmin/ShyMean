@@ -3,7 +3,7 @@ import {h, Component} from "@shymean/nezha/dist/src";
 class Catalogue extends Component {
     render() {
         let {data} = this.props
-        return (<div class="catalogue">
+        return (<div class="catalogue hide-md">
             <ul class="catalogue_group">
                 {
                     data.map(h2 => {
