@@ -7,14 +7,14 @@ export default async function (ctx: any) {
         data = ctx.state.data,
         params = ctx.query
 
-    // todo 通过nginx配置cors
-    ctx.set("Access-Control-Allow-Origin", "*");
-    ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
-    ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
-    ctx.set("Content-Type", "application/json;charset=utf-8");
-    ctx.set("Access-Control-Allow-Credentials", true);
-    ctx.set("Access-Control-Max-Age", 300);
-    ctx.set("Access-Control-Expose-Headers", "myData");
+    // 通过nginx配置cors
+    // ctx.set("Access-Control-Allow-Origin", "*");
+    // ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
+    // ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
+    // ctx.set("Content-Type", "application/json;charset=utf-8");
+    // ctx.set("Access-Control-Allow-Credentials", true);
+    // ctx.set("Access-Control-Max-Age", 300);
+    // ctx.set("Access-Control-Expose-Headers", "myData");
 
     ctx.body = data || {};
 

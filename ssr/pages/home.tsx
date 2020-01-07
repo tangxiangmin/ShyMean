@@ -15,12 +15,7 @@ const Article = ({post}) => {
         </h2>
         <div class="article_info">
             <span class="hide-sm">发表于</span>
-            <span class="show-sm">
-                <i class="iconfont icon-archives"/>
-            </span>
-            <time>{formatDate(post.created_at)}</time>
-            |<span class="hide-sm">分类于</span>
-            <span class="show-sm"><i class="iconfont icon-tag"/></span>
+            <time>{formatDate(post.created_at)}</time> | <span class="hide-sm">分类于</span>
             {
                 post.categories.map(cate => {
                     return <Link href={`/archive/${cate}`} title={cate} class="hover-highlight">{cate}</Link>

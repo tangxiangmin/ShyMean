@@ -16,7 +16,7 @@
     "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
   "dependencies": {
-    "@shymean/nezha": "^1.0.4",
+    "@shymean/nezha": "file:../nezha/shymean-nezha-1.0.4.tgz",
     "@types/koa": "^2.0.52",
     "@types/koa-router": "^7.0.42",
     "@types/mysql2": "github:types/mysql2",
@@ -52,10 +52,10 @@
     "babel-loader": "^8.0.6",
     "babel-register": "^6.26.0",
     "css-loader": "^1.0.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "github-webhook-handler": "^0.7.1",
     "inquirer": "^6.5.2",
     "log4js": "^4.5.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "nodemon": "^1.19.4",
     "postcss-loader": "^3.0.0",

@@ -11,10 +11,11 @@ function createNav(url: string, name: string, icon: string) {
 }
 
 const navList = [
-    createNav('/', '首页', 'icon-home'),
     createNav('/tags', '标签', 'icon-tag'),
     createNav('/archive', '归档', 'icon-archives'),
+    createNav('/book', '书架', 'icon-bookshelf'),
     createNav('/demo', '项目', 'icon-code'),
+    createNav('/about', '关于', 'icon-info'),
 ]
 
 class Header extends Component {
@@ -51,7 +52,7 @@ class Header extends Component {
                         {
                             navList.map(({url, name, icon}) => {
                                 return (<Link href={url} title={name} className="nav_item">
-                                    <i class={'iconfont ' + icon}></i>
+                                    {/*<i class={'iconfont ' + icon}></i>*/}
                                     {name}
                                 </Link>)
                             })

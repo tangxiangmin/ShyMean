@@ -27,13 +27,7 @@ const ArticleDetail = connect((state) => {
                     <h2 class="article_hd">{article.title}</h2>
                     <div class="article_info">
                         <span class="hide-sm">发表于</span>
-                        <span class="show-sm">
-                <i class="iconfont icon-archives"/>
-            </span>
-                        <time>{formatDate(article.created_at)}</time>
-                        |
-                        <span class="hide-sm">分类于</span>
-                        <span class="show-sm"><i class="iconfont icon-tag"/></span>
+                        <time>{formatDate(article.created_at)}</time> | <span class="hide-sm">分类于</span>
                         {
                             Array.isArray(article.categories) && article.categories.map(cate => {
                                 return <Link href={`/archive/${cate}`} class="hover-highlight">{cate}</Link>

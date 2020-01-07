@@ -15,7 +15,7 @@ const BookList = ({books = []}) => {
                     <th>书名</th>
                     <th>开始阅读</th>
                     <th>结束日期</th>
-                    <th>状态</th>
+                    {/*<th>状态</th>*/}
                 </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@ const BookList = ({books = []}) => {
                             <td>{book.name}</td>
                             <td>{formatDate(book.created_at)}</td>
                             <td>{book.ended_at && formatDate(book.ended_at) || '~'}</td>
-                            <td>{book.note}</td>
+                            {/*<td>{book.note}</td>*/}
                         </tr>)
                     })
                 }
