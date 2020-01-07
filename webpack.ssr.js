@@ -2,12 +2,14 @@
  * 2019/11/3 下午11:16
  */
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
     let isProduction = env && env.production
-    let fileHash = isProduction ? "-[chunkhash:6]" : ""
-    let pageExtractTextPlugin = new ExtractTextPlugin(`client${fileHash}.css`)
+    let fileHash = isProduction ? "-[contenthash]" : ""
+    let pageExtractTextPlugin = new MiniCssExtractPlugin({
+        filename: `client${fileHash}.css`,
+    })
     return {
         // context: __dirname,
         devtool: isProduction ? '' : 'source-map',
@@ -29,13 +31,18 @@ module.exports = (env) => {
                 },
                 {
                     test: /\.s?css$/,
-                    use: pageExtractTextPlugin.extract({
-                        use: [
-                            'css-loader?sourceMap',
-                            "postcss-loader?sourceMap",
-                            "sass-loader?sourceMap"
-                        ]
-                    }),
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                // publicPath: '../',
+                                // hmr: process.env.NODE_ENV === 'development',
+                            },
+                        },
+                        'css-loader?sourceMap',
+                        "postcss-loader?sourceMap",
+                        "sass-loader?sourceMap"
+                    ]
                 },
                 {
                     test: /\.(png|jpg|jpeg|svg)/,

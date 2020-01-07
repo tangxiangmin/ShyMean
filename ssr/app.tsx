@@ -34,7 +34,7 @@ class App extends Component {
                         <Router onChange={onChange} routes={routes} url={url}/>
                     </div>
                 </main>
-                <Aside/>
+                {/*<Aside/>*/}
                 <Footer/>
                 <Loading/>
             </div>

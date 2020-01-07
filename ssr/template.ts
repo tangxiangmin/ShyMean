@@ -23,24 +23,12 @@ export default function getTemplate(html, initData, seoData): string {
     <meta name="googlebot" content="all">
     <meta name="baiduspider" content="all">
     <meta name="renderer" content="webkit">
-    
     <title>${seoData.title}</title>
     <meta name="keywords" content="${seoData.keywords}">
     <meta name="description" content="${seoData.description}">
-    
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">
+<!--    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">-->
     <link rel="stylesheet" href="${staticResource.css}">
-    <script type="systemjs-packagemap">
-        {
-          "packages": {
-            "av": "//cdn1.lncld.net/static/js/3.0.4/av-min.js",
-            "Valine": "//unpkg.com/valine/dist/Valine.min.js",
-            "L2Dwidget": "//cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js"
-          }
-        }
-    </script>
-    <script src="//cdn.bootcss.com/systemjs/2.1.1/system.js"></script>
 </head>
 <body>
     <div id="root">${html}</div>
