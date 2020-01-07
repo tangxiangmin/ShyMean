@@ -1,5 +1,5 @@
 // 留言板页面，在服务端不加载任何评论
-import {h, Component} from "@shymean/nezha/dist/src";
+import {h, Component} from "@shymean/nezha";
 import comment from '../lib/comment'
 
 class MessagePage extends Component {

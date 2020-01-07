@@ -1,6 +1,6 @@
-import {h} from "@shymean/nezha/dist/src";
-import {Link} from '@shymean/nezha/dist/router'
-import {connect} from '@shymean/nezha/dist/nax'
+import {h} from "@shymean/nezha";
+import {Link} from '@shymean/nezha-router'
+import {connect} from '@shymean/nax'
 import {getTags} from "../api";
 import tag from "../../server/model/tag";
 

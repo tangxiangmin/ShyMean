@@ -4,20 +4,21 @@
  */
 require("@babel/register")(); // 支持tsx等
 
-import {getMatchRouteConfig} from "@shymean/nezha/dist/router/Router";
-import {createLocation} from '@shymean/nezha/dist/router/location'
+import {getMatchRouteConfig, createLocation} from "@shymean/nezha-router";
 
-const express = require('express')
-const path = require('path')
-const app = express();
+import {Component, h, renderHTML} from '@shymean/nezha'
+import {releaseRouter} from '@shymean/nezha-router'
 
 import App from './app'
-import {Component, h, renderHTML} from '@shymean/nezha/dist/src'
-import {releaseRouter} from '@shymean/nezha/dist/router'
+
 import routes from "./routes";
 import {createStore} from "./store";
 
 import getTemplate from './template'
+
+const express = require('express')
+const path = require('path')
+const app = express();
 
 app.use(express.static(path.resolve(__dirname, "./public")));
 

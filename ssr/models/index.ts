@@ -1,6 +1,6 @@
 // 通过combineReducers将整个应用拆分成多个子reducer
 
-import {combineReducers} from '@shymean/nezha/dist/nax'
+import {combineReducers} from '@shymean/nax'
 
 import home from './home'
 import tags from './tags'

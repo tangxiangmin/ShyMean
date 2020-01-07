@@ -2,9 +2,9 @@
  * 2019/11/1 下午10:23
  * 整个单页应用的根节点 <App />
  */
-import {h, Component} from '@shymean/nezha/dist/src'
+import {h, Component} from '@shymean/nezha'
 
-import {Router, Link} from '@shymean/nezha/dist/router'
+import {Router, Link} from '@shymean/nezha-router'
 import routes from './routes'
 import {Header, Aside, Footer, Loading} from './pages/layout'
 

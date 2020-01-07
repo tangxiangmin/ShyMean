@@ -1,4 +1,4 @@
-import {h, Component} from "@shymean/nezha/dist/src";
+import {h, Component} from "@shymean/nezha";
 
 
 const Friend = () => {

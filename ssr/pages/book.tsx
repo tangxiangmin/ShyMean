@@ -1,6 +1,6 @@
-import {h, Component} from "@shymean/nezha/dist/src";
-import {Link} from '@shymean/nezha/dist/router'
-import {connect} from '@shymean/nezha/dist/nax'
+import {h, Component} from "@shymean/nezha";
+import {Link} from '@shymean/nezha-router'
+import {connect} from '@shymean/nax'
 import {getBookList} from "../api";
 
 import {formatDate} from "../util";
