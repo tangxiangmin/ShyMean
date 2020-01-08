@@ -27,8 +27,9 @@ const Archive = connect((state) => {
         ...state.archive
     }
 })((props) => {
-    let {tag, total, articleGroup = []} = props
-    let title = tag ? tag : `  OK!目前共计 ${total} 篇日志，继续努力。`
+    let {tag, total, articleGroup = [], location} = props
+    let {params} = location
+    let title = params.name ? params.name : `  OK!目前共计 ${total} 篇日志，继续努力。`
     return (
         <div class="archives">
             <div class="archives_count">{title}</div>
@@ -54,7 +55,7 @@ Archive.asyncData = async (store, location) => {
 Archive.serverSEO = async (data) => {
     return {
         title: '归档_shymean',
-        keywords: '博客归档,shymean,橙红年代',
+        keywords: '博客归档,shymean,shymean',
         description: '此页面统计了shymean博客文章的归档记录，用于快速索引文章列表。'
     }
 }

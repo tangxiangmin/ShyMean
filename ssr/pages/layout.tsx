@@ -34,7 +34,7 @@ class Header extends Component {
         return (<header class="page_hd">
                 <div class="container header">
                     <h1 class="logo">
-                        <Link href="/" title="橙红年代">橙红年代</Link>
+                        <Link href="/" title="Shymean">Shymean</Link>
                         <Link href="/version" title="博客版本记录" className="version">
                             <sub>V0.7.0</sub>
                         </Link>

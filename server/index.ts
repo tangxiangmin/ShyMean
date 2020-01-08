@@ -5,7 +5,7 @@ const app = new Koa()
 const serve = require('koa-static')
 
 import router from './router'
-import filters from "./lib/swig"
+// import filters from "./lib/swig"
 
 import response from './isomorphic/response'
 
@@ -32,20 +32,20 @@ let server = {
         })
     },
     initTplEngine() {
-        const views = require("koa-views")
-
-        // 全局自定义过滤器
-
-        let swig = require("swig")
-
-        for (let key in filters) {
-            // @ts-ignore
-            swig.setFilter(key, filters[key])
-        }
-        app.use(views(path.resolve(__dirname, '../views'), {
-            extension: "swig",
-            // options: swigOptions
-        }))
+        // const views = require("koa-views")
+        //
+        // // 全局自定义过滤器
+        //
+        // let swig = require("swig")
+        //
+        // for (let key in filters) {
+        //     // @ts-ignore
+        //     swig.setFilter(key, filters[key])
+        // }
+        // app.use(views(path.resolve(__dirname, '../views'), {
+        //     extension: "swig",
+        //     // options: swigOptions
+        // }))
     },
     initRouter() {
         app.use(router.routes())

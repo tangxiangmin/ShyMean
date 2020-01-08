@@ -1,13 +1,42 @@
 .catalogue {
     position: fixed;
+    z-index: 999;
     left: 0;
     top: 98px;
     text-align: left;
     font-size: 13px;
+    max-height: 90vh;
+    //opacity: 0.1;
+    transition: all linear .3s;
+    background: #fff;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 0 5px #dedede;
+    transform: translateX(-185px);
+    &:after {
+        content: '目录';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+
+        transform: translateY(-50%);
+        padding: 0 20px;
+        width: 1em;
+        height: 2em;
+    }
+    &:hover{
+        opacity: 1;
+        transform: translateX(0);
+        &:after {
+            visibility: hidden;
+        }
+
+    }
 
     // 侧边栏滚动条待修改
 
-    max-height: 90vh;
 
     .catalogue_group {
         max-height: 70vh;

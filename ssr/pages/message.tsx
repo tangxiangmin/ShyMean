@@ -20,7 +20,7 @@ class MessagePage extends Component {
 MessagePage.serverSEO = ()=>{
     return {
         title: '留言板_shymean',
-        keywords: '留言板,留言,橙红年代,shymean',
+        keywords: '留言板,留言,shymean,shymean',
         description: '此页面为shymean博客的留言板，用于记录访客的留言。',
     }
 }

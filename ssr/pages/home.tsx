@@ -5,6 +5,7 @@ import {getArticleList} from "../api";
 
 import Pagination from "../components/pagination";
 import {formatDate} from '../util'
+import marked from "../lib/marked";
 
 const Article = ({post}) => {
     return (<article class="article">
@@ -40,7 +41,7 @@ const Home = connect((state) => {
                 return <Article post={post}/>
             })
         }
-        <Pagination total={total && total.total} router="/" current={parseInt(location.query.page, 10) || 1}/>
+        <Pagination total={total} router="/" current={parseInt(location.query.page, 10) || 1}/>
     </div>)
 })
 
@@ -50,6 +51,12 @@ Home.asyncData = async (store, location) => {
         page: location.query.page
     }
     let result = await getArticleList(searchParams)
+
+    let {articles} = result
+
+    articles.forEach(item => {
+        item.abstract = marked(item.abstract)
+    })
     store.dispatch({
         type: 'store_index_list',
         payload: {

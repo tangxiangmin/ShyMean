@@ -1,9 +1,6 @@
 import {h, Component} from "@shymean/nezha";
 import {Link} from '@shymean/nezha-router'
 
-const tags = [{
-    name: 'book'
-}]
 const About = () => {
     return (<div class="about">
             <section>
@@ -19,11 +16,11 @@ const About = () => {
                     <p>因此这个博客主要记录我正在学习的东西，难免会有问题，欢迎各位大佬指正。</p>
                 </div>
             </section>
-            <section><h3 class="about_hd">关于橙红年代</h3>
-                <div class="about_ct"><p>《橙红年代》里面，贝小帅望着刘子光说道：</p>
-                    <p>"光哥，我以后要开一家网吧，楼上楼下几百台机子的那种"</p>
-                </div>
-            </section>
+            {/*<section><h3 class="about_hd">关于shymean</h3>*/}
+            {/*    <div class="about_ct"><p>《shymean》里面，贝小帅望着刘子光说道：</p>*/}
+            {/*        <p>"光哥，我以后要开一家网吧，楼上楼下几百台机子的那种"</p>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
             <section><h3 class="about_hd">其他</h3>
                 <div class="about_ct"><p>版权声明：自由转载-非商用-保持署名。</p>
                     <p>本站文章均为本人原创，参考文章我都会在文中进行声明，也请您转载时附上署名。</p></div>
@@ -44,8 +41,8 @@ const About = () => {
 About.serverSEO = (data) => {
     return {
         title: '关于_shymean',
-        description: '此页面介绍了shymean博客的相关信息，包括关于我、关于博客、关于橙红年代以及版权声明的信息。',
-        keywords: '个人简介,关于博客,橙红年代,shymean'
+        description: '此页面介绍了shymean博客的相关信息，包括关于我、关于博客、关于shymean以及版权声明的信息。',
+        keywords: '个人简介,关于博客,shymean,shymean'
     }
 }
 

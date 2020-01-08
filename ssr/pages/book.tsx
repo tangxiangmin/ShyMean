@@ -11,21 +11,21 @@ const BookList = ({books = []}) => {
             <p>共计阅读{books.length}本书。</p>
             <table class="table">
                 <thead>
-                <tr>
-                    <th>书名</th>
+                <tr class="book">
+                    <th class="book_name">书名</th>
                     <th>开始阅读</th>
                     <th>结束日期</th>
-                    {/*<th>状态</th>*/}
+                    <th>读书笔记</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
                     books.map((book, index) => {
-                        return (<tr>
+                        return (<tr class="book">
                             <td>{book.name}</td>
                             <td>{formatDate(book.created_at)}</td>
                             <td>{book.ended_at && formatDate(book.ended_at) || '~'}</td>
-                            {/*<td>{book.note}</td>*/}
+                            <td>{book.note}</td>
                         </tr>)
                     })
                 }
@@ -61,7 +61,7 @@ BookPage.serverSEO = async ({books}) => {
     }
     return {
         title: '书架_shymean',
-        keywords: '书架,shymean,橙红年代',
+        keywords: '书架,shymean,shymean',
         description: `此页面统计了shymean博客已经阅读的技术书籍，包括${name}等书籍。`
     }
 }

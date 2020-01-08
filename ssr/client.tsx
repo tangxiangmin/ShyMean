@@ -30,8 +30,8 @@ function init() {
             payload: isLoading
         })
     }
-// 与服务端保持相同的逻辑，路由切换时请求数据，
-// 这里采取的策略是在路由切换之后再调用接口
+    // 与服务端保持相同的逻辑，路由切换时请求数据，
+    // 这里采取的策略是在路由切换之后再调用接口
     const onRouteChange = async (from, to) => {
         window.scrollTo(0, 0)  // 重置滚动条
 
@@ -47,7 +47,7 @@ function init() {
 
     hydrateDOM(<App context={globalContext} onChange={onRouteChange}/>, document.getElementById("root"))
 
-    document.title = '橙红年代'
+    document.title = 'shymean'
 
     document.addEventListener('scroll', debounce(() => {
         store.dispatch({

@@ -8,6 +8,8 @@ import {getArticleDetail} from "../api";
 import Comment from './message'
 import Catalogue from '../components/catalogue'
 import {formatDate} from '../util'
+import marked from "../lib/marked";
+import formatCatalogue from "../lib/catelogue";
 
 
 const ArticleDetail = connect((state) => {
@@ -63,10 +65,20 @@ const ArticleDetail = connect((state) => {
 // @ts-ignore
 ArticleDetail.asyncData = async (store, location) => {
     let result = await getArticleDetail(location.params.title)
-    store.dispatch({
-        type: 'store_article_detail',
-        payload: result
-    })
+
+    let {article} = result
+    if(article){
+        let htm = marked(article.content)
+        let {catalogue, content} = formatCatalogue(htm)
+        article.content = content
+        store.dispatch({
+            type: 'store_article_detail',
+            payload: {
+                ...result,
+                catalogue
+            }
+        })
+    }
     return result
 }
 
@@ -75,8 +87,8 @@ ArticleDetail.serverSEO = async ({article}) => {
 
     return article ? {
         title: `${article.title}_shymean`,
-        keywords: `${article.tags.join(",")},${article.categories.join(",")},shymean,橙红年代,前端开发,博客`,
-
+        keywords: `${article.tags.join(",")},${article.categories.join(",")},shymean,前端开发,博客`,
+        description: `${article.abstract}`
     } : {}
 
 }

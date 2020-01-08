@@ -1,74 +1,49 @@
 import articleModel from "../model/article"
 import tagModel from "../model/tag"
 import bookModel from "../model/book"
-
-import Pagination from "../lib/pagination"
-import marked from "../lib/marked"
-import formatCatalogue from "../lib/catelogue"
+//
+// import Pagination from "../lib/pagination"
+// import marked from "../lib/marked"
+// import formatCatalogue from "../lib/catelogue"
 
 export default {
     async index(ctx: any, next: Function) {
-        let page = ctx.params && ctx.params.page || 1;
-
+        let page = parseInt(ctx.params && ctx.params.page || 1, 10);
         // 分页类
         let pageSize = 10;
         let articles = await articleModel.getArticles(pageSize, page - 1);
-
-        let total = await articleModel.count();
-        let pagination = new Pagination(total.total, page, "", pageSize);
-
-        // @ts-ignore
-        articles.forEach(item => {
-            item.abstract = marked(item.abstract)
-        })
-
+        let {total} = await articleModel.count();
         ctx.state.data = {
             articles,
             total,
             page,
             pageSize,
-            pagination: pagination.init()
         }
 
         ctx.state.view = "index"
-
         await next();
     },
 
     async article(ctx: any, next: () => void) {
-
         let title = ctx.params.title;
-
-        // todo 缓存有效期
-        // let data = await mongoCache.getArticle({title})
-
-
-        // if (!data) {
         let res = await articleModel.getArticleByTitle(title)
-
-        let prevArticle = await articleModel.getPrevArticle(res.created_at)
-        let nextArticle = await articleModel.getNextArticle(res.created_at)
-
-        let htm = marked(res.content)
-
-        let {catalogue, content} = formatCatalogue(htm)
-        res.content = content
-
-        let data = {
-            title,
-            article: res,
-            catalogue,
-            prev: prevArticle,
-            next: nextArticle
+        if (res) {
+            let prevArticle = await articleModel.getPrevArticle(res.created_at)
+            let nextArticle = await articleModel.getNextArticle(res.created_at)
+            let data = {
+                title,
+                article: res,
+                // catalogue,
+                prev: prevArticle,
+                next: nextArticle
+            }
+            ctx.state.data = data
+        } else {
+            ctx.state.data = {
+                title
+            }
         }
-
-        // await mongoCache.saveArticle(data)
-        // }
-
-        ctx.state.data = data
-
         ctx.state.view = "article"
-
         await next()
     },
 
@@ -80,11 +55,8 @@ export default {
             categories,
             tags
         }
-
         ctx.state.view = "tags"
-
         await next()
-
     },
 
     async archive(ctx: any, next: () => void) {
@@ -99,29 +71,31 @@ export default {
         }
 
         let articleGroup: any[] = [];
-        let cursor = 0;
-        // 对归档按年份分组
-        articleGroup[cursor] = {
-            year: lists && lists[0] && lists[0].year,
-            articles: []
-        };
+        if(Array.isArray(lists) && lists.length){
+            let cursor = 0;
+            // 对归档按年份分组
+            articleGroup[cursor] = {
+                year: lists && lists[0] && lists[0].year,
+                articles: []
+            };
 
-        // @ts-ignore
-        lists.forEach((val) => {
-            if (val.year !== articleGroup[cursor].year) {
-                cursor++;
-                articleGroup[cursor] = {
-                    year: val.year,
-                    articles: [val]
-                };
-            } else {
-                articleGroup[cursor].articles.push(val);
-            }
-        });
+            // @ts-ignore
+            Array.isArray(lists) && lists.forEach((val) => {
+                if (val.year !== articleGroup[cursor].year) {
+                    cursor++;
+                    articleGroup[cursor] = {
+                        year: val.year,
+                        articles: [val]
+                    };
+                } else {
+                    articleGroup[cursor].articles.push(val);
+                }
+            });
+        }
 
         ctx.state.data = {
             articleGroup,
-            total: lists.length,
+            total: lists && lists.length || 0,
             tag
         }
         ctx.state.view = "archive"
@@ -130,9 +104,7 @@ export default {
     },
 
     async book(ctx: any, next: () => void) {
-
         let books = await bookModel.getBooks();
-
         ctx.state.data = {
             books
         }

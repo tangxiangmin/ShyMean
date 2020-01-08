@@ -42,7 +42,11 @@ export default {
 
         let [list] = await conn.query(`SELECT id, title, created_at,abstract from article ORDER BY created_at DESC LIMIT ? OFFSET ?`, [size, page * size])
 
-        return this.formatArticle(list)
+        if(Array.isArray(list) && list.length){
+            return this.formatArticle(list)
+        }else {
+            return []
+        }
     },
     // 归档
     async getArchiveList() {
@@ -61,10 +65,11 @@ export default {
     async getArticleByTitle(title: string) {
         let conn = await mysql.getConnection()
         let [articles] = await conn.query(`select a.id, a.title, a.abstract, a.created_at, a.content from article as a where a.title = ?`, [title])
-
-        articles = await this.formatArticle(articles)
-
-        return articles[0]
+        if(Array.isArray(articles) && articles.length){
+            articles = await this.formatArticle(articles)
+            return articles[0]
+        }
+        return null
     },
     async getPrevArticle(created_at: string) {
         let conn = await mysql.getConnection()

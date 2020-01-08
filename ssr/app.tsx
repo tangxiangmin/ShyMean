@@ -6,7 +6,8 @@ import {h, Component} from '@shymean/nezha'
 
 import {Router, Link} from '@shymean/nezha-router'
 import routes from './routes'
-import {Header, Aside, Footer, Loading} from './pages/layout'
+import {Header, Footer, Loading} from './pages/layout'
+import BackTop from './components/backTop'
 
 class App extends Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
                 {/*<Aside/>*/}
                 <Footer/>
                 <Loading/>
+                <BackTop/>
             </div>
         )
     }

@@ -16,7 +16,7 @@ const Friend = () => {
 Friend.serverSEO = ()=>{
     return {
         title: '友情链接_shymean',
-        keywords: '友情链接,友链,shymean,橙红年代',
+        keywords: '友情链接,友链,shymean,shymean',
         description: '此页面统计了shymean博客的友情链接，一起学习，共同进步。',
     }
 }
