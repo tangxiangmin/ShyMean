@@ -6,14 +6,16 @@ shymean
 开发
 ```
 # nodemon监听node服务端
-npm run dev
-# webpack监听静态资源
-npm run static
+npm run dev:server
+
+# webpack启动ssr
+npm run dev:ssr
+
 ```
 打包
 ```
 # webpack打包静态资源
-npm run build:static
+npm run build:ssr
 # tsc打包服务端
 npm run build:server
 ```
