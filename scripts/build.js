@@ -10,23 +10,28 @@ let path = require("path")
 let config = require("../webpack.ssr.js")({production: true})
 const bundler = webpack(config)
 
-
 function getOutputFileName(assets) {
 
-    let entryScriptRe = /^client-.*\.js$/
-    let entryStyleRe = /^client-.*?\.css$/
+    let scriptRe = /\.js$/
+    let styleRe = /\.css$/
 
     let outputFile = {
-        js: "",
-        css: ""
+        js: [],
+        css: []
     }
+
     for (let i = 0; i < assets.length; i++) {
         let asset = assets[i].name
-        if (entryScriptRe.test(asset)) {
-            outputFile.js = asset
+        if (scriptRe.test(asset)) {
+            // client在最后，保证依赖正确
+            if(asset.indexOf('client') === 0){
+                outputFile.js.push(asset)
+            }else {
+                outputFile.js.unshift(asset)
+            }
         }
-        if (entryStyleRe.test(asset)) {
-            outputFile.css = asset
+        if (styleRe.test(asset)) {
+            outputFile.css.push(asset)
         }
     }
     return outputFile
@@ -37,9 +42,12 @@ function getOutputFilePath(outputFile, outputPath) {
     let serveRoot = path.resolve(__dirname, "../ssr/public/")
 
     Object.keys(outputFile).forEach(key => {
-        let val = outputFile[key]
-        let absPath = outputPath + '/' + val
-        outputFile[key] = absPath.replace(serveRoot, "")
+        let assets = outputFile[key]
+
+        outputFile[key] = assets.map(name=>{
+            let absPath = outputPath + '/' + name
+            return absPath.replace(serveRoot, "")
+        })
     })
     return outputFile
 }

@@ -3,13 +3,21 @@
  */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = (env) => {
-    let isProduction = env && env.production
+module.exports = (env = {}) => {
+    let isProduction = env.production
     let fileHash = isProduction ? "-[contenthash]" : ""
     let pageExtractTextPlugin = new MiniCssExtractPlugin({
         filename: `client${fileHash}.css`,
     })
+    let plugins = [
+        pageExtractTextPlugin
+    ]
+
+    if(env.report && isProduction){
+        new BundleAnalyzerPlugin()
+    }
     return {
         // context: __dirname,
         devtool: isProduction ? '' : 'source-map',
@@ -58,9 +66,19 @@ module.exports = (env) => {
             'SystemJS': 'window.System',
             'highlight.js': "window.hljs"
         },
-        plugins: [
-            pageExtractTextPlugin,
-        ],
+        plugins,
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    vendor: {
+                        name: "vendor",
+                        test: /[\\/]node_modules[\\/]/,
+                        chunks: "all",
+                        priority: 10 // 优先级
+                    }
+                }
+            }
+        },
         devServer: {
             // contentBase: path.resolve(__dirname, './'),
             host: 'localhost',

@@ -21,8 +21,8 @@ function getDevResource() {
     let webpackConfig = require("../../webpack.ssr.js")({development: true})
     let {port} = webpackConfig.devServer
     return {
-        css: `//localhost:${port}/client.css`,
-        js: `//localhost:${port}/client.js`
+        css: [`//localhost:${port}/client.css`],
+        js: [`//localhost:${port}/client.js`]
     }
 }
 

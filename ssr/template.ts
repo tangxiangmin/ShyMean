@@ -11,6 +11,12 @@ export default function getTemplate(html, initData, seoData): string {
             keywords: 'shymean,shymean,前端开发,个人博客,HTML,CSS,JavaScript,React,Vue,NodeJS',
         }
     }
+    let links =  staticResource.css.map(href=>{
+        return `<link rel="stylesheet" href="${href}">`
+    }).join('')
+    let scripts = staticResource.js.map(src=>{
+        return `<script src="${src}"></script>`
+    }).join('')
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +34,7 @@ export default function getTemplate(html, initData, seoData): string {
     <meta name="description" content="${seoData.description}">
     <link rel="shortcut icon" href="/favicon.ico">
 <!--    <link rel="stylesheet" href="//at.alicdn.com/t/font_213036_i5ygl1uyx3q.css">-->
-    <link rel="stylesheet" href="${staticResource.css}">
+    ${links}
 </head>
 <body>
     <div id="root">${html}</div>
@@ -38,7 +44,7 @@ export default function getTemplate(html, initData, seoData): string {
         var cur = scripts[scripts.length - 1]
         cur.parentNode.removeChild(cur)
     </script>
-    <script src="${staticResource.js}"></script>
+    ${scripts}
 </body>
 </html>`
 }
