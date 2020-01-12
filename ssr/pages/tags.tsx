@@ -36,7 +36,7 @@ const Categories = ({categories}) => {
                 {
                     categories.map((cate: Tag) => {
                         return <Link href={`/archive/${cate.name}`} title={cate.name}
-                                     className="category_item">{cate.name} ({cate.num})</Link>
+                                     class="category_item">{cate.name} ({cate.num})</Link>
                     })
                 }
             </div>
@@ -54,7 +54,7 @@ const Tags = ({tags}) => {
                 tags.map((tag: Tag) => {
                     let className: string[] = ['hover-highlight', 'tag_item', tagSize(tag.num)]
                     return <Link href={`/archive/${tag.name}`} title={tag.name}
-                                 className={className.join(' ')}>{tag.name}</Link>
+                                 class={className.join(' ')}>{tag.name}</Link>
                 })
             }
         </div>

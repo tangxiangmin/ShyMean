@@ -11,8 +11,8 @@ const ArticleGroup = ({group}) => {
         {
             articles.map(item => {
                 return (
-                    <div className="archives_item">
-                        <Link href={`/article/${item.title}`} title={item.title} className="archives_link">
+                    <div class="archives_item">
+                        <Link href={`/article/${item.title}`} title={item.title} class="archives_link">
                             <span class="archives_date">{formatDate(item.created_at)}</span> {item.title}
                         </Link>
                     </div>

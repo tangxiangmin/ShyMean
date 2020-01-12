@@ -44,6 +44,7 @@ export default function getTemplate(html, initData, seoData): string {
         var cur = scripts[scripts.length - 1]
         cur.parentNode.removeChild(cur)
     </script>
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
     ${scripts}
 </body>
 </html>`

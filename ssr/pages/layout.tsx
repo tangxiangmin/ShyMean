@@ -35,7 +35,7 @@ class Header extends Component {
                 <div class="container header">
                     <h1 class="logo">
                         <Link href="/" title="Shymean">Shymean</Link>
-                        <Link href="/version" title="博客版本记录" className="version">
+                        <Link href="/version" title="博客版本记录" class="version">
                             <sub>V0.7.0</sub>
                         </Link>
                     </h1>
@@ -51,7 +51,7 @@ class Header extends Component {
                     <nav class={'nav-responsive ' + (isResponsive ? 'active' : '')}>
                         {
                             navList.map(({url, name, icon}) => {
-                                return (<Link href={url} title={name} className="nav_item">
+                                return (<Link href={url} title={name} class="nav_item">
                                     {/*<i class={'iconfont ' + icon}></i>*/}
                                     {name}
                                 </Link>)
@@ -119,7 +119,7 @@ class AsideCom extends Component {
                 <div class="nav-border">
                     {
                         asideNavList.map(({url, name, icon}) => {
-                            return (<Link href={url} title={name} className="nav_item">
+                            return (<Link href={url} title={name} class="nav_item">
                                 <i class={'iconfont ' + icon}/> <br/>
                                 {name}
                             </Link>)

@@ -1,7 +1,7 @@
 // format markdown
 
 let marked = require("marked")
-let highlight = require("highlight.js/lib/index.js") // webpack貌似无法直接识别require('highlight.js')
+let highlight = require("highlight.js")
 
 marked.setOptions({
     renderer: new marked.Renderer(),

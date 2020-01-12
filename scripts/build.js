@@ -41,12 +41,14 @@ function getOutputFilePath(outputFile, outputPath) {
     // 服务器根目录
     let serveRoot = path.resolve(__dirname, "../ssr/public/")
 
+    // 配置CDN源站和回源HOST，类似于publicPath
+    let cdnHost = '//cdn.shymean.com'
     Object.keys(outputFile).forEach(key => {
         let assets = outputFile[key]
 
         outputFile[key] = assets.map(name=>{
             let absPath = outputPath + '/' + name
-            return absPath.replace(serveRoot, "")
+            return cdnHost + absPath.replace(serveRoot, "")
         })
     })
     return outputFile

@@ -15,7 +15,7 @@ module.exports = (env = {}) => {
         pageExtractTextPlugin
     ]
 
-    if(env.report && isProduction){
+    if (env.report && isProduction) {
         new BundleAnalyzerPlugin()
     }
     return {
@@ -67,7 +67,7 @@ module.exports = (env = {}) => {
             'highlight.js': "window.hljs"
         },
         plugins,
-        optimization: {
+        optimization: isProduction ? {
             splitChunks: {
                 cacheGroups: {
                     vendor: {
@@ -78,7 +78,7 @@ module.exports = (env = {}) => {
                     }
                 }
             }
-        },
+        } : {},
         devServer: {
             // contentBase: path.resolve(__dirname, './'),
             host: 'localhost',

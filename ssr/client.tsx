@@ -45,7 +45,7 @@ function init() {
         }
     }
 
-    hydrateDOM(<App context={globalContext} onChange={onRouteChange}/>, document.getElementById("root"))
+    // hydrateDOM(<App context={globalContext} onChange={onRouteChange}/>, document.getElementById("root"))
 
     document.title = 'shymean'
 
@@ -57,3 +57,4 @@ function init() {
     }, 100))
 
 }
+console.log(2123)
