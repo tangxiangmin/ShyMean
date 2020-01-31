@@ -57,4 +57,3 @@ function init() {
     }, 100))
 
 }
-console.log(2123)

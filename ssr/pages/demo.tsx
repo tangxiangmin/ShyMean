@@ -62,6 +62,14 @@ const demoGroup: Array<{
                 name: 'hexo-theme-shy',
                 desc: '当前博客同款的hexo博客主题',
                 githubUrl: 'https://github.com/tangxiangmin/hexo-theme-shy'
+            }, {
+                name: 'html-file-loader',
+                desc: '一个解决html-webpack-plugin中无法识别本地资源文件路径问题的loader',
+                githubUrl: 'https://github.com/tangxiangmin/html-file-loader'
+            }, {
+                name: 'vuex-loading',
+                desc: '一个简化vue中管理异步操作loading状态的vuex插件',
+                githubUrl: 'https://github.com/tangxiangmin/vuex-loading'
             }]
     },
     {
@@ -92,10 +100,10 @@ const DemoGroup = ({group}) => {
                         <a href={item.previewUrl} class="text-xs hover-highlight"
                            target="_blank">预览</a> : null
                     let githubUrl = item.githubUrl ?
-                        <a href={item.githubUrl} class="text-xs hover-highlight"
+                        <a href={item.githubUrl}  class="text-xs hover-highlight"
                            target="_blank">github</a> : null
                     let docUrl = item.docUrl ?
-                        <a href={item.docUrl} class="text-xs hover-highlight">doc</a> : null
+                        <a href={item.docUrl} target="_blank" class="text-xs hover-highlight">doc</a> : null
 
                     return (
                         <li class="list-text_item">
