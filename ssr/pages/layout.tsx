@@ -72,7 +72,7 @@ const Footer = () => {
                 <p>世人的悲欢并不相通，我只是觉得他们吵闹。</p>
                 <p>
                     Copyright © Shymean 2016 - {currentYear}
-                    <a href="http://www.miitbeian.gov.cn" rel="nofollow" target="_blank">蜀ICP备19012392号-1</a>
+                    <a href="http://www.beian.miit.gov.cn" rel="nofollow" target="_blank">蜀ICP备19012392号</a>
                 </p>
 
             </div>

@@ -11,7 +11,6 @@
     "build:ssr": "node scripts/build.js",
     "start:ssr": "export NODE_ENV=production &&  pm2 start --interpreter ./node_modules/.bin/ts-node ./ssr/server.tsx --name='blog_ssr'",
     "build": "npm run build:server && npm run build:ssr",
-    "deploy": "node ./scripts/deploy.js",
     "upload": "export NODE_ENV=upload && ts-node scripts/upload.ts",
     "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
