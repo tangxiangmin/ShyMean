@@ -8,6 +8,7 @@ const Friend = () => {
                     class="text-xs">//Todo</span></li>
                 <li><a href="http://www.sanshao.top" class="text-blue" target="_blank">三少资讯网</a> » <span
                     class="text-xs">论一个前端工程师的自我修养</span></li>
+                <li><a href="http://www.taoweng.site" class="text-blue" target="_blank">桃园</a> » <span class="text-xs">相信 W3C，遵从黑客文化，相信自己能改变世界</span></li>
             </ul>
         </div>
     )
