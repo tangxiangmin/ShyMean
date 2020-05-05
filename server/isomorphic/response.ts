@@ -1,6 +1,16 @@
 // 此处同步开发环境变量 挂载模板需要的环境
 // import renderData from '../build/render'
 
+function setCORS(ctx) {
+    ctx.set("Access-Control-Allow-Origin", "*");
+    ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
+    ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
+    ctx.set("Content-Type", "application/json;charset=utf-8");
+    ctx.set("Access-Control-Allow-Credentials", true);
+    ctx.set("Access-Control-Max-Age", 300);
+    ctx.set("Access-Control-Expose-Headers", "myData");
+}
+
 // 根据渲染方式返回接口的数据或渲染模板中间件
 export default async function (ctx: any) {
     let url = ctx.request.url,
@@ -8,13 +18,10 @@ export default async function (ctx: any) {
         params = ctx.query
 
     // 通过nginx配置cors
-    // ctx.set("Access-Control-Allow-Origin", "*");
-    // ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
-    // ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
-    // ctx.set("Content-Type", "application/json;charset=utf-8");
-    // ctx.set("Access-Control-Allow-Credentials", true);
-    // ctx.set("Access-Control-Max-Age", 300);
-    // ctx.set("Access-Control-Expose-Headers", "myData");
+
+    if (process.env.NODE_ENV === 'development') {
+        setCORS(ctx)
+    }
 
     ctx.body = data || {};
 

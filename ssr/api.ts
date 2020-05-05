@@ -9,7 +9,7 @@ import axios from 'axios'
 let isBrowser = typeof window !== 'undefined'
 let isDev = process.env.NODE_ENV === 'development'
 // 通过nginx转发到server服务,port:3000,  server端服务使用内网域名，减少cdn查询延迟
-axios.defaults.baseURL = isBrowser || isDev ? `//www.shymean.com/api/` : `http://localhost:3000/`
+axios.defaults.baseURL = isBrowser && !isDev ? `//www.shymean.com/api/` : `http://localhost:3000/`
 // axios.defaults.baseURL = 'http://localhost:3000/'
 // todo 公共的拦截器
 

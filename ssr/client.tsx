@@ -43,11 +43,13 @@ function init() {
             await RouteComponent.asyncData(store, location)
             togglePageLoading(false) // 关闭加载动画
         }
+        // const {type: {serverSEO}} = to
+        // todo 根据serverSEO更新标题
+        document.title = 'shymean'
     }
 
     hydrateDOM(<App context={globalContext} onChange={onRouteChange}/>, document.getElementById("root"))
 
-    document.title = 'shymean'
 
     document.addEventListener('scroll', debounce(() => {
         store.dispatch({

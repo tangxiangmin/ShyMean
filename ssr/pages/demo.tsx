@@ -21,9 +21,9 @@ const demoGroup: Array<{
                 docUrl: 'https://www.npmjs.com/package/@shymean/mock-server',
                 githubUrl: 'https://github.com/tangxiangmin/mock-server#readme'
             }, {
-                name: 'img qiniu cdn',
-                desc: '该脚本用于将markdown文件中的本地图片上传到七牛CND',
-                githubUrl: 'https://github.com/tangxiangmin/img_qiniu_cdn'
+                name: 'oPic',
+                desc: '一个使用electron构建的快速将图片上传到七牛图床的应用',
+                githubUrl: 'https://github.com/tangxiangmin/oPic'
             }, {
                 name: 'petty-spider',
                 desc: '使用NodeJs一个精简的爬虫工具，满足日常的爬取需求。',
@@ -100,7 +100,7 @@ const DemoGroup = ({group}) => {
                         <a href={item.previewUrl} class="text-xs hover-highlight"
                            target="_blank">预览</a> : null
                     let githubUrl = item.githubUrl ?
-                        <a href={item.githubUrl}  class="text-xs hover-highlight"
+                        <a href={item.githubUrl} class="text-xs hover-highlight"
                            target="_blank">github</a> : null
                     let docUrl = item.docUrl ?
                         <a href={item.docUrl} target="_blank" class="text-xs hover-highlight">doc</a> : null
@@ -128,7 +128,7 @@ const Demo = () => {
 }
 
 // @ts-ignore
-Demo.serverSEO = ()=>{
+Demo.serverSEO = () => {
     return {
         title: '代码项目_shymean',
         keywords: 'demo,友链,shymean,shymean',
