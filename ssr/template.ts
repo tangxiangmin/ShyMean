@@ -11,10 +11,10 @@ export default function getTemplate(html, initData, seoData): string {
             keywords: 'shymean,shymean,前端开发,个人博客,HTML,CSS,JavaScript,React,Vue,NodeJS',
         }
     }
-    let links =  staticResource.css.map(href=>{
+    let links = staticResource.css.map(href => {
         return `<link rel="stylesheet" href="${href}">`
     }).join('')
-    let scripts = staticResource.js.map(src=>{
+    let scripts = staticResource.js.map(src => {
         return `<script src="${src}"></script>`
     }).join('')
     return `

@@ -1,7 +1,7 @@
 
 // 切换代码样式时，从https://highlightjs.org/static/demo/ 上选择一个喜欢的样式，然后切换
 
-//@import "../../../node_modules/highlight.js/styles/shades-of-purple.css";
+//@import "../../../../node_modules/highlight.js/styles/shades-of-purple.css";
 
 
 /**
@@ -11,87 +11,77 @@
  * @link GitHub Repo → https://github.com/ahmadawais/Shades-of-Purple-HighlightJS
  * @version 1.5.0
  */
+.hljs-comment,
+.hljs-quote {
+    color: #999;
+}
+
+/* Atelier-Cave Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-name,
+.hljs-regexp,
+.hljs-link,
+.hljs-name,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+    color: #be4678;
+}
+
+/* Atelier-Cave Orange */
+.hljs-number,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params {
+    color: #aa573c;
+}
+
+/* Atelier-Cave Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+    color: #2a9292;
+}
+
+/* Atelier-Cave Blue */
+.hljs-title,
+.hljs-section {
+    color: #576ddb;
+}
+
+/* Atelier-Cave Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+    color: #955ae7;
+}
+
+.hljs-deletion,
+.hljs-addition {
+    color: #19171c;
+    display: inline-block;
+    width: 100%;
+}
+
+.hljs-deletion {
+    background-color: #be4678;
+}
+
+.hljs-addition {
+    background-color: #2a9292;
+}
 
 .hljs {
     display: block;
     overflow-x: auto;
-    /* Custom font is optional */
-    /* font-family: 'Operator Mono', 'Fira Code', 'Menlo', 'Monaco', 'Courier New', 'monospace';  */
-    line-height: 1.45;
-    padding: 10px;
-    background: #2d2b57;
-    font-weight: normal;
-}
-
-.hljs-title {
-    color: #fad000;
-    font-weight: normal;
-}
-
-.hljs-name {
-    color: #a1feff;
-}
-
-.hljs-tag {
-    color: #ffffff;
-}
-
-.hljs-attr {
-    color: #f8d000;
-    font-style: italic;
-}
-
-.hljs-built_in,
-.hljs-selector-tag,
-.hljs-section {
-    color: #fb9e00;
-}
-
-.hljs-keyword {
-    color: #fb9e00;
-}
-
-.hljs,
-.hljs-subst {
-    color: #e3dfff;
-}
-
-.hljs-string,
-.hljs-attribute,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition,
-.hljs-code,
-.hljs-regexp,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-template-tag,
-.hljs-quote,
-.hljs-deletion {
-    color: #4cd213;
-}
-
-.hljs-meta,
-.hljs-meta-string {
-    color: #fb9e00;
-}
-
-.hljs-comment {
-    color: #ac65ff;
-}
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-name,
-.hljs-strong {
-    font-weight: normal;
-}
-
-.hljs-literal,
-.hljs-number {
-    color: #fa658d;
+    //background: #efecf4;
+    color: #585260;
+    padding: 0.5em;
 }
 
 .hljs-emphasis {
