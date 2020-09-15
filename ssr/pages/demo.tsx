@@ -28,6 +28,10 @@ const demoGroup: Array<{
                 name: 'petty-spider',
                 desc: '使用NodeJs一个精简的爬虫工具，满足日常的爬取需求。',
                 githubUrl: 'https://github.com/tangxiangmin/petty-spider'
+            }, {
+                name: 'web-skeleton-extension',
+                desc: 'Chrome扩展程序，一键生成当前网页骨架屏',
+                githubUrl: 'https://github.com/tangxiangmin/web-skeleton-extension'
             }
         ]
     },

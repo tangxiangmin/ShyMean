@@ -4,7 +4,7 @@ const router = new Router()
 
 // load controller
 import Index from '../controller/IndexController'
-import Profile from '../controller/ProfileController'
+// import Profile from '../controller/ProfileController'
 
 // define router
 router.get("/", Index.index)
@@ -16,12 +16,12 @@ router.get("/archive/:tag", Index.archive)
 
 router.get("/book", Index.book)
 
-router.get("/about", Profile.about)
-router.get("/friend", Profile.friend)
-router.get("/message", Profile.message)
-router.get("/version", Profile.version)
-
-router.get("/demo", Profile.demo)
+// router.get("/about", Profile.about)
+// router.get("/friend", Profile.friend)
+// router.get("/message", Profile.message)
+// router.get("/version", Profile.version)
+//
+// router.get("/demo", Profile.demo)
 
 
 export default router

@@ -32,6 +32,8 @@ const About = () => {
                     <p>Email： <a href="mailto:645234650@qq.com" target="_blank">645234650@qq.com</a></p>
                     <p>留言板：<Link href='/message' title="留言">给我留言</Link></p>
                     <p>友情链接：<Link href='/friend' title="友链">友情链接</Link></p>
+                    <p>掘金：<a href='https://juejin.im/user/1204720472957118' rel="nofollow" target="_blank"
+                             title="掘金-橙红年代">橙红年代</a></p>
                 </div>
             </section>
         </div>
