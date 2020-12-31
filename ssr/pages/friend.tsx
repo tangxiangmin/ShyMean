@@ -6,7 +6,7 @@ const Friend = () => {
             <ul>
                 <li><a href="http://ccbaba.cn/" class="text-blue" target="_blank">Chasen</a> » <span
                     class="text-xs">//Todo</span></li>
-                <li><a href="http://www.sanshao.top" class="text-blue" target="_blank">三少资讯网</a> » <span
+                <li><a href="https://qdovo.com" class="text-blue" target="_blank">qdovo</a> » <span
                     class="text-xs">论一个前端工程师的自我修养</span></li>
                 <li><a href="http://www.taoweng.site" class="text-blue" target="_blank">桃园</a> » <span class="text-xs">相信 W3C，遵从黑客文化，相信自己能改变世界</span></li>
             </ul>
