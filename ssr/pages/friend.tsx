@@ -1,20 +1,43 @@
 import {h, Component} from "@shymean/nezha";
+import {getFriendList} from "../api";
+import {connect} from '@shymean/nax'
 
+const Friend = ({friends = []}) => {
 
-const Friend = () => {
     return (<div class="friend"><h3>友情链接</h3>
             <ul>
-                <li><a href="http://ccbaba.cn/" class="text-blue" target="_blank">Chasen</a> » <span
-                    class="text-xs">//Todo</span></li>
-                <li><a href="https://qdovo.com" class="text-blue" target="_blank">qdovo</a> » <span
-                    class="text-xs">论一个前端工程师的自我修养</span></li>
-                <li><a href="http://www.taoweng.site" class="text-blue" target="_blank">桃园</a> » <span class="text-xs">相信 W3C，遵从黑客文化，相信自己能改变世界</span></li>
+                {
+                    friends.map((row, index) => {
+                        return (
+                            <li key={index}><a href={row.link} class="text-blue" target="_blank">{row.name}</a> » <span
+                                class="text-xs">//{row.slogan}</span></li>)
+                    })
+                }
             </ul>
         </div>
     )
 }
+
+const FriendPage = connect((state) => {
+    return {
+        ...state.friend
+    }
+})(Friend)
+
 // @ts-ignore
-Friend.serverSEO = ()=>{
+FriendPage.asyncData = async (store) => {
+    let {list} = await getFriendList()
+    store.dispatch({
+        type: 'store_friend_list',
+        payload: {
+            friends: Array.isArray(list) ? list : []
+        }
+    })
+    return list
+}
+
+// @ts-ignore
+FriendPage.serverSEO = () => {
     return {
         title: '友情链接_shymean',
         keywords: '友情链接,友链,shymean,shymean',
@@ -22,4 +45,4 @@ Friend.serverSEO = ()=>{
     }
 }
 
-export default Friend
+export default FriendPage

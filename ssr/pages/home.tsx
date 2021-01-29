@@ -54,7 +54,7 @@ Home.asyncData = async (store, location) => {
 
     let {articles} = result
 
-    articles.forEach(item => {
+    Array.isArray(articles) && articles.forEach(item => {
         item.abstract = marked(item.abstract)
     })
     store.dispatch({

@@ -49,4 +49,7 @@ export const getBookList = async (params) => {
     return result.data
 }
 
-
+export async function getFriendList() {
+    const result = await axios.get('/friends')
+    return result.data
+}

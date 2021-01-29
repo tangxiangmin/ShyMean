@@ -80,8 +80,9 @@ module.exports = (env = {}) => {
             }
         } : {},
         devServer: {
+            disableHostCheck: true,
             // contentBase: path.resolve(__dirname, './'),
-            host: 'localhost',
+            // host: 'localhost',
             port: 9877,
             compress: true,
         }

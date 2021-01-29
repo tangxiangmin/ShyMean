@@ -2,6 +2,7 @@ import * as RSS from 'rss'
 import articleModel from "../model/article"
 import tagModel from "../model/tag"
 import bookModel from "../model/book"
+import friendModel from "../model/friend"
 //
 // import Pagination from "../lib/pagination"
 // import marked from "../lib/marked"
@@ -182,6 +183,13 @@ export default {
         } else {
             return Promise.reject(`未查找到${title}`)
         }
+    },
+    async friends(ctx: any, next: Function) {
+        let list = await friendModel.getFriendList()
+        ctx.state.data = {
+            list
+        }
+        await next()
     },
 
     // 支持rss，定期返回最新的文章

@@ -15,6 +15,8 @@ router.get("/archive", Index.archive)
 router.get("/archive/:tag", Index.archive)
 
 router.get("/book", Index.book)
+router.get("/friends", Index.friends)
+
 
 // router.get("/about", Profile.about)
 // router.get("/friend", Profile.friend)
