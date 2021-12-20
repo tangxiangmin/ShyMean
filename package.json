@@ -21,7 +21,7 @@
     "@types/koa": "^2.11.0",
     "@types/koa-router": "^7.4.0",
     "@types/mysql2": "github:types/mysql2",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "highlight.js": "^9.17.1",
     "koa": "^2.11.0",
     "koa-router": "^7.4.0",
