@@ -59,10 +59,6 @@ const demoGroup: Array<{
                 desc: '日常收集的前端知识点及面试题目',
                 githubUrl: 'https://github.com/tangxiangmin/interview'
             }, {
-                name: 'happy',
-                desc: '使用flutter实现的跨Android、iOS的客户端应用',
-                githubUrl: 'https://github.com/tangxiangmin/funny'
-            }, {
                 name: 'hexo-theme-shy',
                 desc: '当前博客同款的hexo博客主题',
                 githubUrl: 'https://github.com/tangxiangmin/hexo-theme-shy'
@@ -74,11 +70,23 @@ const demoGroup: Array<{
                 name: 'vuex-loading',
                 desc: '一个简化vue中管理异步操作loading状态的vuex插件',
                 githubUrl: 'https://github.com/tangxiangmin/vuex-loading'
+            }, {
+                name: 'vite-plugin-remote-module',
+                desc: '在vite开发项目中加载http远程模块',
+                githubUrl: 'https://github.com/tangxiangmin/vite-plugin-remote-module'
             }]
     },
     {
         name: '游戏',
         list: [{
+            name: '合成大西瓜',
+            desc: '2021年初比较火热的合成大西瓜cocos复刻版',
+            githubUrl: 'https://github.com/tangxiangmin/cocos-big-watermelon',
+        }, {
+            name: '保卫萝卜2',
+            desc: '《Cocos2d-JS游戏开发》随书教程',
+            githubUrl: 'https://github.com/tangxiangmin/cocos-carrot-fantasy',
+        }, {
             name: 'cocos creator游戏合集',
             desc: '学习cocos creator时的一些练习demo',
             githubUrl: 'https://github.com/cocos-creator-demo',

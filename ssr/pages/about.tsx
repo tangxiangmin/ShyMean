@@ -34,6 +34,8 @@ const About = () => {
                     <p>友情链接：<Link href='/friend' title="友链">友情链接</Link></p>
                     <p>掘金：<a href='https://juejin.im/user/1204720472957118' rel="nofollow" target="_blank"
                              title="掘金-橙红年代">橙红年代</a></p>
+                    <p>RSS订阅：<a href='/api/rss' target="_blank"
+                                title="rss-橙红年代">点我一下</a></p>
                 </div>
             </section>
         </div>
