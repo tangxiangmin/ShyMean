@@ -27,7 +27,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.3",
     "koa-views": "^6.2.1",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "mysql-xmodel": "^1.0.3",
     "mysql2": "^1.7.0",
     "rss": "^1.2.2"
