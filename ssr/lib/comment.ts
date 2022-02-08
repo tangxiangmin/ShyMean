@@ -24,7 +24,7 @@ function loadScript(src) {
 }
 
 function getReady() {
-    let avUrl = `//cdn1.lncld.net/static/js/3.0.4/av-min.js`
+    let avUrl = `//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js`
     let valineUrl = `//unpkg.com/valine/dist/Valine.min.js`
 
     return Promise.all([
