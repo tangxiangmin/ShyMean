@@ -57,7 +57,7 @@
     "inquirer": "^6.5.2",
     "log4js": "^4.5.1",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.19.4",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
