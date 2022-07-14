@@ -3,8 +3,8 @@
  */
 let fs = require('fs')
 
-import IndexController from '../../server/controller/IndexController'
-import tagModel from '../../server/model/tag'
+import IndexController from '../../packages/server/src/controller/IndexController'
+import tagModel from '../../packages/server/src/model/tag'
 
 import Hexo2JSON from './hexo2json'
 

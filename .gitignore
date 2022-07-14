@@ -4,6 +4,6 @@ node_modules
 log
 app
 dist
-server/config/db.ts
+packages/server/src/config/db.ts
 ssr/public/bundle/
 map.json

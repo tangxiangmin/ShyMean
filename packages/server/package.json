@@ -1,0 +1,25 @@
+{
+  "name": "shymean-server",
+  "version": "1.0.0",
+  "description": "shymean blog api server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "export NODE_ENV=development && nodemon --watch 'server/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
+    "build": "tsc ./src/index.ts --outDir app",
+    "start": "export NODE_ENV=production && pm2 start --interpreter ./node_modules/.bin/ts-node ./src/index.ts --name='blog'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/mysql2": "github:types/mysql2",
+    "koa": "^2.13.4",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.3",
+    "koa-views": "^6.3.1",
+    "mysql2": "^1.7.0",
+    "rss": "^1.2.2"
+  }
+}

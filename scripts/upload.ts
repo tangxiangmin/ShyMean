@@ -5,7 +5,7 @@
 
 import * as fs from 'fs'
 import {upload} from "./upload/index";
-import logger from "../server/util/logger";
+import logger from "../packages/server/src/util/logger";
 
 const inquirer = require('inquirer')
 

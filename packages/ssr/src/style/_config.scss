@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+//----------------------------配置------------------------------//
+// 主要用于配置相关的布局系统及基础变量
+
+// rem布局
+$remwidth: 37.5;
+
+// 网格系统
+$gutter: 0;
+$colNum: 12;
+$breakPoint: (768px 750px) (992px 900px) (1200px 1170px) !default;
+// 基础变量
+$basemargin: 20px;
+$basepadding: 20px;
+$baseborder: 1px solid #d6d6d6;
+
+// 颜色
+$red: #FF3300;
+$oragne: #CC6600;
+$yellow: #FF9900;
+$green: #33CC66;
+$cyan: #6699FF;
+$blue: #007fff;
+$purple: #9900FF;
+$dark: #333;
+$white: #fff;
+$gray: #f5f5f5;
+$text-gray: #999;
+
+$basecolor: $cyan;
+
+// 安全色
+$colorArr:(red $red #fff)
+        (oragne $oragne #fff)
+        (yellow $yellow #fff)
+        (green $green #fff)
+        (cyan $cyan #fff)
+        (blue $blue #fff)
+        (purple $purple #fff)
+        (dark $dark #fff)
+        (white $white #000)
+        (gray $gray #000)
+        (base $basecolor #fff);

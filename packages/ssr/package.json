@@ -1,0 +1,30 @@
+{
+  "name": "example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "export NODE_ENV=development && node server.js",
+    "start": "export NODE_ENV=production && node server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --outDir dist/server --ssr src/entry-server.tsx ",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@shymean/react-vue-jsx": "^1.0.0",
+    "@types/express": "^4.17.13",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "@shymean/react-vue": "^1.0.0",
+    "@shymean/react-vue-router": "^1.0.3",
+    "@shymean/react-vue-store": "^1.0.0",
+    "axios": "^0.21.4",
+    "classnames": "^2.3.1",
+    "express": "^4.18.1",
+    "highlight.js": "^11.6.0",
+    "marked": "^0.7.0"
+  }
+}
