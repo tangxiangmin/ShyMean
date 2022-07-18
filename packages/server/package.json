@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "export NODE_ENV=development && nodemon --watch 'server/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
     "build": "tsc ./src/index.ts --outDir app",
-    "start": "export NODE_ENV=production && pm2 start --interpreter ./node_modules/.bin/ts-node ./src/index.ts --name='blog'"
+    "start": "export NODE_ENV=production && node ./app/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +14,17 @@
   "dependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
-    "@types/mysql2": "github:types/mysql2",
     "koa": "^2.13.4",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.3",
     "koa-views": "^6.3.1",
-    "mysql2": "^1.7.0",
+    "mysql2": "^2.3.3",
     "rss": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.4",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.6.3"
   }
 }

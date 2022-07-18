@@ -40,6 +40,9 @@ const useRawArticleStore = defineStore({
     actions: {
         async fetchListByPage(params: { page: number, size: number }) {
             const {data} = await getArticleList(params)
+            data.articles.forEach(row=>{
+                row.abstract =  marked(row.abstract)
+            })
             this.articleList = data.articles
             this.total = data.total
         },

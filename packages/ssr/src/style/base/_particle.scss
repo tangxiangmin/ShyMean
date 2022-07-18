@@ -1,91 +1,100 @@
 @charset "utf-8";
+@use "sass:math";
 /* ---particle--- */
 @import "../mixins";
 @import "../config";
 @import "../extend";
+
 // 浮动
 .fl {
-	float: left;
+  float: left;
 }
 
 .fr {
-	float: right !important;
+  float: right !important;
 }
 
 .clearfix {
-	@include clearfix;
+  @include clearfix;
 }
 
 .block {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 //图片
 .img-responsive {
-	display: block;
-	margin: 0 auto;
-	width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
 // 使用背景图解决图片变形问题
 .img-holder {
-	background-size: cover;
-	background-position: center;
+  background-size: cover;
+  background-position: center;
 }
 
 // 边距
 .mg-base {
-	margin: $basemargin;
+  margin: $basemargin;
 }
+
 .mt-base {
-	margin-top: $basemargin;
+  margin-top: $basemargin;
 }
+
 .mt-base-10 {
-	margin-top: 10px;
+  margin-top: 10px;
 }
+
 .mb-base {
-	margin-bottom: $basemargin;
+  margin-bottom: $basemargin;
 }
+
 // 边距负1px，主要是为了解决两个边框重合的问题
 .mt--1 {
-	margin-top: -1px !important;
+  margin-top: -1px !important;
 }
+
 .mb--1 {
-	margin-bottom: -1px !important;
+  margin-bottom: -1px !important;
 }
 
 .pd-base {
-	padding: $basepadding/2 $basepadding;
+  padding: math.div($basepadding, 2) $basepadding;
 }
 
 .ptb-base {
-	padding-top: $basepadding/2;
-	padding-bottom: $basepadding/2;
+  padding-top: math.div($basepadding, 2);
+  padding-bottom: math.div($basepadding, 2);
 }
 
 .hover-underline {
-	position: relative;
-	&:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: -3px;
-		height: 2px;
-		width: 100%;
-		background: $dark;
-		transform: scaleX(0);
-		transition: all ease .3s;
-	}
+  position: relative;
 
-	&:hover:after {
-		transform: scaleX(1);
-	}
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    background: $dark;
+    transform: scaleX(0);
+    transition: all ease .3s;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
 }
 
- .hover-highlight {
- 	@extend %hover-highlight;
- }
+.hover-highlight {
+  @extend %hover-highlight;
+}
+
 /* ---particle end--- */
 
 

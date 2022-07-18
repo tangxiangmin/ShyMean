@@ -1,14 +1,16 @@
 import {RouterView, createLocation, getCurrentUrl, RouteLocation} from "@shymean/react-vue-router";
-import {createStoreInstance, StoreInstance} from "@shymean/react-vue-store";
+import {StoreInstance} from "@shymean/react-vue-store";
+import {provide} from "@shymean/react-vue";
+
 
 import {routes} from './routes'
 
 import {Header, Footer, Loading} from "./pages/Layout";
-import BackTop from "./components/BackTop";
+// import BackTop from "./components/BackTop";
+
 import {PROVIDE_KEY, ServerComponent} from "./typings";
 import {isBrowser} from "./utils";
 import './style/blog.scss'
-import {provide} from "../../../../react-vue/packages/core";
 
 type AppProps = {
     url?: string,
@@ -46,7 +48,6 @@ export function App({url, instance, location}: AppProps) {
             </main>
             <Footer/>
             <Loading pageLoading={false}/>
-            <BackTop/>
         </div>)
     }
 }

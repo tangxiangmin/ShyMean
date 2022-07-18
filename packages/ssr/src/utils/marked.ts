@@ -3,7 +3,7 @@
 // @ts-ignore
 import marked from 'marked'
 // @ts-ignore
-import highlight from 'highlight.js'
+import highlight from 'virtual:highlight.js'
 
 marked.setOptions({
     renderer: new marked.Renderer(),

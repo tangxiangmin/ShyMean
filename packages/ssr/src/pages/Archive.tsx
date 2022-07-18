@@ -6,27 +6,6 @@ import {AsyncDataParams, IArticleGroup} from "../typings";
 import {useArticleStore} from "../store/article";
 
 
-
-const ArticleGroup = ({group}: { group: IArticleGroup }) => {
-    const {year, articles} = group
-    return () => {
-        return <section>
-            <div class="archives_title"><strong>{year}</strong></div>
-            {
-                articles.map(item => {
-                    return (
-                        <div class="archives_item">
-                            <Link href={`/article/${item.title}`} title={item.title} class="archives_link">
-                                <span class="archives_date">{formatDate(item.created_at)}</span> {item.title}
-                            </Link>
-                        </div>
-                    )
-                })
-            }
-        </section>
-    }
-}
-
 const Archive = () => {
     const store = useArticleStore()
 
@@ -42,7 +21,23 @@ const Archive = () => {
                 <div class="archives_count">{title}</div>
                 {
                     articleGroup.map(group => {
-                        return <ArticleGroup group={group}/>
+                        const {year, articles} = group
+                        return <section>
+                            <div class="archives_title"><strong>{year}</strong></div>
+                            {
+                                articles.map(item => {
+                                    return (
+                                        <div class="archives_item" key={item.title}>
+                                            <Link href={`/article/${item.title}`} title={item.title}
+                                                  class="archives_link">
+                                                <span
+                                                    class="archives_date">{formatDate(item.created_at)}</span> {item.title}
+                                            </Link>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </section>
                     })
                 }
             </div>)

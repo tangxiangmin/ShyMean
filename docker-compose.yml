@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  database:
+    image: mysql
+    restart: always
+    volumes:
+      - ~/data/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - 3306:3306
+    networks:
+      - shymean-network
+  server:
+    depends_on:
+      - database
+    build:
+      context: ./
+      dockerfile: ./packages/server/Dockerfile
+    volumes:
+      - .:/projects
+    ports:
+      - 3000:3000
+    tty: true
+    networks:
+      - shymean-network
+  ssr:
+    depends_on:
+      - server
+    build:
+      context: ./
+      dockerfile: ./packages/ssr/Dockerfile
+    volumes:
+      - .:/projects
+    ports:
+      - 3001:3001
+    tty: true
+    networks:
+      - shymean-network
+networks:
+  shymean-network:
+    driver: bridge

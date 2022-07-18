@@ -1,72 +1,78 @@
+@use "sass:math";
+
 .archives {
-	font-size: 16px;
-	border-left: 4px solid $gray;
+  font-size: 16px;
+  border-left: 4px solid $gray;
 
-	@mixin archives-dot($r) {
-		&:before {
-			width: $r;
-			height: $r;
-			border-radius: $r;
-			left: -($r+4)/2;
-		}
-	}
+  @mixin archives-dot($r) {
+    &:before {
+      width: $r;
+      height: $r;
+      border-radius: $r;
+      left: -#{math.div(($r+4),2)};
+    }
+  }
 
-	%archives {
-		position: relative;
+  %archives {
+    position: relative;
 
-		padding-left: $basepadding;
-		&:before {
-			content: '';
-			position: absolute;
-			z-index: 1;
+    padding-left: $basepadding;
 
-			top: 0;
-			bottom: 0;
-			margin: auto 0;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
 
-			background: #aaa;
-		}
-	}
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
 
-	&_count {
-		@extend %archives;
-		position: relative;
-		top: -0.5em;
+      background: #aaa;
+    }
+  }
 
-		@include archives-dot(12px);
-	}
+  &_count {
+    @extend %archives;
+    position: relative;
+    top: -0.5em;
 
-	&_title {
-		font-weight: normal;
-		padding-top: $basepadding*2;
-		padding-bottom: $basepadding*2;
+    @include archives-dot(12px);
+  }
 
-		@include text-lg;
-		@include archives-dot(10px);
-		@extend %archives;
-	}
+  &_title {
+    font-weight: normal;
+    padding-top: $basepadding*2;
+    padding-bottom: $basepadding*2;
 
-	&_item {
-		line-height: 3em;
-		color: #666;
-		//border-bottom: 2px dashed $gray;
+    @include text-lg;
+    @include archives-dot(10px);
+    @extend %archives;
+  }
 
-		@extend %archives;
-		@include archives-dot(6px);
+  &_item {
+    line-height: 3em;
+    color: #666;
+    //border-bottom: 2px dashed $gray;
 
-		&:hover {
-			color: #000;
-			&:before {
-				background: $dark;
-			}
-		}
-	}
-	&_link {
-		display: block;
-		@include text-overflow;
-	}
-	&_date{
-		font-size: 12px;
-		margin-right: 15px;
-	}
+    @extend %archives;
+    @include archives-dot(6px);
+
+    &:hover {
+      color: #000;
+
+      &:before {
+        background: $dark;
+      }
+    }
+  }
+
+  &_link {
+    display: block;
+    @include text-overflow;
+  }
+
+  &_date {
+    font-size: 12px;
+    margin-right: 15px;
+  }
 }
