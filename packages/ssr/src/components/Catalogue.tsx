@@ -15,12 +15,12 @@ function catalogueJump(e: Event) {
 type CatalogueProps = {
     data: any
 }
-export default ({data}: CatalogueProps) => {
+export default (props: CatalogueProps) => {
     return () => {
         return (<div class="catalogue hide-md">
             <ul class="catalogue_group">
                 {
-                    data.map((h2: any) => {
+                    props.data.map((h2: any) => {
                         return (
                             <li>
                                 <a href={`#${h2.h2}`} class="catalogue_item">{h2.h2}</a>

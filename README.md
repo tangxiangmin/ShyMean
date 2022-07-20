@@ -3,27 +3,16 @@ shymean
 
 个人博客[www.shymean.com](http://www.shymean.com)
 ## 相关指令
+
 开发
 ```
-# nodemon监听node服务端
-npm run dev:server
-
-# webpack启动ssr
-npm run dev:ssr
-
-```
-打包
-```
-# webpack打包静态资源
-npm run build:ssr
-# tsc打包服务端
-npm run build:server
+cd packages/server && npm run dev
+cd packages/ssr && npm run dev
 ```
 
-部署
+打包 & 部署
 ```
-# pm2启动服务端
-npm run start
+docker-compose up -d
 ```
 
 上传博客

@@ -47,13 +47,9 @@ async function createServer() {
             const filePath = development ? path.resolve(__dirname, 'index.html') : path.resolve(__dirname, 'dist/client/index.html')
             let template = fs.readFileSync(filePath, 'utf-8')
 
-            // 注入热更新等逻辑
-            if (development) {
-                template = await vite.transformIndexHtml(url, template)
-            }
-
             let render
             if (development) {
+                template = await vite.transformIndexHtml(url, template)  // 注入热更新等逻辑
                 const {render: devRender} = await vite.ssrLoadModule('/src/entry-server.tsx')
                 render = devRender
             } else {
