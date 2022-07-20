@@ -1,4 +1,4 @@
-import {IDemoItem} from "../typings";
+import {IDemoItem, ServerComponent} from "../typings";
 
 type DemoGroup = {
     name: string,
@@ -124,7 +124,7 @@ const DemoGroup = ({group}: { group: DemoGroup }) => {
     }
 }
 
-export default () => {
+const Demo: ServerComponent = () => {
     return () => {
         return (<div class="demo">
             <p>这里整理了编程生涯中一些有趣的业余项目。</p>
@@ -136,3 +136,12 @@ export default () => {
         </div>)
     }
 }
+
+Demo.asyncSEO = () => {
+    return {
+        title: '代码项目_shymean',
+        keywords: 'demo,友链,shymean',
+        description: '此页面统计了shymean博客的demo',
+    }
+}
+export default Demo

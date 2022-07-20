@@ -44,22 +44,14 @@ async function createServer() {
         if (url === '/favicon.ico') return res.end('')
 
         try {
-            // 1. 读取 index.html
-            let template = fs.readFileSync(
-                development ? path.resolve(__dirname, 'index.html') : path.resolve(__dirname, 'dist/client/index.html'),
-                'utf-8'
-            )
+            const filePath = development ? path.resolve(__dirname, 'index.html') : path.resolve(__dirname, 'dist/client/index.html')
+            let template = fs.readFileSync(filePath, 'utf-8')
 
-            // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
-            //    同时也会从 Vite 插件应用 HTML 转换。
-            //    例如：@vitejs/plugin-react 中的 global preambles
+            // 注入热更新等逻辑
             if (development) {
                 template = await vite.transformIndexHtml(url, template)
             }
 
-            // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
-            //    你的 ESM 源码使之可以在 Node.js 中运行！无需打包
-            //    并提供类似 HMR 的根据情况随时失效。
             let render
             if (development) {
                 const {render: devRender} = await vite.ssrLoadModule('/src/entry-server.tsx')
@@ -69,17 +61,13 @@ async function createServer() {
                 render = prodRender
             }
 
-            // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
-            //    函数调用了适当的 SSR 框架 API。
-            //    例如 ReactDOMServer.renderToString()
-            const {html: appHtml, initData} = await render(url)
+            const {html: appHtml, initData, seoData = {}} = await render(url)
 
+            const html = template
+                .replace(`<!--ssr-init-data-->`, initData)
+                .replace(`<!--ssr-outlet-->`, appHtml)
+                .replace(`<!--ssr-seo-data-->`, seoData)
 
-            // 5. 注入渲染后的应用程序 HTML 到模板中。
-            const html = template.replace(`<!--ssr-init-data-->`, initData).replace(`<!--ssr-outlet-->`, appHtml).replaceAll('/dist/client/', '//cdn.shymean.com/')
-
-
-            // 6. 返回渲染后的 HTML。
             res.status(200).set({'Content-Type': 'text/html'}).end(html)
         } catch (e) {
             // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回

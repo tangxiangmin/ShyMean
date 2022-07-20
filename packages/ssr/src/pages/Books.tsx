@@ -2,10 +2,10 @@ import {computed} from "@shymean/react-vue";
 
 import {formatDate} from "../utils";
 import {useArticleStore} from "../store/article";
-import {AsyncDataParams} from "../typings";
+import {AsyncDataParams, ServerComponent} from "../typings";
 
 
-const Books = () => {
+const Books: ServerComponent = () => {
     const store = useArticleStore()
     const bookList = computed(() => {
         return store.books || []
@@ -48,4 +48,20 @@ Books.asyncData = async ({instance}: AsyncDataParams) => {
     await store.fetchBooks()
 }
 
+Books.asyncSEO = ({instance}: AsyncDataParams) => {
+    const store = useArticleStore(instance)
+
+    const books = store.books || []
+    let name = ''
+    if (Array.isArray(books)) {
+        name = books.reduce((acc, book) => {
+            return acc += book.name + ','
+        }, '')
+    }
+    return {
+        title: '书架_shymean',
+        keywords: '书架,shymean',
+        description: `此页面统计了shymean博客已经阅读的技术书籍，包括${name}等书籍。`
+    }
+}
 export default Books

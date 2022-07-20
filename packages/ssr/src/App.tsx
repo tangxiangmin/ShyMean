@@ -39,7 +39,7 @@ export function App({url, instance, location}: AppProps) {
     const pageClassName = ['page', 'page-theme-base']
 
     return () => {
-        return (<div class={pageClassName.join(' ')}>
+        return (<div class={pageClassName.join(' ')} id="blog">
             <Header/>
             <main class="page_mn">
                 <div class="container animated" id="page_wrap">

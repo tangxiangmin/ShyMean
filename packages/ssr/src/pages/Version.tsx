@@ -1,3 +1,5 @@
+import {ServerComponent} from "../typings";
+
 const versionList = [
     {
         version: '0.8',
@@ -28,7 +30,7 @@ const versionList = [
     },
 ]
 
-const Version = () => {
+const Version: ServerComponent = () => {
     return () => {
         return (<div class="about">
                 <p>相关版本代码位于<a href="https://github.com/tangxiangmin/ShyMean">github</a>对应分支上。</p>
@@ -48,4 +50,13 @@ const Version = () => {
         )
     }
 }
+
+Version.asyncSEO = () => {
+    return {
+        title: '版本_shymean',
+        keywords: '版本,迭代,shymean',
+        description: '此页面为shymean博客的版本迭代记录，包含历史各种版本记录。',
+    }
+}
+
 export default Version

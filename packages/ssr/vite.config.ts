@@ -32,7 +32,7 @@ export default defineConfig((options) => {
     const development = options.mode === 'development'
     const isSSR = process.env.BUILD_TARGET === 'ssr'
     const plugins = []
-    plugins.push(highLightPlugin(isSSR))
+    plugins.push(highLightPlugin(development || isSSR))
     const buildConfig = isSSR ? {} : {
         // https://rollupjs.org/guide/en/#outputglobals
         rollupOptions: {

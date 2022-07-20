@@ -2,11 +2,11 @@ import {Link} from '@shymean/react-vue-router'
 import {computed} from '@shymean/react-vue';
 
 import {formatDate} from '../utils'
-import {AsyncDataParams, IArticleGroup} from "../typings";
+import {AsyncDataParams, ServerComponent} from "../typings";
 import {useArticleStore} from "../store/article";
 
 
-const Archive = () => {
+const Archive: ServerComponent = () => {
     const store = useArticleStore()
 
     const currentArchive = computed(() => {
@@ -48,6 +48,14 @@ Archive.asyncData = async ({instance, location}: AsyncDataParams) => {
     const {name = ''} = location.params
     const store = useArticleStore(instance)
     await store.fetchArchive({name})
+}
+
+Archive.asyncSEO = () => {
+    return {
+        title: '归档_shymean',
+        keywords: '博客归档,shymean',
+        description: '此页面统计了shymean博客文章的归档记录，用于快速索引文章列表。'
+    }
 }
 
 export default Archive

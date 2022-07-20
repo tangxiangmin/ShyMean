@@ -1,9 +1,9 @@
 import {computed} from "@shymean/react-vue";
 import {useArticleStore} from "../store/article";
-import {AsyncDataParams} from "../typings";
+import {AsyncDataParams, ServerComponent} from "../typings";
 
 
-const Friends = () => {
+const Friends: ServerComponent = () => {
     const store = useArticleStore()
 
     const friends = computed(() => {
@@ -33,5 +33,14 @@ Friends.asyncData = async ({instance}: AsyncDataParams) => {
     const store = useArticleStore(instance)
     await store.fetchFriendLinks()
 }
+
+Friends.asyncSEO = () => {
+    return {
+        title: '友情链接_shymean',
+        keywords: '友情链接,友链,shymean',
+        description: '此页面统计了shymean博客的友情链接，一起学习，共同进步。',
+    }
+}
+
 
 export default Friends

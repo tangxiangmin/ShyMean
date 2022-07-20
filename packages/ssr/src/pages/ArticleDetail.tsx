@@ -4,10 +4,10 @@ import {formatDate} from "../utils";
 import {useArticleStore} from "../store/article";
 import Catalogue from "../components/Catalogue";
 import MessageBoard from "./MessageBoard";
-import {AsyncDataParams} from "../typings";
+import {AsyncDataParams, ServerComponent} from "../typings";
 
 
-const ArticleDetail = () => {
+const ArticleDetail: ServerComponent = () => {
     const store = useArticleStore()
 
     const articleDetail = computed(() => {
@@ -60,6 +60,18 @@ ArticleDetail.asyncData = async ({instance, location}: AsyncDataParams) => {
     const store = useArticleStore(instance)
     const {title} = location.params
     await store.fetchArticleDetail({title})
+}
+
+ArticleDetail.asyncSEO = ({instance}: AsyncDataParams) => {
+    const store = useArticleStore(instance)
+    const article = store.currentArticle
+    if (!article) return
+
+    return {
+        title: `${article.title}_shymean`,
+        keywords: `${article.tags.join(",")},${article.categories.join(",")},shymean,前端开发,博客`,
+        description: `${article.abstract}`
+    }
 }
 
 export default ArticleDetail

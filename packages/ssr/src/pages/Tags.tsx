@@ -1,8 +1,7 @@
 import {computed} from '@shymean/react-vue';
 import {Link} from '@shymean/react-vue-router'
 import {useArticleStore} from "../store/article";
-import {AsyncDataParams} from "../typings";
-import {getCurrentStoreInstance} from "../utils/isomorphic";
+import {AsyncDataParams, ServerComponent} from "../typings";
 
 function tagSize(num: number) {
     let fontSize: string = ""
@@ -19,7 +18,7 @@ function tagSize(num: number) {
     return fontSize
 }
 
-const TagsPage = () => {
+const TagsPage: ServerComponent = () => {
     const store = useArticleStore()
     const categoryList = computed(() => {
         return store.categories || []
@@ -68,5 +67,22 @@ TagsPage.asyncData = async ({instance}: AsyncDataParams) => {
     const store = useArticleStore(instance)
     await store.fetchTags()
 }
+
+TagsPage.asyncSEO = ({instance}: AsyncDataParams) => {
+    const store = useArticleStore(instance)
+    const categories = store.categories
+
+    let name = ''
+    if (Array.isArray(categories)) {
+        name = categories.map(tag => tag.name).join(',')
+    }
+
+    return {
+        title: '标签_shymean',
+        keywords: `${name}`,
+        description: '此页面用于统计shymean博客文章的分类和标签，用于筛选相关类型的文章',
+    }
+}
+
 
 export default TagsPage

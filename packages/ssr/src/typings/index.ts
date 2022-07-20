@@ -71,12 +71,21 @@ export interface IDemoItem {
 export type AsyncDataParams = { instance: StoreInstance, location: RouteLocation }
 export type AsyncDataFunc = ({instance, location}: AsyncDataParams) => any
 
+export type AsyncSeoFunc = ({instance, location}: AsyncDataParams) => ITDKData | undefined
+
 export type ServerComponent = Function & {
-    asyncData?: AsyncDataFunc
+    asyncData?: AsyncDataFunc,
+    asyncSEO?: AsyncSeoFunc
 }
 
 
 export enum PROVIDE_KEY {
     storeInstance = 'instance',
     currentLocation = 'currentLocation'
+}
+
+export interface ITDKData {
+    title: string,
+    description: string,
+    keywords: string
 }

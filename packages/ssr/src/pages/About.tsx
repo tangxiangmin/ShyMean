@@ -1,6 +1,7 @@
 import {Link} from '@shymean/react-vue-router'
+import {ServerComponent} from "../typings";
 
-export default () => {
+const About: ServerComponent = () => {
     return () => {
         return (<div class="about">
                 <section>
@@ -42,3 +43,13 @@ export default () => {
         )
     }
 }
+
+About.asyncSEO = () => {
+    return {
+        title: '关于_shymean',
+        description: '此页面介绍了shymean博客的相关信息，包括关于我、关于博客、关于shymean以及版权声明的信息。',
+        keywords: '个人简介,关于博客,shymean'
+    }
+}
+
+export default About
