@@ -19,9 +19,9 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
-    "@shymean/react-vue": "^1.0.0",
-    "@shymean/react-vue-router": "^1.0.0",
-    "@shymean/react-vue-store": "^1.0.0",
+    "@shymean/react-vue": "^1.0.4",
+    "@shymean/react-vue-router": "^1.0.5",
+    "@shymean/react-vue-store": "^1.0.4",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "express": "^4.18.1",

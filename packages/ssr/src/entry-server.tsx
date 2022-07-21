@@ -1,4 +1,4 @@
-import {renderHTML} from "@shymean/react-vue"
+import {renderHTML, pauseTracking, resetTracking} from "@shymean/react-vue"
 import {createLocation, getMatchRouteConfig} from "@shymean/react-vue-router";
 import {createStoreInstance} from "@shymean/react-vue-store";
 
@@ -17,7 +17,7 @@ function renderTDK(seo: ITDKData) {
 }
 
 export async function render(url: string) {
-
+    pauseTracking()
     const to = getMatchRouteConfig(url, routes)
     let location = createLocation(url, (to && to.path) || '')
 
@@ -51,10 +51,14 @@ export async function render(url: string) {
 
     const store = useArticleStore(instance)
 
-    return {
-        // @ts-ignore
-        html: renderHTML(<App url={url} instance={instance} location={location}/>),
-        initData: JSON.stringify(store),
-        seoData: renderTDK(seoData)
+    try {
+        return {
+            // @ts-ignore
+            html: renderHTML(<App url={url} instance={instance} location={location}/>),
+            initData: JSON.stringify(store),
+            seoData: renderTDK(seoData)
+        }
+    } finally {
+        resetTracking()
     }
 }
