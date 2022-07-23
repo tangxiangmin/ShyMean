@@ -39,16 +39,17 @@ async function createServer() {
 
     app.use(express.static(path.resolve(__dirname, "./dist/client/assets")));
 
+    const filePath = development ? path.resolve(__dirname, 'index.html') : path.resolve(__dirname, 'dist/client/index.html')
+    let template = !development && fs.readFileSync(filePath, 'utf-8') || ''
+
     app.use('/*', async (req, res, next) => {
         const url = req.originalUrl
         if (url === '/favicon.ico') return res.end('')
 
         try {
-            const filePath = development ? path.resolve(__dirname, 'index.html') : path.resolve(__dirname, 'dist/client/index.html')
-            let template = fs.readFileSync(filePath, 'utf-8')
-
             let render
             if (development) {
+                template = fs.readFileSync(filePath, 'utf-8')
                 template = await vite.transformIndexHtml(url, template)  // 注入热更新等逻辑
                 const {render: devRender} = await vite.ssrLoadModule('/src/entry-server.tsx')
                 render = devRender

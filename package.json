@@ -3,7 +3,8 @@
   "version": "0.8.0",
   "description": "shymean blog",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "upload": "export NODE_ENV=upload && ts-node scripts/upload.ts",
+    "upload:dev": "export NODE_ENV=development && ts-node scripts/upload.ts"
   },
   "repository": {
     "type": "git",

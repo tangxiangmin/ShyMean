@@ -5,9 +5,6 @@
 
 import * as fs from 'fs'
 import {upload} from "./upload/index";
-import logger from "../packages/server/src/util/logger";
-
-const inquirer = require('inquirer')
 
 // 原hexo项目的_posts目录
 const defaultRoot: string = `/Users/bcz/github/blog-source/source/_posts/`
@@ -19,17 +16,8 @@ async function init() {
     const file = args[0]
 
     if (!file) {
-        const key = 'uploadDir'
-        let answers = await inquirer.prompt([{
-            type: 'confirm',
-            name: key,
-            message: `未指定file参数，是否上传${defaultRoot}目录下所有文件？`,
-            default: true
-        }])
-
-        if (answers[key]) {
-            uploadDir()
-        }
+        console.log('请传入需要上传的文件名')
+        // uploadDir()
     } else {
         const fileName = `${defaultRoot}${file}`
         uploadFile(fileName)
@@ -78,11 +66,11 @@ async function uploadDir(root: string = defaultRoot) {
             })
             start = end
         } catch (e) {
-            logger.error(`file${file}上传失败：`, e)
+            console.error(`file${file}上传失败：`, e)
         }
     }
 
-    logger.info(`文件上传成功，总计${success.length}条，`, JSON.stringify(success))
+    console.info(`文件上传成功，总计${success.length}条，`, JSON.stringify(success))
     console.log("全部文件上传完毕")
     process.exit();
 }
