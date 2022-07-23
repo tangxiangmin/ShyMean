@@ -44,7 +44,6 @@ importers:
       axios: ^0.27.2
       classnames: ^2.3.1
       express: ^4.18.1
-      heapdump: ^0.3.15
       highlight.js: ^11.6.0
       marked: ^0.7.0
       sass: ^1.53.0
@@ -62,7 +61,6 @@ importers:
     devDependencies:
       '@shymean/react-vue-jsx': 1.0.2
       '@types/express': 4.17.13
-      heapdump: 0.3.15
       sass: 1.53.0
       typescript: 4.7.4
       vite: 2.9.14_sass@1.53.0
@@ -1110,14 +1108,6 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
-  /heapdump/0.3.15:
-    resolution: {integrity: sha512-n8aSFscI9r3gfhOcAECAtXFaQ1uy4QSke6bnaL+iymYZ/dWs9cqDqHM+rALfsHUwukUbxsdlECZ0pKmJdQ/4OA==}
-    engines: {node: '>=0.10.0'}
-    requiresBuild: true
-    dependencies:
-      nan: 2.16.0
-    dev: true
-
   /highlight.js/11.6.0:
     resolution: {integrity: sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==}
     engines: {node: '>=12.0.0'}
@@ -1571,10 +1561,6 @@ packages:
     dependencies:
       lru-cache: 4.1.5
     dev: false
-
-  /nan/2.16.0:
-    resolution: {integrity: sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==}
-    dev: true
 
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
