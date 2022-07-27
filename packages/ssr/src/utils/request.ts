@@ -40,5 +40,5 @@ export default createService({
     timeout: 10000,
     // 通过nginx转发到server服务,port:3000,  server端服务使用内网域名，减少cdn查询延迟
     // baseURL: isBrowser ? `//${location.hostname}/api/` : `http://localhost:3000/`,
-    baseURL: isDev ? `http://localhost:3000/` : (isBrowser ? `${location.hostname}/api/` : 'http://server:3000')
+    baseURL: isDev ? `http://localhost:3000/` : (isBrowser ? `//${location.hostname}/api/` : 'http://server:3000')
 })
