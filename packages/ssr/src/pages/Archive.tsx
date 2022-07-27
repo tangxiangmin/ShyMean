@@ -5,7 +5,6 @@ import {formatDate} from '../utils'
 import {AsyncDataParams, ServerComponent} from "../typings";
 import {useArticleStore} from "../store/article";
 
-
 const Archive: ServerComponent = () => {
     const store = useArticleStore()
 
@@ -14,8 +13,8 @@ const Archive: ServerComponent = () => {
     })
 
     return () => {
-        const {total = 0, articleGroup = []} = currentArchive.value || {}
-        const title = `OK!目前共计 ${total} 篇日志，继续努力。`
+        const {total = 0, articleGroup = [], tag = ''} = currentArchive.value || {}
+        const title = tag ? tag : `OK!目前共计 ${total} 篇日志，继续努力。`
         return (
             <div class="archives">
                 <div class="archives_count">{title}</div>
@@ -27,7 +26,7 @@ const Archive: ServerComponent = () => {
                             {
                                 articles.map(item => {
                                     return (
-                                        <div class="archives_item" key={item.title}>
+                                        <div class="archives_item">
                                             <Link href={`/article/${item.title}`} title={item.title}
                                                   class="archives_link">
                                                 <span

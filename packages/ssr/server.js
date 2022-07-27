@@ -26,6 +26,7 @@ async function createServer() {
             middlewareMode: true,
             hmr: development
         },
+        force: development,
         appType: 'custom'
     })
     // 使用 vite 的 Connect 实例作为中间件
