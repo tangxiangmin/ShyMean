@@ -4,7 +4,7 @@ WORKDIR /projects
 
 COPY ./pnpm-lock.yaml ./
 
-RUN npm install -g pnpm \
+RUN npm install -g pnpm@7 \
     && pnpm fetch
 
 COPY . .
