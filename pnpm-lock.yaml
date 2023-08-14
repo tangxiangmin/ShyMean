@@ -3,7 +3,10 @@ lockfileVersion: 5.4
 importers:
 
   .:
-    specifiers: {}
+    specifiers:
+      '@types/node': ^18.0.4
+    devDependencies:
+      '@types/node': 18.0.4
 
   packages/server:
     specifiers:

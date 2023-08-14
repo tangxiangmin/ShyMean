@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/tangxiangmin/ShyMean/issues"
   },
-  "homepage": "https://github.com/tangxiangmin/ShyMean#readme"
+  "homepage": "https://github.com/tangxiangmin/ShyMean#readme",
+  "devDependencies": {
+    "@types/node": "^18.0.4"
+  }
 }

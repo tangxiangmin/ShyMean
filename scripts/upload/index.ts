@@ -1,7 +1,7 @@
 /**
  * 2019-06-29 17:11
  */
-let fs = require('fs')
+import * as fs from 'fs'
 
 import IndexController from '../../packages/server/src/controller/IndexController'
 import tagModel from '../../packages/server/src/model/tag'
@@ -43,7 +43,7 @@ export async function upload(file: string) {
 
     try {
         let content = fs.readFileSync(file); // step1 读取markdown文件内容
-        let parser = new Hexo2JSON(content); // step2 将 markdown 文件解析成json
+        let parser = new Hexo2JSON(content as unknown as string); // step2 将 markdown 文件解析成json
         let data = parser.parse()
         let params = formatParams(data) // 格式化json，处理成接口需要的参数
 
