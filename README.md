@@ -12,7 +12,7 @@ cd packages/ssr && npm run dev
 
 打包 & 部署
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 上传博客
