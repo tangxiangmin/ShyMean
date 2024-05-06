@@ -1,9 +1,10 @@
-.idea
 node_modules
+.vitepress/cache
+.vitepress/dist
+data
+.idea
+.vscode
+views/article
 .DS_Store
-log
-app
-dist
-packages/server/src/config/db.ts
-ssr/public/bundle/
-map.json
+
+./scripts/config.ts
