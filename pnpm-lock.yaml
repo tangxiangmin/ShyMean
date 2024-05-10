@@ -6,6 +6,7 @@ specifiers:
   '@types/node': ^20.12.7
   '@typescript-eslint/eslint-plugin': ^5.6.0
   '@typescript-eslint/parser': ^5.6.0
+  '@unocss/transformer-variant-group': ^0.60.0
   '@vitejs/plugin-vue-jsx': ^3.1.0
   '@vueuse/core': ^10.9.0
   '@vueuse/shared': ^10.9.0
@@ -45,6 +46,7 @@ devDependencies:
   '@types/node': 20.12.7
   '@typescript-eslint/eslint-plugin': 5.62.0_6gthzuybl4nrnwlpznxavwjpna
   '@typescript-eslint/parser': 5.62.0_eslint@7.32.0
+  '@unocss/transformer-variant-group': 0.60.0
   '@vitejs/plugin-vue-jsx': 3.1.0_vue@3.4.25
   eslint: 7.32.0
   eslint-config-airbnb-base: 15.0.0_ryxylqcqjrgqrcq5e2gwnwvmem
@@ -1509,6 +1511,10 @@ packages:
     resolution: {integrity: sha512-bBZ1sgcAtezQVZ1BST9IS3jqcsTLyqKNjiIf7FTnX3DHpfpYuMDFzSOtmkZDzBleOLO/CtcRWjT0HwTSQAmV0A==}
     dev: true
 
+  /@unocss/core/0.60.0:
+    resolution: {integrity: sha512-i1j5i/4xiCfogobaOdQCQUEy/Ch8mBtKgpfUIreJtElaF15uIjT2t/G0y7qUz87ZNl+wJoPcWkcSC92HVnjXwg==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants/0.59.4:
     resolution: {integrity: sha512-RDe4FgMGJQ+tp9GLvhPHni7Cc2O0lHBRMElVlN8LoXJAdODMICdbrEPGJlEfrc+7x/QgVFoR895KpYJh3hIgGA==}
     dependencies:
@@ -1649,6 +1655,12 @@ packages:
     resolution: {integrity: sha512-9XLixxn1NRgP62Kj4R/NC/rpqhql5F2s6ulJ8CAMTEbd/NylVhEANluPGDVUGcLJ4cj6E02hFa8C1PLGSm7/xw==}
     dependencies:
       '@unocss/core': 0.59.4
+    dev: true
+
+  /@unocss/transformer-variant-group/0.60.0:
+    resolution: {integrity: sha512-00PikfUfJN+LdTaoILA+iXbPB5J8/zX1RcJx1DwKF2iRfKNmSu9+jsyNN0zyQX2jOVXY4UuK3x8LJ1qtZl1edA==}
+    dependencies:
+      '@unocss/core': 0.60.0
     dev: true
 
   /@unocss/vite/0.59.4:

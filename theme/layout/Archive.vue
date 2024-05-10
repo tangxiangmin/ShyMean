@@ -18,8 +18,8 @@
           <strong>{{ group.year }}</strong>
         </div>
         <div class="archives_item flex" v-for="row in group.articles" :key="row.createdAt">
-          <span class="archives_date line-clamp-1">{{ formatArticleDate(row.createdAt) }}</span>
-          <a :href="createArticleLink(row.title)">{{ row.title }}</a>
+          <span class="archives_date line-clamp-1 flex-shrink-0">{{ formatArticleDate(row.createdAt) }}</span>
+          <a :href="createArticleLink(row.title)" class="line-clamp-1">{{ row.title }}</a>
         </div>
       </section>
     </div>

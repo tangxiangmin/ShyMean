@@ -1,17 +1,22 @@
 <template>
   <header>
-    <nav class="flex justify-between h-60px flex items-center sm:w-full md:w-700px lg:w-900px mx-auto">
+    <nav class="flex justify-between h-60px flex items-center <sm:w-full md:w-700px lg:w-900px mx-auto <sm:(px-10px)">
       <div>
         <a href="/index" class="text-30px">Shymean</a>
         <a href="/version" class="underline text-12px ml-6px">v0.9.0</a>
       </div>
-      <div class="ml-auto">
+      <button class="ml-auto hidden <sm:block" @click="toggle">{{ visible ? '关闭' : '导航' }}</button>
+      <div
+        class="ml-auto <sm:(hidden fixed top-60px left-0 right-0 bg-[var(--vp-c-bg)] h-[calc(100vh_-_60px)] py-20px)"
+        :class="{ '!block': visible }"
+      >
         <a
           :href="nav.url"
           v-for="nav in navs"
           :key="nav.text"
-          class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all"
+          class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all <sm:(block w-full text-center leading-40px mb-10px)"
           :class="{ 'font-bold': nav.active }"
+          @click="hideNav"
         >
           {{ nav.text }}
         </a>
@@ -23,7 +28,7 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vitepress'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import SwitchDark from '@/theme/components/SwitchDark.vue'
 
 type Nav = { text: string; url: string; active: boolean }
@@ -43,6 +48,15 @@ const navs = computed<Nav[]>(() => {
   })
   return list
 })
-</script>
 
-<style scoped></style>
+const visible = ref(false)
+
+function hideNav() {
+  setTimeout(() => {
+    visible.value = false
+  }, 100)
+}
+function toggle() {
+  visible.value = !visible.value
+}
+</script>

@@ -1,8 +1,7 @@
 <template>
   <div class="VPDoc">
     <div class="fixed left-10px top-10px">侧边栏</div>
-
-    <main class="vp-doc">
+    <main class="vp-doc <sm:px-15px">
       <div>
         <h1 class="text-center">{{ page.title }}</h1>
         <div class="text-14px my-20px text-center">
@@ -32,9 +31,19 @@
       <Appreciate class="mt-50px" />
       <Comment class="mt-50px" />
     </main>
+    <div
+      class="h-40px w-40px fixed bottom-0 z-10 bg-[var(--vp-c-bg)] items-center justify-center right-10px bottom-10px <sm:flex hidden text-12px opacity-50"
+      @click="toggle"
+    >
+      {{ visible ? '关闭' : '目录' }}
+    </div>
 
-    <aside class="fixed right-10px top-100px">
-      <VPDocAsideOutline />
+    <aside
+      class="fixed right-10px top-100px <sm:(-left-1px -translate-x-100vw bg-[var(--vp-c-bg)] w-100vw h-100vh top-0 z-9 transform transition-all)"
+      :class="{ '!translate-x-0': visible }"
+      @click="hideNav"
+    >
+      <VPDocAsideOutline class="relative z-9" />
     </aside>
   </div>
 </template>
@@ -46,6 +55,16 @@ import Comment from '../components/Comment.vue'
 import Appreciate from '../components/Appreciate.vue'
 import { useData } from 'vitepress'
 import { createArchiveLink, createTagLink, formatArticleDate } from '@/theme/utils'
+import { ref } from 'vue'
 
 const { page, frontmatter } = useData()
+
+const visible = ref(false)
+
+function hideNav() {
+  visible.value = false
+}
+function toggle() {
+  visible.value = !visible.value
+}
 </script>

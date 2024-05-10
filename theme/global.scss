@@ -3,3 +3,11 @@
   width: 1000px;
   margin: 0 auto;
 }
+
+// 处理移动端容器滚动
+.vp-doc div[class*='language-'],
+.vp-block {
+  margin: unset !important;
+  //margin-left: 0 !important;
+  //margin-right: 0 !important;
+}
