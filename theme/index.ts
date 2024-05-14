@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import '@/theme/global.scss'
 
 import Comment from '@/theme/components/Comment.vue'

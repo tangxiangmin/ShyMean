@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mb-70px" v-for="article in paginatedList" :key="article.title">
+    <div v-for="article in paginatedList" :key="article.title" class="mb-70px">
       <h3>
         <a :href="createArticleLink(article.title)">{{ article.title }}</a>
       </h3>
@@ -14,10 +14,10 @@
           <span v-if="index !== article.categories.length - 1" class="mx-5px">/</span>
         </template>
       </p>
-      <div v-html="article.abstract"></div>
+      <div v-html="article.abstract" />
     </div>
     <div class="flex items-center justify-center">
-      <a :href="'/page/' + i" v-for="i in total" class="flex w-30px h-30px item-center justify-center" :key="i">
+      <a v-for="i in total" :key="i" :href="`/page/${i}`" class="flex w-30px h-30px item-center justify-center">
         {{ i }}
       </a>
     </div>
@@ -25,12 +25,12 @@
 </template>
 
 <script lang="ts" setup>
-import articles from '@/data/meta.json'
 import { computed } from 'vue'
-import { IArticle } from '@/typings'
+import articles from '@/data/meta.json'
+import type { IArticle } from '@/typings'
 import { createArchiveLink, createArticleLink, formatArticleDate } from '@/theme/utils'
 
-type Props = {
+interface Props {
   page: number
 }
 const props = withDefaults(defineProps<Props>(), {

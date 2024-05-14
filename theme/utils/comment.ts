@@ -33,7 +33,7 @@ function getReady() {
 }
 
 function start() {
-  // @ts-ignore
+  // @ts-expect-error
   new Valine({
     el: '#vcomments',
     appId: 'J9BV8j1TlKO7MHkO6r1awhCA-gzGzoHsz',
@@ -50,9 +50,9 @@ let timer: any
 
 export function initComment() {
   // 只在浏览器中加载
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined')
     return
-  }
+
   clearTimeout(timer)
   timer = setTimeout(() => {
     if (!isReady) {
@@ -60,7 +60,8 @@ export function initComment() {
         isReady = true
         start()
       })
-    } else {
+    }
+    else {
       start()
     }
   })

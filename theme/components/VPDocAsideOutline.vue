@@ -2,12 +2,11 @@
 import { onContentUpdated } from 'vitepress'
 import { ref, shallowRef } from 'vue'
 import {
+  type MenuItem,
   getHeaders,
   useActiveAnchor,
-  type MenuItem,
 } from '../composables/outline'
 import VPDocOutlineItem from './VPDocOutlineItem.vue'
-
 
 const headers = shallowRef<MenuItem[]>([])
 
@@ -22,14 +21,16 @@ useActiveAnchor(container, marker)
 </script>
 
 <template>
-  <div class="VPDocAsideOutline" :class="{ 'has-outline': headers.length > 0 }" ref="container" role="navigation">
+  <div ref="container" class="VPDocAsideOutline" :class="{ 'has-outline': headers.length > 0 }" role="navigation">
     <div class="content">
-      <div class="outline-marker" ref="marker" />
+      <div ref="marker" class="outline-marker" />
 
-      <div class="outline-title" role="heading" aria-level="2">目录</div>
+      <div class="outline-title" role="heading" aria-level="2">
+        目录
+      </div>
 
       <nav aria-labelledby="doc-outline-aria-label">
-        <span class="visually-hidden" id="doc-outline-aria-label">Table of Contents for current page</span>
+        <span id="doc-outline-aria-label" class="visually-hidden">Table of Contents for current page</span>
         <VPDocOutlineItem :headers="headers" :root="true" />
       </nav>
     </div>

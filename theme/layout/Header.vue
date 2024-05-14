@@ -5,15 +5,17 @@
         <a href="/index" class="text-30px">Shymean</a>
         <a href="/version" class="underline text-12px ml-6px">v0.9.0</a>
       </div>
-      <button class="ml-auto hidden <sm:block" @click="toggle">{{ visible ? '关闭' : '导航' }}</button>
+      <button class="ml-auto hidden <sm:block" @click="toggle">
+        {{ visible ? '关闭' : '导航' }}
+      </button>
       <div
         class="ml-auto <sm:(hidden fixed top-60px left-0 right-0 bg-[var(--vp-c-bg)] h-[calc(100vh_-_60px)] py-20px)"
         :class="{ '!block': visible }"
       >
         <a
-          :href="nav.url"
           v-for="nav in navs"
           :key="nav.text"
+          :href="nav.url"
           class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all <sm:(block w-full text-center leading-40px mb-10px)"
           :class="{ 'font-bold': nav.active }"
           @click="hideNav"
@@ -31,7 +33,7 @@ import { useRoute } from 'vitepress'
 import { computed, ref } from 'vue'
 import SwitchDark from '@/theme/components/SwitchDark.vue'
 
-type Nav = { text: string; url: string; active: boolean }
+interface Nav { text: string, url: string, active: boolean }
 
 const route = useRoute()
 

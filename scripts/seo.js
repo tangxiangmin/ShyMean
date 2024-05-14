@@ -1,12 +1,10 @@
 // https://platform.moonshot.cn/docs/api/chat#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF
-import path from 'path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import fs from 'fs-extra'
 import OpenAI from 'openai'
-import { fileURLToPath } from 'url'
 
-// @ts-ignore
 import matter from 'gray-matter'
-import { IArticle } from '@/typings'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,7 +15,7 @@ const client = new OpenAI({
   apiKey: AuthorizationKey,
 })
 
-export async function updateArticleSEO(filePath: string, seo: { description: string; keywords: string }) {
+export async function updateArticleSEO(filePath, seo) {
   const fileContent = await fs.readFile(filePath, 'utf8')
   const { content, data } = matter(fileContent)
   const file = matter.stringify(content, {
@@ -30,13 +28,13 @@ export async function updateArticleSEO(filePath: string, seo: { description: str
   await fs.writeFile(filePath, file)
 }
 
-enum TaskStatus {
-  exist = 'exist',
-  error = 'error',
-  success = 'success',
+const TaskStatus = {
+  exist: 'exist',
+  error: 'error',
+  success: 'success',
 }
 
-async function generateSEOHead(filePath: string) {
+async function generateSEOHead(filePath) {
   const content = await fs.readFile(filePath, 'utf8')
   const { data } = matter(content)
   if (Array.isArray(data.head)) {
@@ -65,9 +63,9 @@ async function generateSEOHead(filePath: string) {
     temperature: 0.3,
   })
   const res = completion.choices[0].message.content
-  if (!res) {
+  if (!res)
     return TaskStatus.error
-  }
+
   console.log('res:', res)
   const seo = parseResponse(res)
   console.log('seo data:', seo)
@@ -75,19 +73,21 @@ async function generateSEOHead(filePath: string) {
   return TaskStatus.success
 }
 
-function parseResponse(content: string) {
+function parseResponse(content) {
   const rows = content.split('\n')
   const str = rows.slice(1, rows.length - 1).join('\n')
-  return JSON.parse(str) as { description: string; keywords: string }
+  return JSON.parse(str)
 }
 
-function sleep(ms: number) {
+function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)
   })
 }
+
+// eslint-disable-next-line unused-imports/no-unused-vars
 async function main() {
-  const articles = (await fs.readJSON('../data/meta.json')) as IArticle[]
+  const articles = (await fs.readJSON('../data/meta.json'))
 
   let cnt = 0 // 统计已完成的文章数量
   const RPM = 3 // 当前账号一分钟内可以发送的请求数量
@@ -101,17 +101,20 @@ async function main() {
         const ans = await generateSEOHead(filePath)
         if (ans === TaskStatus.exist) {
           cnt++
-        } else if (ans === TaskStatus.success) {
+        }
+        else if (ans === TaskStatus.success) {
           cnt++
           if (queue.length < RPM) {
             queue.push(startDate)
-          } else {
+          }
+          else {
             await sleep(queue[0] + 60 * 1000 - +new Date())
             queue.shift()
             queue.push(startDate)
           }
         }
-      } catch (e) {
+      }
+      catch (e) {
         console.error(`${article.title} 文章seo生成失败`)
       }
     }

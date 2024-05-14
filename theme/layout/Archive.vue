@@ -2,22 +2,33 @@
   <div>
     <div class="archives">
       <div class="archives_count text-lg">
-        <template v-if="tag">{{ tag }}</template>
+        <template v-if="tag">
+          {{ tag }}
+        </template>
         <template v-else-if="type">
           <template v-for="(cate, index) in categories" :key="cate">
-            <template v-if="index === categories.length - 1">{{ cate }}</template>
+            <template v-if="index === categories.length - 1">
+              {{ cate }}
+            </template>
             <a v-else :href="createArchiveLink(categories.slice(0, index + 1))">{{ cate }}</a>
             <span v-if="index !== categories.length - 1" class="mx-5px">/</span>
           </template>
         </template>
-        <template v-else>OK!目前共计 {{ list.length }} 篇日志，继续努力。</template>
+        <template v-else>
+          OK!目前共计 {{ list.length }} 篇日志，继续努力。
+        </template>
+      </div>
+      <div v-if="subCategories.length" class="archives_item">
+        <a v-for="child in subCategories" :key="child" :href="createArchiveLink([...categories, child.name])" class="mr-10px">
+          {{ child.name }} ({{ child.count }})
+        </a>
       </div>
 
       <section v-for="group in articleGroup" :key="group.year">
         <div class="archives_title">
           <strong>{{ group.year }}</strong>
         </div>
-        <div class="archives_item flex" v-for="row in group.articles" :key="row.createdAt">
+        <div v-for="row in group.articles" :key="row.createdAt" class="archives_item flex">
           <span class="archives_date line-clamp-1 flex-shrink-0">{{ formatArticleDate(row.createdAt) }}</span>
           <a :href="createArticleLink(row.title)" class="line-clamp-1">{{ row.title }}</a>
         </div>
@@ -28,11 +39,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { IArticle } from '@/typings'
+import type { IArticle } from '@/typings'
 import articles from '@/data/meta.json'
+import { categories as categoriesList } from '@/data/archive.json'
 import { createArchiveLink, createArticleLink, formatArticleDate, parseCategoryFomLink } from '@/theme/utils'
 
-type Props = {
+interface Props {
   type?: string
   tag?: string
 }
@@ -42,9 +54,23 @@ const props = defineProps<Props>()
 const categories = computed(() => {
   return parseCategoryFomLink(props.type ?? '')
 })
+// 当前分类的子分类
+const subCategories = computed(() => {
+  if (!props.type)
+    return []
+  let parent = categoriesList
+  for (const cate of categories.value) {
+    const record = parent.find(row => row.name === cate)
+    if (!record)
+      return []
+    parent = record.children
+  }
+  return parent
+})
 
 const list = computed<IArticle[]>(() => {
-  if (!props.type && !props.tag) return articles
+  if (!props.type && !props.tag)
+    return articles
   if (props.tag) {
     return articles.filter((article) => {
       return article.tags.includes(props.tag as string)
@@ -54,8 +80,10 @@ const list = computed<IArticle[]>(() => {
   return articles.filter((article) => {
     const len = Math.min(list.length, article.categories.length)
     for (let i = 0; i < len; ++i) {
-      if (list[i] !== article.categories[i]) return false
+      if (list[i] !== article.categories[i])
+        return false
     }
+
     return true
   })
 })
@@ -64,9 +92,9 @@ const articleGroup = computed(() => {
   const map: Record<string, IArticle[]> = {}
   for (const article of list.value) {
     const year = new Date(formatArticleDate(article.createdAt)).getFullYear()
-    if (!Array.isArray(map[year])) {
+    if (!Array.isArray(map[year]))
       map[year] = []
-    }
+
     map[year].push(article)
   }
   return Object.keys(map)

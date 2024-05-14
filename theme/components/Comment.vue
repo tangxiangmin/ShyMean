@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { initComment } from '../utils/comment'
 import { onMounted } from 'vue'
+import { initComment } from '../utils/comment'
 
 onMounted(() => {
   initComment()

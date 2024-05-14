@@ -8,14 +8,16 @@ import path from 'path'
 import pathRewrites from '../data/pathRewrites.json'
 
 
+
+const isProd=  process.env.NODE_ENV==='production'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ShyMean",
   description: "ShyMean's blog",
-  head:[
+  head: [
     //Cloudflare Web Analytics
-    ['script',{src:"https://static.cloudflareinsights.com/beacon.min.js",'data-cf-beacon':'{"token": "28e619c6022b4e0d8e2f531dd215486a"}'}]
-  ],
+    isProd ? ['script',{src:"https://static.cloudflareinsights.com/beacon.min.js",'data-cf-beacon':'{"token": "28e619c6022b4e0d8e2f531dd215486a"}'}]:null
+  ].filter(Boolean),
   cleanUrls: true,
   ignoreDeadLinks: true, // 忽略
   rewrites: {
