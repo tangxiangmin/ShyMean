@@ -1,10 +1,10 @@
 // https://vitepress.dev/guide/custom-theme
-// import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import 'uno.css'
 
-import { registerGlobalComponent, Layout } from '@/theme'
+// @ts-expect-error
+import { Layout, registerGlobalComponent } from '@/theme'
 
 export default {
   extends: DefaultTheme,
@@ -14,7 +14,7 @@ export default {
   //     // https://vitepress.dev/guide/extending-default-theme#layout-slots
   //   })
   // },
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app }) {
     registerGlobalComponent(app)
-  }
+  },
 } as Theme

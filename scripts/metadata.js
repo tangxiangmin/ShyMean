@@ -99,8 +99,11 @@ function generateArchiveData(articles) {
 
   for (const article of articles) {
     recordCategories(article)
-    for (const tag of article.tags)
-      record(tags, tag)
+    if (Array.isArray(article.tags)) {
+      for (const tag of article.tags) {
+        record(tags, tag)
+      }
+    }
   }
   return {
     categories,

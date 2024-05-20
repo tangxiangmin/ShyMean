@@ -7,7 +7,7 @@ import path from 'path'
 // 提前通过脚本生成
 import pathRewrites from '../data/pathRewrites.json'
 
-
+import mdSFC from './plugins/md-sfc'
 
 const isProd=  process.env.NODE_ENV==='production'
 // https://vitepress.dev/reference/site-config
@@ -25,6 +25,9 @@ export default defineConfig({
   },
   srcDir: './views',
   vite: {
+    server: {
+      host: '0.0.0.0',
+    },
     resolve: {
       preserveSymlinks: true,
       alias: {
@@ -33,6 +36,7 @@ export default defineConfig({
     },
     plugins: [
       vueJsx(),
+      mdSFC(),
       Unocss()
     ],
   },
