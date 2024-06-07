@@ -14,8 +14,7 @@ const ROOT = path.resolve(__dirname, '../views/article')
 function linkHexoPosts() {
   try {
     fs.unlinkSync(ROOT)
-  }
-  catch (e) {
+  } catch (e) {
     //
   }
   fs.symlinkSync(HEXO_POSTS_PATH, ROOT)
@@ -38,8 +37,9 @@ async function getArticles(directory) {
     let articles = []
     const files = await fs.readdir(directory)
     for (const file of files) {
-      if (file.startsWith('.'))
+      if (file.startsWith('.')) {
         continue
+      }
 
       const filePath = path.join(directory, file)
       const stat = await fs.stat(filePath)
@@ -47,22 +47,20 @@ async function getArticles(directory) {
         try {
           const article = await parseFile(filePath)
           // 忽略标记为draft的文章
-          if (!article.draft)
+          if (!article.draft) {
             articles.push(article)
+          }
 
           // console.log(`${article.title} 解析完成`)
-        }
-        catch (e) {
+        } catch (e) {
           console.error(`${filePath} 解析失败`)
         }
-      }
-      else if (stat.isDirectory()) {
+      } else if (stat.isDirectory()) {
         articles = articles.concat(await getArticles(filePath))
       }
     }
     return articles
-  }
-  catch (err) {
+  } catch (err) {
     console.error('读取文件时发生错误:', err)
     return []
   }
@@ -72,8 +70,7 @@ function generateArchiveData(articles) {
   const categories = []
   const tags = {}
   function record(map, key) {
-    if (!map[key])
-      map[key] = 0
+    if (!map[key]) { map[key] = 0 }
     map[key]++
   }
   function recordCategories(article) {

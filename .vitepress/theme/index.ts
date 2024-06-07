@@ -14,7 +14,7 @@ export default {
   //     // https://vitepress.dev/guide/extending-default-theme#layout-slots
   //   })
   // },
-  enhanceApp({ app }) {
-    registerGlobalComponent(app)
+  enhanceApp({ app, router }) {
+    registerGlobalComponent(app, router)
   },
 } as Theme

@@ -60,6 +60,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.6.0
         version: 5.62.0(eslint@9.2.0)(typescript@5.4.5)
+      '@unocss/preset-wind':
+        specifier: ^0.60.3
+        version: 0.60.3
       '@unocss/transformer-variant-group':
         specifier: ^0.60.0
         version: 0.60.2
@@ -70,8 +73,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       eslint-config-shymean:
-        specifier: ^2.0.5
-        version: 2.0.5(@antfu/eslint-config@2.18.0(@vue/compiler-sfc@3.4.27)(eslint@9.2.0)(typescript@5.4.5))
+        specifier: ^2.0.6
+        version: 2.0.6(@antfu/eslint-config@2.18.0(@vue/compiler-sfc@3.4.27)(eslint@9.2.0)(typescript@5.4.5))
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -84,6 +87,9 @@ importers:
       unocss:
         specifier: ^0.59.4
         version: 0.59.4(postcss@8.4.38)(rollup@4.17.2)(vite@5.2.11(@types/node@20.12.11)(sass@1.77.1))
+      vite-plugin-vitepres-inline-sfc:
+        specifier: ^1.0.2
+        version: 1.0.2
       vitepress:
         specifier: ^1.1.3
         version: 1.1.4(@algolia/client-search@4.23.3)(@types/node@20.12.11)(axios@1.6.8)(postcss@8.4.38)(sass@1.77.1)(search-insights@2.13.0)(typescript@5.4.5)
@@ -937,8 +943,14 @@ packages:
   '@unocss/core@0.60.2':
     resolution: {integrity: sha512-9i+eAJAqvy9bv0vrQxUU7VtR+wO6Vfk6dqrPHKRV/vlbwRT18v/C++dQ2L6PLM1CKxgNTeld0iTlpo8J3xZlxQ==}
 
+  '@unocss/core@0.60.3':
+    resolution: {integrity: sha512-4bBX1pavDl2DSCozEII7bxYGT0IkyO7kKlUuCtooTePWyLjf2F7essdzHkJ00EpNR64kkebR9V0lqBMBo07VPw==}
+
   '@unocss/extractor-arbitrary-variants@0.59.4':
     resolution: {integrity: sha512-RDe4FgMGJQ+tp9GLvhPHni7Cc2O0lHBRMElVlN8LoXJAdODMICdbrEPGJlEfrc+7x/QgVFoR895KpYJh3hIgGA==}
+
+  '@unocss/extractor-arbitrary-variants@0.60.3':
+    resolution: {integrity: sha512-PnwNwkeAHmbJbrf5XN0xQG1KT1VQEye8neYn5yz1MHnT8Cj2nqjrqoCRGLCLhpOUg3/MNj+bpiA7hGnFbXWaCQ==}
 
   '@unocss/inspector@0.59.4':
     resolution: {integrity: sha512-QczJFNDiggmekkJyNcbcZIUVwlhvxz7ZwjnSf0w7K4znxfjKkZ1hNUbqLviM1HumkTKOdT27VISW7saN/ysO4w==}
@@ -958,6 +970,9 @@ packages:
   '@unocss/preset-mini@0.59.4':
     resolution: {integrity: sha512-ZLywGrXi1OCr4My5vX2rLUb5Xgx6ufR9WTQOvpQJGBdIV/jnZn/pyE5avCs476SnOq2K172lnd8mFmTK7/zArA==}
 
+  '@unocss/preset-mini@0.60.3':
+    resolution: {integrity: sha512-7en8KBX3lN1Y6eCprbzA1QVfyXZD03B+oAxFXH8QPv5jRIL8Lm8sbXqE+VTsSME/OVp4DnS6LdGtDAm9mvIOSw==}
+
   '@unocss/preset-tagify@0.59.4':
     resolution: {integrity: sha512-vWMdTUoghOSmTbdmZtERssffmdUdOuhh4vUdl0R8Kv6KxB0PkvEFCu2FItn97nRJdSPlZSFxxDkaOIg9w+STNQ==}
 
@@ -973,11 +988,18 @@ packages:
   '@unocss/preset-wind@0.59.4':
     resolution: {integrity: sha512-CNX6w0ZpSQg/i1oF0/WKWzto8PtLqoknC5h8JmmcGb7VsyBQeV0oNnhbURxpbuMEhbv1MWVIGvk8a+P6y0rFkQ==}
 
+  '@unocss/preset-wind@0.60.3':
+    resolution: {integrity: sha512-q7yDJ/SyEkPmPBJvIeHd9Bt50LAu65q7WwKxJYfJkjfJvJUMj6DO8FgPnpeiwBeJh9897m2Ap6zoQ3JqBjPLHQ==}
+
   '@unocss/reset@0.59.4':
     resolution: {integrity: sha512-Upy4xzdWl4RChbLAXBq1BoR4WqxXMoIfjvtcwSZcZK2sylXCFAseSWnyzJFdSiXPqNfmMuNgPXgiSxiQB+cmNA==}
 
   '@unocss/rule-utils@0.59.4':
     resolution: {integrity: sha512-1qoLJlBWAkS4D4sg73990S1MT7E8E5md/YhopKjTQuEC9SyeVmEg+5pR/Xd8xhPKMqbcuBPl/DS8b6l/GQO56A==}
+    engines: {node: '>=14'}
+
+  '@unocss/rule-utils@0.60.3':
+    resolution: {integrity: sha512-I47/DcKQ2z12W80+Ffth0K6LzNvqcQPYRWk7KwVemVoEiGYamMV8/s+SbB26Fk9KUFjh+Ns/pGAo4iJZo0ueUQ==}
     engines: {node: '>=14'}
 
   '@unocss/scope@0.59.4':
@@ -1409,8 +1431,8 @@ packages:
   eslint-config-flat-gitignore@0.1.5:
     resolution: {integrity: sha512-hEZLwuZjDBGDERA49c2q7vxc8sCGv8EdBp6PQYzGOMcHIgrfG9YOM6s/4jx24zhD+wnK9AI8mgN5RxSss5nClQ==}
 
-  eslint-config-shymean@2.0.5:
-    resolution: {integrity: sha512-cPv2SgSlzgijgeeFAIXkXB9INGzh3czMu7GRJ97WOhaEizoUq4IDNDGBFIChGismBXyfJtU38BjM0rQbCT/TtQ==}
+  eslint-config-shymean@2.0.6:
+    resolution: {integrity: sha512-RWf5QuIQ9QBgcSCHbUB/Ekvn8PiuNIaP43toVxs+C0dJcv14jPN0SuxLns8x1WqcYPbR9t+mQIwtLOuY36xzJw==}
     peerDependencies:
       '@antfu/eslint-config': ^2.17.0
 
@@ -2536,6 +2558,9 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
+  vite-plugin-vitepres-inline-sfc@1.0.2:
+    resolution: {integrity: sha512-6IN304wGOfLkvOiZ1ue56d1faYSvqUh85iRs9WuFHbRDW/dEZn+naCvv9exYOtu/N0P48aeTcEPRIYkgFfiOdQ==}
+
   vite@5.2.11:
     resolution: {integrity: sha512-HndV31LWW05i1BLPMUCE1B9E9GFbOu1MbenhS58FuK6owSO5qHm7GiCotrNY1YE5rMeQSFBGmT5ZaLEjFizgiQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -3620,9 +3645,15 @@ snapshots:
 
   '@unocss/core@0.60.2': {}
 
+  '@unocss/core@0.60.3': {}
+
   '@unocss/extractor-arbitrary-variants@0.59.4':
     dependencies:
       '@unocss/core': 0.59.4
+
+  '@unocss/extractor-arbitrary-variants@0.60.3':
+    dependencies:
+      '@unocss/core': 0.60.3
 
   '@unocss/inspector@0.59.4':
     dependencies:
@@ -3659,6 +3690,12 @@ snapshots:
       '@unocss/extractor-arbitrary-variants': 0.59.4
       '@unocss/rule-utils': 0.59.4
 
+  '@unocss/preset-mini@0.60.3':
+    dependencies:
+      '@unocss/core': 0.60.3
+      '@unocss/extractor-arbitrary-variants': 0.60.3
+      '@unocss/rule-utils': 0.60.3
+
   '@unocss/preset-tagify@0.59.4':
     dependencies:
       '@unocss/core': 0.59.4
@@ -3686,11 +3723,22 @@ snapshots:
       '@unocss/preset-mini': 0.59.4
       '@unocss/rule-utils': 0.59.4
 
+  '@unocss/preset-wind@0.60.3':
+    dependencies:
+      '@unocss/core': 0.60.3
+      '@unocss/preset-mini': 0.60.3
+      '@unocss/rule-utils': 0.60.3
+
   '@unocss/reset@0.59.4': {}
 
   '@unocss/rule-utils@0.59.4':
     dependencies:
       '@unocss/core': 0.59.4
+      magic-string: 0.30.10
+
+  '@unocss/rule-utils@0.60.3':
+    dependencies:
+      '@unocss/core': 0.60.3
       magic-string: 0.30.10
 
   '@unocss/scope@0.59.4': {}
@@ -4174,7 +4222,7 @@ snapshots:
       find-up: 7.0.0
       parse-gitignore: 2.0.0
 
-  eslint-config-shymean@2.0.5(@antfu/eslint-config@2.18.0(@vue/compiler-sfc@3.4.27)(eslint@9.2.0)(typescript@5.4.5)):
+  eslint-config-shymean@2.0.6(@antfu/eslint-config@2.18.0(@vue/compiler-sfc@3.4.27)(eslint@9.2.0)(typescript@5.4.5)):
     dependencies:
       '@antfu/eslint-config': 2.18.0(@vue/compiler-sfc@3.4.27)(eslint@9.2.0)(typescript@5.4.5)
 
@@ -5326,6 +5374,11 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  vite-plugin-vitepres-inline-sfc@1.0.2:
+    dependencies:
+      '@mdit-vue/plugin-sfc': 2.1.3
+      markdown-it: 14.1.0
 
   vite@5.2.11(@types/node@20.12.11)(sass@1.77.1):
     dependencies:

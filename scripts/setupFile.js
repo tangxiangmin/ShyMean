@@ -12,8 +12,7 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 function formatBeijingDate(utcTime) {
-  if (!utcTime)
-    return undefined
+  if (!utcTime) return undefined
 
   const dayjsObj = dayjs.utc(utcTime) // 将输入转为utc时间
   const beijingTime = dayjsObj.tz('Asia/Shanghai') // 将utc时间转为北京时区时间
@@ -23,7 +22,8 @@ function formatBeijingDate(utcTime) {
 
 async function updateFileMeta(filePath, parent) {
   const fileContent = await fs.readFile(filePath, 'utf8')
-  const { content, data } = matter(fileContent)
+  const { content, data, draft } = matter(fileContent)
+  if (draft) return
   const file = matter.stringify(content, {
     ...data,
     date: formatBeijingDate(data.date),
@@ -39,8 +39,7 @@ async function getArticles(directory, parent = []) {
     let articles = []
     const files = await fs.readdir(directory)
     for (const file of files) {
-      if (file.startsWith('.'))
-        continue
+      if (file.startsWith('.')) continue
 
       const filePath = path.join(directory, file)
       const stat = await fs.stat(filePath)
@@ -48,18 +47,15 @@ async function getArticles(directory, parent = []) {
         try {
           await updateFileMeta(filePath, parent)
           // console.log(`${article.title} 解析完成`)
-        }
-        catch (e) {
+        } catch (e) {
           console.error(`${filePath} 解析失败`, e)
         }
-      }
-      else if (stat.isDirectory()) {
+      } else if (stat.isDirectory()) {
         articles = articles.concat(await getArticles(filePath, [...parent, file]))
       }
     }
     return articles
-  }
-  catch (err) {
+  } catch (err) {
     console.error('读取文件时发生错误:', err)
     return []
   }

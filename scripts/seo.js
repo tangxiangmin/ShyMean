@@ -63,8 +63,9 @@ async function generateSEOHead(filePath) {
     temperature: 0.3,
   })
   const res = completion.choices[0].message.content
-  if (!res)
+  if (!res) {
     return TaskStatus.error
+  }
 
   console.log('res:', res)
   const seo = parseResponse(res)
@@ -85,7 +86,7 @@ function sleep(ms) {
   })
 }
 
-// eslint-disable-next-line unused-imports/no-unused-vars
+
 async function main() {
   const articles = (await fs.readJSON('../data/meta.json'))
 
@@ -101,20 +102,17 @@ async function main() {
         const ans = await generateSEOHead(filePath)
         if (ans === TaskStatus.exist) {
           cnt++
-        }
-        else if (ans === TaskStatus.success) {
+        } else if (ans === TaskStatus.success) {
           cnt++
           if (queue.length < RPM) {
             queue.push(startDate)
-          }
-          else {
+          } else {
             await sleep(queue[0] + 60 * 1000 - +new Date())
             queue.shift()
             queue.push(startDate)
           }
         }
-      }
-      catch (e) {
+      } catch (e) {
         console.error(`${article.title} 文章seo生成失败`)
       }
     }

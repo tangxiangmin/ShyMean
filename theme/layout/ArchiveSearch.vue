@@ -1,24 +1,30 @@
 <template>
   <div>
-    <Archive :type="type" :tag="tag" />
+    <Archive :type="params.type" :tag="params.tag" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { reactive, watch } from 'vue'
+import { useRoute } from 'vitepress'
 import Archive from './Archive.vue'
+import { useCurrentUrl } from '@/theme/utils/router'
 
-const isBrowser = typeof window !== undefined
-const tag = computed(() => {
-  if (!isBrowser)
-    return ''
-  const us = new URLSearchParams(window?.location.search ?? '')
-  return us.get('tag')
+const { currentUrl } = useCurrentUrl()
+const route = useRoute()
+
+const params = reactive({
+  tag: '',
+  type: '',
 })
-const type = computed(() => {
-  if (!isBrowser)
-    return ''
-  const us = new URLSearchParams(window?.location.search ?? '')
-  return us.get('type')
-})
+
+// fix: 处理vitepress同path query改变组件不更新的问题
+watch(() => currentUrl.value, () => {
+  // 当前在
+  if (route.path === '/archive/search') {
+    const us = new URLSearchParams(location.search)
+    params.tag = us.get('tag') as string
+    params.type = us.get('type') as string
+  }
+}, { immediate: true })
 </script>

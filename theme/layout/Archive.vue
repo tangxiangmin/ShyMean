@@ -19,7 +19,7 @@
         </template>
       </div>
       <div v-if="subCategories.length" class="archives_item">
-        <a v-for="child in subCategories" :key="child" :href="createArchiveLink([...categories, child.name])" class="mr-10px">
+        <a v-for="child in subCategories" :key="child.name" :href="createArchiveLink([...categories, child.name])" class="mr-10px inline-block">
           {{ child.name }} ({{ child.count }})
         </a>
       </div>
@@ -56,21 +56,18 @@ const categories = computed(() => {
 })
 // 当前分类的子分类
 const subCategories = computed(() => {
-  if (!props.type)
-    return []
+  if (!props.type) return []
   let parent = categoriesList
   for (const cate of categories.value) {
     const record = parent.find(row => row.name === cate)
-    if (!record)
-      return []
+    if (!record) return []
     parent = record.children
   }
   return parent
 })
 
 const list = computed<IArticle[]>(() => {
-  if (!props.type && !props.tag)
-    return articles
+  if (!props.type && !props.tag) return articles
   if (props.tag) {
     return articles.filter((article) => {
       return article.tags.includes(props.tag as string)
@@ -80,8 +77,7 @@ const list = computed<IArticle[]>(() => {
   return articles.filter((article) => {
     const len = Math.min(list.length, article.categories.length)
     for (let i = 0; i < len; ++i) {
-      if (list[i] !== article.categories[i])
-        return false
+      if (list[i] !== article.categories[i]) return false
     }
 
     return true
@@ -92,8 +88,9 @@ const articleGroup = computed(() => {
   const map: Record<string, IArticle[]> = {}
   for (const article of list.value) {
     const year = new Date(formatArticleDate(article.createdAt)).getFullYear()
-    if (!Array.isArray(map[year]))
+    if (!Array.isArray(map[year])) {
       map[year] = []
+    }
 
     map[year].push(article)
   }
