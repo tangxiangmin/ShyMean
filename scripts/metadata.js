@@ -70,7 +70,9 @@ function generateArchiveData(articles) {
   const categories = []
   const tags = {}
   function record(map, key) {
-    if (!map[key]) { map[key] = 0 }
+    if (!map[key]) {
+      map[key] = 0
+    }
     map[key]++
   }
   function recordCategories(article) {

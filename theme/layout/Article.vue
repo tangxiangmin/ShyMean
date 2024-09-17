@@ -17,6 +17,10 @@
             <a :href="createArchiveLink(frontmatter.categories.slice(0, index + 1))">{{ cate }}</a>
             <span v-if="index !== frontmatter.categories.length - 1" class="mx-5px">/</span>
           </template>
+          <template v-if="frontmatter.ai">
+            <span class="mx-10px">|</span>
+            <span>本文包含AIGC内容</span>
+          </template>
         </div>
 
         <Content />

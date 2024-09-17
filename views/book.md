@@ -14,6 +14,18 @@ layout: page
         </tr>
     </thead>
     <tbody>
+         <tr>
+            <td>毫无意义的工作</td>
+            <td>2024-08-07</td>
+            <td>在<a href="https://www.bilibili.com/video/BV1b1421k7CJ/">B站</a>看到一位挂壁老哥的日常，评论区有人推荐了这本书</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3000万词汇：父母语言的力量</td>
+            <td>2024-05-20</td>
+            <td>Tune in、Talk more、Take turns</td>
+            <td></td>
+        </tr>
         <tr>
             <td>程序员的数学</td>
             <td>2024-03-17</td>
