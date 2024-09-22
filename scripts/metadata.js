@@ -120,7 +120,8 @@ function generateRewriteData(articles) {
   return map
 }
 
-export async function generateMetaData() {
+async function generateMetaData() {
+  console.log('start parse articles and generate metadata')
   await linkHexoPosts()
   const data = await getArticles(ROOT)
   data.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))
@@ -131,6 +132,7 @@ export async function generateMetaData() {
 
   const pathRewrites = generateRewriteData(data)
   fs.writeFileSync(path.resolve(__dirname, '../data/pathRewrites.json'), JSON.stringify(pathRewrites, null, 4))
+  console.log('generate metadata success')
 }
 
 generateMetaData()

@@ -27,6 +27,7 @@ layout: page
 ### 项目
 
 * `NeZha`，一个`mini React`框架 [github](https://github.com/tangxiangmin/NeZha)
+* `vue-page-builder`，一个使用Vue3、Eggjs开发的、支持远程模块的低代码项目，包含前后端工程 [github](https://github.com/tangxiangmin/vue-page-builder)
 
 ### 游戏
 * 合成大西瓜，2021年初比较火热的**合成大西瓜**`cocos`复刻版 [github](https://github.com/tangxiangmin/cocos-big-watermelon)

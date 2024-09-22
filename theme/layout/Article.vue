@@ -19,7 +19,7 @@
           </template>
           <template v-if="frontmatter.ai">
             <span class="mx-10px">|</span>
-            <span>本文包含AIGC内容</span>
+            <span class="text-[#e6a23c]">本文包含AIGC内容</span>
           </template>
         </div>
 

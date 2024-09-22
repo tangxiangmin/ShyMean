@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "init": "ts-node scripts/index.ts",
-    "dev": "vitepress dev",
+    "dev": "node scripts/metadata.js && vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
