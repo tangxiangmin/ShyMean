@@ -18,7 +18,7 @@
           :href="nav.url"
           class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all <sm:(block w-full text-center leading-40px mb-10px)"
           :class="{ 'font-bold': nav.active }"
-          @click="hideNav"
+          @click="hideNav(nav)"
         >
           {{ nav.text }}
         </a>
@@ -44,6 +44,7 @@ const navs = computed<Nav[]>(() => {
     { text: '项目', url: '/demo', active: false },
     { text: '书架', url: '/book', active: false },
     { text: '关于', url: '/about', active: false },
+    { text: 'RSS', url: 'https://www.shymean.com/feed.rss', active: false },
   ]
   list.forEach((row) => {
     row.active = route.path === row.url
@@ -53,7 +54,11 @@ const navs = computed<Nav[]>(() => {
 
 const visible = ref(false)
 
-function hideNav() {
+function hideNav(nav: Nav): void {
+  if (nav.url.startsWith('http')) {
+    window.open(nav.url, '_blank')
+    return
+  }
   setTimeout(() => {
     visible.value = false
   }, 100)

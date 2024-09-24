@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import Unocss from 'unocss/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
 import path from 'path'
 
@@ -10,6 +11,14 @@ import pathRewrites from '../data/pathRewrites.json'
 import inlineSFC from 'vite-plugin-vitepres-inline-sfc'
 
 const isProd=  process.env.NODE_ENV==='production'
+
+// rss
+const baseUrl = 'https://www.shymean.com'
+const RSS: RSSOptions = {
+  title: 'ShyMean',
+  baseUrl,
+  copyright: 'Copyright (c) 2016-present, ShyMean',
+}
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ShyMean",
@@ -22,6 +31,9 @@ export default defineConfig({
   ignoreDeadLinks: true, // 忽略
   rewrites: {
     ...pathRewrites,
+  },
+  themeConfig: {
+    socialLinks: []
   },
   srcDir: './views',
   vite: {
@@ -37,7 +49,8 @@ export default defineConfig({
     plugins: [
       vueJsx(),
       inlineSFC(),
-      Unocss()
+      Unocss(),
+      RssPlugin(RSS)
     ],
   },
 })
