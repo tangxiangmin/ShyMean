@@ -18,7 +18,7 @@
           :href="nav.url"
           class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all <sm:(block w-full text-center leading-40px mb-10px)"
           :class="{ 'font-bold': nav.active }"
-          @click="hideNav(nav)"
+          @click="hideNav(nav, $event)"
         >
           {{ nav.text }}
         </a>
@@ -54,9 +54,11 @@ const navs = computed<Nav[]>(() => {
 
 const visible = ref(false)
 
-function hideNav(nav: Nav): void {
+function hideNav(nav: Nav, e: Event): void {
   if (nav.url.startsWith('http')) {
     window.open(nav.url, '_blank')
+    e.preventDefault()
+    e.stopPropagation()
     return
   }
   setTimeout(() => {
