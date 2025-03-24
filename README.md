@@ -28,4 +28,17 @@ npm run build
 
 ### 部署
 
-TODO 暂时手动部署到cloudflare上面
+初期 暂时手动部署到cloudflare上面
+
+后续由于构建文件数量超过1000个，需要使用wrangler 命令行上传
+
+安装wrangler并登录
+```
+npm i wrangler -g
+wrangler login
+```
+后续部署时使用
+```
+npm run deploy
+```
+

@@ -6,8 +6,9 @@
   "scripts": {
     "init": "ts-node scripts/index.ts",
     "dev": "node scripts/metadata.js && vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "build": "node scripts/metadata.js && vitepress build",
+    "preview": "vitepress preview",
+    "deploy": "wrangler pages deploy ./.vitepress/dist --project-name=shymean-blog --branch=main"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.18.0",
