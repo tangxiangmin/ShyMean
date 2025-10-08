@@ -5,7 +5,10 @@
         共{{ categorySize }}个分类
       </div>
       <div class="mt-20px">
-        <a v-for="(cate, index) in categories" :key="index" :href="createArchiveLink([cate.name])" class="inline-block m-5px">
+        <a
+          v-for="(cate, index) in categories" :key="index" :href="createArchiveLink([cate.name])"
+          class="inline-block m-5px"
+        >
           {{ cate.name }} ({{ cate.count }})
         </a>
       </div>
@@ -16,7 +19,10 @@
         共{{ tagSize }}个标签
       </div>
       <div class="mt-20px">
-        <a v-for="(val, tag) in tags" :key="tag" :href="createTagLink(tag)" class="inline-block m-5px" :class="tagCls(val)">
+        <a
+          v-for="(val, tag) in tags" :key="tag" :href="createTagLink(tag)" class="inline-block m-5px"
+          :style="tagStyle(val)"
+        >
           {{ tag }}
         </a>
       </div>
@@ -40,18 +46,10 @@ const tagSize = computed(() => {
   return Object.keys(tags).length
 })
 
-function tagCls(num: number) {
-  let fontSize = ''
-
-  if (num <= 2)
-    fontSize = 'text-xs'
-  else if (num > 2 && num <= 5)
-    fontSize = 'text-sm'
-  else if (num > 5 && num <= 8)
-    fontSize = 'text-md'
-  else
-    fontSize = 'text-lg'
-
-  return fontSize
+function tagStyle(num: number) {
+  const fontSize = `${Math.floor(num / 2) + 12}px`
+  return {
+    fontSize,
+  }
 }
 </script>
