@@ -1,8 +1,5 @@
 <template>
   <div class="VPDoc">
-    <div class="fixed left-10px top-10px">
-      侧边栏
-    </div>
     <main class="vp-doc <sm:px-15px">
       <div>
         <h1 class="text-center">
@@ -47,7 +44,7 @@
     </div>
 
     <aside
-      class="fixed right-10px top-100px <sm:(-left-1px -translate-x-100vw bg-[var(--vp-c-bg)] w-100vw h-100vh top-0 z-9 transform transition-all)"
+      class="fixed right-10px top-80px max-h-[calc(100vh_-_80px_-_96px)] overflow-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden <sm:(-left-1px -translate-x-100vw bg-[var(--vp-c-bg)] w-100vw h-100vh top-0 z-9 transform transition-all)"
       :class="{ '!translate-x-0': visible }"
       @click="hideNav"
     >
