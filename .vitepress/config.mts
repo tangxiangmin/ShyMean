@@ -41,9 +41,10 @@ export default defineConfig({
       host: '0.0.0.0',
     },
     resolve: {
-      preserveSymlinks: true,
       alias: {
         '@': path.resolve(__dirname, '../'),
+        'vue/server-renderer': path.resolve(__dirname, '../node_modules/vue/server-renderer/index.mjs'),
+        'vue': path.resolve(__dirname, '../node_modules/vue/dist/vue.runtime.esm-bundler.js'),
       },
     },
     plugins: [
