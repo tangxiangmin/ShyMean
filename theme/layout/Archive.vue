@@ -75,12 +75,7 @@ const list = computed<IArticle[]>(() => {
   }
   const list = categories.value
   return articles.filter((article) => {
-    const len = Math.min(list.length, article.categories.length)
-    for (let i = 0; i < len; ++i) {
-      if (list[i] !== article.categories[i]) return false
-    }
-
-    return true
+    return list.every((category, index) => category === article.categories[index])
   })
 })
 

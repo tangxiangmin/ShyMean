@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { WalineInstance } from '@waline/client'
-import { init } from '@waline/client'
+import type { WalineInstance } from '@waline/client/full'
+import { init } from '@waline/client/full'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import '@waline/client/waline.css'

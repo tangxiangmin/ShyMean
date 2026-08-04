@@ -2,7 +2,7 @@
   <header>
     <nav class="flex justify-between h-60px flex items-center <sm:w-full md:w-700px lg:w-900px mx-auto <sm:(px-10px)">
       <div>
-        <a href="/index" class="text-30px">Shymean</a>
+        <a href="/" class="text-30px">Shymean</a>
         <a href="/version" class="underline text-12px ml-6px">v0.9.0</a>
       </div>
       <button class="ml-auto hidden <sm:block" @click="toggle">

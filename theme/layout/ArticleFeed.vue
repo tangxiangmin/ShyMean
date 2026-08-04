@@ -17,7 +17,7 @@
       <div v-html="article.abstract" />
     </div>
     <div class="flex items-center justify-center">
-      <a v-for="i in total" :key="i" :href="`/page/${i}`" class="flex w-30px h-30px item-center justify-center">
+      <a v-for="i in total" :key="i" :href="i === 1 ? '/' : `/page/${i}`" class="flex w-30px h-30px item-center justify-center">
         {{ i }}
       </a>
     </div>

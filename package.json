@@ -8,6 +8,7 @@
     "dev": "node scripts/metadata.js && vitepress dev",
     "build": "node scripts/metadata.js && vitepress build",
     "preview": "vitepress preview",
+    "seo:audit": "node scripts/seo-audit.js",
     "deploy": "npm run build && wrangler pages deploy ./.vitepress/dist --project-name=shymean-blog --branch=main"
   },
   "devDependencies": {

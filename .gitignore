@@ -8,3 +8,4 @@ views/article
 .DS_Store
 
 ./scripts/config.ts
+temp

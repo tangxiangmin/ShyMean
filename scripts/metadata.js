@@ -46,10 +46,7 @@ async function getArticles(directory) {
       if (stat.isFile()) {
         try {
           const article = await parseFile(filePath)
-          // 忽略标记为draft的文章
-          if (!article.draft) {
-            articles.push(article)
-          }
+          articles.push(article)
 
           // console.log(`${article.title} 解析完成`)
         } catch (e) {
@@ -120,10 +117,58 @@ function generateRewriteData(articles) {
   return map
 }
 
+function createSlug(value) {
+  return value
+    .normalize('NFKC')
+    .trim()
+    .toLowerCase()
+    .replace(/[^\p{Letter}\p{Number}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function createSlugMap(values) {
+  const result = {}
+  const used = new Set()
+
+  for (const value of [...values].sort((a, b) => a.localeCompare(b, 'zh-CN'))) {
+    const baseSlug = createSlug(value) || 'all'
+    let slug = baseSlug
+    let index = 2
+    while (used.has(slug)) {
+      slug = `${baseSlug}-${index}`
+      index++
+    }
+    used.add(slug)
+    result[value] = slug
+  }
+
+  return result
+}
+
+function generateTaxonomyRoutes(archives) {
+  const categoryPaths = []
+
+  function visitCategories(categories, parents = []) {
+    for (const category of categories) {
+      const path = [...parents, category.name]
+      categoryPaths.push(path.join('_'))
+      visitCategories(category.children, path)
+    }
+  }
+
+  visitCategories(archives.categories)
+
+  return {
+    categories: createSlugMap(categoryPaths),
+    tags: createSlugMap(Object.keys(archives.tags)),
+  }
+}
+
 async function generateMetaData() {
   console.log('start parse articles and generate metadata')
   await linkHexoPosts()
-  const data = await getArticles(ROOT)
+  const articles = await getArticles(ROOT)
+  const data = articles.filter(article => !article.draft)
   data.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))
   fs.writeFileSync(path.resolve(__dirname, '../data/meta.json'), JSON.stringify(data, null, 4))
 
@@ -132,6 +177,15 @@ async function generateMetaData() {
 
   const pathRewrites = generateRewriteData(data)
   fs.writeFileSync(path.resolve(__dirname, '../data/pathRewrites.json'), JSON.stringify(pathRewrites, null, 4))
+
+  const srcExclude = articles
+    .filter(article => article.draft)
+    .map(article => `article/${article.fullPath}`)
+    .sort((a, b) => a.localeCompare(b, 'zh-CN'))
+  fs.writeFileSync(path.resolve(__dirname, '../data/srcExclude.json'), JSON.stringify(srcExclude, null, 4))
+
+  const taxonomyRoutes = generateTaxonomyRoutes(archives)
+  fs.writeFileSync(path.resolve(__dirname, '../data/taxonomyRoutes.json'), JSON.stringify(taxonomyRoutes, null, 4))
   console.log('generate metadata success')
 }
 

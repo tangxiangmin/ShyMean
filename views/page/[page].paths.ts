@@ -6,7 +6,7 @@ export default {
     const pageSize = 20
     const total = Math.ceil(list.length / pageSize)
     const pages = []
-    for (let i = 1; i <= total; ++i) {
+    for (let i = 2; i <= total; ++i) {
       pages.push({
         params: { page: i },
         // content: {

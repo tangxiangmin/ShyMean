@@ -20,10 +20,7 @@ export async function updateArticleSEO(filePath, seo) {
   const { content, data } = matter(fileContent)
   const file = matter.stringify(content, {
     ...data,
-    head: [
-      ['meta', { name: 'description', content: seo.description }],
-      ['meta', { name: 'keywords', content: seo.keywords }],
-    ],
+    description: seo.description,
   })
   await fs.writeFile(filePath, file)
 }
@@ -37,8 +34,10 @@ const TaskStatus = {
 async function generateSEOHead(filePath) {
   const content = await fs.readFile(filePath, 'utf8')
   const { data } = matter(content)
-  if (Array.isArray(data.head)) {
-    console.log(`${data.title}已经有了head标签`)
+  const hasDescription = data.description
+    || data.head?.some(item => item?.[0] === 'meta' && item?.[1]?.name === 'description')
+  if (hasDescription) {
+    console.log(`${data.title}已经有了description`)
     return TaskStatus.exist
   }
 
@@ -53,7 +52,7 @@ async function generateSEOHead(filePath) {
       {
         role: 'system',
         content:
-          '接下来用户会给你一份markdown格式的文件内容，你需要根据文件内容，生成适合SEO优化的description和keywords，并使用JSON格式返回，返回的JSON只包含description和keywords两个字段',
+          '接下来用户会给你一份markdown格式的文件内容，你需要根据文件内容生成准确、简洁且适合搜索结果展示的description，并使用JSON格式返回，返回的JSON只包含description字段',
       },
       {
         role: 'user',
