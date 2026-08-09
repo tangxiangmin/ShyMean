@@ -5,6 +5,7 @@ data
 .idea
 .vscode
 views/article
+views/article-en
 .DS_Store
 
 ./scripts/config.ts

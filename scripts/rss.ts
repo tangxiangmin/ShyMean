@@ -29,8 +29,9 @@ function resolveDescription(article: IArticle): string {
 
 export async function generateRSS(siteConfig: SiteConfig): Promise<void> {
   const articles = await fs.readJSON(path.resolve(siteConfig.root, 'data/meta.json')) as IArticle[]
-  const items = articles.map((article) => {
-    const url = new URL(`/article/${encodeURIComponent(article.title)}`, SITE_URL).href
+  // 中英文共用 /article/ 命名空间，中文 feed 必须按语言过滤，否则英文条目会混入
+  const items = articles.filter(article => article.lang !== 'en-US').map((article) => {
+    const url = new URL(encodeURI(`/${article.route}`), SITE_URL).href
     const publishDate = new Date(article.date || article.createdAt).toUTCString()
     return `    <item>
       <title>${toCdata(article.title)}</title>

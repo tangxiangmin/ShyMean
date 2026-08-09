@@ -8,16 +8,25 @@ import path from 'path'
 import articles from '../data/meta.json'
 import pathRewrites from '../data/pathRewrites.json'
 import srcExclude from '../data/srcExclude.json'
+import translations from '../data/translations.json'
 
 import inlineSFC from 'vite-plugin-vitepres-inline-sfc'
 
 import { generateRSS } from '../scripts/rss'
 import { applySEOToPageData } from '../scripts/seoMeta'
-import type { IArticle } from '../typings'
+import type { IArticle, TTranslationGroup } from '../typings'
 
 const isProd=  process.env.NODE_ENV==='production'
 
 const baseUrl = 'https://www.shymean.com'
+
+const translationMap = translations as Record<string, TTranslationGroup>
+// 中英文共用 /article/ 命名空间，语言判定只能依据数据字段，不能依据路径前缀
+const englishRoutes = new Set(
+  Object.values(translationMap)
+    .map(group => group['en-US'])
+    .filter(Boolean) as string[],
+)
 const legacyDeadLinks = new Set([
   'http://localhost:3002',
   'http://localhost:5173',
@@ -47,6 +56,7 @@ export default defineConfig({
   description: 'ShyMean 的个人技术博客，记录前端工程、源码分析、编程语言和软件开发实践。',
   lang: 'zh-CN',
   head: [
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon.png' }],
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'ShyMean RSS', href: `${baseUrl}/feed.rss` }],
     //Cloudflare Web Analytics
     isProd ? ['script',{src:"https://static.cloudflareinsights.com/beacon.min.js",'data-cf-beacon':'{"token": "28e619c6022b4e0d8e2f531dd215486a"}'}]:null
@@ -62,11 +72,27 @@ export default defineConfig({
   sitemap: {
     hostname: baseUrl,
     transformItems(items) {
-      return items.filter(item => !item.url.includes('/archive/search'))
+      const enSourceRoutes = new Set(
+        (articles as IArticle[])
+          .filter(article => article.lang === 'en-US')
+          .map(article => `/${article.route}`),
+      )
+      return items.filter((item) => {
+        const url = `/${item.url.replace(/^\//, '')}`
+        if (url.includes('/archive/search')) return false
+        // 英文产物必须已在 translations.json 中登记，未登记的一律剔除
+        if (enSourceRoutes.has(url)) return englishRoutes.has(url)
+        return true
+      })
     },
   },
   transformPageData(pageData) {
-    applySEOToPageData(pageData, articles as IArticle[])
+    applySEOToPageData(pageData, articles as IArticle[], translationMap)
+  },
+  // 扁平 URL 下 VitePress locale 无法按路径匹配语言，改由 frontmatter lang 驱动
+  transformHtml(code, _id, ctx) {
+    if (ctx.pageData.frontmatter.lang !== 'en-US') return
+    return code.replace('<html lang="zh-CN"', '<html lang="en-US"')
   },
   buildEnd: generateRSS,
   themeConfig: {

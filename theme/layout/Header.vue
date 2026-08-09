@@ -6,7 +6,7 @@
         <a href="/version" class="underline text-12px ml-6px">v0.9.0</a>
       </div>
       <button class="ml-auto hidden <sm:block" @click="toggle">
-        {{ visible ? '关闭' : '导航' }}
+        {{ isEnglish ? (visible ? 'Close' : 'Menu') : (visible ? '关闭' : '导航') }}
       </button>
       <div
         class="ml-auto <sm:(hidden fixed top-60px left-0 right-0 bg-[var(--vp-c-bg)] h-[calc(100vh_-_60px)] py-20px)"
@@ -29,21 +29,31 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import { computed, ref } from 'vue'
 import SwitchDark from '@/theme/components/SwitchDark.vue'
 
 interface Nav { text: string, url: string, active: boolean }
 
 const route = useRoute()
+const { frontmatter } = useData()
+
+// 英文文章页的导航必须是英文，页面模板不与正文混用语言
+const isEnglish = computed(() => frontmatter.value.lang === 'en-US')
+
+const NAV_TEXT: Record<string, Record<string, string>> = {
+  'zh-CN': { tags: '分类', archive: '归档', demo: '项目', book: '书架', about: '关于' },
+  'en-US': { tags: 'Topics', archive: 'Archive', demo: 'Projects', book: 'Bookshelf', about: 'About' },
+}
 
 const navs = computed<Nav[]>(() => {
+  const text = NAV_TEXT[isEnglish.value ? 'en-US' : 'zh-CN']
   const list = [
-    { text: '分类', url: '/tags', active: false },
-    { text: '归档', url: '/archive', active: false },
-    { text: '项目', url: '/demo', active: false },
-    { text: '书架', url: '/book', active: false },
-    { text: '关于', url: '/about', active: false },
+    { text: text.tags, url: '/tags', active: false },
+    { text: text.archive, url: '/archive', active: false },
+    { text: text.demo, url: '/demo', active: false },
+    { text: text.book, url: '/book', active: false },
+    { text: text.about, url: '/about', active: false },
     { text: 'RSS', url: 'https://www.shymean.com/feed.rss', active: false },
   ]
   list.forEach((row) => {

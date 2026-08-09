@@ -1,17 +1,23 @@
 <template>
   <div>
-    <div v-for="article in paginatedList" :key="article.title" class="mb-70px">
+    <div v-for="article in paginatedList" :key="article.route" class="mb-70px">
       <h3>
-        <a :href="createArticleLink(article.title)">{{ article.title }}</a>
+        <span
+          v-if="article.lang === 'en-US'"
+          class="inline-block align-middle mr-8px px-6px text-11px leading-18px bg-[#f5f5f5] dark:bg-dark-300 rounded-2px font-normal"
+        >EN</span>
+        <a :href="createArticleLink(article)">{{ article.title }}</a>
       </h3>
       <p class="text-12px">
         发表于
         <time :datetime="article.createdAt">{{ formatArticleDate(article.createdAt) }}</time>
-        <span class="mx-5px">|</span>
-        分类于
-        <template v-for="(cate, index) in article.categories" :key="cate">
-          <a :href="createArchiveLink(article.categories.slice(0, index + 1))">{{ cate }}</a>
-          <span v-if="index !== article.categories.length - 1" class="mx-5px">/</span>
+        <template v-if="article.categories?.length">
+          <span class="mx-5px">|</span>
+          分类于
+          <template v-for="(cate, index) in article.categories" :key="cate">
+            <a :href="createArchiveLink(article.categories.slice(0, index + 1))">{{ cate }}</a>
+            <span v-if="index !== article.categories.length - 1" class="mx-5px">/</span>
+          </template>
         </template>
       </p>
       <div v-html="article.abstract" />

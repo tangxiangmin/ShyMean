@@ -28,9 +28,13 @@
         <div class="archives_title">
           <strong>{{ group.year }}</strong>
         </div>
-        <div v-for="row in group.articles" :key="row.createdAt" class="archives_item flex">
+        <div v-for="row in group.articles" :key="row.route" class="archives_item flex">
           <span class="archives_date line-clamp-1 flex-shrink-0">{{ formatArticleDate(row.createdAt) }}</span>
-          <a :href="createArticleLink(row.title)" class="line-clamp-1">{{ row.title }}</a>
+          <span
+            v-if="row.lang === 'en-US'"
+            class="flex-shrink-0 mr-8px px-6px text-11px leading-18px self-center bg-[#f5f5f5] dark:bg-dark-300 rounded-2px"
+          >EN</span>
+          <a :href="createArticleLink(row)" class="line-clamp-1">{{ row.title }}</a>
         </div>
       </section>
     </div>
@@ -68,13 +72,15 @@ const subCategories = computed(() => {
 
 const list = computed<IArticle[]>(() => {
   if (!props.type && !props.tag) return articles
+  // 英文文章不参与分类和标签体系，没有 categories / tags 字段
   if (props.tag) {
     return articles.filter((article) => {
-      return article.tags.includes(props.tag as string)
+      return article.tags?.includes(props.tag as string)
     })
   }
   const list = categories.value
   return articles.filter((article) => {
+    if (!article.categories?.length) return false
     return list.every((category, index) => category === article.categories[index])
   })
 })

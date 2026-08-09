@@ -6,17 +6,23 @@
           {{ page.title }}
         </h1>
         <div class="text-14px my-20px text-center">
-          发布于
+          {{ text.publishedOn }}
           <time :datetime="frontmatter.date">{{ formatArticleDate(frontmatter.date) }}</time>
-          <span class="mx-10px">|</span>
-          分类于
-          <template v-for="(cate, index) in frontmatter.categories" :key="cate">
-            <a :href="createArchiveLink(frontmatter.categories.slice(0, index + 1))">{{ cate }}</a>
-            <span v-if="index !== frontmatter.categories.length - 1" class="mx-5px">/</span>
+          <template v-if="frontmatter.categories?.length">
+            <span class="mx-10px">|</span>
+            {{ text.filedUnder }}
+            <template v-for="(cate, index) in frontmatter.categories" :key="cate">
+              <a :href="createArchiveLink(frontmatter.categories.slice(0, index + 1))">{{ cate }}</a>
+              <span v-if="index !== frontmatter.categories.length - 1" class="mx-5px">/</span>
+            </template>
           </template>
           <template v-if="frontmatter.ai">
             <span class="mx-10px">|</span>
-            <span class="text-[#e6a23c]">本文包含AIGC内容</span>
+            <span class="text-[#e6a23c]">{{ text.aigc }}</span>
+          </template>
+          <template v-if="translationLink">
+            <span class="mx-10px">|</span>
+            <a :href="translationLink">{{ text.translation }}</a>
           </template>
         </div>
 
@@ -54,15 +60,35 @@
 </template>
 
 <script lang="ts" setup>
-import { useData } from 'vitepress'
-import { ref } from 'vue'
+import { useData, useRoute } from 'vitepress'
+import { computed, ref } from 'vue'
 import VPDocAsideOutline from '../components/VPDocAsideOutline.vue'
 
 import Comment from '../components/Comment.vue'
 import Appreciate from '../components/Appreciate.vue'
-import { createArchiveLink, createTagLink, formatArticleDate } from '@/theme/utils'
+import { createArchiveLink, createTagLink, formatArticleDate, resolveTranslationLink } from '@/theme/utils'
 
 const { page, frontmatter } = useData()
+const route = useRoute()
+
+const TEXT = {
+  'zh-CN': {
+    publishedOn: '发布于',
+    filedUnder: '分类于',
+    aigc: '本文包含AIGC内容',
+    translation: 'English version',
+  },
+  'en-US': {
+    publishedOn: 'Published on',
+    filedUnder: 'Filed under',
+    aigc: 'This article contains AI-generated content',
+    translation: '阅读中文原文',
+  },
+}
+
+const lang = computed(() => (frontmatter.value.lang === 'en-US' ? 'en-US' : 'zh-CN'))
+const text = computed(() => TEXT[lang.value])
+const translationLink = computed(() => resolveTranslationLink(route.path, lang.value))
 
 const visible = ref(false)
 

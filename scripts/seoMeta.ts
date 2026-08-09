@@ -1,10 +1,16 @@
 import type { PageData } from 'vitepress'
-import type { IArticle, THeadItem } from '../typings'
+import type { IArticle, TArticleLanguage, THeadItem, TTranslationGroup } from '../typings'
 
 const SITE_URL = 'https://www.shymean.com'
 const SITE_NAME = 'ShyMean'
 const SITE_DESCRIPTION = 'ShyMean 的个人技术博客，记录前端工程、源码分析、编程语言和软件开发实践。'
+const SITE_DESCRIPTION_EN = 'Frontend engineering notes, source code analysis and debugging write-ups by ShyMean.'
 const AUTHOR_NAME = 'ShyMean'
+
+const OG_LOCALE: Record<TArticleLanguage, string> = {
+  'zh-CN': 'zh_CN',
+  'en-US': 'en_US',
+}
 
 const PAGE_METADATA: Record<string, [string, string]> = {
   'about.md': ['关于 ShyMean', 'ShyMean 的个人介绍、博客说明和联系方式。'],
@@ -37,7 +43,7 @@ function limitDescription(content: string): string {
 }
 
 function resolveCanonicalPath(pageData: PageData, article?: IArticle): string {
-  if (article) return `/article/${article.title}`
+  if (article) return `/${article.route}`
   if (pageData.relativePath === 'archive/search.md') return '/archive'
 
   const path = pageData.relativePath
@@ -72,15 +78,43 @@ function resolvePageMetadata(pageData: PageData, article?: IArticle): [string, s
     ]
   }
   if (article) {
+    const fallback = article.lang === 'en-US' ? SITE_DESCRIPTION_EN : SITE_DESCRIPTION
     const description = article.description
       || getHeadMeta(article.head, 'description')
       || stripHtml(article.abstract)
-      || SITE_DESCRIPTION
+      || fallback
     return [article.title, limitDescription(description)]
   }
 
   return PAGE_METADATA[pageData.relativePath]
     ?? [pageData.title || SITE_NAME, pageData.description || SITE_DESCRIPTION]
+}
+
+function toAbsoluteUrl(pathname: string): string {
+  return new URL(encodeURI(pathname), SITE_URL).href
+}
+
+// head 项由 VitePress 的 renderAttrs 转义，但页面模板里的
+// <meta name="description"> 是把 pageData.description 原样插值的（VitePress 会先用
+// filterOutHeadDescription 丢弃 head 中的同名项），描述里的引号会截断该属性。
+// 因此只转义写回 pageData 的那一份，head 项保持原文避免二次转义。
+function escapeAttribute(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+}
+
+// 中英文两侧的 hreflang 均由 translations.json 展开，不各自维护。
+// 只有实际存在译文的文章才输出关联，英文文章删除后中文页的关联自动消失。
+function createAlternateHeadItems(group: TTranslationGroup | undefined): THeadItem[] {
+  if (!group?.['zh-CN'] || !group['en-US']) return []
+  return [
+    ['link', { rel: 'alternate', hreflang: 'zh-CN', href: toAbsoluteUrl(group['zh-CN']) }],
+    ['link', { rel: 'alternate', hreflang: 'en', href: toAbsoluteUrl(group['en-US']) }],
+    ['link', { rel: 'alternate', hreflang: 'x-default', href: toAbsoluteUrl(group['zh-CN']) }],
+  ]
 }
 
 function resolveImage(article?: IArticle): string | undefined {
@@ -107,6 +141,7 @@ function createArticleStructuredData(
   const data = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    inLanguage: article.lang,
     headline: article.title,
     description,
     url: canonicalUrl,
@@ -159,6 +194,7 @@ function createPageStructuredData(pageData: PageData, canonicalUrl: string): Rec
 function isManagedHeadItem(item: THeadItem): boolean {
   if (!Array.isArray(item)) return false
   if (item[0] === 'link' && item[1]?.rel === 'canonical') return true
+  if (item[0] === 'link' && item[1]?.rel === 'alternate' && item[1]?.hreflang) return true
   if (item[0] === 'script' && item[1]?.type === 'application/ld+json') return true
   if (item[0] !== 'meta') return false
 
@@ -172,12 +208,19 @@ function isManagedHeadItem(item: THeadItem): boolean {
     || property?.startsWith('article:')
 }
 
-export function applySEOToPageData(pageData: PageData, articles: readonly IArticle[]): void {
+export function applySEOToPageData(
+  pageData: PageData,
+  articles: readonly IArticle[],
+  translations: Readonly<Record<string, TTranslationGroup>> = {},
+): void {
   if (pageData.isNotFound) return
 
-  const article = articles.find(item => item.title === pageData.title)
+  // transformPageData 执行时 relativePath 已是 rewrite 后的稳定路径。
+  // 按 route 匹配可同时支持英文 slug，并修复原来按 title 匹配在标题重名时错配的问题。
+  const article = articles.find(item => item.route && `${item.route}.md` === pageData.relativePath)
   const [title, description] = resolvePageMetadata(pageData, article)
-  const canonicalUrl = new URL(encodeURI(resolveCanonicalPath(pageData, article)), SITE_URL).href
+  const canonicalPath = resolveCanonicalPath(pageData, article)
+  const canonicalUrl = toAbsoluteUrl(canonicalPath)
   const image = resolveImage(article)
   const isArticle = Boolean(article)
   const structuredData = article
@@ -185,15 +228,17 @@ export function applySEOToPageData(pageData: PageData, articles: readonly IArtic
     : createPageStructuredData(pageData, canonicalUrl)
 
   pageData.title = title
-  pageData.description = description
+  pageData.description = escapeAttribute(description)
   pageData.frontmatter.head = ((pageData.frontmatter.head ?? []) as THeadItem[])
     .filter(item => !isManagedHeadItem(item))
 
+  const lang: TArticleLanguage = article?.lang ?? 'zh-CN'
   const head = pageData.frontmatter.head as THeadItem[]
   head.push(
     ['meta', { name: 'description', content: description }],
     ['link', { rel: 'canonical', href: canonicalUrl }],
-    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ...createAlternateHeadItems(translations[canonicalPath]),
+    ['meta', { property: 'og:locale', content: OG_LOCALE[lang] }],
     ['meta', { property: 'og:site_name', content: SITE_NAME }],
     ['meta', { property: 'og:type', content: isArticle ? 'article' : 'website' }],
     ['meta', { property: 'og:title', content: title }],
