@@ -1,11 +1,11 @@
 {
   "name": "blog-demo",
+  "type": "module",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "init": "ts-node scripts/index.ts",
-    "dev": "node scripts/metadata.js && vitepress dev",
+    "dev": "node scripts/metadata.js && vitepress dev --port 6678",
     "build": "node scripts/metadata.js && vitepress build",
     "preview": "vitepress preview",
     "seo:audit": "node scripts/seo-audit.js",

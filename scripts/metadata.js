@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'fs-extra'
 
 import { HexoPage2JSON } from './hexo2json.js'
+import { generateLlms } from './llms.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -298,6 +299,8 @@ async function generateMetaData() {
 
   const taxonomyRoutes = generateTaxonomyRoutes(archives)
   fs.writeFileSync(path.resolve(__dirname, '../data/taxonomyRoutes.json'), JSON.stringify(taxonomyRoutes, null, 4))
+
+  await generateLlms()
 
   const enCount = data.filter(isEnglish).length
   console.log(`generate metadata success: ${data.length - enCount} zh-CN, ${enCount} en-US`)

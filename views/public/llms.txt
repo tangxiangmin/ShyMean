@@ -1,0 +1,68 @@
+# ShyMean
+
+> ShyMean 的个人技术博客，记录前端工程、源码分析、编程语言和软件开发实践。
+
+文章以中文为主，部分文章提供英文译文。内容包含技术实践、学习笔记与个人经验，阅读时请结合文章日期和所用软件版本。以下文章链接指向 HTML 正文页面。
+
+## 内容入口
+
+- [文章归档](https://www.shymean.com/archive): 按时间浏览文章
+- [分类与标签](https://www.shymean.com/tags): 按主题查找文章
+- [站点地图](https://www.shymean.com/sitemap.xml): 完整页面索引
+- [RSS](https://www.shymean.com/feed.rss): 最新中文文章订阅
+
+## 主要分类
+
+- [数据结构和算法](https://www.shymean.com/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95): 8 篇文章
+- [杂项](https://www.shymean.com/category/%E6%9D%82%E9%A1%B9): 13 篇文章
+- [网络](https://www.shymean.com/category/%E7%BD%91%E7%BB%9C): 10 篇文章
+- [博客](https://www.shymean.com/category/%E5%8D%9A%E5%AE%A2): 13 篇文章
+- [前端](https://www.shymean.com/category/%E5%89%8D%E7%AB%AF): 112 篇文章
+- [技术原理](https://www.shymean.com/category/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86): 25 篇文章
+- [编程语言](https://www.shymean.com/category/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80): 23 篇文章
+- [源码分析](https://www.shymean.com/category/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90): 30 篇文章
+- [读书笔记](https://www.shymean.com/category/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0): 17 篇文章
+- [游戏](https://www.shymean.com/category/%E6%B8%B8%E6%88%8F): 11 篇文章
+- [后端](https://www.shymean.com/category/%E5%90%8E%E7%AB%AF): 12 篇文章
+- [客户端](https://www.shymean.com/category/%E5%AE%A2%E6%88%B7%E7%AB%AF): 23 篇文章
+- [编程技术](https://www.shymean.com/category/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF): 7 篇文章
+
+## 最新中文文章
+
+- [数据结构与算法可视化](https://www.shymean.com/article/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A7%86%E5%8C%96): 介绍一个数据结构与算法可视化网站，通过 JavaScript 代码、单步动画和原理讲解学习排序、查找、图算法、动态规划及常见数据结构，并记录执行轨迹、代码高亮和静态预渲染的实现思路。
+- [网页标注工具的技术原理与实现](https://www.shymean.com/article/%E7%BD%91%E9%A1%B5%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0): 本文结合 annotate 项目的实现，介绍网页标注中的文本锚点恢复、DOM Range 与覆盖层渲染、SVG 图形坐标归一化、Pointer Events 手势管理，以及 Chrome 扩展的界面隔离、本地保存和列表分页。
+- [两次 Wi-Fi 故障排查：DNS 无响应、AP 去认证与端口扫描告警](https://www.shymean.com/article/%E4%B8%A4%E6%AC%A1%20Wi-Fi%20%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%9ADNS%20%E6%97%A0%E5%93%8D%E5%BA%94%E3%80%81AP%20%E5%8E%BB%E8%AE%A4%E8%AF%81%E4%B8%8E%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%91%8A%E8%AD%A6): 总结两次 macOS Wi-Fi 故障排查：酒店网络中默认 DNS 无响应，以及公司网络中 DNS 超时、AP 去认证和端口扫描告警交织出现时，如何依据日志区分无线链路、DHCP、DNS 与安全策略问题。
+- [AI编码的一些体会](https://www.shymean.com/article/AI%E7%BC%96%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%93%E4%BC%9A): 本文结合实际开发经历，讨论AI编码适合处理的任务、复杂业务需求中的上下文与验证成本、开发者对工程的掌控感，以及AI对软件开发流程、团队分工和前端岗位的影响。
+- [VitePress博客从Valine迁移到Waline：部署、接入与数据迁移](https://www.shymean.com/article/VitePress%E5%8D%9A%E5%AE%A2%E4%BB%8EValine%E8%BF%81%E7%A7%BB%E5%88%B0Waline%EF%BC%9A%E9%83%A8%E7%BD%B2%E3%80%81%E6%8E%A5%E5%85%A5%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB): 一篇可直接照着实施的VitePress评论系统迁移指南，介绍如何创建Waline Vercel项目和Neon PostgreSQL数据库、接入客户端、迁移LeanCloud历史评论，并处理版本兼容、SPA路由、Vercel 302和凭据安全问题。
+- [基于 Puppeteer 与 Chrome Trace 的前端性能自动化测量工具](https://www.shymean.com/article/%E5%9F%BA%E4%BA%8E%20Puppeteer%20%E4%B8%8E%20Chrome%20Trace%20%E7%9A%84%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E9%87%8F%E5%B7%A5%E5%85%B7): 系统介绍如何基于 Puppeteer、Chrome Trace、CDP 和 User Timing 构建前端运行时性能自动化测量工具，涵盖主线程忙碌率、长任务、帧间隔、JS 堆内存、自定义阶段耗时的提取规则，以及稳定性能基线的测试方法。
+- [记一次图片缺少EOI导致的渲染异常](https://www.shymean.com/article/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9B%BE%E7%89%87%E7%BC%BA%E5%B0%91EOI%E5%AF%BC%E8%87%B4%E7%9A%84%E6%B8%B2%E6%9F%93%E5%BC%82%E5%B8%B8): 排查一个图片预览切换时偶发空白（图片有尺寸、背景色都在，唯独纹理没渲染出来）的问题，从合成层、React渲染时序一路深挖都没修好，最后发现是其中一张JPEG缺少EOI结束标记，这张截断的坏图污染了被复用的img元素，导致后续好图在Chrome上渲染空白，Firefox却正常。
+- [AMD异步模块配合webpack代码拆分实现业务模块按需加载](https://www.shymean.com/article/AMD%E5%BC%82%E6%AD%A5%E6%A8%A1%E5%9D%97%E9%85%8D%E5%90%88webpack%E4%BB%A3%E7%A0%81%E6%8B%86%E5%88%86%E5%AE%9E%E7%8E%B0%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD): 详解如何扩展 AMD loader 支持异步 factory（Promise），结合 webpack dynamic import() 代码拆分，实现业务模块的按需加载，深入分析模块状态机、_resolvePromise 机制与 webpack 编译产物。
+- [初识Web3之从零构建许愿墙DApp](https://www.shymean.com/article/%E5%88%9D%E8%AF%86Web3%E4%B9%8B%E4%BB%8E%E9%9B%B6%E6%9E%84%E5%BB%BA%E8%AE%B8%E6%84%BF%E5%A2%99DApp): 通过构建一个简单的许愿墙 DApp，记录从传统 Web2 到 Web3 的学习过程，包括智能合约开发、MetaMask 使用、ethers.js 集成等实践经验。
+- [基于monorepo的antd二次开发调试方案](https://www.shymean.com/article/%E5%9F%BA%E4%BA%8Emonorepo%E7%9A%84antd%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95%E6%96%B9%E6%A1%88): 介绍如何使用 pnpm workspace + Vite + git subtree 搭建高效的 Ant Design 二次开发调试环境，解决传统 npm link 方式的痛点，实现极速热更新和统一版本管理。
+- [cssText和setAttribute在CSP中的差异](https://www.shymean.com/article/cssText%E5%92%8CsetAttribute%E5%9C%A8CSP%E4%B8%AD%E7%9A%84%E5%B7%AE%E5%BC%82): 深入分析 CSP 环境下不同样式设置方式的行为差异，解释为什么 style.cssText 可以生效而 setAttribute 会被拦截，以及 style-src 和 style-src-attr 指令的作用机制。
+- [基于 Codemod 的前端代码迁移工具开发](https://www.shymean.com/article/%E5%9F%BA%E4%BA%8E%20Codemod%20%E7%9A%84%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91): 深入讲解如何基于 jscodeshift、AST 与 PostCSS 构建前端 Codemod 迁移工具，覆盖 Ant Design 4 到 5、React 18、路由 API、项目配置及 Less/CSS 的自动修复与人工审查方案。
+- [实现一个简易的CSS-in-JS工具](https://www.shymean.com/article/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84CSS-in-JS%E5%B7%A5%E5%85%B7): 深入解析 CSS-in-JS 的核心原理与实现，通过构建一个简易的 CSS-in-JS 工具，学习样式对象、样式解析、哈希生成、动态注入和样式缓存等核心概念，掌握性能优化技巧，为理解 @ant-design/cssinjs 等主流库打下基础。
+- [pnpm在CI中的严格模式](https://www.shymean.com/article/pnpm%E5%9C%A8CI%E4%B8%AD%E7%9A%84%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F): 深入解析 pnpm 在 CI 环境中的严格模式机制，理解为什么 lockfile 不一致会导致 CI 失败而本地却能正常安装，以及如何正确处理这个问题。
+- [monorepo项目的一些策略](https://www.shymean.com/article/monorepo%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%96%E7%95%A5): 本文聚焦 monorepo 实际项目中的策略问题，涵盖依赖类型（产物与源码依赖）、ts 多项目配置、eslint 统一配置、内部包类型依赖、公共依赖、构建顺序及批量发布等内容，提供实用方案与工具介绍，助您优化 monorepo 项目管理
+- [JavaScript模拟获取函数执行上下文](https://www.shymean.com/article/JavaScript%E6%A8%A1%E6%8B%9F%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87): 深入探讨JavaScript函数执行上下文的获取方法，包括Error.stack、console.trace等调用栈获取技术，以及参数透传、AsyncLocalStorage、Zone.js等上下文管理方案的实现原理与应用场景。
+- [一个AI独立完成的游戏自动化脚本](https://www.shymean.com/article/%E4%B8%80%E4%B8%AAAI%E7%8B%AC%E7%AB%8B%E5%AE%8C%E6%88%90%E7%9A%84%E6%B8%B8%E6%88%8F%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC): 作者分享利用 AI 工具 Kiro 实现游戏自动化脚本的经历。从提出在 Mac 上定时自动点击屏幕特定位置的需求，到不断完善功能、解决多显示器坐标问题，最终实现功能完整的工具，展示了 AI 编码在提升开发效率上的显著作用。
+- [在webpack中基于chunk加载external外部依赖](https://www.shymean.com/article/%E5%9C%A8webpack%E4%B8%AD%E5%9F%BA%E4%BA%8Echunk%E5%8A%A0%E8%BD%BDexternal%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96): 本文聚焦 webpack 的 externals 配置，阐述其默认行为、缺陷及期望场景。提出按需加载 chunk 对应 external 的方案，涉及分析依赖关系、生成清单、改造加载流程等，还介绍从 webpack 加载 chunk、修改运行时代码等实现细节，助您提升前端性能优化能力。
+- [基于CloudflareR2搭建博客图床](https://www.shymean.com/article/%E5%9F%BA%E4%BA%8ECloudflareR2%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%8A): 本文详细记录迁移至 Cloudflare R2 存储搭建图床的过程，包括申请 R2 服务、同步文件、更新 oPic 工具等，助您掌握博客图床迁移办法
+- [flex布局时内容被子元素撑开的问题](https://www.shymean.com/article/flex%E5%B8%83%E5%B1%80%E6%97%B6%E5%86%85%E5%AE%B9%E8%A2%AB%E5%AD%90%E5%85%83%E7%B4%A0%E6%92%91%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98): 本文分析了 flex 布局中容器被子元素内容撑开的问题，解释了 flex-basis 和 min-width 的作用机制，并提供了多种解决方案。
+
+## Recent English Articles
+
+- [Notes on Coding with AI](https://www.shymean.com/article/notes-on-coding-with-ai): AI agents can write the code. What they cannot do is hold the context for you. Notes from a year of shipping with agents: which tasks actually pay off, why complete business featur
+- [Automating Frontend Performance Measurement with Puppeteer and Chrome Trace](https://www.shymean.com/article/frontend-performance-automation-puppeteer-chrome-trace): How to build a repeatable runtime performance harness on Puppeteer, Chrome Trace Events and CDP: what each data source can honestly answer, the extraction rules for main-thread bus
+- [A Truncated JPEG Broke Every Image After It in Chrome](https://www.shymean.com/article/truncated-jpeg-missing-eoi-chrome-blank-image): A JPEG missing its EOI marker rendered fine on its own, then made every later image blank in a reused img element — in Chrome only. The debugging detour, the two bytes that caused 
+- [Why CSP Blocks setAttribute('style') but Not style.cssText](https://www.shymean.com/article/csp-setattribute-style-vs-csstext): Under style-src, setAttribute("style", …) is blocked while style.cssText applies normally. A measured behaviour matrix across four policies on Chrome 151, why the browser draws the
+- [Why pnpm install Fails in CI but Works Locally](https://www.shymean.com/article/why-pnpm-install-fails-in-ci): pnpm install self-heals an outdated lockfile on your machine and refuses to on CI. Here is the exact switch that flips the behaviour, how pnpm decides it is running on CI, and how 
+- [Writing Inline Vue SFCs Directly in VitePress Markdown](https://www.shymean.com/article/inline-vue-sfc-in-vitepress-markdown): VitePress lets you use Vue components in Markdown, but every component needs its own file. This Vite plugin compiles a fenced vue block into a real SFC in place, so single-use demo
+- [How Low-Code Platforms Actually Work, and Where They Stop](https://www.shymean.com/article/how-low-code-platforms-work): Every low-code platform reduces to the same thing: a JSON description of a page plus a runtime component library that knows how to render it. Working through that design — dynamic 
+- [Reflections on the Bad Code I've Written](https://www.shymean.com/article/reflections-on-bad-code-i-have-written): Bad code is rarely written badly on day one — it degrades. Notes on the four forces that do the degrading: structured programming's linear habit, accumulated technical debt, distru
+
+## Optional
+
+- [关于作者](https://www.shymean.com/about)
+- [项目](https://www.shymean.com/demo)
+- [书籍与电影记录](https://www.shymean.com/book)

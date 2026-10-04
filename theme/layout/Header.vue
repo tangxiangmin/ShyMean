@@ -16,9 +16,11 @@
           v-for="nav in navs"
           :key="nav.text"
           :href="nav.url"
+          :target="nav.url.startsWith('http') ? '_blank' : undefined"
+          :rel="nav.url.startsWith('http') ? 'noopener noreferrer' : undefined"
           class="inline-block py-5px px-10px hover:bg-[#e8e8e8] dark:hover:bg-dark-100 rounded-3px transition-all <sm:(block w-full text-center leading-40px mb-10px)"
           :class="{ 'font-bold': nav.active }"
-          @click="hideNav(nav, $event)"
+          @click="hideNav"
         >
           {{ nav.text }}
         </a>
@@ -33,7 +35,7 @@ import { useData, useRoute } from 'vitepress'
 import { computed, ref } from 'vue'
 import SwitchDark from '@/theme/components/SwitchDark.vue'
 
-interface Nav { text: string, url: string, active: boolean }
+interface INav { text: string, url: string, active: boolean }
 
 const route = useRoute()
 const { frontmatter } = useData()
@@ -46,7 +48,7 @@ const NAV_TEXT: Record<string, Record<string, string>> = {
   'en-US': { tags: 'Topics', archive: 'Archive', demo: 'Projects', book: 'Bookshelf', about: 'About' },
 }
 
-const navs = computed<Nav[]>(() => {
+const navs = computed<INav[]>(() => {
   const text = NAV_TEXT[isEnglish.value ? 'en-US' : 'zh-CN']
   const list = [
     { text: text.tags, url: '/tags', active: false },
@@ -64,13 +66,7 @@ const navs = computed<Nav[]>(() => {
 
 const visible = ref(false)
 
-function hideNav(nav: Nav, e: Event): void {
-  if (nav.url.startsWith('http')) {
-    window.open(nav.url, '_blank')
-    e.preventDefault()
-    e.stopPropagation()
-    return
-  }
+function hideNav(): void {
   setTimeout(() => {
     visible.value = false
   }, 100)
