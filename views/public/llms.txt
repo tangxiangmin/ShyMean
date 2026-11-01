@@ -13,22 +13,26 @@
 
 ## 主要分类
 
+- [前端](https://www.shymean.com/category/%E5%89%8D%E7%AB%AF): 114 篇文章
+- [源码分析](https://www.shymean.com/category/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90): 31 篇文章
+- [客户端](https://www.shymean.com/category/%E5%AE%A2%E6%88%B7%E7%AB%AF): 24 篇文章
 - [数据结构和算法](https://www.shymean.com/category/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95): 8 篇文章
 - [杂项](https://www.shymean.com/category/%E6%9D%82%E9%A1%B9): 13 篇文章
 - [网络](https://www.shymean.com/category/%E7%BD%91%E7%BB%9C): 10 篇文章
 - [博客](https://www.shymean.com/category/%E5%8D%9A%E5%AE%A2): 13 篇文章
-- [前端](https://www.shymean.com/category/%E5%89%8D%E7%AB%AF): 112 篇文章
 - [技术原理](https://www.shymean.com/category/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86): 25 篇文章
 - [编程语言](https://www.shymean.com/category/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80): 23 篇文章
-- [源码分析](https://www.shymean.com/category/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90): 30 篇文章
 - [读书笔记](https://www.shymean.com/category/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0): 17 篇文章
 - [游戏](https://www.shymean.com/category/%E6%B8%B8%E6%88%8F): 11 篇文章
 - [后端](https://www.shymean.com/category/%E5%90%8E%E7%AB%AF): 12 篇文章
-- [客户端](https://www.shymean.com/category/%E5%AE%A2%E6%88%B7%E7%AB%AF): 23 篇文章
 - [编程技术](https://www.shymean.com/category/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF): 7 篇文章
 
 ## 最新中文文章
 
+- [大型前端项目的国际化配置管理实践](https://www.shymean.com/article/%E5%A4%A7%E5%9E%8B%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5): 整理大型前端项目的国际化配置管理方案，涵盖静态与动态词条、客户自定义、词条提取、翻译维护、资源加载、缓存与版本更新。
+- [Mini-Agent源码分析](https://www.shymean.com/article/Mini-Agent%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90): 沿着 mini-agent-ts 的一次用户请求，分析 CLI 初始化、模型调用、工具执行、消息历史以及 Skills、MCP 的协作过程。
+- [一种统一技术栈的微前端方案](https://www.shymean.com/article/%E4%B8%80%E7%A7%8D%E7%BB%9F%E4%B8%80%E6%8A%80%E6%9C%AF%E6%A0%88%E7%9A%84%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%96%B9%E6%A1%88): 面向统一技术栈的大型前端项目，介绍通过公共模块运行时共享、环境 manifest 版本选择和宿主装配，实现业务工程独立开发与部署的微前端方案，并结合 React、ESM 与 AMD 配套 Demo 说明依赖共享、按需加载和兼容性约束。
+- [一种用Chrome扩展做自动化采集的方案](https://www.shymean.com/article/%E4%B8%80%E7%A7%8D%E7%94%A8Chrome%E6%89%A9%E5%B1%95%E5%81%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E9%87%87%E9%9B%86%E7%9A%84%E6%96%B9%E6%A1%88): 介绍 petty-spider 使用 Chrome 扩展实现网页自动化采集的技术思路，说明代理、HTTP 脚本和浏览器自动化各自处理的问题，以及复用当前浏览器会话、页面交互与本地任务状态的适用条件。
 - [数据结构与算法可视化](https://www.shymean.com/article/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A7%86%E5%8C%96): 介绍一个数据结构与算法可视化网站，通过 JavaScript 代码、单步动画和原理讲解学习排序、查找、图算法、动态规划及常见数据结构，并记录执行轨迹、代码高亮和静态预渲染的实现思路。
 - [网页标注工具的技术原理与实现](https://www.shymean.com/article/%E7%BD%91%E9%A1%B5%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0): 本文结合 annotate 项目的实现，介绍网页标注中的文本锚点恢复、DOM Range 与覆盖层渲染、SVG 图形坐标归一化、Pointer Events 手势管理，以及 Chrome 扩展的界面隔离、本地保存和列表分页。
 - [两次 Wi-Fi 故障排查：DNS 无响应、AP 去认证与端口扫描告警](https://www.shymean.com/article/%E4%B8%A4%E6%AC%A1%20Wi-Fi%20%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%9ADNS%20%E6%97%A0%E5%93%8D%E5%BA%94%E3%80%81AP%20%E5%8E%BB%E8%AE%A4%E8%AF%81%E4%B8%8E%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%91%8A%E8%AD%A6): 总结两次 macOS Wi-Fi 故障排查：酒店网络中默认 DNS 无响应，以及公司网络中 DNS 超时、AP 去认证和端口扫描告警交织出现时，如何依据日志区分无线链路、DHCP、DNS 与安全策略问题。
@@ -45,10 +49,6 @@
 - [pnpm在CI中的严格模式](https://www.shymean.com/article/pnpm%E5%9C%A8CI%E4%B8%AD%E7%9A%84%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F): 深入解析 pnpm 在 CI 环境中的严格模式机制，理解为什么 lockfile 不一致会导致 CI 失败而本地却能正常安装，以及如何正确处理这个问题。
 - [monorepo项目的一些策略](https://www.shymean.com/article/monorepo%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%96%E7%95%A5): 本文聚焦 monorepo 实际项目中的策略问题，涵盖依赖类型（产物与源码依赖）、ts 多项目配置、eslint 统一配置、内部包类型依赖、公共依赖、构建顺序及批量发布等内容，提供实用方案与工具介绍，助您优化 monorepo 项目管理
 - [JavaScript模拟获取函数执行上下文](https://www.shymean.com/article/JavaScript%E6%A8%A1%E6%8B%9F%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87): 深入探讨JavaScript函数执行上下文的获取方法，包括Error.stack、console.trace等调用栈获取技术，以及参数透传、AsyncLocalStorage、Zone.js等上下文管理方案的实现原理与应用场景。
-- [一个AI独立完成的游戏自动化脚本](https://www.shymean.com/article/%E4%B8%80%E4%B8%AAAI%E7%8B%AC%E7%AB%8B%E5%AE%8C%E6%88%90%E7%9A%84%E6%B8%B8%E6%88%8F%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC): 作者分享利用 AI 工具 Kiro 实现游戏自动化脚本的经历。从提出在 Mac 上定时自动点击屏幕特定位置的需求，到不断完善功能、解决多显示器坐标问题，最终实现功能完整的工具，展示了 AI 编码在提升开发效率上的显著作用。
-- [在webpack中基于chunk加载external外部依赖](https://www.shymean.com/article/%E5%9C%A8webpack%E4%B8%AD%E5%9F%BA%E4%BA%8Echunk%E5%8A%A0%E8%BD%BDexternal%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96): 本文聚焦 webpack 的 externals 配置，阐述其默认行为、缺陷及期望场景。提出按需加载 chunk 对应 external 的方案，涉及分析依赖关系、生成清单、改造加载流程等，还介绍从 webpack 加载 chunk、修改运行时代码等实现细节，助您提升前端性能优化能力。
-- [基于CloudflareR2搭建博客图床](https://www.shymean.com/article/%E5%9F%BA%E4%BA%8ECloudflareR2%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%8A): 本文详细记录迁移至 Cloudflare R2 存储搭建图床的过程，包括申请 R2 服务、同步文件、更新 oPic 工具等，助您掌握博客图床迁移办法
-- [flex布局时内容被子元素撑开的问题](https://www.shymean.com/article/flex%E5%B8%83%E5%B1%80%E6%97%B6%E5%86%85%E5%AE%B9%E8%A2%AB%E5%AD%90%E5%85%83%E7%B4%A0%E6%92%91%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98): 本文分析了 flex 布局中容器被子元素内容撑开的问题，解释了 flex-basis 和 min-width 的作用机制，并提供了多种解决方案。
 
 ## Recent English Articles
 
