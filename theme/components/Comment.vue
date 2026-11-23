@@ -4,7 +4,6 @@
 
 <script lang="ts" setup>
 import type { WalineInstance } from '@waline/client/full'
-import { init } from '@waline/client/full'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import '@waline/client/waline.css'
@@ -17,6 +16,7 @@ const containerRef = ref<HTMLElement>()
 const { currentUrl } = useCurrentUrl()
 
 let walineInstance: WalineInstance | undefined
+let disposed = false
 
 function normalizeCommentPath(url: string) {
   const pathname = new URL(url, window.location.origin).pathname
@@ -24,8 +24,12 @@ function normalizeCommentPath(url: string) {
   return pathname === '/' ? pathname : pathname.replace(/\/$/, '')
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (!containerRef.value)
+    return
+
+  const { init } = await import('@waline/client/full')
+  if (disposed || !containerRef.value)
     return
 
   walineInstance = init({
@@ -54,6 +58,7 @@ watch(currentUrl, async (url) => {
 })
 
 onBeforeUnmount(() => {
+  disposed = true
   walineInstance?.destroy()
   walineInstance = undefined
 })

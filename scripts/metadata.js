@@ -279,6 +279,19 @@ async function generateMetaData() {
 
   fs.writeFileSync(path.resolve(__dirname, '../data/meta.json'), JSON.stringify(data, null, 4))
 
+  // 列表组件只读取展示字段，SEO head 和文章源路径保留在构建侧 meta.json。
+  const clientArticles = data.map(({ title, tags, categories, createdAt, abstract, lang, route }) => ({
+    title,
+    tags,
+    categories,
+    createdAt,
+    abstract,
+    lang,
+    route,
+    content: '',
+  }))
+  fs.writeFileSync(path.resolve(__dirname, '../data/clientArticles.json'), JSON.stringify(clientArticles))
+
   // 分类树与标签路由只统计中文文章，避免英文文章改变现有计数并生成无页面的 taxonomy 路由
   const archives = generateArchiveData(data.filter(article => !isEnglish(article)))
   fs.writeFileSync(path.resolve(__dirname, '../data/archive.json'), JSON.stringify(archives, null, 4))

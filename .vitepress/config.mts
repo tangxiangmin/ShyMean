@@ -14,9 +14,12 @@ import inlineSFC from 'vite-plugin-vitepres-inline-sfc'
 
 import { generateRSS } from '../scripts/rss'
 import { applySEOToPageData } from '../scripts/seoMeta'
+import { createCodeHighlightStyles } from './codeHighlightStyles'
+import { prunePageModules } from './prunePageModules'
 import type { IArticle, TTranslationGroup } from '../typings'
 
 const isProd=  process.env.NODE_ENV==='production'
+const codeHighlightStyles = createCodeHighlightStyles()
 
 const baseUrl = 'https://www.shymean.com'
 
@@ -62,6 +65,11 @@ export default defineConfig({
     isProd ? ['script',{src:"https://static.cloudflareinsights.com/beacon.min.js",'data-cf-beacon':'{"token": "28e619c6022b4e0d8e2f531dd215486a"}'}]:null
   ].filter(Boolean),
   cleanUrls: true,
+  // 将所有页面共用的路由哈希表和站点数据抽离，避免在每个 HTML 中重复内嵌。
+  metaChunk: true,
+  router: {
+    prefetchLinks: false,
+  },
   ignoreDeadLinks: [
     url => legacyDeadLinks.has(url),
   ],
@@ -94,11 +102,30 @@ export default defineConfig({
     if (ctx.pageData.frontmatter.lang !== 'en-US') return
     return code.replace('<html lang="zh-CN"', '<html lang="en-US"')
   },
-  buildEnd: generateRSS,
+  transformHead: codeHighlightStyles.transformHead,
+  async buildEnd(config) {
+    await codeHighlightStyles.buildEnd(config)
+    await generateRSS(config)
+    await prunePageModules(config)
+  },
   themeConfig: {
     socialLinks: []
   },
   srcDir: './views',
+  markdown: {
+    codeTransformers: [codeHighlightStyles.transformer],
+    config(md) {
+      const defaultFence = md.renderer.rules.fence!
+      md.renderer.rules.fence = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        if (token.info.trim().split(/\s+/)[0] === 'mermaid') {
+          const source = md.utils.escapeHtml(JSON.stringify(token.content))
+          return `<blog-mermaid :source="${source}" />\n`
+        }
+        return defaultFence(tokens, index, options, env, self)
+      }
+    },
+  },
   vite: {
     server: {
       host: '0.0.0.0',
@@ -113,6 +140,7 @@ export default defineConfig({
       },
     },
     plugins: [
+      codeHighlightStyles.plugin,
       vueJsx(),
       inlineSFC(),
       Unocss(),

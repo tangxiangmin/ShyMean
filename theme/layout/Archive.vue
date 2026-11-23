@@ -44,7 +44,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { IArticle } from '@/typings'
-import articles from '@/data/meta.json'
+import articles from '@/data/clientArticles.json'
 import { categories as categoriesList } from '@/data/archive.json'
 import { createArchiveLink, createArticleLink, formatArticleDate, parseCategoryFomLink } from '@/theme/utils'
 

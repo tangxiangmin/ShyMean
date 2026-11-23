@@ -32,14 +32,14 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import articles from '@/data/meta.json'
+import articles from '@/data/clientArticles.json'
 import type { IArticle } from '@/typings'
 import { createArchiveLink, createArticleLink, formatArticleDate } from '@/theme/utils'
 
-interface Props {
+interface IProps {
   page: number
 }
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<IProps>(), {
   page: 1,
 })
 
